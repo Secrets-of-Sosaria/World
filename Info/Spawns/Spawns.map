@@ -1,0 +1,22 @@
+# CUSTOM SPAWNS FOR RUINS & RICHES
+#
+# While logged into the admin account, you can add a custom spawner in the land.
+# Use the "[add spawner" command with the name of a creature you want to spawn.
+# An example would be "[add spawner skeleton". Once the spawner is placed on the map,
+# you can use the [props command and target the spawner. Within the props window, you 
+# can change certain settings like the count (amount of skeletons), the home range 
+# (how far away from the spawner it can appear), the minimum and maximum times between 
+# spawns, and the walking range (how far away from the spawner the creature will wander).
+# You can also double click the spawner and add additional creatures to the list.
+# Once that is done, run the [runuospawnerexporter command and it will generate a file
+# located in the Data\Spawns folder with a name like *****-exported.map.
+# Delete the spawner(s) which if you placed many you can do a "[global delete where spawner"
+# command. Copy the contents of the *****-exported.map and paste it into this file.
+# Delete the *****-exported.map file, save this file, and then you can run the [buildworld
+# command while logged in as the admin account. Your creatures will now appear in the land.
+#
+# For more information on the format of this file, you can reference the instructions at the
+# end of this file:
+#
+# Data\Scripts\System\Misc\Spawning.cs
+#

@@ -1,0 +1,3 @@
+Keep This File In Here
+January 1st, 2000
+This file needs to be here so the server does not crash due to the article boards. You can have up to 10 articles at a time, so have each file similar to the contents of this one. Each file must be named 1 to 10 (1.txt, 2.txt, etc.), and contain only 3 lines. The first line is the title. The second line is the date. The last line is the message. Messages will appear on the board from 10 to 1.
