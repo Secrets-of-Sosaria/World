@@ -33,7 +33,7 @@ namespace Server.Misc
 				+ "Secrets of Sosaria - 29 September 2024<br>"
 
 				+ "<br>"
-				+ "<strong>New Branch</strong>
+				+ "<strong>New Branch</strong>"
 				+ "<br>"
 
 				+ sepLine()
