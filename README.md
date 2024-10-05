@@ -1,2 +1,3 @@
-# World
-Code repository for the Secrets of Sosaria world
+# Secrets of Sosaria
+
+For instructions, see [Manual.pdf](Manual.pdf).
