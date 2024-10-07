@@ -952,7 +952,7 @@ namespace Server.Gumps
 			if ( origin == 0 ){ from.SendSound( 0x4A ); }
 
 		int EP_bonus = 0;
-		if ( from.Skills.Alchemy.Fixed >= 99 )     { EP_bonus = 30; }
+		if      ( from.Skills.Alchemy.Fixed >= 99 ){ EP_bonus = 30; }
 		else if ( from.Skills.Alchemy.Fixed >= 66 ){ EP_bonus = 20; }
 		else if ( from.Skills.Alchemy.Fixed >= 33 ){ EP_bonus = 10; }
 
@@ -1066,7 +1066,7 @@ namespace Server.Gumps
 			colB = colB + "" + String.Format(" {0}", from.TithingPoints ) + "<BR><BR>";
 			colB = colB + "" + String.Format(" {0}", from.Hunger ) + "<BR><BR>";
 			colB = colB + "" + String.Format(" {0}", from.Thirst ) + "<BR><BR>";
-			colB = colB + "" + String.Format(" {0}%/{1}%", EP, EPCap ) + "<BR><BR>";
+			colB = colB + "" + String.Format(" {0}/{1}%", EP, EPCap ) + "<BR><BR>";
 			colB = colB + "" + Banker.GetBalance( from ) + "<BR> <BR><BR>";
 
 			AddHtml( 20, 45, 200, 370, @"<BODY><BASEFONT Color=" + color + ">" + colA + "</BASEFONT></BODY>", (bool)false, (bool)false);
