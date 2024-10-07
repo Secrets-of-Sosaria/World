@@ -101,10 +101,11 @@ namespace Server
 					Item item = entry.Construct( from, luckChance, spawning );
 
 					if ( item != null )
-						LootPackChange.RemoveItem( item, from, level );
-
-					if ( item != null )
 					{
+						LootPackChange.RemoveItem( item, from, level );
+						if (item.Deleted)
+							continue;
+							
 						item = LootPackChange.ChangeItem( item, from, level );
 						NotIdentified.ConfigureItem( item, cont, from );
 						ReagentJar.ConfigureItem( item, cont, from );
