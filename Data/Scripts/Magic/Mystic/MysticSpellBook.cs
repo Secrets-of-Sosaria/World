@@ -106,7 +106,7 @@ namespace Server.Items
 
 		public override bool OnDragLift( Mobile from )
 		{
-			if ( owner == null )
+			if ( owner == null && from is PlayerMobile)
 			{
 				owner = from;
 			}
