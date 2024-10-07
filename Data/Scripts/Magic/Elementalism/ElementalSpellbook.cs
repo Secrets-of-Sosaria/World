@@ -38,7 +38,8 @@ namespace Server.Items
 
 		public override bool OnDragLift( Mobile from )
 		{
-			SetupBook( from );
+			if (from is PlayerMobile)
+				SetupBook( from );
 			return base.OnDragLift( from );
 		}
 
