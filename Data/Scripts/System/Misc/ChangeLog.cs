@@ -33,7 +33,7 @@ namespace Server.Misc
 				+ "Secrets of Sosaria - 29 September 2024<br>"
 
 				+ "<br>"
-				+ "<strong>New Branch</strong>"
+				+ "<strong>New Branch called Secrets of Sosaria</strong>"
 				+ "<br>"
 
 				+ sepLine()
@@ -604,6 +604,247 @@ namespace Server.Misc
 				+ "Game branched off, called the Adventurers of Akalabeth.<br>"
 
 				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "LIZARD - 24 May 2023<br>"
+
+				+ "<br>"
+
+				+ "* Fixed an issue with the last update causing vendors to vanish.<br>"
+				+ "* Fixed damages for a couple of elemental spells.<br>"
+				+ "* Renamed a targeting mobile to TARGET instead of MOUSE but only the admin saw this.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "MASTADON - 23 May 2023<br>"
+
+				+ "<br>"
+
+				+ "* Another potential fix for monster spawning infinite loop while on the sea.<br>"
+				+ "* Another potential fix for wandering healer random land spawning.<br>"
+				+ "* Fixed an issue with bearskin rugs spawning in the land.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "UNICORN - 24 April 2023<br>"
+
+				+ "<br>"
+
+				+ "* Consolidated cloth appearances for cut and folded.<br>"
+				+ "* Added an option to fold up cut cloth by double clicking it.<br>"
+				+ "  - The scroll on tailoring has been updated with this new feature.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "SCORPION - 16 April 2023<br>"
+
+				+ "<br>"
+
+				+ "Fixed a damage calculation flaw with Poison Strike.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "GARGOYLE - 6 April 2023<br>"
+
+				+ "<br>"
+
+				+ "Suggested fixed by Nephtan.<br>"
+				+ "* Research bag spell and reagent information.<br>"
+				+ "* Fixed Mass Might spell.<br>"
+				+ "* Fixed Enchant spell.<br>"
+				+ "* Fixed Sneak spell.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "BOAR - 29 March 2023<br>"
+
+				+ "<br>"
+
+				+ "* Implemented a potential patch for sage and courier quests, regarding the dungeon pedestal locations.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "SPIDER - 26 March 2023<br>"
+
+				+ "<br>"
+
+				+ "* Fixed an issue with the jester's hilarity ability (Thanks Nephtan).<br>"
+				+ "* Fixed an exploit with shoppes (Thanks Nephtan).<br>"
+				+ "* Editted the welcoming gypsy's conversation to come from the first person.<br>"
+				+ "* Fixed an issue with jester abilities that would cause server crashes.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "WYVERN - 21 March 2023<br>"
+
+				+ "<br>"
+
+				+ "* Fixed a bedroll issue when in public areas like banks and taverns (Thanks Nephtan).<br>"
+				+ "* Fixed a graphic issue for a fairy race paperdoll (Thanks Nephtan).<br>"
+				+ "* Expanded the definition of knives for skinning leather (Thanks Nephtan).<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "GREMLIN - 19 March 2023<br>"
+
+				+ "<br>"
+
+				+ "* Enabled more water troughs and barrels (frozen ones) to be used for filling waterskins.<br>"
+				+ "* Added an extra check for wandering healers spawning at top left corner of the map (Thanks Nephtan).<br>"
+				+ "* Elemental Protection spell now provides casting protection (Thanks Nephtan).<br>"
+				+ "* Fixed a Legendary Artifact error in regards to armor attributes (Thanks Nephtan).<br>"
+				+ "> Not being able to see monsters when you are dead and line of site is enabled is performing as designed (Sorry Nephtan).<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "BALRON - 2 March 2023<br>"
+
+				+ "<br>"
+
+				+ "Expanded the 'random daemons, balrons, dragons and wyrms' settings.xml option to encompass or omit more of the land.<br>"
+				+ "* It previously only affected the random spawns and not the more precise area spawns.<br>"
+				+ "* It does NOT include creatures on the high seas.<br>"
+				+ "* There are exact location spawns that this setting does NOT affect.<br>"
+				+ "* It now includes the good creatures like angels, oriental dragons, and ancient ents.<br>"
+				+ "* Description in settings.xml has changed to reflect this.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "GRIFFON - 26 February 2023<br>"
+
+				+ "<br>"
+
+				+ "* Fixed an issue where the quick bar was not counting crystals properly.<br>"
+				+ "* Fixed a bug with the slaver net and captured creatures hiding.<br>"
+				+ "* Corrected a crash where shinobi items could not be created as legendary or artifact types.<br>"
+
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "DRAKE - 8 February 2023<br>"
+
+				+ "<br>"
+
+				+ "Look over the included settings.xml file to see the added setting options and then add it to your settings.xml file if you are updating.<br>"
+				+ "* Fixed graphics for jars to partial hue so the lids would show when randomly colored.<br>"
+				+ "* Increased strength and storage weight for invulnerable porter-type creature followers.<br>"
+				+ "* Added a setting option to stop hunger and thirst decay while in places like banks or inns.<br>"
+				+ "* Fixed some graphical map issues in Dungeon Clues.<br>"
+
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "KOBOLD - 29 January 2023<br>"
+
+				+ "<br>"
+
+				+ "Fixed an issue with Druidism not working on special acquired creatures like flesh golems and skeletal dragons.<br>"
+
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "ORCUS - 4 January 2023<br>"
+
+				+ "<br>"
+
+				+ "Look over the included settings.xml file to see the added setting options and then add it to your settings.xml file if you are updating.<br>"
+				+ "* Added a setting option to tweak how much you can learn from training dummies, training daemons, and archery buttes.<br>"
+				+ "* Added a setting option to tweak how much you can learn from pickpocket dips.<br>"
+				+ "* Added a setting option to have training dummies, training daemons, archery buttes and pickpocket dips train a character quicker.<br>"
+				+ "* Added a setting option to turn off the dragons, wyrms, daemons, and balrons that randomly spawn in the world.<br>"
+
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "GOBLIN - 3 January 2023<br>"
+
+				+ "<br>"
+
+				+ "* Fixed an issue where the term 'viking sword' was still in use when they were supposed to be replaced by 'barbarian swords'.<br>"
+				+ "* Added a new dinosaur to the game.<br>"
+				+ "* Some cosmetic map fixes.<br>"
+				+ "* Various small script fixes like spelling errors.<br>"
+
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "DRACULA - 20 September 2022<br>"
+
+				+ "<br>"
+
+				+ "* Added new animations for a bit more diverse monster appearances.<br>"
+				+ "* Some cosmetic map fixes.<br>"
+
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				
+				+ "Further changes lost to time...<br>"
+
+				+ "<br>"
+
+				+ sepLine()
+
+				+ "???? - ???? 2020?<br>"
+
+				+ "* a companion maker<br>"
+
+				+ "<br>"
+
+				+ sepLine()
+
+				+ "Dawn - ???? 2012?<br>"
+
 
 			+ "";
 
