@@ -513,7 +513,7 @@ namespace Server.Gumps
 				}
 				Server.Items.BaseRace.RemoveMyClothes( m );
 
-				m.AddToBackpack( new Gold( Utility.RandomMinMax(100,150) ) );
+				m.AddToBackpack( new Gold( MyServerSettings.StartingGold() ) );
 
 				switch ( Utility.RandomMinMax( 1, 2 ) )
 				{
