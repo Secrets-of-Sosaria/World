@@ -335,6 +335,100 @@ namespace Server
 			return value;
 		}
 
+		public static int GetUncappedValue( Mobile m, AosAttribute attribute )
+		{
+			if( !Core.AOS )
+				return 0;
+
+			List<Item> items = m.Items;
+			int value = 0;
+
+			for( int i = 0; i < items.Count; ++i )
+			{
+				Item obj = items[i];
+
+				if( obj is BaseWeapon )
+				{
+					AosAttributes attrs = ((BaseWeapon)obj).Attributes;
+
+					if( attrs != null )
+						value += attrs[attribute];
+
+					if( attribute == AosAttribute.Luck )
+						value += ((BaseWeapon)obj).GetLuckBonus();
+				}
+				else if( obj is BaseArmor )
+				{
+					AosAttributes attrs = ((BaseArmor)obj).Attributes;
+
+					if( attrs != null )
+						value += attrs[attribute];
+
+					if( attribute == AosAttribute.Luck )
+						value += ((BaseArmor)obj).GetLuckBonus();
+				}
+				else if( obj is BaseTrinket )
+				{
+					AosAttributes attrs = ((BaseTrinket)obj).Attributes;
+
+					if( attrs != null )
+						value += attrs[attribute];
+
+					if( attribute == AosAttribute.Luck )
+						value += ((BaseTrinket)obj).GetLuckBonus();
+				}
+				else if( obj is BaseRace )
+				{
+					AosAttributes attrs = ((BaseRace)obj).Attributes;
+
+					if( attrs != null )
+						value += attrs[attribute];
+				}
+				else if( obj is BaseInstrument )
+				{
+					AosAttributes attrs = ((BaseInstrument)obj).Attributes;
+
+					if( attrs != null )
+						value += attrs[attribute];
+
+					if( attribute == AosAttribute.Luck )
+						value += ((BaseInstrument)obj).GetLuckBonus();
+				}
+				else if( obj is BaseClothing )
+				{
+					AosAttributes attrs = ((BaseClothing)obj).Attributes;
+
+					if( attrs != null )
+						value += attrs[attribute];
+
+					if( attribute == AosAttribute.Luck )
+						value += ((BaseClothing)obj).GetLuckBonus();
+				}
+				else if( obj is Spellbook )
+				{
+					AosAttributes attrs = ((Spellbook)obj).Attributes;
+
+					if( attrs != null )
+						value += attrs[attribute];
+
+					if( attribute == AosAttribute.Luck )
+						value += ((Spellbook)obj).GetLuckBonus();
+				}
+				else if( obj is BaseQuiver )
+				{
+					AosAttributes attrs = ((BaseQuiver)obj).Attributes;
+
+					if( attrs != null )
+						value += attrs[attribute];
+
+					if( attribute == AosAttribute.Luck )
+						value += ((BaseQuiver)obj).GetLuckBonus();
+				}
+			}
+
+			return value;
+		}
+
 		public int this[AosAttribute attribute]
 		{
 			get { return GetValue( (int)attribute ); }
