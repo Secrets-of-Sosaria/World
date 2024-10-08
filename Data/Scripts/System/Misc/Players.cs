@@ -1121,7 +1121,7 @@ namespace Server.Gumps
 			string colF = "";
 			colF = colF + "" + String.Format(" {0}/{1}%", HCI, HCICap ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0}/{1}%", DCI, DCICap ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}s/{1}s", new DateTime(SwingSpeed.Ticks).ToString("s.ff"), new DateTime( SSCap.Ticks ).ToString("s.ff")) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}/{1}s", new DateTime(SwingSpeed.Ticks).ToString("s.ff"), new DateTime( SSCap.Ticks ).ToString("s.ff")) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0}/{1}%", SSI, SSICap ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( BandageSpeed ).Ticks).ToString("s.ff") ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0}/{1}%", DI, DICap ) + "<BR><BR>";
