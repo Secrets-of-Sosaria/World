@@ -1010,19 +1010,22 @@ namespace Server.Gumps
 
 			// 0 - BUTTON // 1 - PLAYERS HANDBOOK // 2 - DIVINATION
 
-			int img = 11420;
-			string color = "#E4E377";
+		int img         = 11420;
+		string color    = "#E4E377";
+		string colordim = "#B8B8A3";
 
-			if ( m_Origin == 1 )
-			{
-				img = 11417;
-				color = "#DCB179";
-			}
-			else if ( m_Origin == 2 )
-			{
-				img = 11419;
-				color = "#E59DE2";
-			}
+		if ( m_Origin == 1 )
+		{
+			img      = 11417;
+			color    = "#DCB179";
+			colordim = "#B4ACA1";
+		}
+		else if ( m_Origin == 2 )
+		{
+			img      = 11419;
+			color    = "#E59DE2";
+			colordim = "#C8BAC8";
+		}
 
 			AddImage(1, 1, img, Server.Misc.PlayerSettings.GetGumpHue( m ));
 
@@ -1066,7 +1069,7 @@ namespace Server.Gumps
 			colB = colB + "" + String.Format(" {0}", from.TithingPoints ) + "<BR><BR>";
 			colB = colB + "" + String.Format(" {0}", from.Hunger ) + "<BR><BR>";
 			colB = colB + "" + String.Format(" {0}", from.Thirst ) + "<BR><BR>";
-			colB = colB + "" + String.Format(" {0}/{1}%", EP, EPCap ) + "<BR><BR>";
+			colB = colB + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", EP, EPCap ) + "<BR><BR>";
 			colB = colB + "" + Banker.GetBalance( from ) + "<BR> <BR><BR>";
 
 			AddHtml( 20, 45, 200, 370, @"<BODY><BASEFONT Color=" + color + ">" + colA + "</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -1095,8 +1098,8 @@ namespace Server.Gumps
 			colD = colD + "" + String.Format(" {0}", AosAttributes.GetValue( from, AosAttribute.RegenHits ) ) + "<BR><BR>";
 			colD = colD + "" + String.Format(" {0}", AosAttributes.GetValue( from, AosAttribute.RegenStam ) ) + "<BR><BR>";
 			colD = colD + "" + String.Format(" {0}", AosAttributes.GetValue( from, AosAttribute.RegenMana ) ) + "<BR><BR>";
-			if ( MyServerSettings.LowerReg() > 0 ){ colD = colD + "" + String.Format(" {0}/{1}%", LRC, LRCCap ) + "<BR><BR>"; }
-			if ( MyServerSettings.LowerMana() > 0 ){ colD = colD + "" + String.Format(" {0}/{1}%", LMC, LMCCap ) + "<BR><BR>"; }
+			if  ( MyServerSettings.LowerReg() > 0 ){ colD = colD + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", LRC, LRCCap ) + "<BR><BR>"; }
+			if ( MyServerSettings.LowerMana() > 0 ){ colD = colD + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", LMC, LMCCap ) + "<BR><BR>"; }
 			colD = colD + "" + String.Format(" {0}", HealCost ) + "<BR><BR>";
 			colD = colD + "" + String.Format(" {0}", from.Kills) + "<BR><BR>";
 
@@ -1119,16 +1122,16 @@ namespace Server.Gumps
 			colE = colE + "Magic/Melee Absorb<BR><BR>";
 
 			string colF = "";
-			colF = colF + "" + String.Format(" {0}/{1}%", HCI, HCICap ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}/{1}%", DCI, DCICap ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}/{1}s", new DateTime(SwingSpeed.Ticks).ToString("s.ff"), new DateTime( SSCap.Ticks ).ToString("s.ff")) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}/{1}%", SSI, SSICap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", HCI, HCICap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", DCI, DCICap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}s</BASEFONT>", new DateTime(SwingSpeed.Ticks).ToString("s.ff"), new DateTime( SSCap.Ticks ).ToString("s.ff")) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", SSI, SSICap ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( BandageSpeed ).Ticks).ToString("s.ff") ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}/{1}%", DI, DICap ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}/{1}%", RD, RDCap ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}/(2/4)", FC ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}/{1}", FCR, FCRCap ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}/{1}%", SDI, SDICap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", DI, DICap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", RD, RDCap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/(2/4)</BASEFONT>", FC ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}</BASEFONT>", FCR, FCRCap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", SDI, SDICap ) + "<BR><BR>";
 			colF = colF + "" + MgAb + "/" + MeAb + "<BR><BR>";
 
 			AddHtml( 500, 45, 150, 380, @"<BODY><BASEFONT Color=" + color + ">" + colE + "</BASEFONT></BODY>", (bool)false, (bool)false);
