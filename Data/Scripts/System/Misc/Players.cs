@@ -951,33 +951,53 @@ namespace Server.Gumps
 
 			if ( origin == 0 ){ from.SendSound( 0x4A ); }
 
-            int LRCCap = 100;
-            int LMCCap = 100;
-            int SwingSpeedCap = 100;
-            int HCICap = 45;
-            int DCICap = 45;
-            int FCCap = 4; // FC 4 For Paladin, otherwise FC 2 for Mage
-            int DamageIncreaseCap = 100;
-            int SDICap = 1000000;
-				if ( SDICap > MyServerSettings.SpellDamageIncreaseVsMonsters() && MyServerSettings.SpellDamageIncreaseVsMonsters() > 0 ){ SDICap = MyServerSettings.SpellDamageIncreaseVsMonsters(); }
-            int ReflectDamageCap = 100;
-            int SSICap = 100;
-            
-            int LRC = AosAttributes.GetValue( from, AosAttribute.LowerRegCost ) > LRCCap ? LRCCap : AosAttributes.GetValue( from, AosAttribute.LowerRegCost );
-            int LMC = AosAttributes.GetValue( from, AosAttribute.LowerManaCost ) > LMCCap ? LMCCap : AosAttributes.GetValue( from, AosAttribute.LowerManaCost );
-			double BandageSpeed = BandageContext.HealTimer( m, m );
-            TimeSpan SwingSpeed = (from.Weapon as BaseWeapon).GetDelay(from) > TimeSpan.FromSeconds(SwingSpeedCap) ? TimeSpan.FromSeconds(SwingSpeedCap) : (from.Weapon as BaseWeapon).GetDelay(from);
-            int HCI = AosAttributes.GetValue( from, AosAttribute.AttackChance ) > HCICap ? HCICap : AosAttributes.GetValue( from, AosAttribute.AttackChance );
-            int DCI = AosAttributes.GetValue( from, AosAttribute.DefendChance ) > DCICap ? DCICap : AosAttributes.GetValue( from, AosAttribute.DefendChance );
-            int FC = AosAttributes.GetValue( from, AosAttribute.CastSpeed ) > FCCap ? FCCap : AosAttributes.GetValue( from, AosAttribute.CastSpeed );
-            int FCR = AosAttributes.GetValue( from, AosAttribute.CastRecovery );
-            int DamageIncrease = AosAttributes.GetValue( from, AosAttribute.WeaponDamage ) > DamageIncreaseCap ? DamageIncreaseCap : AosAttributes.GetValue( from, AosAttribute.WeaponDamage );
-            int SDI = AosAttributes.GetValue( from, AosAttribute.SpellDamage ) > SDICap ? SDICap : AosAttributes.GetValue( from, AosAttribute.SpellDamage );
-            int ReflectDamage = AosAttributes.GetValue( from, AosAttribute.ReflectPhysical ) > ReflectDamageCap ? ReflectDamageCap : AosAttributes.GetValue( from, AosAttribute.ReflectPhysical );
-            int SSI = AosAttributes.GetValue( from, AosAttribute.WeaponSpeed ) > SSICap ? SSICap : AosAttributes.GetValue( from, AosAttribute.WeaponSpeed );
-            int HealCost = GetPlayerInfo.GetResurrectCost( from );
-			int CharacterLevel = GetPlayerInfo.GetPlayerLevel( from );
-            int EP = BasePotion.EnhancePotions( from );
+		int EP_bonus = 0;
+		if      ( from.Skills.Alchemy.Fixed >= 99 ){ EP_bonus = 30; }
+		else if ( from.Skills.Alchemy.Fixed >= 66 ){ EP_bonus = 20; }
+		else if ( from.Skills.Alchemy.Fixed >= 33 ){ EP_bonus = 10; }
+
+		int EPCap = 50 + EP_bonus; // Hardcoded to 50% + skill bonus
+		int EP    = BasePotion.EnhancePotions( from );
+
+		int CharacterLevel = GetPlayerInfo.GetPlayerLevel( from );
+
+		int HealCost = GetPlayerInfo.GetResurrectCost( from );
+
+		int LRCCap = MyServerSettings.LowerReg();
+		int LRC    = AosAttributes.GetUncappedValue( from, AosAttribute.LowerRegCost );
+
+		int LMCCap = MyServerSettings.LowerMana();
+		int LMC    = AosAttributes.GetUncappedValue( from, AosAttribute.LowerManaCost );
+
+		int HCICap = 45; // Hardcoded to 45%
+		int HCI    = AosAttributes.GetValue( from, AosAttribute.AttackChance );
+
+		int DCICap = 45; // Hardcoded to 45%
+		int DCI    = AosAttributes.GetValue( from, AosAttribute.DefendChance );
+
+		TimeSpan SSCap      = TimeSpan.FromSeconds( 1.25 ); // Hardcoded to 1.25s
+		TimeSpan SwingSpeed = ( from.Weapon as BaseWeapon ).GetDelay( from );
+
+		int SSICap = 60; // Static cap hardcoded to 60%, may change with buffs
+		int SSI    = AosAttributes.GetValue( from, AosAttribute.WeaponSpeed );
+
+		double BandageSpeed = BandageContext.HealTimer( m, m );
+
+		int DICap  = 100; // Hardcoded to 100%
+		int DI     = AosAttributes.GetValue( from, AosAttribute.WeaponDamage );
+
+		int RDCap = 100; // Hardcoded to 100% (maybe?)
+		int RD    = AosAttributes.GetValue( from, AosAttribute.ReflectPhysical );
+
+		// FC 4 for paladin spells AND magery < 70, otherwise FC 2
+		int FC = AosAttributes.GetValue( from, AosAttribute.CastSpeed );
+
+		int FCRCap = 6; // Hardcoded, calculated to 6
+		int FCR    = AosAttributes.GetValue( from, AosAttribute.CastRecovery );
+
+		int SDICap = MyServerSettings.SpellDamageIncreaseVsMonsters();
+		int SDI    = AosAttributes.GetValue( from, AosAttribute.SpellDamage );
+
             int MgAb = from.MagicDamageAbsorb;
             int MeAb = from.MeleeDamageAbsorb;
 
@@ -990,19 +1010,22 @@ namespace Server.Gumps
 
 			// 0 - BUTTON // 1 - PLAYERS HANDBOOK // 2 - DIVINATION
 
-			int img = 11420;
-			string color = "#E4E377";
+		int img         = 11420;
+		string color    = "#E4E377";
+		string colordim = "#B8B8A3";
 
-			if ( m_Origin == 1 )
-			{
-				img = 11417;
-				color = "#DCB179";
-			}
-			else if ( m_Origin == 2 )
-			{
-				img = 11419;
-				color = "#E59DE2";
-			}
+		if ( m_Origin == 1 )
+		{
+			img      = 11417;
+			color    = "#DCB179";
+			colordim = "#B4ACA1";
+		}
+		else if ( m_Origin == 2 )
+		{
+			img      = 11419;
+			color    = "#E59DE2";
+			colordim = "#C8BAC8";
+		}
 
 			AddImage(1, 1, img, Server.Misc.PlayerSettings.GetGumpHue( m ));
 
@@ -1046,7 +1069,7 @@ namespace Server.Gumps
 			colB = colB + "" + String.Format(" {0}", from.TithingPoints ) + "<BR><BR>";
 			colB = colB + "" + String.Format(" {0}", from.Hunger ) + "<BR><BR>";
 			colB = colB + "" + String.Format(" {0}", from.Thirst ) + "<BR><BR>";
-			colB = colB + "" + String.Format(" {0}%", EP ) + "<BR><BR>";
+			colB = colB + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", EP, EPCap ) + "<BR><BR>";
 			colB = colB + "" + Banker.GetBalance( from ) + "<BR> <BR><BR>";
 
 			AddHtml( 20, 45, 200, 370, @"<BODY><BASEFONT Color=" + color + ">" + colA + "</BASEFONT></BODY>", (bool)false, (bool)false);
@@ -1075,8 +1098,8 @@ namespace Server.Gumps
 			colD = colD + "" + String.Format(" {0}", AosAttributes.GetValue( from, AosAttribute.RegenHits ) ) + "<BR><BR>";
 			colD = colD + "" + String.Format(" {0}", AosAttributes.GetValue( from, AosAttribute.RegenStam ) ) + "<BR><BR>";
 			colD = colD + "" + String.Format(" {0}", AosAttributes.GetValue( from, AosAttribute.RegenMana ) ) + "<BR><BR>";
-			if ( MyServerSettings.LowerReg() > 0 ){ colD = colD + "" + String.Format(" {0}%", LRC ) + "<BR><BR>"; }
-			if ( MyServerSettings.LowerMana() > 0 ){ colD = colD + "" + String.Format(" {0}%", LMC ) + "<BR><BR>"; }
+			if  ( MyServerSettings.LowerReg() > 0 ){ colD = colD + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", LRC, LRCCap ) + "<BR><BR>"; }
+			if ( MyServerSettings.LowerMana() > 0 ){ colD = colD + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", LMC, LMCCap ) + "<BR><BR>"; }
 			colD = colD + "" + String.Format(" {0}", HealCost ) + "<BR><BR>";
 			colD = colD + "" + String.Format(" {0}", from.Kills) + "<BR><BR>";
 
@@ -1099,16 +1122,16 @@ namespace Server.Gumps
 			colE = colE + "Magic/Melee Absorb<BR><BR>";
 
 			string colF = "";
-			colF = colF + "" + String.Format(" {0}%", HCI ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}%", DCI ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}s", new DateTime(SwingSpeed.Ticks).ToString("s.ff") ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}%", SSI ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", HCI, HCICap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", DCI, DCICap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}s</BASEFONT>", new DateTime(SwingSpeed.Ticks).ToString("s.ff"), new DateTime( SSCap.Ticks ).ToString("s.ff")) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", SSI, SSICap ) + "<BR><BR>";
 			colF = colF + "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( BandageSpeed ).Ticks).ToString("s.ff") ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}%", DamageIncrease ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}%", ReflectDamage ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}", FC ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}", FCR ) + "<BR><BR>";
-			colF = colF + "" + String.Format(" {0}%", SDI ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", DI, DICap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", RD, RDCap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/(2/4)</BASEFONT>", FC ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}</BASEFONT>", FCR, FCRCap ) + "<BR><BR>";
+			colF = colF + "" + String.Format(" {0}<BASEFONT Color=" + colordim + ">/{1}%</BASEFONT>", SDI, SDICap ) + "<BR><BR>";
 			colF = colF + "" + MgAb + "/" + MeAb + "<BR><BR>";
 
 			AddHtml( 500, 45, 150, 380, @"<BODY><BASEFONT Color=" + color + ">" + colE + "</BASEFONT></BODY>", (bool)false, (bool)false);
