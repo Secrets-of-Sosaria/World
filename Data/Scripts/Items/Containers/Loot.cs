@@ -368,9 +368,9 @@ namespace Server
 
 		private static Type[] m_MedPotionTypes = new Type[]
 			{
-				typeof( AgilityPotion ),		typeof( FrostbitePotion ),			typeof( PoisonPotion ),			typeof( GenderPotion ),
+				typeof( AgilityPotion ),		typeof( FrostbitePotion ),			typeof( PoisonPotion ),
 				typeof( ConflagrationPotion ),	typeof( HealPotion ),				typeof( RefreshPotion ),		typeof( GreaterPoisonPotion ),	typeof( SilverSerpentVenom ),
-				typeof( ConfusionBlastPotion ),	typeof( InvisibilityPotion ),		typeof( RejuvenatePotion ),		typeof( GenderPotion ),			typeof( RepairPotion ),
+				typeof( ConfusionBlastPotion ),	typeof( InvisibilityPotion ),		typeof( RejuvenatePotion ),		typeof( RepairPotion ),
 				typeof( CurePotion ),			typeof( ManaPotion ),				typeof( StrengthPotion ),
 				typeof( ExplosionPotion ),		typeof( NightSightPotion ),			typeof( BottleOfAcid )
 			};
