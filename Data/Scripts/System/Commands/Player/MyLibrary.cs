@@ -233,7 +233,7 @@ namespace Server.Gumps
 				case 51: item = "LoreBook"; title = "The Orb of the Abyss"; id = 34; break;
 				case 52: item = "LoreBook"; title = "The Pass of the Gods"; id = 40; break;
 				case 53: item = "LoreBook"; title = "Rangers of Lodoria"; id = 24; break;
-				case 54: item = "LearnReagentsBook"; title = "Reagents"; id = 204; break;
+				case 54: item = "LearnReagentsBook"; title = "Scroll of Various Reagents"; id = 204; break;
 				case 55: item = "LearnScalesBook"; title = "Reptile Scale Crafts"; id = 203; break;
 				case 56: item = "LoreBook"; title = "The Rule of One"; id = 44; break;
 				case 57: item = "RuneJournal"; title = "Rune Magic"; id = 120; break;
@@ -313,31 +313,31 @@ namespace Server.Gumps
 			else if ( book.Name == "The Jedi Order" ){ num = 39; }
 			else if ( book.Name == "Journal on Familiars" ){ num = 40; }
 			else if ( book.Name == "The Knight Who Fell" ){ num = 41; }
-			else if ( book.Name == "Scroll of Various Leather" ){ num = 42; }
+			else if ( book.Name == "Leather & Bone Crafts" ){ num = 42; }
 			else if ( book.Name == "Legend of the Sky Castle" ){ num = 43; }
 			else if ( book.Name == "The Lost Land" ){ num = 44; }
 			else if ( book.Name == "Lost Tribe of Sosaria" ){ num = 45; }
 			else if ( book.Name == "Luck of the Rogue" ){ num = 46; }
 			else if ( book.Name == "Magic in the Moon" ){ num = 47; }
 			else if ( book.Name == "The Maze of Wonder" ){ num = 48; }
-			else if ( book.Name == "Scroll of Various Metals" ){ num = 49; }
+			else if ( book.Name == "Metal Smithing & Tinkering" ){ num = 49; }
 			else if ( book.Name == "The Orb of the Abyss" ){ num = 50; }
 			else if ( book.Name == "The Pass of the Gods" ){ num = 51; }
 			else if ( book.Name == "Rangers of Lodoria" ){ num = 52; }
 			else if ( book.Name == "Scroll of Various Reagents" ){ num = 53; }
-			else if ( book.Name == "Scroll of Reptile Scales" ){ num = 54; }
+			else if ( book.Name == "Reptile Scale Crafts" ){ num = 54; }
 			else if ( book.Name == "The Rule of One" ){ num = 55; }
 			else if ( book.Name == "Rune Magic" ){ num = 56; }
-			else if ( book.Name == "Scroll of Sand and Stone" ){ num = 57; }
-			else if ( book.Name == "Scroll of Skinning Creatures" ){ num = 58; }
+			else if ( book.Name == "Sand & Stone Crafts" ){ num = 57; }
+			else if ( book.Name == "Skinning & Carving" ){ num = 58; }
 			else if ( book.Name == "Skulls and Shackles" ){ num = 59; }
 			else if ( book.Name == "Staff of Five Parts" ){ num = 60; }
 			else if ( book.Name == "The Story of Exodus" ){ num = 61; }
 			else if ( book.Name == "The Story of Minax" ){ num = 62; }
 			else if ( book.Name == "The Story of Mondain" ){ num = 63; }
 			else if ( book.Name == "The Syth Order" ){ num = 64; }
-			else if ( book.Name == "Scroll of Tailoring" ){ num = 65; }
-			else if ( book.Name == "A Tattered Journal" ){ num = 66; }
+			else if ( book.Name == "Tailoring the Cloth" ){ num = 65; }
+			else if ( book.Name == "Tattered Journal" ){ num = 66; }
 			else if ( book.Name == "Tendrin's Journal" ){ num = 67; }
 			else if ( book.Name == "The Times of Minax" ){ num = 68; }
 			else if ( book.Name == "Titles of the Skilled" ){ num = 69; }
@@ -346,7 +346,7 @@ namespace Server.Gumps
 			else if ( book.Name == "Valley of Corruption" ){ num = 72; }
 			else if ( book.Name == "Venom and Poisons" ){ num = 73; }
 			else if ( book.Name == "Wizards in Exile" ){ num = 74; }
-			else if ( book.Name == "Scroll of Various Wood" ){ num = 75; }
+			else if ( book.Name == "Wooden Carvings" ){ num = 75; }
 			else if ( book.Name == "Work Shoppes" ){ num = 76; }
 
 			if ( num > 0 )
