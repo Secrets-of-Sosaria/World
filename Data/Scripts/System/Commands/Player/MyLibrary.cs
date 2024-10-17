@@ -246,7 +246,7 @@ namespace Server.Gumps
 				case 64: item = "LoreBook"; title = "The Story of Mondain"; id = 31; break;
 				case 65: item = "LoreBook"; title = "The Syth Order"; id = 43; break;
 				case 66: item = "LearnTailorBook"; title = "Tailoring the Cloth"; id = 201; break;
-				case 67: item = "LoreBook"; title = "Tattered Journal"; id = 21; break;
+				case 67: item = "LoreBook"; title = "A Tattered Journal"; id = 21; break;
 				case 68: item = "TendrinsJournal"; title = "Tendrin's Journal"; id = 100; break;
 				case 69: item = "LoreBook"; title = "The Times of Minax"; id = 23; break;
 				case 70: item = "LearnTitles"; title = "Titles of the Skilled"; id = 113; break;
@@ -337,7 +337,7 @@ namespace Server.Gumps
 			else if ( book.Name == "The Story of Mondain" ){ num = 63; }
 			else if ( book.Name == "The Syth Order" ){ num = 64; }
 			else if ( book.Name == "Tailoring the Cloth" ){ num = 65; }
-			else if ( book.Name == "Tattered Journal" ){ num = 66; }
+			else if ( book.Name == "A Tattered Journal" ){ num = 66; }
 			else if ( book.Name == "Tendrin's Journal" ){ num = 67; }
 			else if ( book.Name == "The Times of Minax" ){ num = 68; }
 			else if ( book.Name == "Titles of the Skilled" ){ num = 69; }
