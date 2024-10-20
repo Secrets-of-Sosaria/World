@@ -21,7 +21,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: Secrets of Sosaria (29 September 2024)";
+			return "Version: Valor (20 October 2024)";
 		}
 
 		public static string Versions()
@@ -30,10 +30,32 @@ namespace Server.Misc
 
 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+				+ "Valor - 20 October 2024<br>"
+
+				+ "<br>"
+				+ "* Fixed a bug when using arms lore and item disappears.<br>"
+				+ "* Monster players now have proper starting gold.<br>"
+				+ "* Fixed crash when monsters would loot elemental or mystic spellbook.<br>"
+				+ "* Fixed a bug in resource rarity calculation.<br>"
+				+ "* Fixed a bug in range check.<br>"
+				+ "* Added message when harvesting dwarven resources.<br>"
+				+ "* Added missing tile to list of mineable tiles.<br>"
+				+ "* Added caps in information display.<br>"
+				+ "* Fixed drop rate of gender change potion.<br>"
+				+ "* Added Frankenstein's journal back as loot.<br>"
+				+ "* Fixed issue with books not being added to the library.<br>"
+				+ "* Fixed mongbat spawner in Devil's guard.<br>"
+				+ "<br>"
+				
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 				+ "Secrets of Sosaria - 29 September 2024<br>"
 
 				+ "<br>"
 				+ "<strong>New Branch called Secrets of Sosaria</strong>"
+				+ "<br>"
 				+ "<br>"
 
 				+ sepLine()
