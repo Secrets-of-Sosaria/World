@@ -364,7 +364,7 @@ namespace Server.Misc
 				CommandSystem.Register( "Password", AccessLevel.Player, new CommandEventHandler( Password_OnCommand ) );
 		}
 
-		[Usage( "Password <newPassword> <repeatPassword>" )]
+		[Usage( "Password <newPassword> <repeatPassword>, with a limit of 16 characters." )]
 		[Description( "Changes the password of the commanding players account." )]
 		public static void Password_OnCommand( CommandEventArgs e )
 		{
@@ -393,6 +393,11 @@ namespace Server.Misc
 			{
 				from.SendMessage( "To prevent potential typing mistakes, you must type the password twice. Use the format:" );
 				from.SendMessage( "Password \"(newPassword)\" \"(repeated)\"" );
+				return;
+			}
+			if( e.GetString( 0 ).Length > 16)
+			{
+				from.SendMessage( "The new password must have 16 characters or less." );
 				return;
 			}
 
