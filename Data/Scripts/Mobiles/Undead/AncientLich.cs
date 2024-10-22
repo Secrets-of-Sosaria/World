@@ -137,7 +137,7 @@ namespace Server.Mobiles
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int TreasureMapLevel{ get{ return 5; } }
 		public override int Skeletal{ get{ return Utility.Random(4); } }
-		public override SkeletalType SkeletalType{ get{ return SkeletalType.Xeno; } }
+		public override SkeletalType SkeletalType{ get{ return SkeletalType.Lich; } }
 
 		public AncientLich( Serial serial ) : base( serial )
 		{

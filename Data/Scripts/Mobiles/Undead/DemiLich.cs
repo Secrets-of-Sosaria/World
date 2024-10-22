@@ -181,7 +181,7 @@ namespace Server.Mobiles
 		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool AlwaysAttackable{ get{ return true; } }
 		public override int Skeletal{ get{ return Utility.Random(5); } }
-		public override SkeletalType SkeletalType{ get{ return SkeletalType.Xeno; } }
+		public override SkeletalType SkeletalType{ get{ return SkeletalType.Lich; } }
 
         public override int GetAngerSound()
         {

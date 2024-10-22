@@ -88,6 +88,6 @@ namespace Server.Mobiles
 		public override double BreathDamageScalar{ get{ return 0.4; } }
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int Skeletal{ get{ return Utility.Random(4); } }
-		public override SkeletalType SkeletalType{ get{ return SkeletalType.Xeno; } }
+		public override SkeletalType SkeletalType{ get{ return SkeletalType.Lich; } }
 	}
 }

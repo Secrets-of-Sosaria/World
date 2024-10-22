@@ -169,7 +169,7 @@ namespace Server.Mobiles
 		public override bool Unprovokable{ get{ return true; } }
 		public override int TreasureMapLevel{ get{ return 4; } }
 		public override int Skeletal{ get{ return Utility.Random(4); } }
-		public override SkeletalType SkeletalType{ get{ return SkeletalType.Xeno; } }
+		public override SkeletalType SkeletalType{ get{ return SkeletalType.Lich; } }
 
 		public override int GetIdleSound()
 		{
