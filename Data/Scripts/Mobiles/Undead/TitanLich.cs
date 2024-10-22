@@ -127,7 +127,7 @@ namespace Server.Mobiles
 		public override bool BleedImmune{ get{ return true; } }
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 		public override int Skeletal{ get{ return Utility.Random(4); } }
-		public override SkeletalType SkeletalType{ get{ return SkeletalType.Xeno; } }
+		public override SkeletalType SkeletalType{ get{ return SkeletalType.Lich; } }
 
 		public override void OnGotMeleeAttack( Mobile attacker )
 		{
