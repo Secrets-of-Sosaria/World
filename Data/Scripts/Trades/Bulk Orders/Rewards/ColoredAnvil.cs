@@ -48,6 +48,9 @@ namespace Server.Items
 			Hue = CraftResources.GetHue(m_Resource);
 		}
 
+		// Override to prevent displaying the styled text on click
+		public override void OnAosSingleClick( Mobile from ) {}
+
 		[Constructable]
 		public RareAnvil() : base( 0xFAF )
 		{
