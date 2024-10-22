@@ -1723,7 +1723,7 @@ namespace Server.Engines.Help
 				+ "[magicgate - Helps one find the nearest magical gate.<br><br>"
 				+ "[motd - Opens the message of the day.<br><br>"
 				+ "[oriental - Turns on/off the oriental flavor the game provides (see end).<br><br>"
-				+ "[password - Change your account password.<br><br>"
+				+ "[password - Change your account password. Passwords have a limit of 16 characters.<br><br>"
 				+ "[poisons - This changes how poisoned weapons work, which can be for either precise control with special weapon infectious strikes (default) or with hits of a one-handed slashing or piercing weapon.<br><br>"
 				+ "[private - Turns on/off detailed messages of your journey for the town crier and local citizen chatter.<br><br>"
 				+ "[quests - Opens a scroll to show certain quest events.<br><br>"
