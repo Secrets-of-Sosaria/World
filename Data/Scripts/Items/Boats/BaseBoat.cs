@@ -975,7 +975,7 @@ namespace Server.Multis
 			if ( m_Anchored )
 			{
 				if ( message && m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501445 ) ); // Ar, the anchor was already dropped sir.
+					m_TillerMan.Say( "Ar, the anchor was already dropped captain. ); // Ar, the anchor was already dropped sir.
 
 				return false;
 			}
@@ -985,7 +985,7 @@ namespace Server.Multis
 			m_Anchored = true;
 
 			if ( message && m_TillerMan != null )
-				m_TillerMan.Say( BaseBoat.translateText( this, 501444 ) ); // Ar, anchor dropped sir.
+				m_TillerMan.Say( "Ar, anchor dropped captain." ); // Ar, anchor dropped sir.
 
 			return true;
 		}
@@ -998,7 +998,7 @@ namespace Server.Multis
 			if ( !m_Anchored )
 			{
 				if ( message && m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501447 ) ); // Ar, the anchor has not been dropped sir.
+					m_TillerMan.Say( "Ar, the anchor has not been dropped captain." ); // Ar, the anchor has not been dropped sir.
 
 				return false;
 			}
@@ -1006,7 +1006,7 @@ namespace Server.Multis
 			m_Anchored = false;
 
 			if ( message && m_TillerMan != null )
-				m_TillerMan.Say( BaseBoat.translateText( this, 501446 ) ); // Ar, anchor raised sir.
+				m_TillerMan.Say( "Ar, anchor raised captain." ); // Ar, anchor raised sir.
 
 			return true;
 		}
@@ -1023,7 +1023,7 @@ namespace Server.Multis
 			if ( StartMove( dir, speed, interval, false, true ) )
 			{
 				if ( m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501429 ) ); // Aye aye sir.
+					m_TillerMan.Say( "Aye aye captain." ); // Aye aye sir.
 
 				return true;
 			}
@@ -1043,7 +1043,7 @@ namespace Server.Multis
 			if ( StartMove( dir, speed, interval, true, true ) )
 			{
 				if ( m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501429 ) ); // Aye aye sir.
+					m_TillerMan.Say( "Aye aye captain." ); // Aye aye sir.
 
 				return true;
 			}
@@ -1059,7 +1059,7 @@ namespace Server.Multis
 			if ( from.AccessLevel < AccessLevel.GameMaster && from != m_Owner )
 			{
 				if ( m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, ( Utility.Random( 1042876, 4 ) ) ) ); // Arr, don't do that! | Arr, leave me alone! | Arr, watch what thour'rt doing, matey! | Arr! Do that again and I’ll throw ye overhead!
+					m_TillerMan.Say( BaseBoat.translateText( this, ( Utility.Random( 1042876, 4 ) ) ) ); // Arr, don't do that! | Arr, leave me alone! | Arr, watch what thour'rt doing, matey! | Arr! Do that again and IÂ’ll throw ye overhead!
 
 				return;
 			}
@@ -1281,7 +1281,7 @@ namespace Server.Multis
 			if ( m_ShipName == newName )
 			{
 				if ( m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, 502531 ) ); // Yes, sir.
+					m_TillerMan.Say( "Yes, captain." ); // Yes, sir.
 
 				return;
 			}
@@ -1417,7 +1417,7 @@ namespace Server.Multis
 			if ( number == -1 )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 1042551 ) ); // I don't see that navpoint, sir.
+					TillerMan.Say( "I don't see that navpoint, captain." ); // I don't see that navpoint, sir.
 
 				return false;
 			}
@@ -1434,28 +1434,28 @@ namespace Server.Multis
 			if ( Anchored )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 501419 ) ); // Ar, the anchor is down sir!
+					TillerMan.Say( "Ar, the anchor is down captain! ); // Ar, the anchor is down sir!
 
 				return false;
 			}
 			else if ( MapItem == null || MapItem.Deleted )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 502513 ) ); // I have seen no map, sir.
+					TillerMan.Say( "I have seen no map, captain." ); // I have seen no map, sir.
 
 				return false;
 			}
 			else if ( this.Map != MapItem.Map || !this.Contains( MapItem.GetWorldLocation() ) )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 502514 ) ); // The map is too far away from me, sir.
+					TillerMan.Say( "The map is too far away from me, captain." ); // The map is too far away from me, sir.
 
 				return false;
 			}
 			else if ( NextNavPoint < 0 || NextNavPoint >= MapItem.Pins.Count )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 1042551 ) ); // I don't see that navpoint, sir.
+					TillerMan.Say( "I don't see that navpoint, captain." ); // I don't see that navpoint, sir.
 
 				return false;
 			}
@@ -1470,7 +1470,7 @@ namespace Server.Multis
 			m_MoveTimer.Start();
 
 			if ( message && TillerMan != null )
-				TillerMan.Say( BaseBoat.translateText( this, 501429 ) ); // Aye aye sir.
+				TillerMan.Say( "Aye aye captain." ); // Aye aye sir.
 
 			return true;
 		}
@@ -1550,7 +1550,7 @@ namespace Server.Multis
 			if ( m_Anchored )
 			{
 				if ( message )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501419 ) ); // Ar, the anchor is down sir!
+					m_TillerMan.Say( "Ar, the anchor is down captain!" ); // Ar, the anchor is down sir!
 
 				return false;
 			}
@@ -1569,7 +1569,7 @@ namespace Server.Multis
 				m_TurnTimer.Start();
 
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 501429 ) ); // Aye aye sir.
+					TillerMan.Say( "Aye aye captain." ); // Aye aye sir.
 
 				return true;
 			}
@@ -1589,7 +1589,7 @@ namespace Server.Multis
 			if ( m_Anchored )
 			{
 				if ( message )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501419 ) ); // Ar, the anchor is down sir!
+					m_TillerMan.Say( "Ar, the anchor is down captain!" ); // Ar, the anchor is down sir!
 
 				return false;
 			}
@@ -1600,7 +1600,7 @@ namespace Server.Multis
 			else
 			{
 				if ( message )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501423 ) ); // Ar, can't turn sir.
+					m_TillerMan.Say( "Ar, can't turn captain." ); // Ar, can't turn sir.
 
 				return false;
 			}
@@ -1634,7 +1634,7 @@ namespace Server.Multis
 			if ( m_Anchored )
 			{
 				if ( message && m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501419 ) ); // Ar, the anchor is down sir!
+					m_TillerMan.Say( "Ar, the anchor is down captain!" ); // Ar, the anchor is down sir!
 
 				return false;
 			}
@@ -1660,7 +1660,7 @@ namespace Server.Multis
 			if ( m_MoveTimer == null )
 			{
 				if ( message && m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501443 ) ); // Er, the ship is not moving sir.
+					m_TillerMan.Say( "Er, the ship is not moving captain." ); // Er, the ship is not moving sir.
 
 				return false;
 			}
@@ -1671,7 +1671,7 @@ namespace Server.Multis
 			m_MoveTimer = null;
 
 			if ( message && m_TillerMan != null )
-				m_TillerMan.Say( BaseBoat.translateText( this, 501429 ) ); // Aye aye sir.
+				m_TillerMan.Say( "Aye aye captain." ); // Aye aye sir.
 
 			return true;
 		}
@@ -1844,21 +1844,21 @@ namespace Server.Multis
 			else if ( MapItem == null || MapItem.Deleted )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 502513 ) ); // I have seen no map, sir.
+					TillerMan.Say( "I have seen no map, captain." ); // I have seen no map, sir.
 
 				return false;
 			}
 			else if ( this.Map != MapItem.Map || !this.Contains( MapItem.GetWorldLocation() ) )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 502514 ) ); // The map is too far away from me, sir.
+					TillerMan.Say( "The map is too far away from me, captain." ); // The map is too far away from me, sir.
 
 				return false;
 			}
 			else if ( NextNavPoint < 0 || NextNavPoint >= MapItem.Pins.Count )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( BaseBoat.translateText( this, 1042551 ) ); // I don't see that navpoint, sir.
+					TillerMan.Say( "I don't see that navpoint, captain." ); // I don't see that navpoint, sir.
 
 				return false;
 			}
@@ -1875,7 +1875,7 @@ namespace Server.Multis
 				if ( maxSpeed == 0 )
 				{
 					if ( message && this.Order == BoatOrder.Single && TillerMan != null )
-						TillerMan.Say( BaseBoat.translateText( this, 1042874 ), (NextNavPoint + 1).ToString() ); // We have arrived at nav point ~1_POINT_NUM~ , sir.
+						TillerMan.Say( "We have arrived at nav point "+ (NextNavPoint + 1).ToString() + ", captain." ); // We have arrived at nav point ~1_POINT_NUM~ , sir.
 
 					if ( NextNavPoint + 1 < MapItem.Pins.Count )
 					{
@@ -1884,7 +1884,7 @@ namespace Server.Multis
 						if ( this.Order == BoatOrder.Course )
 						{
 							if ( message && TillerMan != null )
-								TillerMan.Say( BaseBoat.translateText( this, 1042875 ), (NextNavPoint + 1).ToString() ); // Heading to nav point ~1_POINT_NUM~, sir.
+								TillerMan.Say( "Heading to nav point "+ (NextNavPoint + 1).ToString() + ", captain." ); // Heading to nav point ~1_POINT_NUM~, sir.
 
 							return true;
 						}
@@ -1896,7 +1896,7 @@ namespace Server.Multis
 						NextNavPoint = -1;
 
 						if ( message && this.Order == BoatOrder.Course && TillerMan != null )
-							TillerMan.Say( BaseBoat.translateText( this, 502515 ) ); // The course is completed, sir.
+							TillerMan.Say( "The course is completed, captain." ); // The course is completed, sir.
 
 						return false;
 					}
@@ -1923,7 +1923,7 @@ namespace Server.Multis
 			if ( m_Anchored )
 			{
 				if ( message && m_TillerMan != null )
-					m_TillerMan.Say( BaseBoat.translateText( this, 501419 ) ); // Ar, the anchor is down sir!
+					m_TillerMan.Say( "Ar, the anchor is down captain!" ); // Ar, the anchor is down sir!
 
 				return false;
 			}
@@ -1938,7 +1938,7 @@ namespace Server.Multis
 					if ( i == 1 )
 					{
 						if ( message && m_TillerMan != null )
-							m_TillerMan.Say( BaseBoat.translateText( this, 501424 ) ); // Ar, we've stopped sir.
+							m_TillerMan.Say( "Ar, we've stopped captain." ); // Ar, we've stopped sir.
 
 						return false;
 					}
@@ -1977,7 +1977,7 @@ namespace Server.Multis
 						if ( !CanFit( new Point3D( newX + (j * rx), newY + (j * ry), Z ), Map, ItemID ) )
 						{
 							if ( message && m_TillerMan != null )
-								m_TillerMan.Say( BaseBoat.translateText( this, 501424 ) ); // Ar, we've stopped sir.
+								m_TillerMan.Say( "Ar, we've stopped captain." ); // Ar, we've stopped sir.
 
 							return false;
 						}
