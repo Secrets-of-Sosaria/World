@@ -975,7 +975,8 @@ namespace Server.Multis
 			if ( m_Anchored )
 			{
 				if ( message && m_TillerMan != null )
-					m_TillerMan.Say( "Ar, the anchor was already dropped captain. ); // Ar, the anchor was already dropped sir.
+					m_TillerMan.Say( "Ar, the anchor was already dropped captain." ); // Ar, the anchor was already dropped sir.
+     
 				return false;
 			}
 
@@ -1433,7 +1434,8 @@ namespace Server.Multis
 			if ( Anchored )
 			{
 				if ( message && TillerMan != null )
-					TillerMan.Say( "Ar, the anchor is down captain! ); // Ar, the anchor is down sir!
+					TillerMan.Say( "Ar, the anchor is down captain!" ); // Ar, the anchor is down sir!
+     
 				return false;
 			}
 			else if ( MapItem == null || MapItem.Deleted )
