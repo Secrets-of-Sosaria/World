@@ -67,7 +67,10 @@ namespace Server.Items
 		{
 			PublicOverheadMessage( MessageType.Regular, 0x3B2, number, args );
 		}
-
+		public void Say( string text )
+        	{
+            		PublicOverheadMessage( MessageType.Regular, 0x3B2, false, text );
+        	}
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
 			if ( m_Boat != null && m_Boat.ShipName != null )
