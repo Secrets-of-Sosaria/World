@@ -7677,7 +7677,7 @@ namespace Server.Mobiles
 			if ( target == null || Deleted || !Alive || m_NextPickup > DateTime.Now )
 				return;
 
-			if ( target.Player && target.Female && !target.Hidden && CanBeHarmful( target ) && Utility.RandomBool() )
+			if ( target.Player && !target.Hidden && CanBeHarmful( target ) && Utility.RandomBool() )
 			{
 				PlaySound( SpeechHue );
 				target.FixedParticles( 0x376A, 1, 32, 0x15BD, EffectLayer.Waist );
