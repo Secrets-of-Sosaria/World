@@ -4361,18 +4361,18 @@ namespace Server.Mobiles
 
 				if ( ( from.CheckSkill( SkillName.Forensics, 0, 100 ) ) && ( from.Skills[SkillName.Forensics].Base >= 5.0 ) )
 				{
-					if (feathers > 0){ feathers = feathers + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (wool > 0){ wool = wool + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (hides > 0){ hides = hides + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (meat > 0){ meat = meat + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (scales > 0){ scales = scales + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (cloth > 0){ cloth = cloth + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (rocks > 0){ rocks = rocks + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (skeletal > 0){ skeletal = skeletal + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (skins > 0){ skins = skins + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (granite > 0){ granite = granite + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (metal > 0){ metal = metal + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
-					if (wood > 0){ wood = wood + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Anatomy].Value/25); }
+					if (feathers > 0){ feathers = feathers + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Bowcraft].Value/25); }
+					if (wool > 0){ wool = wool + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Tailoring].Value/25); }
+					if (hides > 0){ hides = hides + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Tailoring].Value/25); }
+					if (meat > 0){ meat = meat + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Cooking].Value/25); }
+					if (scales > 0){ scales = scales + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Blacksmith].Value/25); }
+					if (cloth > 0){ cloth = cloth + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Tailoring].Value/25); }
+					if (rocks > 0){ rocks = rocks + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Mining].Value/25); }
+					if (skeletal > 0){ skeletal = skeletal + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Tailoring].Value/25); }
+					if (skins > 0){ skins = skins + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Tailoring].Value/25); }
+					if (granite > 0){ granite = granite + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Mining].Value/25); }
+					if (metal > 0){ metal = metal + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Blacksmith].Value/25); }
+					if (wood > 0){ wood = wood + (int)(from.Skills[SkillName.Forensics].Value/25) + (int)(from.Skills[SkillName.Carpentry].Value/25); }
 				}
 
 				if ( feathers > 0 && RareItem( "feathers" ) && Utility.RandomBool() ){ feathers = 0; }
