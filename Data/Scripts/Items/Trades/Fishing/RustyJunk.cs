@@ -65,7 +65,7 @@ namespace Server.Items
 					case 13:	Name = "rusty hammer pick";	ItemID = Utility.RandomList( 0x143C, 0x143D );	Weight = Utility.RandomMinMax( 4, 8 );		break;
 					case 14:	Name = "rusty halberd";		ItemID = Utility.RandomList( 0x143E, 0x143F );	Weight = Utility.RandomMinMax( 8, 16 );		break;
 					case 15:	Name = "rusty cutlass";		ItemID = Utility.RandomList( 0x1440, 0x1441 );	Weight = Utility.RandomMinMax( 4, 8 );		break;
-					case 16:	Name = "rusty great axe";	ItemID = Utility.RandomList( 0x1442, 0x1443 );	Weight = Utility.RandomMinMax( 8, 16 );		break;
+					case 16:	Name = "rusty executioner axe";	ItemID = Utility.RandomList( 0x1442, 0x1443 );	Weight = Utility.RandomMinMax( 8, 16 );		break;
 					case 17:	Name = "rusty war axe";		ItemID = Utility.RandomList( 0x13AF, 0x13B0 );	Weight = Utility.RandomMinMax( 4, 8 );		break;
 					case 18:	Name = "rusty scimitar";	ItemID = Utility.RandomList( 0x13B5, 0x13B6 );	Weight = Utility.RandomMinMax( 4, 8 );		break;
 					case 19:	Name = "rusty long sword";	ItemID = Utility.RandomList( 0x13B7, 0x13B8 );	Weight = Utility.RandomMinMax( 4, 8 );		break;

@@ -359,7 +359,7 @@ namespace Server.Items
 			if ( artifact == arty) { name="LevelWildStaff"; item="Druid Staff"; } arty++;
 			if ( artifact == arty) { name="LevelRadiantScimitar"; item="Falchion"; } arty++;
 			if ( artifact == arty) { name="LevelGnarledStaff"; item="Gnarled Staff"; } arty++;
-			if ( artifact == arty) { name="LevelExecutionersAxe"; item="Great Axe"; } arty++;
+			if ( artifact == arty) { name="LevelExecutionersAxe"; item="Executioner Axe"; } arty++;
 			if ( artifact == arty) { name="LevelHalberd"; item="Halberd"; } arty++;
 			if ( artifact == arty) { name="LevelHammers"; item="Hammer"; } arty++;
 			if ( artifact == arty) { name="LevelHammerPick"; item="Hammer Pick"; } arty++;

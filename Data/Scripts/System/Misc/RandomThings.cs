@@ -695,7 +695,7 @@ namespace Server.Misc
 				case 16: item = "dagger"; break;
 				case 17: item = "double axe"; break;
 				case 18: item = "double bladed staff"; break;
-				case 19: item = "great axe"; break;
+				case 19: item = "executioner axe"; break;
 				case 20: item = "falchion"; break;
 				case 21: item = "halberd"; break;
 				case 22: item = "hammer pick"; break;
@@ -868,7 +868,7 @@ namespace Server.Misc
 				case 125: item = "Double Axe"; break;
 				case 126: item = "Double Bladed Staff"; break;
 				case 127: item = "Druid Staff"; break;
-				case 128: item = "Great Axe"; break;
+				case 128: item = "Executioner Axe"; break;
 				case 129: item = "Falchion"; break;
 				case 130: item = "Gnarled Staff"; break;
 				case 131: item = "Halberd"; break;

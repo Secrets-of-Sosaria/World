@@ -9179,7 +9179,7 @@ this.Delete();
 				if ( selling == sales ) { name="ElvenShield"; item="Elven Shield"; cost = 231; } sales++;
 				if ( selling == sales ) { name="RadiantScimitar"; item="Falchion"; cost = 35; } sales++;
 				if ( selling == sales ) { name="FemalePlateChest"; item="Female Plate Chest"; cost = 113; } sales++;
-				if ( selling == sales ) { name="ExecutionersAxe"; item="Great Axe"; cost = 30; } sales++;
+				if ( selling == sales ) { name="ExecutionersAxe"; item="Executioner Axe"; cost = 30; } sales++;
 				if ( selling == sales ) { name="GuardsmanShield"; item="Guardsman Shield"; cost = 231; } sales++;
 				if ( selling == sales ) { name="Halberd"; item="Halberd"; cost = 42; } sales++;
 				if ( selling == sales ) { name="Hammers"; item="Hammer"; cost = 28; } sales++;

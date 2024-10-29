@@ -30,7 +30,7 @@ namespace Server.Items
 		public GiftExecutionersAxe() : base( 0xF45 )
 		{
 			Weight = 8.0;
-			Name = "great axe";
+			Name = "executioner axe";
 			ItemID = Utility.RandomList( 0xF45, 0x265A );
 		}
 
