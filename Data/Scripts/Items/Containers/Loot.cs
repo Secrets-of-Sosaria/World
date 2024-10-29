@@ -633,7 +633,7 @@ namespace Server
 				typeof( PandorasBox ),				typeof( ColoringBook ),				typeof( EverlastingBottle ),	typeof( EverlastingLoaf ),
 				typeof( GemOfSeeing ),				typeof( SlayerDeed ),				typeof( LuckyHorseShoes ),		typeof( FireHorn ),
 				typeof( SmallBagofHolding ),		typeof( MediumBagofHolding ),		typeof( LargeBagofHolding ),	typeof( BagOfHolding ),
-				typeof( DruidMirror ),				typeof( SpecialJars ),				typeof( EvilItems )
+				typeof( DruidMirror ),				typeof( SpecialJars ),				typeof( EvilItems ),			typeof( MagicSkeltonsKey)
 			};
 		public static Type[] SArtyTypes{ get{ return m_SArtyTypes; } }
 
@@ -680,7 +680,7 @@ namespace Server
 				typeof( RareAnvil ),			typeof( MasterSkeletonsKey ),			typeof( InvulnerabilityPotion ),
 				typeof( ArmsBarrel ),			typeof( AlternateRealityMap ),			typeof( UnusualDyes ),
 				typeof( NecromancerBarrel ),	typeof( CarpetBuild ),					typeof( DwarvenForge ),
-				typeof( SmallHollowBook ),		typeof( LargeHollowBook ),				typeof( MagicSkeltonsKey ),
+				typeof( SmallHollowBook ),		typeof( LargeHollowBook ),				typeof( RecallRune),
 				typeof( SlaversNet ),			typeof( BrokenArmoireDeed ),			typeof( BrokenVanityDeed ),
 				typeof( BrokenBookcaseDeed ),	typeof( StandingBrokenChairDeed ),		typeof( BrokenCoveredChairDeed ),
 				typeof( MountingBase ),			typeof( StuffingBasket ),				typeof( BrokenFallenChairDeed ),
@@ -693,8 +693,7 @@ namespace Server
 				typeof( ECrystalAltarDeed ),	typeof( ECrystalBeggarStatueDeed ),		typeof( RunicUndertaker ),
 				typeof( RunicLeatherKit ),		typeof( RunicScales ),					typeof( GolemManual ),
 				typeof( SummonPrison ),			typeof( MagicalWand ),					typeof( MagicalWand ),
-				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( RecallRune),
-				typeof( FrankenJournalInBox )
+				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( FrankenJournalInBox )
 			};
 
 		public static Type[] RareItemTypes{ get{ return m_RareItemTypes; } }

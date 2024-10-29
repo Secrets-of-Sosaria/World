@@ -25,6 +25,7 @@ namespace Server.Items
 		public MagicSkeltonsKey() : base( 0x5751 )
 		{
 			Name = "magic skeleton key";
+			ArtifactLevel = 2;
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -229,6 +230,7 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+			ArtifactLevel = 2;
 		}
 	}
 }
