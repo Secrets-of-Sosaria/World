@@ -30,7 +30,10 @@ namespace Server.Items
 			int level = (int)(m.Skills[SkillName.Searching].Value / 10);
 				if (level < 1){level = 1;}
 				if (level > 10){level = 10;}
-
+			// checks to see if the trapdoor is already there, if it is, deletes the spawner
+			if (FoundBox(m,false,level,this)){
+				Delete();
+			}
 			if ( m.AccessLevel == AccessLevel.Player && m is PlayerMobile )
 				FoundBox( m, false, level, this );
 
