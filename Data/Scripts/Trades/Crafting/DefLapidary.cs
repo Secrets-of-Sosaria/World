@@ -322,7 +322,7 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( Axe ), "Axes", 1023913, 34.2, 84.2, typeof( AmethystBlocks ), 1063706, 14, 1044513 );
 			AddCraft( typeof( BattleAxe ), "Axes", 1023911, 30.5, 80.5, typeof( AmethystBlocks ), 1063706, 14, 1044513 );
 			AddCraft( typeof( DoubleAxe ), "Axes", 1023915, 29.3, 79.3, typeof( AmethystBlocks ), 1063706, 12, 1044513 );
-			AddCraft( typeof( ExecutionersAxe ), "Axes", "great axe", 34.2, 84.2, typeof( AmethystBlocks ), 1063706, 14, 1044513 );
+			AddCraft( typeof( ExecutionersAxe ), "Axes", "executioner axe", 34.2, 84.2, typeof( AmethystBlocks ), 1063706, 14, 1044513 );
 			AddCraft( typeof( LargeBattleAxe ), "Axes", 1025115, 28.0, 78.0, typeof( AmethystBlocks ), 1063706, 12, 1044513 );
 			AddCraft( typeof( TwoHandedAxe ), "Axes", 1025187, 33.0, 83.0, typeof( AmethystBlocks ), 1063706, 16, 1044513 );
 			AddCraft( typeof( WarAxe ), "Axes", 1025040, 39.1, 89.1, typeof( AmethystBlocks ), 1063706, 16, 1044513 );

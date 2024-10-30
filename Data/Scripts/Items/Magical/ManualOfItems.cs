@@ -485,7 +485,7 @@ namespace Server.Items
 			if ( artifact == arty) { name="GiftWildStaff"; item="Druid Staff"; } arty++;
 			if ( artifact == arty) { name="GiftRadiantScimitar"; item="Falchion"; } arty++;
 			if ( artifact == arty) { name="GiftGnarledStaff"; item="Gnarled Staff"; } arty++;
-			if ( artifact == arty) { name="GiftExecutionersAxe"; item="Great Axe"; } arty++;
+			if ( artifact == arty) { name="GiftExecutionersAxe"; item="Executioner Axe"; } arty++;
 			if ( artifact == arty) { name="GiftHalberd"; item="Halberd"; } arty++;
 			if ( artifact == arty) { name="GiftHammers"; item="Hammer"; } arty++;
 			if ( artifact == arty) { name="GiftHammerPick"; item="Hammer Pick"; } arty++;

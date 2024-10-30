@@ -96,7 +96,7 @@ namespace Server.Mobiles
 				case 1: weapon = new VikingSword(); weapon.Name = "great sword"; break;
 				case 2: weapon = new Halberd(); weapon.Name = "halberd"; break;
 				case 3: weapon = new DoubleAxe(); weapon.Name = "double axe"; break;
-				case 4: weapon = new ExecutionersAxe(); weapon.Name = "great axe"; break;
+				case 4: weapon = new ExecutionersAxe(); weapon.Name = "executioner axe"; break;
 				case 5: weapon = new WarAxe(); weapon.Name = "war axe"; break;
 				case 6: weapon = new TwoHandedAxe(); weapon.Name = "two handed axe"; break;
 				case 7: weapon = new Cutlass(); weapon.Name = "cutlass"; break;
