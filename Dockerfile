@@ -11,5 +11,6 @@ RUN mcs -optimize+ \
     -d:NEWTIMERS -d:NEWPARENT -d:MONO '-recurse:Source/*.cs'
 
 FROM base as runtime
+RUN apt update && apt install -y zlib1g zlib1g-dev
 COPY --from=builder /app/Data/System/WorldLinux.exe .
 ENTRYPOINT [ "mono", "/app/WorldLinux.exe" ]
