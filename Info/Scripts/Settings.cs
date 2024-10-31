@@ -17,7 +17,7 @@ namespace Server
 
 		public static bool ConsoleLog = false;
 
-	// These settings will create a button on the Message of the Day. If you do not fill in a website name, the text next to the 
+	// These settings will create a button on the Message of the Day. If you do not fill in a website name, the text next to the
 	// button will simply say Website. When players select the button, it should open their browser to that site.
 	// EXAMPLE: https://google.com
 
@@ -59,7 +59,12 @@ namespace Server
 
 		public static string S_Address = null;
 
-	// Here you can enter the name of your server/world
+		// Skip server address detection and enforce the S_Address value for the game server
+		// That's useful when your server is behind the NAT or runs in a container
+		// As an example of a container setup, set S_Address to "127.0.0.1" and S_EnforceAddress to true
+		public static bool S_EnforceAddress = false;
+
+		// Here you can enter the name of your server/world
 
 		public static string S_ServerName = "Secrets of Sosaria";
 
@@ -88,7 +93,7 @@ namespace Server
 
 	// If true, then dungeon environments will have random sounds as you traverse the corridors.
 
-		public static bool S_EnableDungeonSoundEffects = true;	
+		public static bool S_EnableDungeonSoundEffects = true;
 
 	// If true, then the strange portals that lead to deep and dangerous dungeons will have an exit portal.
 
@@ -447,11 +452,11 @@ namespace Server
 		public static int S_SpawnMax = 60;
 
 
-	// This settings controls the limit in seconds by which you can be paralyzed by a monster. 
+	// This settings controls the limit in seconds by which you can be paralyzed by a monster.
 	// The default is 10 seconds. It mainly affects mummies, ants, plants and spiders. Setting it to a
-	// value higher than 10 could mean that the paralyze cooldown is lower than its duration, 
-	// which can lead to frustrating fights as enemies can flee and chain-paralyze a character until they heal 
-	// enough to get back into the fight. 
+	// value higher than 10 could mean that the paralyze cooldown is lower than its duration,
+	// which can lead to frustrating fights as enemies can flee and chain-paralyze a character until they heal
+	// enough to get back into the fight.
 		public static double S_paralyzeDuration = 10.0;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -535,7 +540,7 @@ namespace Server
 	// If true, then some vendors will have a black market option in their context menus. When used, a different
 	// purchasing screen will be presented to the player. They can see the special crafted items they have in
 	// stock. They will only have one of such item at a time and they will restock the black market during the
-	// regular stocking schedule. The resources items are made of will be land specific. EXAMPLE: If you can only 
+	// regular stocking schedule. The resources items are made of will be land specific. EXAMPLE: If you can only
 	// get obsidian metal in the Serpent Island, then you will may only find obsidian items in that land.
 
 		public static bool S_BlackMarket = false;
@@ -687,8 +692,8 @@ namespace Server
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
 	// If true, guards will instantly kill criminal and murderer characters. Otherwise, they will chase
-	// them in town where any player characters that get hit by the guards will be sent to prison and 
-	// lose some equipment which is limited to stackable items like: potions, bandages, arrows, bolts, 
+	// them in town where any player characters that get hit by the guards will be sent to prison and
+	// lose some equipment which is limited to stackable items like: potions, bandages, arrows, bolts,
 	// gems, coins, jewels, crystals, reagents, bottles, food, and water.
 
 		public static bool S_GuardsSentenceDeath = true;

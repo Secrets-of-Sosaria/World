@@ -1,0 +1,11 @@
+services:
+  uo:
+    image: uo
+    build: .
+    ports:
+      - 2593:2593
+    volumes:
+      - ./Saves:/app/Saves
+      - ./Data/Files:/app/Data/Files
+      - ./Backups:/app/Backups
+      - ./Data/Logs:/app/Data/Logs
