@@ -21,12 +21,36 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: Valor (20 October 2024)";
+			return "Version: Honor (02 November 2024)";
 		}
 
 		public static string Versions()
         {
 			string versionTEXT = ""
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "Honor - 02 November 2024<br>"
+
+				+ "<br>"
+				+ "* Fixed a bug with text on rare anvils.<br>"
+				+ "* Added checks for maximum password length.<br>"
+				+ "* Fixed bone types on all lich creates.<br>"
+				+ "* Corrected text in the golden ranger's book.<br>"
+				+ "* Improved writing in syth power descriptions.<br>"
+				+ "* Corrected writing in skill descriptions.<br>"
+				+ "* Tillerman now uses the gender neutral captain rather than sir.<br>"
+				+ "* Bards can now also undress men.<br>"
+				+ "* Locations in blue ore book fixed.<br>"
+				+ "* Skill requirements for skinning creatures fixed.<br>"
+				+ "* Paralyze duration from monsters made configurable.<br>"
+				+ "* Great axe now called Executioner axe for consistency.<br>"
+				+ "* Magic skeleton key made minor artifact.<br>"
+				+ "* Karma traps now give a penalty rather than reversing karma.<br>"
+				+ "* Fix trap door duping bug.<br>"
+				+ "<br>"
+				
+				+ sepLine()
 
 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
