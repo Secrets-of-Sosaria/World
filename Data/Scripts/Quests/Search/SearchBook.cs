@@ -449,7 +449,7 @@ namespace Server.Items
 			if ( artifact == arty) { name="Artifact_NightsKiss"; item="Night's Kiss"; } arty++;
 			if ( artifact == arty) { name="Artifact_NordicVikingSword"; item="Nordic Dragon Blade"; } arty++;
 			if ( artifact == arty) { name="Artifact_VampiresRobe"; item="Nosferatu's Robe"; } arty++;
-			if ( artifact == arty) { name="Artifact_NoxBow"; item="Nox Bow"; } arty++;
+			if ( artifact == arty) { name="Artifact_NoxBow"; item="Nox Ranger's Light Croosbow"; } arty++;
 			if ( artifact == arty) { name="Artifact_NoxNightlight"; item="Nox Nightlight"; } arty++;
 			if ( artifact == arty) { name="Artifact_NoxRangersHeavyCrossbow"; item="Nox Ranger's Heavy Crossbow"; } arty++;
 			if ( artifact == arty) { name="Artifact_OblivionsNeedle"; item="Oblivion Needle"; } arty++;

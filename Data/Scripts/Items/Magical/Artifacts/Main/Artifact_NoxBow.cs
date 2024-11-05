@@ -11,7 +11,7 @@ namespace Server.Items
         [Constructable]
         public Artifact_NoxBow()
         {
-            Name = "Nox Bow";
+            Name = "Nox Ranger's Light Crossbow";
             Attributes.WeaponDamage = 45;
             Hue = 267;
 			ItemID = 0x13FD;
