@@ -39,7 +39,7 @@ namespace Server.Items
 		[Constructable]
 		public StaffFiveParts( Mobile from, int magic )
 		{
-			if ( from != null && magic > 0 )
+			if ( from != null )
 			{
 				StaffMagic = magic;
 
