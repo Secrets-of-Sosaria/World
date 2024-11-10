@@ -99,14 +99,11 @@ namespace Server.Items
 				coffer.Hue = CraftResources.GetHue(coffer.Resource);
 			}
 
-			int money1 = 30;
-			int money2 = 120;
+			double w1 = 500 * (MyServerSettings.GetGoldCutRate() * .01);
+			double w2 = 1000 * (MyServerSettings.GetGoldCutRate() * .01);
 
-			double w1 = money1 * (MyServerSettings.GetGoldCutRate() * .01);
-			double w2 = money2 * (MyServerSettings.GetGoldCutRate() * .01);
-
-			money1 = (int)w1;
-			money2 = (int)w2;
+			int money1 = (int)w1;
+			int money2 = (int)w2;
 
 			coffer.CofferGold = Utility.RandomMinMax( money1, money2 );
 			coffer.CofferRobber = "";
