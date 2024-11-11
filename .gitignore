@@ -1,0 +1,12 @@
+bin/
+obj/
+Saves/
+Data/Logs/
+Info/
+.vscode
+*-workspace
+*.csproj
+*.sln
+Saves/
+Data/Data.hash
+Data/Data.bin

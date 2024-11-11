@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Mobiles;
+using Server.Commands;
 
 namespace Server.Items
 {
@@ -15,7 +16,11 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
 		{
-			if ( from.InRange( this.GetWorldLocation(), 4 ) )
+			if (this.Movable)
+			{
+				from.SendMessage("This must be locked down in a house to use!");
+			}
+			else if ( from.InRange( this.GetWorldLocation(), 4 ) )
 			{
 				BankBox box = from.BankBox;
 				if (box != null)
@@ -29,7 +34,17 @@ namespace Server.Items
 			}
         }
 
-        public BankChest( Serial serial ) : base( serial )
+		public override bool OnDragDrop(Mobile from, Item dropped)
+		{
+			BankBox box = from.BankBox;
+			if (box == null)
+            {
+				return false;
+            }
+			return box.OnDragDrop(from, dropped);
+		}
+
+		public BankChest( Serial serial ) : base( serial )
 		{
 		}
 

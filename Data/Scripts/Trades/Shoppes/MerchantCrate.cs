@@ -309,9 +309,6 @@ namespace Server.Items
 
 		public static int GetItemValue( Item item, int amount )
 		{
-			if ( !item.Built )
-				return 0;
-
 			return ItemInformation.GetBuysPrice( ItemInformation.GetInfo( item.GetType() ), false, item, false, false ) * amount;
 		}
 	}
