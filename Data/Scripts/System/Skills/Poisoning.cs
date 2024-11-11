@@ -154,7 +154,7 @@ namespace Server.SkillHandlers
 								((BaseWeapon)m_Target).Poison = m_Poison;
 								// every coating adds from poisoning/10 to poisoning/7 charges. At 125 skill that translates to 12 to 17 charges per potion.
 								int chargesToAdd = Utility.RandomMinMax((int)(m_From.Skills[SkillName.Poisoning].Value)/10,(int)(m_From.Skills[SkillName.Poisoning].Value/7));
-								((BaseWeapon)m_Target).PoisonCharges = ((BaseWeapon)m_Target).PoisonCharges + chargesToAdd > 41 ? 41 : ((BaseWeapon)m_Target).PoisonCharges + chargesToAdd;
+								((BaseWeapon)m_Target).PoisonCharges = ((BaseWeapon)m_Target).PoisonCharges + chargesToAdd >  maximumPoisonCharges ? maximumPoisonCharges : ((BaseWeapon)m_Target).PoisonCharges + chargesToAdd;
 								if (((BaseWeapon)m_Target).PoisonCharges == maximumPoisonCharges)
 								{
 									maxChargesReached = true;
