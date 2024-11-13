@@ -7,7 +7,7 @@ using Server.Targeting;
 
 namespace Server.Items
 {	
-	public class FlamingHead : StoneFaceTrapNoDamage, IAddon
+	public class FlamingHead : StoneFaceTrapNoDamage, IAddon, IChopable
 	{
 		public override int LabelNumber{ get{ return 1041266; } } // Flaming Head
 		public override bool ForceShowProperties{ get{ return ObjectPropertyList.Enabled; } }
@@ -79,6 +79,32 @@ namespace Server.Items
 				
 			return false;
 		}
+
+		void IChopable.OnChop(Mobile user)
+        {
+            OnDoubleClick(user);
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+			// Mostly adapted from `BaseAddon.cs`
+            BaseHouse house = BaseHouse.FindHouseAt( this );
+
+			if ( house != null && ( house.IsOwner( from ) || house.IsCoOwner( from ) || house.IsFriend( from ) || house.IsGuildMember( from ) ) && house.Addons.Contains( this ) )
+			{
+				Effects.PlaySound( GetWorldLocation(), Map, 0x3B3 );
+				from.SendLocalizedMessage( 500461 ); // You destroy the item.
+
+				Delete();
+
+				Server.Item deed = Deed;
+
+				if ( deed != null )
+				{
+					from.AddToBackpack( deed );
+				}
+			}
+        }
 	}	
 	
 	public class FlamingHeadDeed : Item
