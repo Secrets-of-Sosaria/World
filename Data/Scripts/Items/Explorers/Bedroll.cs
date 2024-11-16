@@ -68,7 +68,7 @@ namespace Server.Items
 
                 if ( from.Region is PublicRegion || from.Region is ProtectedRegion || from.Region is SafeRegion )
                 {
-                    from.SendMessage("You don't need to use a bedrool here!");
+                    from.SendMessage("You don't need to use a bedroll here!");
                 }
                 else if ( BedsNearby( from ) )
 				{
