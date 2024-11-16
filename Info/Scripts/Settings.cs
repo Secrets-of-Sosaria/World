@@ -248,7 +248,9 @@ namespace Server
 		public static int S_MinGold = 100;
 		public static int S_MaxGold = 150;
 
-
+	// this changes how the poisoning skill works. If set to true, then character skill will be taken into account instead of poison
+    // level to determine the maximum amount of poison charges a weapon can have, as well as how many charges are applied with each dose. 
+        public static bool poisoningCharges = true;
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
