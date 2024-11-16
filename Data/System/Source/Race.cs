@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Server.Network;
+using Server.Tests;
 
 namespace Server
 {
@@ -54,10 +55,21 @@ namespace Server
 			return m_RaceNames;
 		}
 
+		[TestMethod]
+		public static bool TestGetRaceName(){
+			Console.WriteLine("Found it!");
+			return false;
+		}
+
 		public static Race[] GetRaceValues()
 		{
 			CheckNamesAndValues();
 			return m_RaceValues;
+		}
+
+		public bool TestGetRaceValues(){
+			Console.WriteLine("Found them!");
+			return false;
 		}
 
 		public static Race Parse( string value )
