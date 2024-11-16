@@ -56,9 +56,12 @@ namespace Server
 		}
 
 		[TestMethod]
-		public static bool TestGetRaceName(){
-			Console.WriteLine("Found it!");
-			return false;
+		public static bool TestGetRaceNames(){ // Hey, a passing test!
+			var names = GetRaceNames();
+			if (names != m_RaceNames) {
+				return false;
+			}
+			return true;
 		}
 
 		public static Race[] GetRaceValues()
@@ -67,7 +70,8 @@ namespace Server
 			return m_RaceValues;
 		}
 
-		public bool TestGetRaceValues(){
+		[TestMethod]
+		public bool TestGetRaceValues(){ // Not static, so it will be skipped
 			Console.WriteLine("Found them!");
 			return false;
 		}
@@ -92,6 +96,25 @@ namespace Server
 			throw new ArgumentException( "Invalid race name" );
 		}
 
+		[TestMethod]
+		public static bool TestParse( string value ) { // Takes parameters, so it will be skipped
+			var parsed = Parse( value );
+			return true;
+		}
+
+		[TestMethod]
+		public static bool TestParseCentaur() { // An example of a failing test. If we wanted to make _sure_ that we could parse the Centaur race name.
+			var test_string = "Centaur";
+			try {
+				var parsed = Parse(test_string);
+			}
+			catch (ArgumentException e) {
+				Console.WriteLine("Testing Parse failed: {0}", e);
+				return false;
+			}
+			return true;
+		}
+
 		private static void CheckNamesAndValues()
 		{
 			if( m_RaceNames != null && m_RaceNames.Length == m_AllRaces.Count )
@@ -108,6 +131,9 @@ namespace Server
 				m_RaceValues[i] = race;
 			}
 		}
+
+		[TestMethod]
+		public static void TestCheckNamesAndValues() {} // Doesn't return bool, so will be skipped
 
 		public override string ToString()
 		{

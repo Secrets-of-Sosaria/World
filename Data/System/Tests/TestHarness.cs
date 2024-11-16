@@ -38,7 +38,7 @@ namespace Server.Tests
                             continue;
                         }
                         if (!method.IsStatic){
-                            Console.WriteLine("Skipping testing {method.Name} in {type.Name}: Test method must be static.");
+                            Console.WriteLine("Skipping testing {0} in {1}: Test method must be static.", method.Name, type.Name);
                             continue;
                         }
                         var result = method.Invoke(null, null);  // Invoke the static method with no parameters
