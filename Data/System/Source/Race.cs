@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Server.Network;
-using Server.Tests;
 
 namespace Server
 {
@@ -55,27 +54,11 @@ namespace Server
 			return m_RaceNames;
 		}
 
-		[TestMethod]
-		public static bool TestGetRaceNames(){ // Hey, a passing test!
-			var names = GetRaceNames();
-			if (names != m_RaceNames) {
-				return false;
-			}
-			return true;
-		}
-
 		public static Race[] GetRaceValues()
 		{
 			CheckNamesAndValues();
 			return m_RaceValues;
 		}
-
-		[TestMethod]
-		public bool TestGetRaceValues(){ // Not static, so it will be skipped
-			Console.WriteLine("Found them!");
-			return false;
-		}
-
 		public static Race Parse( string value )
 		{
 			CheckNamesAndValues();
@@ -95,26 +78,6 @@ namespace Server
 
 			throw new ArgumentException( "Invalid race name" );
 		}
-
-		[TestMethod]
-		public static bool TestParse( string value ) { // Takes parameters, so it will be skipped
-			var parsed = Parse( value );
-			return true;
-		}
-
-		[TestMethod]
-		public static bool TestParseCentaur() { // An example of a failing test. If we wanted to make _sure_ that we could parse the Centaur race name.
-			var test_string = "Centaur";
-			try {
-				var parsed = Parse(test_string);
-			}
-			catch (ArgumentException e) {
-				Console.WriteLine("Testing Parse failed: {0}", e);
-				return false;
-			}
-			return true;
-		}
-
 		private static void CheckNamesAndValues()
 		{
 			if( m_RaceNames != null && m_RaceNames.Length == m_AllRaces.Count )
@@ -131,10 +94,6 @@ namespace Server
 				m_RaceValues[i] = race;
 			}
 		}
-
-		[TestMethod]
-		public static void TestCheckNamesAndValues() {} // Doesn't return bool, so will be skipped
-
 		public override string ToString()
 		{
 			return m_Name;
