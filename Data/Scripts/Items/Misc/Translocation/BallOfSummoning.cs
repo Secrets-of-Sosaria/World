@@ -12,7 +12,7 @@ using Server.Spells.Ninjitsu;
 
 namespace Server.Items
 {
-	public class BallOfSummoning : Item, TranslocationItem
+	public class BallOfSummoning : Item, ITranslocationItem
 	{
 		private int m_Charges;
 		private int m_Recharges;

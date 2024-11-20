@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Items
 {
-	public interface TranslocationItem
+	public interface ITranslocationItem
 	{
 		int Charges{ get; set; }
 		int Recharges{ get; set; }
@@ -61,9 +61,9 @@ namespace Server.Items
 				{
 					from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
 				}
-				else if ( targeted is TranslocationItem )
+				else if ( targeted is ITranslocationItem )
 				{
-					TranslocationItem transItem = (TranslocationItem)targeted;
+					ITranslocationItem transItem = (ITranslocationItem)targeted;
 
 					if ( transItem.Charges >= transItem.MaxCharges )
 					{
