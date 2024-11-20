@@ -8,14 +8,14 @@ namespace Server.Items
 		[Constructable]
 		public QuiverOfBlight() : base()
 		{
-			int attributeCount = Utility.RandomMinMax(5,10);
-			int min = Utility.RandomMinMax(10,20);
-			int max = min + 20;
-			BaseRunicTool.ApplyAttributesTo( (BaseQuiver)this, attributeCount, min, max );
-
 			Name = "Quiver of Blight";
 			Hue = 0xB79;
 			ItemID = 0x2B02;
+			DamageIncrease = 50;
+			LowerAmmoCost = 35;
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 5 );
+			WeightReduction = 35;
+			Attributes.BonusDex = 5;
 			ArtifactLevel = 1;
 		}
 

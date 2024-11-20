@@ -11,11 +11,19 @@ namespace Server.Items
 		public override int DefaultMaxWeight{ get{ return 50; } }
 		public override double DefaultWeight{ get{ return 2.0; } }
 
+		private AosSkillBonuses m_AosSkillBonuses;
 		private AosAttributes m_Attributes;
 		private int m_Capacity;
 		private int m_LowerAmmoCost;
 		private int m_WeightReduction;
 		private int m_DamageIncrease;
+		
+		[CommandProperty( AccessLevel.GameMaster )]
+		public AosSkillBonuses SkillBonuses
+		{
+			get{ return m_AosSkillBonuses; }
+			set{}
+		}
 
 		[CommandProperty( AccessLevel.GameMaster)]
 		public AosAttributes Attributes
@@ -76,11 +84,10 @@ namespace Server.Items
 			Capacity = 500;
 			Layer = Layer.Cloak;
 			GumpID = 0x3D;
-
 			m_Attributes = new AosAttributes( this );
-
 			DamageIncrease = 25;
 			ItemID = Utility.RandomList( 0x2B02, 0x2B03, 0x5770, 0x5770 );
+			m_AosSkillBonuses = new AosSkillBonuses( this );
 		}
 
 		public BaseQuiver( Serial serial ) : base( serial )
@@ -95,6 +102,7 @@ namespace Server.Items
 				return;
 
 			quiver.m_Attributes = new AosAttributes( newItem, m_Attributes );
+			quiver.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
 		}
 
 		public virtual int GetLuckBonus()
@@ -222,6 +230,9 @@ namespace Server.Items
 				Mobile mob = (Mobile) parent;
 
 				m_Attributes.AddStatBonuses( mob );
+				
+				if ( Core.AOS )
+					m_AosSkillBonuses.AddTo( mob );
 			}
 			base.OnAdded( parent );
 		}
@@ -231,6 +242,9 @@ namespace Server.Items
 			if ( parent is Mobile )
 			{
 				Mobile mob = (Mobile) parent;
+				
+				if ( Core.AOS )
+					m_AosSkillBonuses.Remove();
 
 				m_Attributes.RemoveStatBonuses( mob );
 			}
@@ -240,6 +254,8 @@ namespace Server.Items
 		{
 			base.GetProperties( list );
 				
+			m_AosSkillBonuses.GetProperties( list );
+
 			if ( m_BuiltBy != null )
 				list.Add( 1050043, m_BuiltBy.Name ); // crafted by ~1_NAME~
 
@@ -396,7 +412,8 @@ namespace Server.Items
 			Crafter				= 0x00000010,
 			Quality				= 0x00000020,
 			Capacity			= 0x00000040,
-			DamageIncrease		= 0x00000080
+			DamageIncrease		= 0x00000080,
+			SkillBonuses		= 0x00800000,
 		}
 
 		public override void Serialize( GenericWriter writer )
@@ -414,6 +431,7 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Crafter,			m_BuiltBy != null );
 			SetSaveFlag( ref flags, SaveFlag.Quality,			true );
 			SetSaveFlag( ref flags, SaveFlag.Capacity,			m_Capacity > 0 );
+			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
 
 			writer.WriteEncodedInt( (int) flags );
 
@@ -437,6 +455,10 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.Capacity ) )
 				writer.Write( (int) m_Capacity );
+
+			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
+				m_AosSkillBonuses.Serialize( writer );
+
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -473,6 +495,15 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.Capacity ) )
 				m_Capacity = reader.ReadInt();
+
+			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
+					m_AosSkillBonuses = new AosSkillBonuses( this, reader );
+
+			if ( m_AosSkillBonuses == null )
+				m_AosSkillBonuses = new AosSkillBonuses( this );
+			
+			if ( Parent is Mobile )
+				m_AosSkillBonuses.AddTo( (Mobile)Parent );
 
 			if ( ItemID != 0x2B02 && ItemID != 0x2B03 && ItemID != 0x5770 ){ ItemID = 0x2B02; }
 			Layer = Layer.Cloak;

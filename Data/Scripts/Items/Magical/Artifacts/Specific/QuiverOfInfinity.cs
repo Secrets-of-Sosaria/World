@@ -7,17 +7,16 @@ namespace Server.Items
 		[Constructable]
 		public QuiverOfInfinity() : base()
 		{
-			int attributeCount = Utility.RandomMinMax(3,7);
-			int min = Utility.RandomMinMax(5,15);
-			int max = min + 20;
-			BaseRunicTool.ApplyAttributesTo( (BaseQuiver)this, attributeCount, min, max );
-
 			Name = "Quiver of Infinity";
 			ItemID = 0x2B02;
 			Hue = 0x99A;
-			WeightReduction = 80;
-			LowerAmmoCost = 20;
-			Attributes.DefendChance = 5;
+			WeightReduction = 100;
+			LowerAmmoCost = 100;
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
+			Attributes.AttackChance = 10;
+			Attributes.WeaponSpeed = 10;
+			Attributes.Luck = 50;
+			Attributes.BonusDex = 5;
 			ArtifactLevel = 1;
 		}
 

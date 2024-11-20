@@ -8,16 +8,15 @@ namespace Server.Items
 		[Constructable]
 		public QuiverOfRage() : base()
 		{
-			int attributeCount = Utility.RandomMinMax(5,8);
-			int min = Utility.RandomMinMax(6,16);
-			int max = min + 15;
-			BaseRunicTool.ApplyAttributesTo( (BaseQuiver)this, attributeCount, min, max );
-
 			Hue = 0xB01;
 			Name = "Quiver of Rage";
 			ItemID = 0x2B02;
-			WeightReduction = 100;
-			if ( DamageIncrease < 10 ){ DamageIncrease = 10; }
+			WeightReduction = 75;
+			LowerAmmoCost = 25;
+			Attributes.WeaponSpeed = 15;
+			Attributes.BonusStr = 10;
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
+			DamageIncrease = 100;
 			ArtifactLevel = 1;
 		}
 
@@ -27,8 +26,8 @@ namespace Server.Items
 
 		public override void AlterBowDamage( ref int phys, ref int fire, ref int cold, ref int pois, ref int nrgy, ref int chaos, ref int direct )
 		{
-			chaos = direct = 0;
-			phys = fire = cold = pois = nrgy = 20;
+			chaos = direct = fire = cold = pois = nrgy = 0;
+			phys = 100;
 		}
 
 		public override void Serialize( GenericWriter writer )

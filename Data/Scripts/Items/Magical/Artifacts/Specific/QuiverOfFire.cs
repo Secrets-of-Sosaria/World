@@ -8,20 +8,21 @@ namespace Server.Items
 		[Constructable]
 		public QuiverOfFire() : base()
 		{
-			int attributeCount = Utility.RandomMinMax(5,10);
-			int min = Utility.RandomMinMax(10,20);
-			int max = min + 20;
-			BaseRunicTool.ApplyAttributesTo( (BaseQuiver)this, attributeCount, min, max );
-			ArtifactLevel = 1;
-
 			Name = "Quiver of Fire";
+			DamageIncrease = 50;
+			LowerAmmoCost = 35;
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 5 );
+			WeightReduction = 35;
+			Attributes.BonusDex = 5;
+			Attributes.BonusStam = 5;
 			Hue = 0xB17;
 			ItemID = 0x2B02;
+			ArtifactLevel = 1;
 		}
 
 		public QuiverOfFire( Serial serial ) : base( serial )
 		{
-		}
+		} 
 
 		public override void AlterBowDamage( ref int phys, ref int fire, ref int cold, ref int pois, ref int nrgy, ref int chaos, ref int direct )
 		{

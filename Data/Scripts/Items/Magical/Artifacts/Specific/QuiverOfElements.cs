@@ -8,15 +8,21 @@ namespace Server.Items
 		[Constructable]
 		public QuiverOfElements() : base()
 		{
-			int attributeCount = Utility.RandomMinMax(5,8);
-			int min = Utility.RandomMinMax(6,16);
-			int max = min + 15;
-			BaseRunicTool.ApplyAttributesTo( (BaseQuiver)this, attributeCount, min, max );
-
+			
 			Name = "Quiver of the Elements";
 			Hue = 0xAFE;
 			ItemID = 0x2B02;
-			WeightReduction = 100;
+			WeightReduction = 75;
+			LowerAmmoCost = 75;
+			DamageIncrease = 50;
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
+			Attributes.DefendChance = 10;
+			Attributes.RegenMana = 2;
+			Attributes.RegenHits = 2;
+			Attributes.RegenStam = 2;
+			Attributes.BonusInt = 3;
+			Attributes.BonusStr = 3;
+			Attributes.BonusDex = 3;
 			ArtifactLevel = 1;
 		}
 
