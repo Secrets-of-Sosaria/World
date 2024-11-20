@@ -886,7 +886,7 @@ namespace Server
 					m_Mods = new List<SkillMod>();
 
 				SkillMod sk = new DefaultSkillMod( skill, true, bonus );
-				sk.ObeyCap =  true;
+				sk.ObeyCap =  !MySettings.S_itemsOvercapSkills;
 				m.AddSkillMod( sk );
 				m_Mods.Add( sk );
 			}
