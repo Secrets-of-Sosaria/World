@@ -2761,6 +2761,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	InteriorDecorator	),	100	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Home	),
 			new ItemSalesInfo( typeof(	IronFlask	),	500	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Mage	),
 			new ItemSalesInfo( typeof(	IronSafe	),	5000	,	5	,	0	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Banker	),
+			new ItemSalesInfo( typeof(	BankChest	),	500000	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Banker	),
 			new ItemSalesInfo( typeof(	IvoryTusk	),	500	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
 			new ItemSalesInfo( typeof(	JadeStatueMaker	),	50000	,	1	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stone	),
 			new ItemSalesInfo( typeof(	Jar	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Res_DW	),
