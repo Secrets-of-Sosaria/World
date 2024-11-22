@@ -346,7 +346,11 @@ namespace Server
 
 		public static int S_TrainMulti = 1;
 
+	// This setting controls whether items with skill bonuses can go past the character skill cap or not. 
+	// if set to true (default) a character will not need a powerscroll to get a skill above 100 with an item giving a bonus to that skill,
+	// if set to false, a character will them need to use a powerscroll in order to get their skill past cap. 
 
+		public static bool S_itemsOvercapSkills = true; 
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
