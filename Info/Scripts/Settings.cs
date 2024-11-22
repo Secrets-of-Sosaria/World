@@ -467,10 +467,10 @@ namespace Server
 		public static int S_SpawnMax = 60;
 
 
-	// This settings controls the limit in seconds by which you can be paralyzed by a monster. 
-	// The default is 10 seconds. It mainly affects mummies, ants, plants and spiders. Setting it to a
-	// value higher than 10 could mean that the paralyze cooldown is lower than its duration, 
-	// which can lead to frustrating fights as enemies can flee and chain-paralyze a character until they heal 
+	// This settings controls the limit in seconds by which you can be peacefied or paralyzed by a monster. 
+	// The default is 10 seconds. It mainly affects bards, harpies, mummies, ants, plants and spiders. Setting it to a
+	// value higher than 10 could mean that the cooldown is lower than its duration, 
+	// which can lead to frustrating fights as enemies can flee and chain-paralyze or peace a character until they heal 
 	// enough to get back into the fight. 
 		public static double S_paralyzeDuration = 10.0;
 
