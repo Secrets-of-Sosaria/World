@@ -1,2 +1,4 @@
 Data/Logs
 throttle.log
+Backups/*
+network-errors.log
