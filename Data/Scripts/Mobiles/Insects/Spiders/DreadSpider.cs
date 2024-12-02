@@ -72,6 +72,9 @@ namespace Server.Mobiles
 		public override Poison HitPoison{ get{ return Poison.Lethal; } }
 		public override int TreasureMapLevel{ get{ return 3; } }
 
+		public override int Cloths{ get{ return 12; } }
+		public override ClothType ClothType{ get{ return ClothType.Silk; } }
+
 		public DreadSpider( Serial serial ) : base( serial )
 		{
 		}
