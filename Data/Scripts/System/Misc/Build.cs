@@ -16353,7 +16353,7 @@ namespace Server.Misc
 			} else if ( area == 87 ){ switch ( Utility.RandomMinMax( 1, 4 ) ) // "the Sanctum of Saltmarsh"
 			{
 				case 1:	loc = new Point3D(6136, 1311, 10); map = Map.Lodor; break;
-				case 2:	loc = new Point3D(5703, 2071, -40); map = Map.Lodor; break;
+				case 2:	loc = new Point3D(5711, 2056, -60); map = Map.Lodor; break;
 				case 3:	loc = new Point3D(5748, 2086, 0); map = Map.Lodor; break;
 				case 4:	loc = new Point3D(6014, 1980, 0); map = Map.Lodor; break;
 			}
