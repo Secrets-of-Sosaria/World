@@ -62,6 +62,9 @@ namespace Server.Mobiles
 		public override int Skeletal{ get{ return Utility.Random(3); } }
 		public override SkeletalType SkeletalType{ get{ return SkeletalType.Devil; } }
 
+		public override int Cloths{ get{ return 5; } }
+		public override ClothType ClothType{ get{ return ClothType.Pyre; } }
+
 		public FireDemon( Serial serial ) : base( serial )
 		{
 		}

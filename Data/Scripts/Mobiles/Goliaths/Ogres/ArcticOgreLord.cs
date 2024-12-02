@@ -92,6 +92,9 @@ namespace Server.Mobiles
 		public override int Skeletal{ get{ return Utility.Random(4); } }
 		public override SkeletalType SkeletalType{ get{ return SkeletalType.Ogre; } }
 
+		public override int Cloths{ get{ return 15; } }
+		public override ClothType ClothType{ get{ return ClothType.Arctic; } }
+
 		public ArcticOgreLord( Serial serial ) : base( serial )
 		{
 		}
