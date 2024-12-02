@@ -154,13 +154,13 @@ namespace Server.Mobiles
 			}
 
 			string dungeon = QuestCharacters.SomePlace( "tavern" );
-				if ( Utility.RandomMinMax( 1, 3 ) == 1 ){ dungeon = RandomThings.MadeUpDungeon(); }
+				if ( 40 <= Utility.RandomMinMax( 1, 100 ) ){ dungeon = RandomThings.MadeUpDungeon(); }
 
 			string Clues = QuestCharacters.SomePlace( "tavern" );
-				if ( Utility.RandomMinMax( 1, 3 ) == 1 ){ Clues = RandomThings.MadeUpDungeon(); }
+				if ( 40 <= Utility.RandomMinMax( 1, 100 ) ){ Clues = RandomThings.MadeUpDungeon(); }
 
 			string city = RandomThings.GetRandomCity();
-				if ( Utility.RandomMinMax( 1, 3 ) == 1 ){ city = RandomThings.MadeUpCity(); }
+				if ( 40 <= Utility.RandomMinMax( 1, 100 ) ){ city = RandomThings.MadeUpCity(); }
 
 			string adventurer = Server.Misc.TavernPatrons.Adventurer();
 
@@ -169,9 +169,9 @@ namespace Server.Mobiles
 				item = "the '" + cultInfo.ToTitleCase(item) + "'";
 
 			string locale = Server.Items.SomeRandomNote.GetSpecialItem( relic, 0 );
-				if ( Utility.RandomBool() ) // CITIZENS LIE HALF THE TIME
+				if ( Utility.RandomBool() ) 
 				{
-					if ( Utility.RandomBool() ){ locale = RandomThings.MadeUpDungeon(); }
+					if ( 40 <= Utility.RandomMinMax( 1, 100 ) ){ locale = RandomThings.MadeUpDungeon(); } // 40% chance of being a lie
 					else { locale = QuestCharacters.SomePlace( null ); }
 				}
 
