@@ -42,7 +42,7 @@ namespace Server.Misc
 					{
 						string skillLevel = null;
 						if ( highest.Value < 29.1 ){ skillLevel = "Aspiring"; }
-						else { skillLevel = GetSkillLevel( highest ); }
+						else { skillLevel = GetSkillLevel( highest, m.Female ); }
 
 						string skillTitle = CharacterTitle((PlayerMobile)m, highest.Info);
 						return String.Concat( skillLevel, " ", skillTitle );
@@ -211,9 +211,23 @@ namespace Server.Misc
 				{ "Legendary",		"Kengo",		"Ka-ge"			}
 			};
 
-		private static string GetSkillLevel( Skill skill )
+		private static string[,] m_LevelsFemale = new string[,]
+			{
+				{ "Neophyte",		"Neophyte",			"Neophyte"		},
+				{ "Novice",			"Novice",			"Novice"		},
+				{ "Apprentice",		"Apprentice",		"Apprentice"	},
+				{ "Journeywoman",	"Journeywoman",		"Journeywoman"	},
+				{ "Expert",			"Expert",			"Expert"		},
+				{ "Adept",			"Adept",			"Adept"			},
+				{ "Mistress",		"Mistress",			"Mistress"		},
+				{ "Grandmistress",	"Grandmistress",	"Grandmistress"	},
+				{ "Elder",			"Tatsujin",			"Shinobi"		},
+				{ "Legendary",		"Kengo",			"Ka-ge"			}
+			};
+
+		private static string GetSkillLevel( Skill skill, bool isFemale )
 		{
-			return m_Levels[GetTableIndex( skill ), GetTableType( skill )];
+			return isFemale ? m_LevelsFemale[GetTableIndex( skill ), GetTableType( skill )] : m_Levels[GetTableIndex( skill ), GetTableType( skill )];
 		}
 
 		private static int GetTableType( Skill skill )
