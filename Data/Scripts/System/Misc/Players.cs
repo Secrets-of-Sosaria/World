@@ -1038,7 +1038,7 @@ namespace Server.Misc
 					}
 					else if(isOriental > 0)
 					{
-						skillTitle = "Shukenja";
+						skillTitle = "Shugenja";
 					}
 					else if(karma < 0)
 					{
@@ -1136,7 +1136,7 @@ namespace Server.Misc
 					}
 					else if(isOriental > 0)
 					{
-						skillTitle = "Kyudo";
+						skillTitle = "Kyudoka";
 					}
 					break;
 				case SkillName.Spiritualism:
