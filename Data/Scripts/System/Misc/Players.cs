@@ -145,29 +145,40 @@ namespace Server.Misc
 				{
 					points++;
 				}
-
+                //Checking this properly is non-trivial.
+                //You cannot just check for the item types as the Jesters can change the graphics of items to jester-themed clothing and they should count.
+                //However, you cannot rely on the ItemID/GraphicID either as these are also modified by things like clothing being moddable.
+                //Most of the player monster races hide equipment through the modding system (which then changes their ItemID/GraphicID).
+                //If we check both the ItemID and the explicit item type there are still edge cases like monsters not getting credit
+                //for using clothing that is modified by the jester and some items that have gone through obsolete/cleanup code (like old MagicRobe jester suits),
+                //but it at least allows them to count as a jester by using explicit jester items.
+                                
 				if ( from.FindItemOnLayer( Layer.OuterTorso ) != null )
 				{
 					Item robe = from.FindItemOnLayer( Layer.OuterTorso );
-					if ( robe.ItemID == 0x1f9f || robe.ItemID == 0x1fa0 || robe.ItemID == 0x4C16 || robe.ItemID == 0x4C17 || robe.ItemID == 0x2B6B || robe.ItemID == 0x3162 )
+					if ( (from.FindItemOnLayer( Layer.Special ) != null && Item.isRaceCostume(from.FindItemOnLayer( Layer.Special )) && (robe is JesterGarb)) ||
+                         robe.ItemID == 0x1f9f || robe.ItemID == 0x1fa0 || robe.ItemID == 0x4C16 || robe.ItemID == 0x4C17 || robe.ItemID == 0x2B6B || robe.ItemID == 0x3162 )
 						points++;
 				}
 				if ( from.FindItemOnLayer( Layer.MiddleTorso ) != null )
 				{
 					Item shirt = from.FindItemOnLayer( Layer.MiddleTorso );
-					if ( shirt.ItemID == 0x1f9f || shirt.ItemID == 0x1fa0 || shirt.ItemID == 0x4C16 || shirt.ItemID == 0x4C17 || shirt.ItemID == 0x2B6B || shirt.ItemID == 0x3162 )
+					if ( (from.FindItemOnLayer( Layer.Special ) != null && Item.isRaceCostume(from.FindItemOnLayer( Layer.Special )) && (shirt is JesterSuit || shirt is LevelJesterSuit || shirt is GiftJesterSuit)) || 
+                         shirt.ItemID == 0x1f9f || shirt.ItemID == 0x1fa0 || shirt.ItemID == 0x4C16 || shirt.ItemID == 0x4C17 || shirt.ItemID == 0x2B6B || shirt.ItemID == 0x3162 )
 						points++;
 				}
 				if ( from.FindItemOnLayer( Layer.Helm ) != null )
 				{
 					Item hat = from.FindItemOnLayer( Layer.Helm );
-					if ( hat.ItemID == 0x171C || hat.ItemID == 0x4C15 )
+					if ( (from.FindItemOnLayer( Layer.Special ) != null && Item.isRaceCostume(from.FindItemOnLayer( Layer.Special )) && (hat is JesterHat || hat is LevelJesterHat || hat is GiftJesterHat)) ||
+                         hat.ItemID == 0x171C || hat.ItemID == 0x4C15 )
 						points++;
 				}
 				if ( from.FindItemOnLayer( Layer.Shoes ) != null )
 				{
 					Item feet = from.FindItemOnLayer( Layer.Shoes );
-					if ( feet.ItemID == 0x4C27 )
+					if ( (from.FindItemOnLayer( Layer.Special ) != null && Item.isRaceCostume(from.FindItemOnLayer( Layer.Special )) && (feet is JesterShoes)) ||
+                         feet.ItemID == 0x4C27 )
 						points++;
 				}
 			}
