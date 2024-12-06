@@ -59,7 +59,6 @@ namespace Server
 			CheckNamesAndValues();
 			return m_RaceValues;
 		}
-
 		public static Race Parse( string value )
 		{
 			CheckNamesAndValues();
@@ -79,7 +78,6 @@ namespace Server
 
 			throw new ArgumentException( "Invalid race name" );
 		}
-
 		private static void CheckNamesAndValues()
 		{
 			if( m_RaceNames != null && m_RaceNames.Length == m_AllRaces.Count )
@@ -96,7 +94,6 @@ namespace Server
 				m_RaceValues[i] = race;
 			}
 		}
-
 		public override string ToString()
 		{
 			return m_Name;
