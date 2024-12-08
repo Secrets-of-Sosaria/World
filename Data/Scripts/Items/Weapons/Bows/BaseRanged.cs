@@ -69,6 +69,13 @@ namespace Server.Items
 					}
 				}
 
+				if ( canSwing )
+				{
+					PlayerMobile p = attacker as PlayerMobile;
+
+					canSwing = ( p == null || p.PeacedUntil <= DateTime.Now );
+				}
+
 				if ( canSwing && attacker.HarmfulCheck( defender ) )
 				{
 					attacker.DisruptiveAction();
