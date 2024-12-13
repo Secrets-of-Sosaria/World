@@ -63,6 +63,9 @@ namespace Server.Mobiles
 		public override int Skin{ get{ return Utility.Random(3); } }
 		public override SkinType SkinType{ get{ return SkinType.Snake; } }
 
+		public override int Cloths{ get{ return 8; } }
+		public override ClothType ClothType{ get{ return ClothType.Pyre; } }
+
 		public FireNaga(Serial serial) : base(serial)
 		{
 		}

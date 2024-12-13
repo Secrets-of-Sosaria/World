@@ -66,6 +66,9 @@ namespace Server.Mobiles
 		public override int Meat{ get{ return 1; } }
 		public override int TreasureMapLevel{ get{ return Core.AOS ? 2 : 0; } }
 
+		public override int Cloths{ get{ return 5; } }
+		public override ClothType ClothType{ get{ return ClothType.Mysterious; } }
+
 		public void SpawnCreature( Mobile target )
 		{
 			Map map = this.Map;

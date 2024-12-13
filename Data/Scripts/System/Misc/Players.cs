@@ -42,12 +42,9 @@ namespace Server.Misc
 					{
 						string skillLevel = null;
 						if ( highest.Value < 29.1 ){ skillLevel = "Aspiring"; }
-						else { skillLevel = GetSkillLevel( highest ); }
+						else { skillLevel = GetSkillLevel( highest, m.Female ); }
 
-						string skillTitle = highest.Info.Title;
-
-						skillTitle = Skill.CharacterTitle( skillTitle, m.Female, m.Karma, m.Skills[SkillName.Knightship].Value, m.Skills[SkillName.Seafaring].Value, m.Skills[SkillName.Magery].Base, m.Skills[SkillName.Necromancy].Base, m.Skills[SkillName.Healing].Base, m.Skills[SkillName.Spiritualism].Base, isBarbaric, isOriental, isMonk(m), isSyth(m,false), isJedi(m,false), isJester(m), isEvil );
-
+						string skillTitle = CharacterTitle((PlayerMobile)m, highest.Info);
 						return String.Concat( skillLevel, " ", skillTitle );
 					}
 				}
@@ -145,29 +142,40 @@ namespace Server.Misc
 				{
 					points++;
 				}
-
+                //Checking this properly is non-trivial.
+                //You cannot just check for the item types as the Jesters can change the graphics of items to jester-themed clothing and they should count.
+                //However, you cannot rely on the ItemID/GraphicID either as these are also modified by things like clothing being moddable.
+                //Most of the player monster races hide equipment through the modding system (which then changes their ItemID/GraphicID).
+                //If we check both the ItemID and the explicit item type there are still edge cases like monsters not getting credit
+                //for using clothing that is modified by the jester and some items that have gone through obsolete/cleanup code (like old MagicRobe jester suits),
+                //but it at least allows them to count as a jester by using explicit jester items.
+                                
 				if ( from.FindItemOnLayer( Layer.OuterTorso ) != null )
 				{
 					Item robe = from.FindItemOnLayer( Layer.OuterTorso );
-					if ( robe.ItemID == 0x1f9f || robe.ItemID == 0x1fa0 || robe.ItemID == 0x4C16 || robe.ItemID == 0x4C17 || robe.ItemID == 0x2B6B || robe.ItemID == 0x3162 )
+					if ( (from.FindItemOnLayer( Layer.Special ) != null && Item.isRaceCostume(from.FindItemOnLayer( Layer.Special )) && (robe is JesterGarb)) ||
+                         robe.ItemID == 0x1f9f || robe.ItemID == 0x1fa0 || robe.ItemID == 0x4C16 || robe.ItemID == 0x4C17 || robe.ItemID == 0x2B6B || robe.ItemID == 0x3162 )
 						points++;
 				}
 				if ( from.FindItemOnLayer( Layer.MiddleTorso ) != null )
 				{
 					Item shirt = from.FindItemOnLayer( Layer.MiddleTorso );
-					if ( shirt.ItemID == 0x1f9f || shirt.ItemID == 0x1fa0 || shirt.ItemID == 0x4C16 || shirt.ItemID == 0x4C17 || shirt.ItemID == 0x2B6B || shirt.ItemID == 0x3162 )
+					if ( (from.FindItemOnLayer( Layer.Special ) != null && Item.isRaceCostume(from.FindItemOnLayer( Layer.Special )) && (shirt is JesterSuit || shirt is LevelJesterSuit || shirt is GiftJesterSuit)) || 
+                         shirt.ItemID == 0x1f9f || shirt.ItemID == 0x1fa0 || shirt.ItemID == 0x4C16 || shirt.ItemID == 0x4C17 || shirt.ItemID == 0x2B6B || shirt.ItemID == 0x3162 )
 						points++;
 				}
 				if ( from.FindItemOnLayer( Layer.Helm ) != null )
 				{
 					Item hat = from.FindItemOnLayer( Layer.Helm );
-					if ( hat.ItemID == 0x171C || hat.ItemID == 0x4C15 )
+					if ( (from.FindItemOnLayer( Layer.Special ) != null && Item.isRaceCostume(from.FindItemOnLayer( Layer.Special )) && (hat is JesterHat || hat is LevelJesterHat || hat is GiftJesterHat)) ||
+                         hat.ItemID == 0x171C || hat.ItemID == 0x4C15 )
 						points++;
 				}
 				if ( from.FindItemOnLayer( Layer.Shoes ) != null )
 				{
 					Item feet = from.FindItemOnLayer( Layer.Shoes );
-					if ( feet.ItemID == 0x4C27 )
+					if ( (from.FindItemOnLayer( Layer.Special ) != null && Item.isRaceCostume(from.FindItemOnLayer( Layer.Special )) && (feet is JesterShoes)) ||
+                         feet.ItemID == 0x4C27 )
 						points++;
 				}
 			}
@@ -214,9 +222,23 @@ namespace Server.Misc
 				{ "Legendary",		"Kengo",		"Ka-ge"			}
 			};
 
-		private static string GetSkillLevel( Skill skill )
+		private static string[,] m_LevelsFemale = new string[,]
+			{
+				{ "Neophyte",		"Neophyte",			"Neophyte"		},
+				{ "Novice",			"Novice",			"Novice"		},
+				{ "Apprentice",		"Apprentice",		"Apprentice"	},
+				{ "Journeywoman",	"Journeywoman",		"Journeywoman"	},
+				{ "Expert",			"Expert",			"Expert"		},
+				{ "Adept",			"Adept",			"Adept"			},
+				{ "Mistress",		"Mistress",			"Mistress"		},
+				{ "Grandmistress",	"Grandmistress",	"Grandmistress"	},
+				{ "Elder",			"Tatsujin",			"Shinobi"		},
+				{ "Legendary",		"Kengo",			"Ka-ge"			}
+			};
+
+		private static string GetSkillLevel( Skill skill, bool isFemale )
 		{
-			return m_Levels[GetTableIndex( skill ), GetTableType( skill )];
+			return isFemale ? m_LevelsFemale[GetTableIndex( skill ), GetTableType( skill )] : m_Levels[GetTableIndex( skill ), GetTableType( skill )];
 		}
 
 		private static int GetTableType( Skill skill )
@@ -910,6 +932,393 @@ namespace Server.Misc
 			}
 
 			return wealth;
+		}
+
+		public static string CharacterTitle( PlayerMobile p, SkillInfo s)
+		{
+			string skillTitle = s.Title;
+
+			int karma = p.Karma;
+			bool isFemale = p.Female;
+			bool isEvil = GetPlayerInfo.EvilPlay(p);
+			int isBarbaric = p.CharacterBarbaric;
+			int isOriental = p.CharacterOriental;
+			bool isJester = GetPlayerInfo.isJester(p);
+			bool isMonk = GetPlayerInfo.isMonk(p);
+			bool isJedi = GetPlayerInfo.isJedi(p, false);
+			bool isSyth = GetPlayerInfo.isSyth(p, false);
+
+			switch((SkillName)s.SkillID)
+			{
+				case SkillName.Alchemy:
+					// Alchemist
+					if (isBarbaric > 0)
+					{
+						skillTitle = "Herbalist";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Waidan";
+					}
+					break;
+				case SkillName.Anatomy:
+					// Biologist
+					break;
+				case SkillName.Druidism:
+					// Druid
+					break;
+				case SkillName.Mercantile:
+					// Merchant
+					break;
+				case SkillName.ArmsLore:
+					// Man-at-arms
+					if(isBarbaric > 0)
+					{
+						skillTitle = "Gladiator";
+					}
+					else if(isFemale)
+					{
+						skillTitle = "Woman-at-arms";
+					}
+					break;
+				case SkillName.Parry:
+					// Duelist
+					if(isBarbaric > 0)
+					{
+						skillTitle = "Defender";
+					}
+					break;
+				case SkillName.Begging:
+					// Begger
+					if(isJester)
+					{
+						skillTitle = "Jester";
+					}
+					break;
+				case SkillName.Blacksmith:
+					// Blacksmith
+					break;
+				case SkillName.Bowcraft:
+					// Bowyer
+					break;
+				case SkillName.Peacemaking:
+					// Pacifier
+					break;
+				case SkillName.Camping:
+					// Explorer
+					if(isBarbaric > 0)
+					{
+						skillTitle = "Wanderer";
+					}
+					break;
+				case SkillName.Carpentry:
+					// Carpenter
+					break;
+				case SkillName.Cartography:
+					// Cartographer
+					break;
+				case SkillName.Cooking:
+					// Chef
+					break;
+				case SkillName.Searching:
+					// Scout
+					break;
+				case SkillName.Discordance:
+					// Demoralizer
+					break;
+				case SkillName.Psychology:
+					// Scholar
+					if(isSyth)
+					{
+						skillTitle = "Syth";
+					}
+					else if (isJedi)
+					{
+						skillTitle = p.Skills.Knightship.Base >= 100 ? "Jedi Knight" : "Jedi";
+					}
+					else if(isJester)
+					{
+						skillTitle = "Joker";
+					}
+					break;
+				case SkillName.Healing:
+					// Healer
+					if(karma >= 2500 && p.Skills.Healing.Base >= 50 && p.Skills.Spiritualism.Base >= 50)
+					{
+						skillTitle = isOriental > 0 ? "Buddhist" : "Priest";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Shugenja";
+					}
+					else if(karma < 0)
+					{
+						skillTitle = "Mortician";
+					}
+					break;
+				case SkillName.Seafaring:
+					// Sailor
+					bool isGM = p.Skills.Seafaring.Base >= 100;
+					if(isBarbaric > 0)
+					{
+						skillTitle = isGM ? "Sea Captain" : "Atlantean";
+					}
+					else if(karma < 0)
+					{
+						skillTitle = isGM ? "Pirate Captain" : "Pirate";
+					}
+					else if(isGM)
+					{
+						skillTitle = "Sea Captain";
+					}
+					break;
+				case SkillName.Forensics:
+					// Undertaker
+					break;
+				case SkillName.Herding:
+					// Shepherd
+					if(isBarbaric > 0)
+					{
+						skillTitle = isFemale ? "Beastmistress" : "Beastmaster";
+					}
+					break;
+				case SkillName.Hiding:
+					// Skulker
+					break;
+				case SkillName.Provocation:
+					// Rouser
+					break;
+				case SkillName.Inscribe:
+					// Scribe
+					break;
+				case SkillName.Lockpicking:
+					// Lockpicker
+					break;
+				case SkillName.Magery:
+					if(isBarbaric > 0)
+					{
+						skillTitle = isFemale ? "Sorceress" : "Shaman";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Wu Jen";
+					}
+					else if(isEvil)
+					{
+						skillTitle = isFemale ? "Enchantress" : "Warlock";
+					}
+					else if(p.Skills.Magery.Base >= 100 && p.Skills.Necromancy.Base >= 100)
+					{
+						skillTitle = "Archmage";
+					}
+					break;
+				case SkillName.MagicResist:
+					// Magic Warder
+					break;
+				case SkillName.Tactics:
+					// Tactician
+					if(isBarbaric > 0)
+					{
+						skillTitle = "Warlord";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Sakushi";
+					}
+					break;
+				case SkillName.Snooping:
+					// Spy
+					break;
+				case SkillName.Musicianship:
+					// Bard
+					if(isBarbaric > 0)
+					{
+						skillTitle = "Chronicler";
+					}
+					break;
+				case SkillName.Poisoning:
+					// Assassin
+					break;
+				case SkillName.Marksmanship:
+					// Deadeye
+					if(isBarbaric > 0)
+					{
+						skillTitle = isFemale ? "Amazon" : "Barbarian";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Kyudoka";
+					}
+					break;
+				case SkillName.Spiritualism:
+					// Spiritualist
+					if(karma >= 2500 && p.Skills.Healing.Base >= 50 && p.Skills.Spiritualism.Base >= 50)
+					{
+						skillTitle = isOriental > 0 ? "Buddhist" : "Priest";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Neidan";
+					}
+					break;
+				case SkillName.Stealing:
+					// Thief
+					break;
+				case SkillName.Tailoring:
+					// Tailor
+					break;
+				case SkillName.Taming:
+					// Beastmaster
+					if(isFemale)
+					{
+						skillTitle = "Beastmistress";
+					}
+					break;
+				case SkillName.Tasting:
+					// Food Taster
+					break;
+				case SkillName.Tinkering:
+					// Tinker
+					break;
+				case SkillName.Tracking:
+					// Tracker
+					if(isBarbaric > 0)
+					{
+						skillTitle = "Hunter";
+					}
+					break;
+				case SkillName.Veterinary:
+					// Veterinarian
+					if(isBarbaric > 0)
+					{
+						skillTitle = isFemale ? "Beastmistress" : "Beastmaster";
+					}
+					break;
+				case SkillName.Swords:
+					// Swordsman
+					if(isBarbaric > 0)
+					{
+						skillTitle = isFemale ? "Amazon" : "Barbarian";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Kensai";
+					}
+					else if(isFemale)
+					{
+						skillTitle = "Swordswoman";
+					}
+					break;
+				case SkillName.Bludgeoning:
+					// Bludgeoner
+					if(isBarbaric > 0)
+					{
+						skillTitle = isFemale ? "Amazon" : "Barbarian";
+					}
+					break;
+				case SkillName.Fencing:
+					// Fencer
+					if(isBarbaric > 0)
+					{
+						skillTitle = isFemale ? "Amazon" : "Barbarian";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Yuki Ota";
+					}
+					break;
+				case SkillName.FistFighting:
+					// Brawler
+					if(isMonk)
+					{
+						skillTitle = p.Skills.Magery.Base >= 50 || p.Skills.Necromancy.Base >= 50 ? "Mystic" : "Monk";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Karateka";
+					}
+					break;
+				case SkillName.Lumberjacking:
+					// Lumberjack
+					break;
+				case SkillName.Mining:
+					// Miner
+					break;
+				case SkillName.Meditation:
+					// Meditator
+					break;
+				case SkillName.Stealth:
+					// Sneak
+					break;
+				case SkillName.RemoveTrap:
+					// Trespasser
+					break;
+				case SkillName.Necromancy:
+					// Necromancer
+					if(isBarbaric > 0)
+					{
+						skillTitle = "Witch Doctor";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Fangshi";
+					}
+					else if(p.Skills.Magery.Base >= 100 && p.Skills.Necromancy.Base >= 100)
+					{
+						skillTitle = "Archmage";
+					}
+					else if(isFemale)
+					{
+						skillTitle = "Witch";
+					}
+					break;
+				case SkillName.Focus:
+					// Driven
+					break;
+				case SkillName.Knightship:
+					// Knight
+					if(isBarbaric > 0)
+					{
+						skillTitle = isFemale ? "Valkyrie" : "Chieftan";
+					}
+					else if(isOriental > 0)
+					{
+						skillTitle = "Youxia";
+					}
+					else if(karma < 0)
+					{
+						skillTitle = "Death Knight";
+					}
+					break;
+				case SkillName.Bushido:
+					// Samurai
+					if(karma > 0)
+					{
+						skillTitle = "Ronin";
+					}
+					break;
+				case SkillName.Ninjitsu:
+					// Ninja
+					if(karma < 0)
+					{
+						skillTitle = "Yakuza";
+					}
+					break;
+				case SkillName.Elementalism:
+					// Elementalist
+					break;
+				case SkillName.Mysticism:
+					// Mystic
+					break;
+				case SkillName.Imbuing:
+					// Aritificer
+					break;
+				case SkillName.Throwing:
+					// Bladeweaver
+					break;
+			}
+
+			return skillTitle;
 		}
 	}
 }

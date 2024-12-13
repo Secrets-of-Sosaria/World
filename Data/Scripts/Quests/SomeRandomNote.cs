@@ -73,12 +73,11 @@ namespace Server.Items
 
 			ScrollTrue = 1; 
 			string written = "truth";
-			if ( 1 == Utility.RandomMinMax( 0, 1 ) ){ written = "lies"; ScrollTrue = 0; }
+			if ( 40 <= Utility.RandomMinMax( 1, 100 ) ){ written = "lies"; ScrollTrue = 0; } // 40% chance of being a lie, 60% chance of being true;
 
 			int amnt = Utility.RandomMinMax( 1, 49 );
 			int relic = Utility.RandomMinMax( 1, 59 );
 
-			// 50% TRUTH AND 50% LIES /////////////////////
 			if ( written == "lies" )
 			{
 				switch ( amnt )
