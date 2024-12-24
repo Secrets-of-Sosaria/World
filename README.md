@@ -29,3 +29,53 @@ The source for our world package is freely available on github and we are open t
 [Conclusion]
 
 We seek to honor the legacy of the original developers and caretakers of this game while also making it a more engaging, cohesive, and most importantly fun experience for all. While we are just one fork among many of this project, we wish to provide the best possible user experience through utilizing the methods outlined in our goals.
+
+
+## Running in Docker
+When the server is running in a container, we need to enforce the IP of a Game Server to be `127.0.0.1` ( for local development ), or a public IP while running on a VPS.
+### Running locally
+Edit the `Info/Scripts/Settings.cs` file and set:
+```c#
+public static string S_Address = "127.0.0.1";
+public static bool S_EnforceAddress = true;
+```
+### Development mode
+```shell
+#tl;dr: docker compose down && docker compose up
+```
+All the code changes are getting persisten during the build time. Thus, if you change a code, you want the container image to be rebuilt in order to be reflect you changes. The easiest way to do it, is to destroy the Compose stack:
+```sh
+docker compose down
+```
+and recreate it
+```sh
+docker compose up
+```
+In the most cases, that should rebuild the image in case of changed files. If you want to rebuild the image for sure, you can use a command:
+```sh
+docker compose up --build
+```
+#### Running in a detached mode
+To run the server in a detached mode (a one-shot rune), use the `docker compose` to run the server:
+```
+docker compose up -d
+```
+
+In that case, you won't be able to directly interact with the running server (though, it's still possible via the `docker exec..` command).
+#### Running in an attached mode
+To run the server in an attached mode, use the `docker compose` to run the server without the `-d` flag:
+```
+docker compose up
+```
+
+In that case, you can directly interact with the server, including the Console command. Please be aware, that Ctrl+C will shut down the server.
+### Running on a VPS/VDS
+Edit the `Info/Scripts/Settings.cs` file and set:
+```
+public static string S_Address = "<SERVER PUBLIC IP>";
+public static bool S_EnforceAddress = true;
+```
+Then, use the `docker compose` to run the server:
+```
+docker compose up -d
+```
