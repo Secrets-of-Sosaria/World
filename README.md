@@ -2,31 +2,6 @@
 
 For instructions, see [Manual.pdf](Manual.pdf).
 
-<<<<<<< HEAD
-
-## Running in Docker
-When the server is running in a container, we need to enforce the IP of a Game Server to be `127.0.0.1` ( for local development ), or a public IP while running on a VPS.
-### Running locally
-Edit the `Info/Scripts/Settings.cs` file and set:
-```
-public static string S_Address = "127.0.0.1";
-public static bool S_EnforceAddress = true;
-```
-Then, use the `docker compose` to run the server:
-```
-docker compose up -d
-```
-### Running on a VPS/VDS
-Edit the `Info/Scripts/Settings.cs` file and set:
-```
-public static string S_Address = "<SERVER PUBLIC IP>";
-public static bool S_EnforceAddress = true;
-```
-Then, use the `docker compose` to run the server:
-```
-docker compose up -d
-```
-=======
 # Secrets of Sosaria - Vision Statement
 
 Secrets of Sosaria is an enhanced fork of the Ruins & Riches (later continued as Adventurers of Akalabeth) project. We aim to continue the tradition of this project while also introducing improvements and additional content where we feel it would enhance the experience. Our main goals are as follows:
@@ -54,4 +29,3 @@ The source for our world package is freely available on github and we are open t
 [Conclusion]
 
 We seek to honor the legacy of the original developers and caretakers of this game while also making it a more engaging, cohesive, and most importantly fun experience for all. While we are just one fork among many of this project, we wish to provide the best possible user experience through utilizing the methods outlined in our goals.
->>>>>>> main
