@@ -202,34 +202,6 @@ namespace Server.Engines.BulkOrders
 							BeginCombine( from );
 					}
 				}
-				else if (o == this)
-				{
-					for ( int i = 0; i < m_Entries.Length; ++i )
-					{
-						if (o is LargeSmithBOD)
-						{
-							SmallSmithBOD SmallBOD = new SmallSmithBOD();
-							SmallBOD.Type = m_Entries[i].Details.Type;
-							SmallBOD.Number = m_Entries[i].Details.Number;
-							SmallBOD.AmountMax = this.AmountMax;
-							SmallBOD.Graphic = m_Entries[i].Details.Graphic;
-							SmallBOD.Material = this.Material;
-							SmallBOD.RequireExceptional = this.RequireExceptional;
-							from.AddToBackpack(SmallBOD);
-						}
-						else if (o is LargeTailorBOD)
-						{
-							SmallTailorBOD SmallBOD = new SmallTailorBOD();
-							SmallBOD.Type = m_Entries[i].Details.Type;
-							SmallBOD.Number = m_Entries[i].Details.Number;
-							SmallBOD.AmountMax = this.AmountMax;
-							SmallBOD.Graphic = m_Entries[i].Details.Graphic;
-							SmallBOD.Material = this.Material;
-							SmallBOD.RequireExceptional = this.RequireExceptional;						
-							from.AddToBackpack(SmallBOD);
-						}
-					}
-				}
 				else
 				{
 					from.SendLocalizedMessage( 1045159 ); // That is not a bulk order.

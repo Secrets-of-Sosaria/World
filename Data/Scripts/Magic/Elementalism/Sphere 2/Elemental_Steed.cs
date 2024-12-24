@@ -46,48 +46,34 @@ namespace Server.Spells.Elementalism
 
 				TimeSpan duration = TimeSpan.FromSeconds( time );
 
-				BaseCreature m_Creature = new ElementalSteed();
+				BaseMount mount = null;
 
 				string elm = ElementalSpell.GetElement( Caster );
 
 				if ( elm == "air" )
 				{
-					m_Creature.Name = "an air dragon";
-					m_Creature.Body = 596;
-					m_Creature.Hue = 0x9A3;
-					m_Creature.BaseSoundID = 362;
-					((BaseMount)m_Creature).ItemID = 596;
+					mount = new AirDragonElementalSteed();
 				}
 				else if ( elm == "earth" )
 				{
-					m_Creature.Name = "a bear";
-					m_Creature.Body = 23;
-					m_Creature.Hue = 0;
-					m_Creature.BaseSoundID = 0xA3;
-					((BaseMount)m_Creature).ItemID = 23;
+					mount = new BearElementalSteed();
 				}
 				else if ( elm == "fire" )
 				{
-					m_Creature.Name = "a phoenix";
-					m_Creature.Body = 243;
-					m_Creature.Hue = 0xB73;
-					m_Creature.BaseSoundID = 0x8F;
-					((BaseMount)m_Creature).ItemID = 0x3E94;
+					mount = new PhoenixElementalSteed();
 				}
 				else if ( elm == "water" )
 				{
-					m_Creature.Name = "a water beetle";
-					m_Creature.Body = 0xA9;
-					m_Creature.Hue = 0x555;
-					m_Creature.BaseSoundID = 0x388;
-					((BaseMount)m_Creature).ItemID = 0x3E95;
+					mount = new WaterBeetleElementalSteed();
 				}
 
-				SpellHelper.Summon( m_Creature, Caster, 0x216, duration, false, false );
-				m_Creature.FixedParticles(0x3728, 8, 20, 5042, 0, 0, EffectLayer.Head );
+				if ( mount != null ) {
+					SpellHelper.Summon( mount, Caster, 0x216, duration, false, false );
+					mount.FixedParticles(0x3728, 8, 20, 5042, 0, 0, EffectLayer.Head );
 
-				if ( elm == "water" )
-					AddWater( m_Creature );
+					if ( elm == "water" )
+						AddWater( mount );
+				}
 			}
 
 			FinishSequence();

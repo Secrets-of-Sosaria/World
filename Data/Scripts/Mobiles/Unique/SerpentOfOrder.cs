@@ -83,7 +83,8 @@ namespace Server.Mobiles
 				if ( m is PlayerMobile && !m.Blessed )
 				{
 					Item rock = m.Backpack.FindItemByType( typeof ( BlackrockSerpentOrder ) );
-					if ( rock != null )
+					Item rockDeco = m.Backpack.FindItemByType( typeof ( BlackrockSerpentOrderDecoration ) );
+					if ( rock != null || rockDeco != null )
 					{
 						CanDie = 1;
 						winner = m;

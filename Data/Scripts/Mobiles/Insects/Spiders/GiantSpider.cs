@@ -72,6 +72,9 @@ namespace Server.Mobiles
 		public override Poison PoisonImmune{ get{ return Poison.Regular; } }
 		public override Poison HitPoison{ get{ return Poison.Regular; } }
 
+		public override int Cloths{ get{ return 5; } }
+		public override ClothType ClothType{ get{ return ClothType.Silk; } }
+
 		public GiantSpider( Serial serial ) : base( serial )
 		{
 		}

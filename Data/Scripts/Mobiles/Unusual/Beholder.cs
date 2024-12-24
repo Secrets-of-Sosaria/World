@@ -102,6 +102,9 @@ namespace Server.Mobiles
 
 		public override int TreasureMapLevel{ get{ return Core.AOS ? 4 : 0; } }
 
+		public override int Cloths{ get{ return 10; } }
+		public override ClothType ClothType{ get{ return ClothType.Mysterious; } }
+
         public override int GetDeathSound()
         {
             return 0x56F;

@@ -560,11 +560,13 @@ namespace Server
 						item.Delete();
 						item = Loot.RandomSciFiGun();
 					}
-					if ( Worlds.isSciFiRegion( from ) && Utility.Random(20) == 0 && item is BaseWeapon )
+					// removed as of issue #110
+					/* if ( Worlds.isSciFiRegion( from ) && Utility.Random(20) == 0 && item is BaseWeapon )
 					{
-						item.Delete();
-						item = Loot.RandomSciFiWeapon();
-					}
+						 removed as of issue #110
+						 item.Delete();
+						 item = Loot.RandomSciFiWeapon();
+					} */
 
 					int bonusProps = GetBonusProperties();
 					int min = m_MinIntensity;

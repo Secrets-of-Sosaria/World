@@ -1,3 +1,4 @@
+using Server;
 using System;
 using Server.Targeting;
 using Server.Items;
@@ -130,6 +131,7 @@ namespace Server.SkillHandlers
 					{
 						if ( m_From.CheckTargetSkill( SkillName.Poisoning, m_Target, m_MinSkill, m_MaxSkill ) )
 						{
+							bool maxChargesReached = false;
 							if ( m_Target is Food )
 							{
 								((Food)m_Target).Poison = m_Poison;
@@ -140,11 +142,24 @@ namespace Server.SkillHandlers
 								((BaseBeverage)m_Target).Poison = m_Poison;
 								((BaseBeverage)m_Target).Poisoner = m_From;
 							}
-							else if ( m_Target is BaseWeapon )
+							else if ( m_Target is BaseWeapon && !MySettings.poisoningCharges)
 							{
 								((BaseWeapon)m_Target).Poison = m_Poison;
 								((BaseWeapon)m_Target).PoisonCharges = 18 - (m_Poison.Level * 2);
 							}
+							else if ( m_Target is BaseWeapon && MySettings.poisoningCharges)
+							{
+								// at 125 skill, a weapon can hold 41 poison charges. 
+								int maximumPoisonCharges =  (int)(m_From.Skills[SkillName.Poisoning].Value)/3;
+								((BaseWeapon)m_Target).Poison = m_Poison;
+								// every coating adds from poisoning/10 to poisoning/7 charges. At 125 skill that translates to 12 to 17 charges per potion.
+								int chargesToAdd = Utility.RandomMinMax((int)(m_From.Skills[SkillName.Poisoning].Value)/10,(int)(m_From.Skills[SkillName.Poisoning].Value/7));
+								((BaseWeapon)m_Target).PoisonCharges = ((BaseWeapon)m_Target).PoisonCharges + chargesToAdd >  maximumPoisonCharges ? maximumPoisonCharges : ((BaseWeapon)m_Target).PoisonCharges + chargesToAdd;
+								if (((BaseWeapon)m_Target).PoisonCharges == maximumPoisonCharges)
+								{
+									maxChargesReached = true;
+								}
+							} 
 							else if ( m_Target is FukiyaDarts )
 							{
 								((FukiyaDarts)m_Target).Poison = m_Poison;
@@ -156,9 +171,15 @@ namespace Server.SkillHandlers
 								((Shuriken)m_Target).PoisonCharges = Math.Min( 18 - (m_Poison.Level * 2), ((Shuriken)m_Target).UsesRemaining );
 							}
 
-							m_From.SendLocalizedMessage( 1010517 ); // You apply the poison
-
-							Misc.Titles.AwardKarma( m_From, -20, true );
+							if(maxChargesReached)
+							{
+								m_From.SendMessage(38, "This weapon has as much poison as your skills can handle.");
+							}
+							else 
+							{
+								m_From.SendLocalizedMessage( 1010517 ); // You apply the poison
+								Misc.Titles.AwardKarma( m_From, -20, true );
+							}
 						}
 						else // Failed
 						{

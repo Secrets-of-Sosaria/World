@@ -671,7 +671,7 @@ namespace Server.Engines.Harvest
 									int attributeCount;
 									int min, max;
 									GetRandomAOSStats( out attributeCount, out min, out max, mLevel );
-									BaseRunicTool.ApplyAttributesTo( (BaseTrinket)preLoot, attributeCount, min, max );
+									BaseRunicTool.ApplyAttributesTo( (BaseClothing)preLoot, attributeCount, min, max );
 								}
 								else
 								{

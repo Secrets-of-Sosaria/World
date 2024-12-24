@@ -9,7 +9,7 @@ namespace Server.Items
 {
 	public class RepairPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "If you dump this potion on armor or weapons, they will be fully repaired from any battle worn damage they sustained."; } }
+		public override string DefaultDescription{ get{ return "If you dump this potion on armor, clothing or weapons, they will be fully repaired from any battle worn damage they sustained."; } }
 
 		[Constructable]
 		public RepairPotion() : base( 0x180F, PotionEffect.Repair )
@@ -70,6 +70,25 @@ namespace Server.Items
 				if ( targeted is BaseArmor )
 				{
 					BaseArmor repairing = (BaseArmor)targeted;
+					if ( !repairing.IsChildOf( from.Backpack ) )
+					{
+						from.SendLocalizedMessage( 1044275 ); // The item must be in your backpack to repair it.
+					}
+					else if ( repairing.MaxHitPoints <= 0 || repairing.HitPoints == repairing.MaxHitPoints )
+					{
+						from.SendLocalizedMessage( 1044281 );// That item is in full repair
+					}
+					else
+					{
+						from.SendLocalizedMessage( 1044279 ); // You repair the item.
+						repairing.MaxHitPoints = repairing.MaxHitPoints-1;
+						repairing.HitPoints = repairing.MaxHitPoints;
+						Server.Items.RepairPotion.ConsumeCharge( m_Potion, m_From );
+					}
+				}
+				else if ( targeted is BaseClothing )
+				{
+					BaseClothing repairing = (BaseClothing)targeted;
 					if ( !repairing.IsChildOf( from.Backpack ) )
 					{
 						from.SendLocalizedMessage( 1044275 ); // The item must be in your backpack to repair it.

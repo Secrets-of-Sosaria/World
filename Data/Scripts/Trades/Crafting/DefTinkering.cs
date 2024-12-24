@@ -143,7 +143,7 @@ namespace Server.Engines.Craft
 
 			index = AddCraft( typeof( CandleLarge ), 1044050, 1022598, 45.0, 85.0, typeof( IronIngot ), 1044036, 2, 1044037 );
 				AddRes( index, typeof( Beeswax ), 1025154, 1, 1053098 );
-			index = AddCraft( typeof( Candelabra ), 1044050, 1022599, 55.0, 195.0, typeof( IronIngot ), 1044036, 4, 1044037 );
+			index = AddCraft( typeof( Candelabra ), 1044050, 1022599, 55.0, 95.0, typeof( IronIngot ), 1044036, 4, 1044037 );
 				AddRes( index, typeof( Beeswax ), 1025154, 3, 1053098 );
 			index = AddCraft( typeof( CandelabraStand ), 1044050, 1022599, 65.0, 105.0, typeof( IronIngot ), 1044036, 8, 1044037 );
 				AddRes( index, typeof( Beeswax ), 1025154, 3, 1053098 );

@@ -91,6 +91,9 @@ namespace Server.Mobiles
 		public override Poison PoisonImmune{ get{ return Poison.Greater; } }
 		public override Poison HitPoison{ get{ return Poison.Greater; } }
 
+		public override int Cloths{ get{ return 8; } }
+		public override ClothType ClothType{ get{ return ClothType.Silk; } }
+
 		#region Pack Animal Methods
 		public override bool OnBeforeDeath()
 		{

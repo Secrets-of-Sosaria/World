@@ -79,6 +79,7 @@ namespace Server.Items
 			Name = "stave";
 			Weight = 7.0;
 			Layer = Layer.TwoHanded;
+   			Attributes.SpellChanneling = 1;
 		}
 
 		public WizardStaff( Serial serial ) : base( serial )
@@ -169,6 +170,7 @@ namespace Server.Items
 			Weight = 3.0;
 			Layer = Layer.OneHanded;
 			ItemID = Utility.RandomList( 0x0DF2, 0x0DF3, 0x0DF4, 0x0DF5, 0x269D, 0x269E, 0x26BC, 0x26C6, 0x639D, 0x639E, 0x639F, 0x63A0 );
+   			Attributes.SpellChanneling = 1;
 		}
 
 		public WizardStick( Serial serial ) : base( serial )

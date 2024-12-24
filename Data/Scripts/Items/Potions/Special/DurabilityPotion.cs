@@ -8,7 +8,7 @@ namespace Server.Items
 {
 	public class DurabilityPotion : BasePotion
 	{
-		public override string DefaultDescription{ get{ return "When you dump these potions on armor or weapons, the maximum durablity of the item increases by 10. It has no effect on items with a maximum durability greater than 50."; } }
+		public override string DefaultDescription{ get{ return "When you dump these potions on armor, clothing or weapons, the maximum durablity of the item increases by 10. It has no effect on items with a maximum durability greater than 50."; } }
 
 		[Constructable]
 		public DurabilityPotion() : base( 0x180F, PotionEffect.Durability )
@@ -99,6 +99,24 @@ namespace Server.Items
 					{
 						from.SendMessage( "You add to the durability of the item!" );
 						repairing2.MaxHitPoints += 10;
+						Server.Items.DurabilityPotion.ConsumeCharge( m_Potion, m_From );
+					}
+				}
+				else if (targeted is BaseClothing) 
+				{
+					BaseClothing repairing = (BaseClothing)targeted;
+					if ( !repairing.IsChildOf( from.Backpack ) )
+					{
+						from.SendMessage( "The item must be in your backpack to use that potion on it!" );
+					}
+					else if ( repairing.MaxHitPoints >= 50 )
+					{
+						from.SendMessage( "This item is already too durable to be affected!" );
+					}
+					else
+					{
+						from.SendMessage( "You add to the durability of the item!" );
+						repairing.MaxHitPoints += 10;
 						Server.Items.DurabilityPotion.ConsumeCharge( m_Potion, m_From );
 					}
 				}
