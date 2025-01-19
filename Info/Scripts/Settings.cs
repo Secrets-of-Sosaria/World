@@ -297,8 +297,7 @@ namespace Server
 
 		public static bool S_DecoArtySteal = false;
 
-	// If set to true, then characters will only get lucrative items from a pedestal bag/box once every couple
-	// of days.
+	// If set to true, then characters will not receive artifacts from stealable boxes in dungeons. 
 
 		public static bool S_PedStealThrottle = true;
 
