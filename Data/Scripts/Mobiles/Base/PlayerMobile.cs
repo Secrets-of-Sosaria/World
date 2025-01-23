@@ -1510,8 +1510,9 @@ namespace Server.Mobiles
 
 			return true;
 		}
-
-		public static void SkillVerification( Mobile m )
+		// this is the 'skill reset' method that is called when a player enters a region and absolutely nukes their stats if they played with the skill settings.
+		// should be called something else, if ever put back into the game. 
+		/* public static void SkillVerification( Mobile m )
 		{
 			if ( m is PlayerMobile )
 			{
@@ -1543,7 +1544,7 @@ namespace Server.Mobiles
 					m.RawDex = 20;
 				}
 			}
-		}
+		} */
 
 		public override bool CheckMovement( Direction d, out int newZ )
 		{
@@ -3350,53 +3351,6 @@ namespace Server.Mobiles
 					SkillStart = reader.ReadInt();
 					SkillBoost = reader.ReadInt();
 					SkillEther = reader.ReadInt();
-
-					if ( SkillStart < 1 )
-					{
-						SkillBoost = MyServerSettings.SkillBoost();
-
-						if ( Skills.Cap == 11000 )
-						{
-							SkillStart = 11000;
-						}
-						else if ( Skills.Cap == 16000 )
-						{
-							SkillStart = 11000;
-							SkillEther = 5000;
-						}
-						else if ( Skills.Cap == 10000 )
-						{
-							SkillStart = 10000;
-						}
-						else if ( Skills.Cap == 15000 )
-						{
-							SkillStart = 10000;
-							SkillEther = 5000;
-						}
-						else if ( Skills.Cap == 13000 )
-						{
-							SkillStart = 13000;
-						}
-						else if ( Skills.Cap == 18000 )
-						{
-							SkillStart = 13000;
-							SkillEther = 5000;
-						}
-						else if ( Skills.Cap == 40000 )
-						{
-							SkillStart = 40000;
-						}
-						else if ( Skills.Cap == 45000 )
-						{
-							SkillStart = 40000;
-							SkillEther = 5000;
-						}
-						else
-						{
-							SkillStart = 10000;
-							SkillEther = 0;
-						}
-					}
 
 					if ( SkillBoost < MyServerSettings.SkillBoost() )
 						SkillBoost = MyServerSettings.SkillBoost();
