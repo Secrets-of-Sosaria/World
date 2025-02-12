@@ -279,13 +279,19 @@ namespace Server.Items
 					{
 						from.FixedParticles( 0x374A, 10, 15, 5021, EffectLayer.Waist );
 						from.PlaySound( 0x205 );
-						int nPoison = Utility.RandomMinMax( 0, 10 );
+						if(!from.CheckSkill( SkillName.Poisoning, 0, 125 ))
+						{
+							int nPoison = Utility.RandomMinMax( 0, 10 );
 							if ( nPoison > 9 ) { from.ApplyPoison( from, Poison.Deadly ); }
 							else if ( nPoison > 7 ) { from.ApplyPoison( from, Poison.Greater ); }
 							else if ( nPoison > 4 ) { from.ApplyPoison( from, Poison.Regular ); }
 							else { from.ApplyPoison( from, Poison.Lesser ); }
-						from.SendMessage( "You accidentally trigger a poison trap!" );
-						LoggingFunctions.LogTraps( from, "a pedestal poison trap" );
+							from.SendMessage( "You accidentally trigger a poison trap!" );
+							LoggingFunctions.LogTraps( from, "a pedestal poison trap" );
+						} 
+						else {
+							from.SendMessage( "Your knowledge of poisons allows you to evade a trap!" );
+						}
 					}
 					else if ( nReaction == 2 )
 					{
@@ -331,19 +337,7 @@ namespace Server.Items
 
 				if ( TakeBox )
 				{
-					bool good = false;
-
-					if ( from.StolenBoxTime > 32 )
-						from.StolenBoxTime = 0;
-
-					if ( from.StolenBoxTime < DateTime.Now.Day )
-					{
-						good = true;
-						from.StolenBoxTime = DateTime.Now.Day + 2;
-					}
-
-					if ( !MySettings.S_PedStealThrottle )
-						good = true;
+					bool stealingThrottled = MySettings.S_PedStealThrottle;
 
 					if ( BoxType == 1 )
 					{
@@ -354,9 +348,9 @@ namespace Server.Items
 						bag.Name = BoxOrigin;
 						bag.BoxName = BoxOrigin;
 						bag.BoxMarkings = BoxCarving;
-						FillMeUp( bag, from, good );
+						FillMeUp( bag, from, stealingThrottled );
 						from.AddToBackpack( bag );
-						if ( !good )
+						if ( !stealingThrottled )
 							bag.Weight = 10.0;
 					}
 					else if ( BoxType == 2 )
@@ -368,7 +362,7 @@ namespace Server.Items
 						bag.Name = BoxOrigin;
 						bag.BoxName = BoxOrigin;
 						bag.BoxMarkings = BoxCarving;
-						FillMeUp( bag, from, good );
+						FillMeUp( bag, from, stealingThrottled );
 						from.AddToBackpack( bag );
 					}
 					else
@@ -380,7 +374,7 @@ namespace Server.Items
 						bag.Name = BoxOrigin;
 						bag.BagName = BoxOrigin;
 						bag.BagMarkings = BoxCarving;
-						FillMeUp( bag, from, good );
+						FillMeUp( bag, from, stealingThrottled );
 						from.AddToBackpack( bag );
 
 					}
@@ -423,16 +417,16 @@ namespace Server.Items
             BoxCarving = reader.ReadString();
 		}
 
-		public void FillMeUp( Container box, Mobile from, bool good )
+		public void FillMeUp( Container box, Mobile from, bool stealingThrottled )
 		{
 			Item i = null;
-			if ( good && Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
+			if ( !stealingThrottled && Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
 			{
 				i = Loot.RandomArty();
 				box.DropItem(i);
 			}
 
-			if ( good && Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
+			if ( !stealingThrottled && Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
 			{
 				i = Loot.RandomSArty( Server.LootPackEntry.playOrient( from ), from );
 				box.DropItem(i);
@@ -453,14 +447,8 @@ namespace Server.Items
 			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
 				box.DropItem( Loot.RandomScroll( Utility.Random(12)+1 ) );
 
-			int minG = 4000;
-			int maxG = 16000;
-
-			if ( !good )
-			{
-				minG = 400;
-				maxG = 1600;
-			}
+			int minG = 3000;
+			int maxG = 9000;
 
 			int givG = Utility.RandomMinMax( minG, maxG );
 
