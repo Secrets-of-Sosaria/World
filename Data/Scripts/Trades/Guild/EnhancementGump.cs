@@ -17,11 +17,11 @@ namespace Server.Gumps
             if (Process.CurrentAttributeCount >= Process.MaxAttrCount)
                 MoreAttributesAllowed = false;
 
-            AddBackground(0, 0, 620, 390, 9200);
+            AddBackground(0, 0, 620, 420, 9200);
             AddImageTiled(8, 10, 604, 24, 2624);
-            AddImageTiled(8, 38, 300, 345, 2624);
-            AddImageTiled(312, 38, 300, 345, 2624);
-            AddAlphaRegion(8, 10, 604, 373);
+            AddImageTiled(8, 38, 300, 375, 2624);
+            AddImageTiled(312, 38, 300, 375, 2624);
+            AddAlphaRegion(8, 10, 604, 403);
 
             AddLabel(224, 12, 0x481, "Equipment Enhancement");
 
@@ -46,7 +46,7 @@ namespace Server.Gumps
 
                     if (currentValue > 0 || MoreAttributesAllowed)
                     {
-                        if (row > 11)
+                        if (row > 12)
                         {
                             row = 0;
                             column = 1;
