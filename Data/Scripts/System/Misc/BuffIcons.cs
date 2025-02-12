@@ -162,33 +162,38 @@ namespace Server
 
 		public static void CleanupIcons( Mobile m, bool onlyParalyzed )
 		{
+			if (m == null)
+				return;
 			if ( !onlyParalyzed )
 			{
-				Item orb = m.Backpack.FindItemByType( typeof ( SoulOrb ) );
-					if ( orb == null )
-						BuffInfo.RemoveBuff( m, BuffIcon.Resurrection );
-					else
-						BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Resurrection, 1063626, true ) );
+				if (m.Backpack != null)
+				{
+					Item orb = m.Backpack.FindItemByType( typeof ( SoulOrb ) );
+						if ( orb == null )
+							BuffInfo.RemoveBuff( m, BuffIcon.Resurrection );
+						else
+							BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Resurrection, 1063626, true ) );
 
-				Item gem = m.Backpack.FindItemByType( typeof ( GemImmortality ) );
-					if ( gem == null )
-						BuffInfo.RemoveBuff( m, BuffIcon.GemImmortality );
-					else
-						BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.GemImmortality, 1063658, true ) );
+					Item gem = m.Backpack.FindItemByType( typeof ( GemImmortality ) );
+						if ( gem == null )
+							BuffInfo.RemoveBuff( m, BuffIcon.GemImmortality );
+						else
+							BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.GemImmortality, 1063658, true ) );
 
-				Item shard = m.Backpack.FindItemByType( typeof ( JewelImmortality ) );
-					if ( shard == null )
-						BuffInfo.RemoveBuff( m, BuffIcon.WithstandDeath );
-					else
-						BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.WithstandDeath, 1063656, true ) );
+					Item shard = m.Backpack.FindItemByType( typeof ( JewelImmortality ) );
+						if ( shard == null )
+							BuffInfo.RemoveBuff( m, BuffIcon.WithstandDeath );
+						else
+							BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.WithstandDeath, 1063656, true ) );
 
-				Item enchant = m.Backpack.FindItemByType( typeof ( EnchantSpellStone ) );
-					if ( enchant == null )
-						BuffInfo.RemoveBuff( m, BuffIcon.Enchant );
+					Item enchant = m.Backpack.FindItemByType( typeof ( EnchantSpellStone ) );
+						if ( enchant == null )
+							BuffInfo.RemoveBuff( m, BuffIcon.Enchant );
 
-				Item enchanted = m.Backpack.FindItemByType( typeof ( ResearchEnchantStone ) );
-					if ( enchanted == null )
-						BuffInfo.RemoveBuff( m, BuffIcon.EnchantWeapon );
+					Item enchanted = m.Backpack.FindItemByType( typeof ( ResearchEnchantStone ) );
+						if ( enchanted == null )
+							BuffInfo.RemoveBuff( m, BuffIcon.EnchantWeapon );
+				}
 
 				if ( !TransformationSpellHelper.UnderTransformation( m ) )
 				{
