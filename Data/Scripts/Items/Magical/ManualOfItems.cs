@@ -629,6 +629,7 @@ namespace Server.Items
 			if ( artifact == arty) { name="GiftTalismanSnake"; item="Trinket, Idol"; } arty++;
 			if ( artifact == arty) { name="GiftTalismanTotem"; item="Trinket, Totem"; } arty++;
 			if ( artifact == arty) { name="GiftTorch"; item="Torch"; } arty++;
+			if ( artifact == arty) { name="GiftHikingBoots"; item="Hiking Boots"; } arty++;
 
 			if ( part == 2 ){ item = name; }
 

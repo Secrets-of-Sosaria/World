@@ -61,7 +61,7 @@ namespace Server.Spells.Jedi
 			{
                 Caster.SendMessage( "You cannot use this power while wearing those magical shoes!" );
 			}
-			else if ( shoes is HikingBoots && Caster.RaceID > 0 )
+			else if ( (shoes is HikingBoots || shoes is LevelHikingBoots || shoes is GiftHikingBoots) && Caster.RaceID > 0 )
 			{
                 Caster.SendMessage( "You cannot use this power while wearing hiking boots!" );
 			}

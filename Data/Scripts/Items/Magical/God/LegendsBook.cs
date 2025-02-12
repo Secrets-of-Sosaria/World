@@ -503,6 +503,7 @@ namespace Server.Items
 			if ( artifact == arty) { name="LevelTalismanSnake"; item="Trinket, Idol"; } arty++;
 			if ( artifact == arty) { name="LevelTalismanTotem"; item="Trinket, Totem"; } arty++;
 			if ( artifact == arty) { name="LevelTorch"; item="Torch"; } arty++;
+			if ( artifact == arty) { name="LevelHikingBoots"; item="Hiking Boots"; } arty++;
 
 			if ( part == 2 ){ item = name; }
 

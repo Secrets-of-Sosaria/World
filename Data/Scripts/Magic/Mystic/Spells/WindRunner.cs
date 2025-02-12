@@ -58,7 +58,7 @@ namespace Server.Spells.Mystic
 			{
                 Caster.SendMessage( "You cannot use this ability while wearing those magical shoes!" );
 			}
-			else if ( shoes is HikingBoots && Caster.RaceID > 0 )
+			else if ( (shoes is HikingBoots || shoes is LevelHikingBoots || shoes is GiftHikingBoots) && Caster.RaceID > 0 )
 			{
                 Caster.SendMessage( "You cannot use this ability while wearing hiking boots!" );
 			}
