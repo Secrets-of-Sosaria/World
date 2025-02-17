@@ -250,6 +250,8 @@ namespace Server.Items
 				itemdesc = "jewelry";
 			else if ( item is BaseClothing )
 				itemdesc = "clothing";
+			else if (item is BaseClothing && item is LevelHikingBoots)
+				itemdesc = "Hiking Boots";
 			else
 				itemdesc = "item";
 

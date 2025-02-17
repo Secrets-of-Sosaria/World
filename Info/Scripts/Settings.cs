@@ -297,8 +297,7 @@ namespace Server
 
 		public static bool S_DecoArtySteal = false;
 
-	// If set to true, then characters will only get lucrative items from a pedestal bag/box once every couple
-	// of days.
+	// If set to true, then characters will not receive artifacts from stealable boxes in dungeons. 
 
 		public static bool S_PedStealThrottle = true;
 
@@ -319,8 +318,11 @@ namespace Server
 	// 005 - SKILLS ///////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////
 
-	// This value is between 0 and 10, where you can set the amount of extra GM skill points characters get. So if you set
-	// it to '2' then characters get 200 (2 x 100) more skills points available.
+	// This value is between 0 (default) and 52, where you can set the amount of extra GM skill points characters get. So if you set
+	// it to '2' then characters get 200 (2 x 100) more skills points available. Setting it to 45 will allow a character to reach 100 in every skill,
+	// setting it to 52 will allow a character to reach 125 in every skill (given that they use the correct powerscrolls),
+	// setting it to a value higher than default might make some playstyles (alien, wanted) undesirable aside from roleplay reasons, as well as diminish the benefits from
+	// certain endgame quests.  
 
 		public static int S_SkillBoost = 0;
 

@@ -465,8 +465,8 @@ namespace Server
 		{
 			int skill = 0;
 
-			if ( MySettings.S_SkillBoost > 10 )
-				MySettings.S_SkillBoost = 10;
+			if ( MySettings.S_SkillBoost > 52 )
+				MySettings.S_SkillBoost = 52;
 
 			if ( MySettings.S_SkillBoost < 1 )
 				MySettings.S_SkillBoost = 0;
@@ -482,15 +482,13 @@ namespace Server
 
 			if ( area == "savage" )
 				skills = 11;
-			else if ( area == "alien" )
-				skills = 40;
 			else if ( area == "fugitive" )
 				skills = 13;
-			else
-				skills = 10;
+			else if ( area == "alien" )
+				skills = 40;
 
-			if ( MySettings.S_SkillBoost > 10 )
-				MySettings.S_SkillBoost = 10;
+			if ( MySettings.S_SkillBoost > 52 )
+				MySettings.S_SkillBoost = 52;
 
 			if ( MySettings.S_SkillBoost < 1 )
 				MySettings.S_SkillBoost = 0;

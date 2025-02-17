@@ -1,4 +1,6 @@
 using System;
+using Server;
+using Server.Network;
 
 namespace Server.Items
 {
@@ -399,6 +401,71 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+		}
+	}
+
+	[FlipableAttribute( 0x2FC4, 0x317A )]
+	public class LevelHikingBoots : BaseLevelShoes
+	{
+		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
+
+		[Constructable]
+		public LevelHikingBoots() : this( 0 )
+		{
+		}
+
+		[Constructable]
+		public LevelHikingBoots( int hue ) : base( 0x2FC4, hue )
+		{
+			Name = "Hiking boots";
+			Weight = 3.0;
+		}
+
+        public LevelHikingBoots(Serial serial)
+            : base(serial)
+		{
+		}
+
+		public override bool OnEquip( Mobile from )
+		{
+			if ( from.RaceID > 0 )
+			{
+				if ( MySettings.S_NoMountsInCertainRegions && Server.Mobiles.AnimalTrainer.IsNoMountRegion( from, Region.Find( from.Location, from.Map ) ) )
+				{
+					from.Send(SpeedControl.Disable);
+					Weight = 5.0;
+				}
+				else
+				{
+					Weight = 3.0;
+					from.Send(SpeedControl.MountSpeed);
+				}
+			}
+			return base.OnEquip(from);
+		}
+
+		public override void OnRemoved( object parent )
+		{
+			if ( parent is Mobile )
+			{
+				Mobile from = (Mobile)parent;
+				if ( from.RaceID > 0 ){ from.Send(SpeedControl.Disable); }
+			}
+			base.OnRemoved(parent);
+		}
+
+		public override void Serialize( GenericWriter writer )
+		{
+			base.Serialize( writer );
+
+			writer.WriteEncodedInt( 0 ); // version
+		}
+
+		public override void Deserialize( GenericReader reader )
+		{
+			base.Deserialize( reader );
+
+			int version = reader.ReadEncodedInt();
 		}
 	}
 
