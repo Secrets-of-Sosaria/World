@@ -233,7 +233,8 @@ namespace Server
 				 || item is ThrowingGloves
 				 || item is WizardWand
 				 || item is PugilistGloves
-				 || item is PugilistGlove ){} else
+				 || item is PugilistGlove
+				 || item is WizardStaff ){} else
 				price +=		((BaseWeapon)item).Attributes.SpellChanneling * 200;
 
 				price +=		((BaseWeapon)item).Attributes.DefendChance * 10;
