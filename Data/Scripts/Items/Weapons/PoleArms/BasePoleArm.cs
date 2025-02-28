@@ -65,7 +65,7 @@ namespace Server.Items
 			if ( HarvestSystem == null )
 				return;
 
-			if ( Parent == from )
+			if ( Parent == from || ( MySettings.S_AllowBackpackHarvestTool && this.IsChildOf(from.Backpack) ) )
 				HarvestSystem.BeginHarvesting( from, this );
 			else
 				from.SendLocalizedMessage( 502641 ); // You must equip this item to use it.
