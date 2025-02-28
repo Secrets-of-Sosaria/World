@@ -210,7 +210,7 @@ namespace Server.Items
 			{ 
 				CaptchaGump.sendCaptcha(from, BaseTool.OnDoubleClickRedirected, this);
 			}
-			else if ( Parent == from )
+			else if ( Parent == from || ( MySettings.S_AllowBackpackCraftTool && this.IsChildOf(from.Backpack) ) )
 			{
 				CraftSystem system = this.CraftSystem;
 
@@ -242,7 +242,7 @@ namespace Server.Items
 
 			BaseTool tool = (BaseTool)o;
 
-			if ( tool.Parent == from )
+			if ( tool.Parent == from || ( MySettings.S_AllowBackpackCraftTool && tool.IsChildOf(from.Backpack) ) )
 			{
 				CraftSystem system = tool.CraftSystem;
 

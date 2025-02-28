@@ -36,7 +36,7 @@ namespace Server.Engines.Craft
 
 			from.CloseGump( typeof( CraftGump ) );
 			from.CloseGump( typeof( CraftGumpItem ) );
-			if ( tool.Parent == from )
+			if ( tool.Parent == from || ( MySettings.S_AllowBackpackCraftTool && tool.IsChildOf(from.Backpack) ) )
 			{
 				AddPage( 0 );
 				AddImage(0, 0, craftSystem.GumpImage, Server.Misc.PlayerSettings.GetGumpHue( from ));
