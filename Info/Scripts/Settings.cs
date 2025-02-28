@@ -394,6 +394,13 @@ namespace Server
 
 		public static bool S_AllowMacroResources = false;
 
+	// If false, then characters will need to have the appropriate tool equipped to craft.
+		
+		public static bool S_AllowBackpackCraftTool = false;
+
+	// If false, then characters will need to have the appropriate tool equipped to gather resources.
+		
+		public static bool S_AllowBackpackHarvestTool = false;
 
 
 
