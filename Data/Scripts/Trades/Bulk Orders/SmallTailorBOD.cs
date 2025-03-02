@@ -120,7 +120,7 @@ namespace Server.Engines.BulkOrders
 
 				bool reqExceptional = ( excChance > Utility.RandomDouble() );
 
-				CraftSystem system = DefLeatherworking.CraftSystem;
+				CraftSystem system = useMaterials ? DefLeatherworking.CraftSystem : DefTailoring.CraftSystem;
 
 				List<SmallBulkEntry> validEntries = new List<SmallBulkEntry>();
 
