@@ -3993,6 +3993,16 @@ namespace Server.Mobiles
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
 
 			base.OnDamage( amount, from, willKill );
+
+			// KOPERPETS CHANGE: Trigger skill gain
+    		PlayerMobile owner = this.ControlMaster as PlayerMobile;
+			
+    		if (this.Controlled && owner != null)
+    		{
+        		// Call the skill gain system, passing the pet (this) and the attacker
+        		Server.Custom.KoperPets.PetTamingSkillGain.TryTamingGain(this, from);
+    		}
+
 		}
 
 		public virtual void OnDamagedBySpell( Mobile from )
