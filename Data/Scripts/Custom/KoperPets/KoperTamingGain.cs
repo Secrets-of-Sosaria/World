@@ -124,7 +124,7 @@ namespace Server.Custom.KoperPets
                 owner.Skills[SkillName.Taming].Base += tamingGain;
 
                 // Select a random taming message
-                string message = TamingMessages[Utility.Random(TamingMessages.Length)];
+                string message = string.Format(TamingMessages[Utility.Random(TamingMessages.Length)], pet.Name);
 
                 // Display message in system log
                 owner.SendMessage(0x83A, message);
