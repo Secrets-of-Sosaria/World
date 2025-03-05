@@ -5,6 +5,14 @@ using Server.Multis;
 using Server.Targeting;
 using Server.Items;
 
+/*
+	Adjusting door or sign placement? 
+	Here's a handy coordinate cheatsheet:
+		x = -west / +east
+		y = -north / +south
+		z = -down / +up
+*/
+
 namespace Server.Multis
 {
 	public class Pyramid : BaseHouse
@@ -244,10 +252,10 @@ namespace Server.Multis
 
 		public NewTwoStorySandstoneHouse( Mobile owner ) : base( 0x4C, owner, 1, 1 )
 		{
-			SetSignFace( 7, -4, 0, 0xBD1 );
+			SetSignFace( 7, -4, 10, 0xBD1 );
 
-			BaseDoor door1 = AddHouseDoor( 6, 0, 6, 0x6AD );
-			BaseDoor door2 = AddHouseDoor( 6, -1, 6, 0x6AF );
+			BaseDoor door1 = AddHouseDoor( 5, -1, 6, 0x6AD );
+			BaseDoor door2 = AddHouseDoor( 5, -2, 6, 0x6AF );
 
 			door1.Link = door2;
 			door2.Link = door1;
@@ -438,12 +446,12 @@ namespace Server.Multis
 
 		public NewTwoStoryBrickHome( Mobile owner ) : base( 0x50, owner, 1, 1 )
 		{
-			SetSignFace( -3, 7, 0, 0xBD2 );
+			SetSignFace( -4, 7, 0, 0xBD2 );
 
-			AddHouseDoor( 2, -2, 5, 0x6A7 );
+			AddHouseDoor( 1, -2, 5, 0x6A7 );
 
-			BaseDoor door1 = AddHouseDoor( 1, 5, 5, 0x6A7 );
-			BaseDoor door2 = AddHouseDoor( 0, 5, 5, 0x6A5 );
+			BaseDoor door1 = AddHouseDoor( 0, 5, 5, 0x6A7 );
+			BaseDoor door2 = AddHouseDoor( -1, 5, 5, 0x6A5 );
 
 			door1.Link = door2;
 			door2.Link = door1;
@@ -1241,10 +1249,10 @@ namespace Server.Multis
 
 		public NewPlasterHomeDirtDeck( Mobile owner ) : base( 0x63, owner, 1, 1 )
 		{
-			SetSignFace( -2, 7, 0, 0xBD2 );
+			SetSignFace( -2, 6, 0, 0xBD2 );
 
-			AddHouseDoor( 0, 1, 25, 0x6A5 );
-			AddHouseDoor( 0, 3, 5, 0x6A5 );
+			AddHouseDoor( 0, 0, 25, 0x6A5 );
+			AddHouseDoor( 0, 2, 5, 0x6A5 );
 		}
 
 		public NewPlasterHomeDirtDeck( Serial serial ) : base( serial )
@@ -1278,8 +1286,8 @@ namespace Server.Multis
 		{
 			SetSignFace( -5, 4, 0, 0xBD2 );
 
-			AddHouseDoor( 3, 0, 5, 0x6AF );
-			AddHouseDoor( 1, 0, 25, 0x6AF );
+			AddHouseDoor( 3, -2, 5, 0x6AF );
+			AddHouseDoor( 1, -2, 25, 0x6AF );
 
 			BaseDoor door1 = AddHouseDoor( -3, 3, 5, 0x6A5 );
 			BaseDoor door2 = AddHouseDoor( -2, 3, 5, 0x6A7 );
