@@ -85,7 +85,7 @@ namespace Server.Custom.KoperPets
 
         public static void TryTamingGain(BaseCreature pet, Mobile target)
         {
-            if (pet == null || target == null)
+            if (pet == null || target == null || !MyServerSettings.KoperPets())
                 return;
 
             PlayerMobile owner = pet.ControlMaster as PlayerMobile;
@@ -144,7 +144,7 @@ namespace Server.Custom.KoperPets
             if (pet == null || pet.ControlMaster == null)
                 return;
 
-            if (Utility.RandomDouble() < 0.10) // 10% chance if no skill gain
+            if (Utility.RandomDouble() < 0.10 && MyServerSettings.KoperPetsImmersive()) // 10% chance if no skill gain
             {
                 string battleCry = String.Format(BattleCries[Utility.Random(BattleCries.Length)], pet.Name);
 

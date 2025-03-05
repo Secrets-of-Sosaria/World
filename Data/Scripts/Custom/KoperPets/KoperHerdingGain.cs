@@ -31,8 +31,8 @@ namespace Server.Custom.KoperPets
 
         public static void TryGainHerdingSkill(Mobile owner)
         {
-            if (owner == null || !owner.Alive)
-                return; // No skill gain for dead players
+            if (owner == null || !owner.Alive || !MyServerSettings.KoperPets())
+                return; // No skill gain for dead players/system disabled
 
             // Check if the player is on cooldown
             if (_cooldowns.ContainsKey(owner) && DateTime.UtcNow < _cooldowns[owner])
@@ -61,8 +61,10 @@ namespace Server.Custom.KoperPets
                 owner.Skills[SkillName.Herding].Base += skillGain;
 
                 // Select a random message for variety
-                owner.SendMessage(SuccessMessages[Utility.Random(SuccessMessages.Length)]);
-
+                if (MyServerSettings.KoperPetsImmersive()) 
+                {
+                    owner.SendMessage(SuccessMessages[Utility.Random(SuccessMessages.Length)]);
+                }
                 // Start cooldown timer
                 _cooldowns[owner] = DateTime.UtcNow + CooldownTime;
             }
