@@ -111,9 +111,9 @@ namespace Server.Custom.KoperPets
 
             // Determine gain chance and amount based on skill level
             if (tamingMultiplier <= 0) tamingMultiplier = 1.0; // Ensure valid value
-            if (tamingSkill <= 30.0) { gainChance = 0.20 * tamingMultiplier; minGain = 0.1; maxGain = 0.3; }
-            else if (tamingSkill <= 50.0) { gainChance = 0.15 * tamingMultiplier; minGain = 0.1; maxGain = 0.2; }
-            else if (tamingSkill <= 70.0) { gainChance = 0.10 * tamingMultiplier; minGain = 0.1; maxGain = 0.1; }
+            if (tamingSkill <= 30.0) { gainChance = 0.20 * tamingMultiplier; minGain = 0.1; maxGain = 1.0; }
+            else if (tamingSkill <= 50.0) { gainChance = 0.15 * tamingMultiplier; minGain = 0.1; maxGain = 0.5; }
+            else if (tamingSkill <= 70.0) { gainChance = 0.10 * tamingMultiplier; minGain = 0.1; maxGain = 0.2; }
             else if (tamingSkill < 100.0) { gainChance = 0.05 * tamingMultiplier; minGain = 0.1; maxGain = 0.1; }
             else return; // No gain if above 100
 
