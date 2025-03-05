@@ -2,7 +2,6 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <AssemblyName>World</AssemblyName>
-    <OutputPath>../../../</OutputPath>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
