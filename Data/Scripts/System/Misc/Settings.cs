@@ -586,7 +586,7 @@ namespace Server
 
 		public static double KoperHerdingChance()
 		{
-			return Math.Max(1.0, Math.Min(MySettings.S_KoperTamingChance, 10.0));
+			return Math.Max(1.0, Math.Min(MySettings.S_KoperHerdingChance, 10.0));
 		}
 
 		public static int KoperCooldown()
