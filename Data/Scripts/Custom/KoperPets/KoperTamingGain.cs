@@ -12,7 +12,7 @@ namespace Server.Custom.KoperPets
         // Dictionary to track cooldowns (PlayerMobile -> Last Taming Gain Time)
         private static Dictionary<PlayerMobile, DateTime> _tamingCooldowns = new Dictionary<PlayerMobile, DateTime>();
 
-        private static readonly TimeSpan TamingCooldown = TimeSpan.FromSeconds(MyServerSettings.KoperCooldown()); //  Set cooldown time (60 Seconds default)
+        private static readonly TimeSpan TamingCooldown = TimeSpan.FromSeconds(MyServerSettings.KoperCooldown()); //  Set cooldown time (20 Seconds default)
 
         private static readonly string[] TamingMessages = new string[]
         {

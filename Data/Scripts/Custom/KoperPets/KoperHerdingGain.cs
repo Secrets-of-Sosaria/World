@@ -8,7 +8,7 @@ namespace Server.Custom.KoperPets
     public static class KoperHerdingGain
     {
         private static readonly Dictionary<Mobile, DateTime> _cooldowns = new Dictionary<Mobile, DateTime>();
-        private static readonly TimeSpan CooldownTime = TimeSpan.FromSeconds(MyServerSettings.KoperCooldown()); // 60-second cooldown
+        private static readonly TimeSpan CooldownTime = TimeSpan.FromSeconds(MyServerSettings.KoperCooldown()); // 20-second cooldown
 
         private static readonly string[] SuccessMessages = new string[]
         {
