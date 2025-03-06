@@ -35,7 +35,7 @@ namespace Server.Gumps
 
 			string sText = "";
 
-			string c1 = "5";
+			string c1 = MyServerSettings.DeathStatAndSkillLoss().ToString();
 			string c2 = "10";
 			string loss = "";
 
@@ -364,7 +364,7 @@ namespace Server.Gumps
 			string sText = "Do you wish to plead to the gods for your life back now? You may also continue on in your spirit form and seek out a shrine or healer.";
 			bool ResPenalty = false;
 
-			string c1 = "5";
+			string c1 = MyServerSettings.DeathStatAndSkillLoss().ToString();
 			string c2 = "10";
 			string loss = "";
 
@@ -475,7 +475,7 @@ namespace Server.Misc
 			if ( from is PlayerMobile && ( ( GetPlayerInfo.isFromSpace( from ) && !allPenalty ) || allPenalty ) )
 			{
 				double val1 = 0.10;
-				double val2 = 0.95;
+				double val2 = (100.0 - MyServerSettings.DeathStatAndSkillLoss()) / 100;
 
 				if ( GetPlayerInfo.isFromSpace( from ) && allPenalty )
 				{
