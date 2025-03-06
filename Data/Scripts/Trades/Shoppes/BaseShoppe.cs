@@ -353,12 +353,24 @@ namespace Server.Items
 				}
 				else
 				{
+					int remainingSpace = 5000 - ShoppeResources;
+
+                    // Prevent consuming dropped resources beyond shoppe maximum
+                    if ( dropped.Amount > remainingSpace )
+                    {
+                        from.SendMessage( "You can only add " + remainingSpace + " more resources." );
+                        return false;
+                    }
+                    
 					ShoppeResources = ShoppeResources + dropped.Amount;
-					if ( ShoppeResources >= 5000 )
-					{
-						ShoppeResources = 5000;
-						from.SendMessage( "You add more resources but now your shoppe is full." );
-					}
+
+                    from.SendMessage( "You add " + dropped.Amount + " resources to your shoppe." );
+
+                    if ( ShoppeResources == 5000 )
+                    {
+                        from.SendMessage( "Your shoppe is now full of resources." );
+                    }
+
 					from.SendSound( 0x42 );
 					dropped.Delete();
 					return true;

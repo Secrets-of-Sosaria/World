@@ -3993,6 +3993,18 @@ namespace Server.Mobiles
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
 
 			base.OnDamage( amount, from, willKill );
+			
+			#region KoperPets
+			// KOPERPETS CHANGE: Trigger skill gain
+    		PlayerMobile owner = this.ControlMaster as PlayerMobile;
+			
+    		if (this.Controlled && owner != null)
+    		{
+        		// Call the skill gain system, passing the pet (this) and the attacker
+        		Server.Custom.KoperPets.PetTamingSkillGain.TryTamingGain(this, from);
+    		}
+			#endregion
+
 		}
 
 		public virtual void OnDamagedBySpell( Mobile from )
@@ -6070,6 +6082,17 @@ namespace Server.Mobiles
 
 				if ( m_ControlMaster != null )
 					m_ControlMaster.InvalidateProperties();
+
+				#region KoperPets
+				//KOPERPETS If the AI state is changed to a valid pet command, try to gain Herding skill
+        		if (ControlMaster != null && Controlled)
+        		{
+            		if (value == OrderType.Come || value == OrderType.Guard || value == OrderType.Follow || value == OrderType.Stay)
+            		{
+                		Server.Custom.KoperPets.KoperHerdingGain.TryGainHerdingSkill(ControlMaster);
+            		}
+        		}
+				#endregion
 			}
 		}
 

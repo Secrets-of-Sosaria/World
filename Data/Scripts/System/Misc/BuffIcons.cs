@@ -162,77 +162,78 @@ namespace Server
 
 		public static void CleanupIcons( Mobile m, bool onlyParalyzed )
 		{
-			if ( !onlyParalyzed )
+			if( m != null ) 
 			{
-				Item orb = m.Backpack.FindItemByType( typeof ( SoulOrb ) );
+				if ( !onlyParalyzed )
+				{
+					Item orb = m.Backpack.FindItemByType( typeof ( SoulOrb ) );
 					if ( orb == null )
 						BuffInfo.RemoveBuff( m, BuffIcon.Resurrection );
 					else
 						BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.Resurrection, 1063626, true ) );
 
-				Item gem = m.Backpack.FindItemByType( typeof ( GemImmortality ) );
+					Item gem = m.Backpack.FindItemByType( typeof ( GemImmortality ) );
 					if ( gem == null )
 						BuffInfo.RemoveBuff( m, BuffIcon.GemImmortality );
 					else
 						BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.GemImmortality, 1063658, true ) );
 
-				Item shard = m.Backpack.FindItemByType( typeof ( JewelImmortality ) );
+					Item shard = m.Backpack.FindItemByType( typeof ( JewelImmortality ) );
 					if ( shard == null )
 						BuffInfo.RemoveBuff( m, BuffIcon.WithstandDeath );
 					else
 						BuffInfo.AddBuff( m, new BuffInfo( BuffIcon.WithstandDeath, 1063656, true ) );
 
-				Item enchant = m.Backpack.FindItemByType( typeof ( EnchantSpellStone ) );
+					Item enchant = m.Backpack.FindItemByType( typeof ( EnchantSpellStone ) );
 					if ( enchant == null )
 						BuffInfo.RemoveBuff( m, BuffIcon.Enchant );
 
-				Item enchanted = m.Backpack.FindItemByType( typeof ( ResearchEnchantStone ) );
+					Item enchanted = m.Backpack.FindItemByType( typeof ( ResearchEnchantStone ) );
 					if ( enchanted == null )
 						BuffInfo.RemoveBuff( m, BuffIcon.EnchantWeapon );
 
-				if ( !TransformationSpellHelper.UnderTransformation( m ) )
-				{
-					BuffInfo.RemoveBuff( m, BuffIcon.WraithForm );
-					BuffInfo.RemoveBuff( m, BuffIcon.HorrificBeast );
-					BuffInfo.RemoveBuff( m, BuffIcon.LichForm );
-					BuffInfo.RemoveBuff( m, BuffIcon.VampiricEmbrace );
-				}
+					if ( !TransformationSpellHelper.UnderTransformation( m ) )
+					{
+						BuffInfo.RemoveBuff( m, BuffIcon.WraithForm );
+						BuffInfo.RemoveBuff( m, BuffIcon.HorrificBeast );
+						BuffInfo.RemoveBuff( m, BuffIcon.LichForm );
+						BuffInfo.RemoveBuff( m, BuffIcon.VampiricEmbrace );
+					}
 
-				if ( m.MagicDamageAbsorb < 1 )
-				{
-					BuffInfo.RemoveBuff( m, BuffIcon.Absorption );
-					BuffInfo.RemoveBuff( m, BuffIcon.PsychicWall );
-					BuffInfo.RemoveBuff( m, BuffIcon.Deflection );
-					BuffInfo.RemoveBuff( m, BuffIcon.TrialByFire );
-					BuffInfo.RemoveBuff( m, BuffIcon.OrbOfOrcus );
-					BuffInfo.RemoveBuff( m, BuffIcon.MagicReflection );
-					BuffInfo.RemoveBuff( m, BuffIcon.ElementalEcho );
-				}
-				if ( !m.Poisoned )
-				{
-					BuffInfo.RemoveBuff( m, BuffIcon.Poisoned );
+					if ( m.MagicDamageAbsorb < 1 )
+					{
+						BuffInfo.RemoveBuff( m, BuffIcon.Absorption );
+						BuffInfo.RemoveBuff( m, BuffIcon.PsychicWall );
+						BuffInfo.RemoveBuff( m, BuffIcon.Deflection );
+						BuffInfo.RemoveBuff( m, BuffIcon.TrialByFire );
+						BuffInfo.RemoveBuff( m, BuffIcon.OrbOfOrcus );
+						BuffInfo.RemoveBuff( m, BuffIcon.MagicReflection );
+						BuffInfo.RemoveBuff( m, BuffIcon.ElementalEcho );
+					}
+					if ( !m.Poisoned )
+					{
+						BuffInfo.RemoveBuff( m, BuffIcon.Poisoned );
+					}
+					}else if ( !m.Paralyzed )
+					{
+						BuffInfo.RemoveBuff( m, BuffIcon.ElementalHold );
+						BuffInfo.RemoveBuff( m, BuffIcon.StasisField );
+						BuffInfo.RemoveBuff( m, BuffIcon.Hilarity );
+						BuffInfo.RemoveBuff( m, BuffIcon.Paralyze );
+						BuffInfo.RemoveBuff( m, BuffIcon.SleepField );
+						BuffInfo.RemoveBuff( m, BuffIcon.Sleep );
+						BuffInfo.RemoveBuff( m, BuffIcon.MassSleep );
+						BuffInfo.RemoveBuff( m, BuffIcon.ParalyzeField );
+						BuffInfo.RemoveBuff( m, BuffIcon.GraspingRoots );
+						BuffInfo.RemoveBuff( m, BuffIcon.PeaceMaking );
+						BuffInfo.RemoveBuff( m, BuffIcon.Firefly );
+						BuffInfo.RemoveBuff( m, BuffIcon.Begging );
+						BuffInfo.RemoveBuff( m, BuffIcon.Confusion );
+						BuffInfo.RemoveBuff( m, BuffIcon.Charm );
+						BuffInfo.RemoveBuff( m, BuffIcon.Fear );
+					}
 				}
 			}
-
-			if ( !m.Paralyzed )
-			{
-				BuffInfo.RemoveBuff( m, BuffIcon.ElementalHold );
-				BuffInfo.RemoveBuff( m, BuffIcon.StasisField );
-				BuffInfo.RemoveBuff( m, BuffIcon.Hilarity );
-				BuffInfo.RemoveBuff( m, BuffIcon.Paralyze );
-				BuffInfo.RemoveBuff( m, BuffIcon.SleepField );
-				BuffInfo.RemoveBuff( m, BuffIcon.Sleep );
-				BuffInfo.RemoveBuff( m, BuffIcon.MassSleep );
-				BuffInfo.RemoveBuff( m, BuffIcon.ParalyzeField );
-				BuffInfo.RemoveBuff( m, BuffIcon.GraspingRoots );
-				BuffInfo.RemoveBuff( m, BuffIcon.PeaceMaking );
-				BuffInfo.RemoveBuff( m, BuffIcon.Firefly );
-				BuffInfo.RemoveBuff( m, BuffIcon.Begging );
-				BuffInfo.RemoveBuff( m, BuffIcon.Confusion );
-				BuffInfo.RemoveBuff( m, BuffIcon.Charm );
-				BuffInfo.RemoveBuff( m, BuffIcon.Fear );
-			}
-		}
 		#endregion
 	}
 
