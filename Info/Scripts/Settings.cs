@@ -217,6 +217,10 @@ namespace Server
 		public static int S_DeathPayLevel = 5;
 		public static int S_DeathPayAmount = 20;
 
+	// Represents stat/skill loss (in percentage) when resurrecting without gold at a healer/ankh. Ranges from 0.0 to 10.0.
+
+		public static double S_DeathStatAndSkillLoss = 5.0;
+
 	// Spell damage toward monsters can be between 25 and 200 percent.
 
 		public static int S_SpellDamageIncreaseVsMonsters = 200;

@@ -586,5 +586,10 @@ namespace Server
 
 			return gold;
 		}
+
+		public static double DeathStatAndSkillLoss()
+		{
+			return Math.Max(0.0, Math.Min(MySettings.S_DeathStatAndSkillLoss, 10.0));
+		}
 	}
 }
