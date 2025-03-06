@@ -43,7 +43,7 @@ namespace Server.Spells.Chivalry
 					if ( m is BaseCreature && ((BaseCreature)m).IsAnimatedDead )
 						continue;
 
-					if ( Caster != m && m.InLOS( Caster ) && Caster.CanBeBeneficial( m, false, true ) && !(m is Golem) )
+					if ( Caster != m && m.InLOS( Caster ) && Caster.CanBeBeneficial( m, false, true ) && !(m is Golem) && !((BaseCreature)m).IsDeadBondedPet )
 						targets.Add( m );
 				}
 
@@ -110,31 +110,15 @@ namespace Server.Spells.Chivalry
 							sendEffect = true;
 						}
 
-						StatMod mod;
+						StatMod strmod = m.GetStatMod( "[Magic] Str Offset" );
+						StatMod dexmod = m.GetStatMod( "[Magic] Dex Offset" );
+						StatMod intmod = m.GetStatMod( "[Magic] Int Offset" );
 
-						mod = m.GetStatMod( "[Magic] Str Offset" );
-						if ( mod != null && mod.Offset < 0 )
+						if ( (strmod != null && strmod.Offset < 0) || (dexmod != null && dexmod.Offset < 0) || ( intmod != null && intmod.Offset < 0 ) ||
+							m.Paralyzed || EvilOmenSpell.TryEndEffect( m ) || StrangleSpell.RemoveCurse ( m) ||  CorpseSkinSpell.RemoveCurse( m )
+						){
 							sendEffect = true;
-
-						mod = m.GetStatMod( "[Magic] Dex Offset" );
-						if ( mod != null && mod.Offset < 0 )
-							sendEffect = true;
-
-						mod = m.GetStatMod( "[Magic] Int Offset" );
-						if ( mod != null && mod.Offset < 0 )
-							sendEffect = true;
-
-						if ( m.Paralyzed )
-							sendEffect = true;
-
-						if ( EvilOmenSpell.TryEndEffect( m ) )
-							sendEffect = true;
-
-						if ( StrangleSpell.RemoveCurse( m ) )
-							sendEffect = true;
-
-						if ( CorpseSkinSpell.RemoveCurse( m ) )
-							sendEffect = true;
+						}
 
 						if ( sendEffect )
 						{
