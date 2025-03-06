@@ -568,6 +568,34 @@ namespace Server
 			return text;
 		}
 
+		#region KoperPets
+		public static bool KoperPets()
+		{
+			return MySettings.S_KoperPets;
+		}
+
+		public static bool KoperPetsImmersive()
+		{
+			return MySettings.S_KoperPetsImmersive;
+		}
+
+		public static double KoperTamingChance()
+		{
+			return Math.Max(1.0, Math.Min(MySettings.S_KoperTamingChance, 10.0));
+		}
+
+		public static double KoperHerdingChance()
+		{
+			return Math.Max(1.0, Math.Min(MySettings.S_KoperHerdingChance, 10.0));
+		}
+
+		public static int KoperCooldown()
+		{
+			return Math.Max(0, Math.Min(MySettings.S_KoperCooldown, 600));
+		}
+		#endregion
+
+
 		public static int StartingGold()
 		{
 			int min = MySettings.S_MinGold;

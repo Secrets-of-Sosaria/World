@@ -707,7 +707,26 @@ namespace Server
 
 		public static int S_BondDays = 7;
 
+	// These settings affect the skill gain system for herding and taming. If the system bool is set 
+	// to true, the system will be active. If immersive messages is set to true, the game will display 
+	// immeersive skill gain messages. 
+		public static bool S_KoperPets = true;
 
+		public static bool S_KoperPetsImmersive = true;
+	
+	// The skill gain chance multiplier adjusts how likely you 
+	// are to gain skill from your pets fighting and obeying commands. The default is 1, where 1 gives 
+	// players a 20% chance to gain skill at <= 30 skill, 15% at <+50, 10% <= 70, and 5% after that.
+	// Maximum value is 10, min is 1.
+
+		public static double S_KoperTamingChance = 1.0;
+
+		public static double S_KoperHerdingChance = 1.0;
+
+		// The KoperCooldown sets the minimum amount of time in seconds between taming/herding skill gain
+		// from fighting for taming, and commanding pets for herding. Minimum is 0, max is 600
+
+		public static int S_KoperCooldown = 20;
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
