@@ -182,10 +182,18 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( Parent == from )
+			if ( Parent == from || ( MySettings.S_AllowBackpackHarvestTool && this.IsChildOf(from.Backpack) ) ) 
+			{
 				HarvestSystem.BeginHarvesting( from, this );
-			else
-				from.SendLocalizedMessage( 502641 ); // You must equip this item to use it.
+			} 
+			else 
+			{	
+				int localizedMessageId = MySettings.S_AllowBackpackHarvestTool 
+					? 1042004 // That must be equipped or in your pack to use it.
+					: 502641; // You must equip this item to use it.
+				
+				from.SendLocalizedMessage( localizedMessageId ); 
+			}
 		}
 
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )

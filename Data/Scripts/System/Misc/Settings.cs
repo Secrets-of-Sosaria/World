@@ -521,12 +521,12 @@ namespace Server
 
 		public static double SkillGain()
 		{
-			int skill = 0;
+			int skill = MySettings.S_SkillGain;
 
-			if ( MySettings.S_SkillGain > 10 )
+			if ( skill > 10 )
 				skill = 10;
 
-			if ( MySettings.S_SkillGain < 1 )
+			if ( skill < 1 )
 				skill = 0;
 
 			return skill * 0.1;
@@ -534,12 +534,12 @@ namespace Server
 
 		public static int FoodCheck()
 		{
-			int time = 5;
+			int time = MySettings.S_FoodCheck;
 
-			if ( MySettings.S_FoodCheck > 60 )
+			if ( time > 60 )
 				time = 60;
 
-			if ( MySettings.S_FoodCheck < 5 )
+			if ( time < 5 )
 				time = 5;
 
 			return time;
@@ -568,6 +568,34 @@ namespace Server
 			return text;
 		}
 
+		#region KoperPets
+		public static bool KoperPets()
+		{
+			return MySettings.S_KoperPets;
+		}
+
+		public static bool KoperPetsImmersive()
+		{
+			return MySettings.S_KoperPetsImmersive;
+		}
+
+		public static double KoperTamingChance()
+		{
+			return Math.Max(1.0, Math.Min(MySettings.S_KoperTamingChance, 10.0));
+		}
+
+		public static double KoperHerdingChance()
+		{
+			return Math.Max(1.0, Math.Min(MySettings.S_KoperHerdingChance, 10.0));
+		}
+
+		public static int KoperCooldown()
+		{
+			return Math.Max(0, Math.Min(MySettings.S_KoperCooldown, 600));
+		}
+		#endregion
+
+
 		public static int StartingGold()
 		{
 			int min = MySettings.S_MinGold;
@@ -585,6 +613,11 @@ namespace Server
 					gold = 10000;
 
 			return gold;
+		}
+
+		public static double DeathStatAndSkillLoss()
+		{
+			return Math.Max(0.0, Math.Min(MySettings.S_DeathStatAndSkillLoss, 10.0));
 		}
 	}
 }
