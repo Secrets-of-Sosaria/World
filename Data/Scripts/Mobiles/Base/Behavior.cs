@@ -7112,6 +7112,7 @@ namespace Server.Mobiles
 				case OrderType.Stop:
 				m_Mobile.ControlMaster.RevealingAction();
 				m_Mobile.Home = m_Mobile.Location;
+				m_Mobile.RangeHome = 5;
 				m_Mobile.CurrentSpeed = m_Mobile.PassiveSpeed;
 				m_Mobile.PlaySound( m_Mobile.GetIdleSound() );
 				m_Mobile.Warmode = false;
@@ -7142,8 +7143,10 @@ namespace Server.Mobiles
 		{
 			m_Mobile.DebugSay( "I have no order" );
 
-			WalkRandomInHome( 3, 2, 1 );
-
+			if ( Utility.RandomMinMax( 1, 10 ) > 9 )
+            {
+				WalkRandomInHome( 3, 2, 1 );
+	        }
 			if( m_Mobile.Combatant != null && !m_Mobile.Combatant.Deleted && m_Mobile.Combatant.Alive && !m_Mobile.Combatant.IsDeadBondedPet )
 			{
 				m_Mobile.Warmode = true;
@@ -7787,15 +7790,15 @@ namespace Server.Mobiles
 				return true;
 
 			m_Mobile.DebugSay( "My master told me to stop." );
-
-			m_Mobile.Direction = m_Mobile.GetDirectionTo( m_Mobile.ControlMaster );
-			m_Mobile.Home = m_Mobile.Location;
-
 			m_Mobile.ControlTarget = null;
 
 			if( Core.ML )
 			{
-				WalkRandomInHome( 3, 2, 1 );
+				if ( Utility.RandomMinMax( 1, 10 ) > 8 )
+				{
+					m_Mobile.Direction = (Direction)Utility.Random( 8 );
+					WalkRandomInHome( 3, 2, 1 );
+				}
 			}
 			else
 			{
