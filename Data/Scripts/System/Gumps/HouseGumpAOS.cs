@@ -445,6 +445,7 @@ namespace Server.Gumps
 						}
 						else
 						{
+							AddButtonLabeled( 10, 210, GetButtonID( 5, 3 ), 1060761, isOwner && house.Public ); // Change House Sign
 							AddButtonLabeled( 10, 120, GetButtonID( 5, 7 ), 1060764, isCoOwner ); // Rename House
 						}
 					}
