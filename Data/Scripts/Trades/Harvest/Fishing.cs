@@ -1071,7 +1071,9 @@ namespace Server.Engines.Harvest
 
 		public override bool BeginHarvesting( Mobile from, Item tool )
 		{
-			if ( from.FindItemOnLayer( Layer.OneHanded ) == null || tool != from.FindItemOnLayer( Layer.OneHanded ) )
+			bool canUseBackpackHarvestTool = MySettings.S_AllowBackpackHarvestTool && tool.IsChildOf(from.Backpack);
+
+			if ( tool.Parent != from && !canUseBackpackHarvestTool )
 			{
 				from.SendMessage("You need to be holding your fishing pole to fish.");
 				return false;
