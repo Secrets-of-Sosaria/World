@@ -154,9 +154,16 @@ namespace Server.Engines.Harvest
 			if ( !base.CheckHarvest( from, tool, def, toHarvest ) )
 				return false;
 
-			if ( tool.Parent != from )
-			{
-				from.SendLocalizedMessage( 500487 ); // The axe must be equipped for any serious wood chopping.
+			bool canUseBackpackHarvestTool = MySettings.S_AllowBackpackHarvestTool && tool.IsChildOf(from.Backpack);
+
+			if ( tool.Parent != from && !canUseBackpackHarvestTool )
+			{	
+				int localizedMessageId = MySettings.S_AllowBackpackHarvestTool 
+					? 1042004 // That must be equipped or in your pack to use it.
+					: 500487; // The axe must be equipped for any serious wood chopping.
+				
+				from.SendLocalizedMessage( localizedMessageId );
+
 				return false;
 			}
 
