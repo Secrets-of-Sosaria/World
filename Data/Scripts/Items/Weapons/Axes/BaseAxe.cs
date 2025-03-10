@@ -97,7 +97,9 @@ namespace Server.Items
 			if ( HarvestSystem == null || Deleted )
 				return;
 
-			if ( Parent == from || ( MySettings.S_AllowBackpackHarvestTool && this.IsChildOf(from.Backpack) ) ) 
+			bool canUseBackpackHarvestTool = MySettings.S_AllowBackpackHarvestTool && this.IsChildOf(from.Backpack);
+
+			if ( Parent == from || canUseBackpackHarvestTool ) 
 			{
 				HarvestSystem.BeginHarvesting( from, this );
 			} 
