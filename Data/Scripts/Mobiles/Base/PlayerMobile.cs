@@ -817,6 +817,9 @@ namespace Server.Mobiles
 
 			else 
 			this.FollowersMax = 5;
+
+			// Additional slots, if configured, are added after the max is determined by skill mastery above
+			this.FollowersMax += MyServerSettings.AdditionalFollowerSlots();
 		}
 
 		public override int GetMaxResistance( ResistanceType type )
