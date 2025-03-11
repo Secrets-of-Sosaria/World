@@ -48,7 +48,9 @@ namespace Server.Engines.Craft
 			from.CloseGump( typeof( CraftGump ) );
 			from.CloseGump( typeof( CraftGumpItem ) );
 
-			if ( tool.Parent == from || ( MySettings.S_AllowBackpackCraftTool && tool.IsChildOf(from.Backpack) ) )
+			bool canUseBackpackCraftTool = MySettings.S_AllowBackpackCraftTool && tool.IsChildOf(from.Backpack);
+
+			if ( tool.Parent == from || canUseBackpackCraftTool )
 			{
 				AddPage( 0 );
 

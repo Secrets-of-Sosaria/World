@@ -206,11 +206,13 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+			bool canUseBackpackCraftTool = MySettings.S_AllowBackpackCraftTool && this.IsChildOf(from.Backpack);
+
 			if ( !MySettings.S_AllowMacroResources )
 			{ 
 				CaptchaGump.sendCaptcha(from, BaseTool.OnDoubleClickRedirected, this);
 			}
-			else if ( Parent == from || ( MySettings.S_AllowBackpackCraftTool && this.IsChildOf(from.Backpack) ) )
+			else if ( Parent == from || canUseBackpackCraftTool )
 			{
 				CraftSystem system = this.CraftSystem;
 
@@ -231,11 +233,11 @@ namespace Server.Items
 			}
 			else
 			{
-				if (MySettings.S_AllowBackpackCraftTool) {
-					from.SendLocalizedMessage( 1042004 ); // That must be equipped or in your pack to use it.
-				} else {
-					from.SendLocalizedMessage( 502641 ); // You must equip this item to use it.
-				}
+				int localizedMessageId = MySettings.S_AllowBackpackCraftTool
+					? 1042004 // That must be equipped or in your pack to use it.
+					: 502641; // You must equip this item to use it.
+				
+				from.SendLocalizedMessage( localizedMessageId );
 			}
 		}
 
@@ -246,7 +248,9 @@ namespace Server.Items
 
 			BaseTool tool = (BaseTool)o;
 
-			if ( tool.Parent == from || ( MySettings.S_AllowBackpackCraftTool && tool.IsChildOf(from.Backpack) ) )
+			bool canUseBackpackCraftTool = MySettings.S_AllowBackpackCraftTool && tool.IsChildOf(from.Backpack);
+
+			if ( tool.Parent == from || canUseBackpackCraftTool )
 			{
 				CraftSystem system = tool.CraftSystem;
 
@@ -269,7 +273,7 @@ namespace Server.Items
 					? 1042004 // That must be equipped or in your pack to use it.
 					: 502641; // You must equip this item to use it.
 				
-				from.SendLocalizedMessage( localizedMessageId ); 
+				from.SendLocalizedMessage( localizedMessageId );
 			}
 		}
 
