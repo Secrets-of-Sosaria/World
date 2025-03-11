@@ -568,6 +568,11 @@ namespace Server
 			return text;
 		}
 
+		public static int AdditionalFollowerSlots()
+		{
+			return Math.Max(0, Math.Min(MySettings.S_AdditionalFollowerSlots, 8));
+		}
+
 		#region KoperPets
 		public static bool KoperPets()
 		{

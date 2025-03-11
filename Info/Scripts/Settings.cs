@@ -715,6 +715,11 @@ namespace Server
 
 		public static int S_BondDays = 7;
 
+	// This adds additional follower slots above the default (5) and above those earned from skill mastery.
+	// Ranges from 0 to 8 (effectively doubling slots at max skills). The default is 0.
+
+		public static int S_AdditionalFollowerSlots = 0;
+
 	// These settings affect the skill gain system for herding and taming. If the system bool is set 
 	// to true, the system will be active. If immersive messages is set to true, the game will display 
 	// immeersive skill gain messages. 
@@ -731,8 +736,8 @@ namespace Server
 
 		public static double S_KoperHerdingChance = 1.0;
 
-		// The KoperCooldown sets the minimum amount of time in seconds between taming/herding skill gain
-		// from fighting for taming, and commanding pets for herding. Minimum is 0, max is 600
+	// The KoperCooldown sets the minimum amount of time in seconds between taming/herding skill gain
+	// from fighting for taming, and commanding pets for herding. Minimum is 0, max is 600
 
 		public static int S_KoperCooldown = 20;
 
