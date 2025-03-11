@@ -30,6 +30,35 @@ namespace Server.Misc
 
 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+				+ "Justice - 11 March 2025<br>"
+
+				+ "<br>"
+				+ "* Fixed a hole in the mountain at the Corrupt Pass.<br>"
+				+ "* Updated documentation for death stat and skill loss settings to clarify they do not affect alien characters.<br>"
+				+ "* Fixed a bug where the Noble Sacrifice spell was attempting to resurrect horses, causing server crashes.<br>"
+				+ "* Added a new setting, S_DeathStatAndSkillLoss, to adjust stat and skill loss upon death when not resurrecting at a healer. The loss ranges from 1% to 10% of current stats and skills, defaulting to 5%.<br>"
+				+ "* Fixed door and sign positions for certain houses.<br>"
+				+ "* Introduced a small chance for skill gains when using a tamed pet in combat, with adjustable cooldown and player notifications. Pets may also occasionally display battlecries.<br>"
+				+ "* Made additional follow slots configurable.<br>"
+				+ "* Implemented a check to prevent resource loss when dropping items onto a shoppe, ensuring the quantity does not exceed the remaining space.<br>"
+				+ "* Resolved an issue with obtaining Tailoring BODs due to conflicts with the new leatherworking system in Secrets of Sosaria.<br>"
+				+ "* Restored the ability to use basic crafting and harvesting tools from the backpack without equipping them, with optional settings.<br>"
+				+ "* Added spell channeling to the default item properties of wizard staffs to correct sale price issues.<br>"
+				+ "* Fixed a crash that occurred when using Herbal Healing potions on out-of-range followers.<br>"
+				+ "* Updated tamed animal/follower behavior to prevent directional glitches when using 'all stop' and to limit roaming to 5 spaces from their home.<br>"
+				+ "* Added gift and levelable hiking boots for monster characters, obtainable from gift item chests and the artifact book with the titan.<br>"
+				+ "* Improved skill point limit configuration, allowing server admins to control the maximum skill points for a single character through a single setting.<br>"
+				+ "* Fixed height display on the enhancement gump.<br>"
+				+ "* Rebalanced stealable boxes to adjust gold amounts and added a skill check for poisoning to benefit expert poisoners.<br>"
+				+ "* Updated the `S_PedStealThrottle` setting to control artifact acquisition from boxes and removed the artificial time gate for stealing.<br>"
+				+ "* Adjusted skill gain rate and food check settings.<br>"
+				+ "* Allow worlds with only pre-built classic houses to still change the house sign type.<br>"
+				+ "<br>"
+
+				+ sepLine()
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 				+ "Compassion - 02 December 2024<br>"
 
 				+ "<br>"
