@@ -424,12 +424,6 @@ namespace Server.Engines.Craft
 
 		public override void OnResponse( NetState sender, RelayInfo info )
 		{
-			if ( CraftSystem.AllowManyCraft( m_Tool ) && !CraftSystem.CraftFinished( m_From, m_Tool ) )
-			{
-				m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, null ) );
-				return;
-			}
-
 			CraftSystem.CraftClear( m_From );
 
 			int buttonID = info.ButtonID;
@@ -441,26 +435,43 @@ namespace Server.Engines.Craft
 				return; // Canceled
 			}
 
+			int craftQueueAmount = 1;
+
 			if ( buttonID > 2000 && CraftSystem.AllowManyCraft( m_Tool ) )
 			{
 				buttonID = buttonID - 2000;
-				CraftSystem.CraftSetQueue( m_From, 100 );
+				craftQueueAmount = 100;
+
 				((PlayerMobile)m_From).CraftSound = -1;
 				((PlayerMobile)m_From).CraftSoundAfter = -1;
 			}
 			else if ( buttonID > 1000 && CraftSystem.AllowManyCraft( m_Tool ) )
 			{
 				buttonID = buttonID - 1000;
-				CraftSystem.CraftSetQueue( m_From, 10 );
+				craftQueueAmount = 10;
+
 				((PlayerMobile)m_From).CraftSound = -1;
 				((PlayerMobile)m_From).CraftSoundAfter = -1;
 			}
-			else
-				CraftSystem.CraftSetQueue( m_From, 1 );
 
 			buttonID = buttonID - 1;
 			int type = buttonID % 7;
 			int index = buttonID / 7;
+
+			// The following types/indexes represent buttons in various contexts which will attempt to craft an item
+			// 		Type 1 and 3 represent crafting from the main list or the last 10 list
+			// 		Type 6 + index 2 represents crafting from the "LastMade" context (shown along the top of the gump)
+			if ( type == 1 || type == 3 || ( type == 6 && index == 2 ) ) {
+
+				// Prevent crafting while queue is not yet finished
+				if ( CraftSystem.AllowManyCraft( m_Tool ) && !CraftSystem.CraftFinished( m_From, m_Tool ) ) {
+					m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, null ) );
+					return;
+				}
+
+				// Otherwise, set the queue based on the chosen button (1, 10, or 100)
+				CraftSystem.CraftSetQueue( m_From, craftQueueAmount );
+			}
 
 			CraftSystem system = m_CraftSystem;
 			CraftGroupCol groups = system.CraftGroups;
