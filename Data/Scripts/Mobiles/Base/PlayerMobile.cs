@@ -103,8 +103,8 @@ namespace Server.Mobiles
 		public void CraftMessage()
 		{
 			Craft_Snd_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerStateCallback( CraftSound_Callback ), this );
-			Craft_Aft_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 3.0 ), new TimerStateCallback( CraftAfter_Callback ), this );
-			Craft_Msg_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), new TimerStateCallback( CraftMessage_Callback ), this );
+			Craft_Aft_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 1.5 ), new TimerStateCallback( CraftAfter_Callback ), this );
+			Craft_Msg_Timer = Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerStateCallback( CraftMessage_Callback ), this );
 		}
 
 		private void CraftMessage_Callback( object state )
