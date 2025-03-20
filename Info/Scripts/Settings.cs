@@ -741,7 +741,12 @@ namespace Server
 
 		public static int S_KoperCooldown = 20;
 
+	// This setting control whether extra taming slots from skills are calculated based on modified skill base (which is the default) 
+	// or base skill value alone. The modified value accounts for item bonuses, while base value only uses actual skill to determine
+	// extra follower slots. 
 
+		public static bool S_ItemInfluencedTamingSlots = true;
+		
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// 011 - TOWNS & CITIES ///////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////
