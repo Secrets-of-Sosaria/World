@@ -151,6 +151,22 @@ namespace Server.Misc
 			gc += ( 1.0 - chance ) * ( success ? 0.5 : (Core.AOS ? 0.0 : 0.2) );
 			gc /= gainer;
 
+			if (from is PlayerMobile)
+			{
+				// Hunger and thirst influence skill gain rate slightly 
+				if( (from.Hunger + from.Thirst) <=8 ){
+					gc /= 1.50;
+				}else if( (from.Hunger + from.Thirst) <= 16 ){
+					gc /= 1.25;
+				}else if ( (from.Hunger + from.Thirst) <=24 ){
+					gc *= 1.10;
+				}else if ( (from.Hunger + from.Thirst) <=32 ){
+					gc *= 1.25;
+				}else if ( (from.Hunger + from.Thirst) <=40 ){
+					gc *= 1.50;
+				}
+			}
+
 			gc *= skill.Info.GainFactor;
 
 			if ( gc < 0.01 )
