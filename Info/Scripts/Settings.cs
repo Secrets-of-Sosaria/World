@@ -147,7 +147,7 @@ namespace Server
 
 	// If true, a player character cannot use macros to improve their skills quickly.
 
-		public static bool S_NoMacroing = false;
+		public static bool S_NoMacroing = true;
 
 	// You can increase the rate that stats gain from 50.0 (slow) to 10.0 (fast).
 
@@ -488,7 +488,7 @@ namespace Server
 	// value higher than 10 could mean that the paralyze cooldown is lower than its duration, 
 	// which can lead to frustrating fights as enemies can flee and chain-paralyze a character until they heal 
 	// enough to get back into the fight. 
-		public static double S_paralyzeDuration = 5.0;
+		public static double S_paralyzeDuration = 10.0;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// 008 - MERCHANTS ////////////////////////////////////////////////////////////////////////////
@@ -502,11 +502,11 @@ namespace Server
 
 	// If true (default false) then vendors will sell anything they normally stock. Some items have a default rarity % that this setting does not affect.
 
-		public static bool S_SellAll = true;
+		public static bool S_SellAll = false;
 
 	// If true (default false) then vendors will buy anything they normally stock. Some items have a default rarity % that this setting does not affect.
 
-		public static bool S_BuyAll = true;
+		public static bool S_BuyAll = false;
 
 	// If false, then vendors will NOT buy some tailor materials (cotton, flax, wool, regular cloth, and string).
 	// Does not affect a custom merchant that is set to buy such items.
@@ -746,7 +746,7 @@ namespace Server
 	// extra follower slots. 
 
 		public static bool S_ItemInfluencedTamingSlots = true;
-	
+		
 	///////////////////////////////////////////////////////////////////////////////////////////////
 	// 011 - TOWNS & CITIES ///////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////////////////
@@ -787,7 +787,7 @@ namespace Server
 	// game. Any settings here, that interfere with your enjoyment of the game, are under your
 	// control and you can change these settings at any time if you wish to.
 
-		public static bool S_Reviewed = true;
+		public static bool S_Reviewed = false;
 
 
 	}

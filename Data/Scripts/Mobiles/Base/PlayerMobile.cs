@@ -805,17 +805,17 @@ namespace Server.Mobiles
 		}
 
 		public virtual void UpdateFollowers(){
-			this.FollowersMax = CalculateFollowersMax(MySettings.S_ItemInfluencedTamingSlots);
+			this.FollowersMax = CalculateFollowersMax();
 			// Additional slots, if configured, are added after the max is determined by skill mastery above
 			this.FollowersMax += MyServerSettings.AdditionalFollowerSlots();
 		}
 
-		private int CalculateFollowersMax(bool itemsInfluenceTamingSlots)
+		private int CalculateFollowersMax()
 		{
-			double herding = itemsInfluenceTamingSlots ? this.Skills[SkillName.Herding].Value : this.Skills[SkillName.Herding].Base;
-			double veterinary = itemsInfluenceTamingSlots ? this.Skills[SkillName.Veterinary].Value : this.Skills[SkillName.Veterinary].Base;
-			double druidism = itemsInfluenceTamingSlots ? this.Skills[SkillName.Druidism].Value : this.Skills[SkillName.Druidism].Base;
-			double taming = itemsInfluenceTamingSlots ? this.Skills[SkillName.Taming].Value : this.Skills[SkillName.Taming].Base;
+			double herding = MySettings.S_ItemInfluencedTamingSlots ? this.Skills[SkillName.Herding].Value : this.Skills[SkillName.Herding].Base;
+			double veterinary = MySettings.S_ItemInfluencedTamingSlots ? this.Skills[SkillName.Veterinary].Value : this.Skills[SkillName.Veterinary].Base;
+			double druidism = MySettings.S_ItemInfluencedTamingSlots ? this.Skills[SkillName.Druidism].Value : this.Skills[SkillName.Druidism].Base;
+			double taming = MySettings.S_ItemInfluencedTamingSlots ? this.Skills[SkillName.Taming].Value : this.Skills[SkillName.Taming].Base;
 
 			if (herding >= 120 && veterinary >= 120 && druidism >= 120 && taming >= 120)
 				return 8;
