@@ -805,21 +805,26 @@ namespace Server.Mobiles
 		}
 
 		public virtual void UpdateFollowers(){
-
-			if ( (this.Skills[SkillName.Herding].Base >= 120.0) && (this.Skills[SkillName.Veterinary].Base >= 120.0) && (this.Skills[SkillName.Druidism].Base >= 120.0) && (this.Skills[SkillName.Taming].Base >= 120.0) )
-			this.FollowersMax = 8;
-
-			else if ( (this.Skills[SkillName.Herding].Base >= 90) && (this.Skills[SkillName.Veterinary].Base >= 90) && (this.Skills[SkillName.Druidism].Base >= 90) && (this.Skills[SkillName.Taming].Base >= 90) )
-			this.FollowersMax = 7;
-
-			else if ( (this.Skills[SkillName.Herding].Base >= 60) && (this.Skills[SkillName.Veterinary].Base >= 60) && (this.Skills[SkillName.Druidism].Base >= 60) && (this.Skills[SkillName.Taming].Base >= 60) )
-			this.FollowersMax = 6;
-
-			else 
-			this.FollowersMax = 5;
-
+			this.FollowersMax = CalculateFollowersMax(MySettings.S_ItemInfluencedTamingSlots);
 			// Additional slots, if configured, are added after the max is determined by skill mastery above
 			this.FollowersMax += MyServerSettings.AdditionalFollowerSlots();
+		}
+
+		private int CalculateFollowersMax(bool itemsInfluenceTamingSlots)
+		{
+			double herding = itemsInfluenceTamingSlots ? this.Skills[SkillName.Herding].Value : this.Skills[SkillName.Herding].Base;
+			double veterinary = itemsInfluenceTamingSlots ? this.Skills[SkillName.Veterinary].Value : this.Skills[SkillName.Veterinary].Base;
+			double druidism = itemsInfluenceTamingSlots ? this.Skills[SkillName.Druidism].Value : this.Skills[SkillName.Druidism].Base;
+			double taming = itemsInfluenceTamingSlots ? this.Skills[SkillName.Taming].Value : this.Skills[SkillName.Taming].Base;
+
+			if (herding >= 120 && veterinary >= 120 && druidism >= 120 && taming >= 120)
+				return 8;
+			if (herding >= 90 && veterinary >= 90 && druidism >= 90 && taming >= 90)
+				return 7;
+			if (herding >= 60 && veterinary >= 60 && druidism >= 60 && taming >= 60)
+				return 6;
+
+			return 5;
 		}
 
 		public override int GetMaxResistance( ResistanceType type )
