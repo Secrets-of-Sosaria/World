@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Items
 {
-	public class Artifact_SoulSeeker : GiftWhips
+	public class Artifact_WhistleofthePiper : GiftWhips
 	{
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
@@ -18,8 +18,9 @@ namespace Server.Items
 			SkillBonuses.SetValues( 1, SkillName.Herding,  10.0 + (Utility.RandomMinMax(0,3)*5) );
 			WeaponAttributes.HitLeechStam = 30;
 			WeaponAttributes.HitLeechHits = 30;
+            AccuracyLevel = WeaponAccuracyLevel.Supremely;
+			DamageLevel = WeaponDamageLevel.Vanq;
 			Attributes.WeaponSpeed = 30;
-			Slayer = SlayerName.Repond;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

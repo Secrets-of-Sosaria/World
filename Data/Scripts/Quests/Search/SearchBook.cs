@@ -565,7 +565,7 @@ namespace Server.Items
 			if ( artifact == arty) { name="Artifact_GlovesOfThePiper"; item="Gloves of the Pied Piper";} arty++;
 			if ( artifact == arty) { name="Artifact_PiedPiperFeatheredHat"; item="Pied Piper's Feathered Hat";} arty++;
 			if ( artifact == arty) { name="Artifact_ShirtOfThePiper"; item="Shirt of the Pied Piper";} arty++;
-			if ( artifact == arty) { name="Artifact_BootsofthePiper"; item="Boots of the Pied Piper";} arty++;
+			if ( artifact == arty) { name="Artifact_BootsOfThePiper"; item="Boots of the Pied Piper";} arty++;
 			if ( artifact == arty) { name="Artifact_TrousersOfThePiper"; item="Trousers of the Pied Piper";} arty++;
 			if ( artifact == arty) { name="Artifact_WhistleofthePiper"; item="Whistle of the Pied Piper";} arty++;
 			if ( artifact == arty) { name="Artifact_NatureVengeanceMask"; item="Mask of Natural Vengeance";} arty++;

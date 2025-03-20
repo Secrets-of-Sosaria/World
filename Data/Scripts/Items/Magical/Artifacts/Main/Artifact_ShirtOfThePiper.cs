@@ -23,7 +23,7 @@ namespace Server.Items
 			Server.Misc.Arty.ArtySetup( this, 5, "" );
 		}
 
-		public Artifact_GlovesOfThePiper( Serial serial ) : base( serial )
+		public Artifact_ShirtOfThePiper( Serial serial ) : base( serial )
 		{
 		}
 

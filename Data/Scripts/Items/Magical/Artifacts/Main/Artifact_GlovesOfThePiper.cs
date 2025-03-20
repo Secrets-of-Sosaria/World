@@ -11,7 +11,7 @@ namespace Server.Items
 		[Constructable]
 		public Artifact_GlovesOfThePiper()
 		{
-			Name = "Gloves of The Pied Paper";
+			Name = "Gloves of The Pied Piper";
 			Hue = 0x668;
 			SkillBonuses.SetValues( 0, SkillName.Musicianship,  10.0 + (Utility.RandomMinMax(0,2)*5) );
 			SkillBonuses.SetValues( 1, SkillName.Peacemaking,  10.0 + (Utility.RandomMinMax(0,2)*5) );
