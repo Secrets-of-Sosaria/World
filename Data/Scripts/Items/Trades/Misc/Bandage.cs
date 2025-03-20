@@ -532,7 +532,7 @@ namespace Server.Items
 			if ( healer == patient )
 				seconds = 5.0 + (0.5 * ((double)(120 - healer.Dex) / 10));
 			else if ( (healer.Dex) < 204 )
-				seconds = 5.0 + (0.5 * ((double)(60 - healer.Dex) / 10)) + ( patient.Alive ? 0.0 : 5.0 );
+				seconds = 5.0 - (Math.Sin((double)healer.Dex/100)*2.5) + ( patient.Alive ? 0.0 : 5.0 );
 			else
 				seconds = 0.7 + ( patient.Alive ? 0.0 : 5.0 );
 			
