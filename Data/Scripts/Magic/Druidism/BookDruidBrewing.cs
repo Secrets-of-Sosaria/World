@@ -116,8 +116,8 @@ namespace Server.Items
 			{
 				Mobile from = state.Mobile;
 				int page = info.ButtonID;
-					if ( page == 99 ){ page = 9; }
-					else if ( page > 9 ){ page = 1; }
+					if ( page == 99 ){ page = 10; }
+					else if ( page > 10 ){ page = 1; }
 
 				if ( info.ButtonID > 0 )
 				{
