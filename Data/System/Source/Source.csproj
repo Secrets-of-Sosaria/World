@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <OutputPath>../</OutputPath>
     <OutputType>Exe</OutputType>
     <AssemblyName>World</AssemblyName>
     <ApplicationIcon>icon.ico</ApplicationIcon>

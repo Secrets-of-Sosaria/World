@@ -16,8 +16,8 @@ C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc /optimize /unsafe /t:exe /ou
 Ensure [dotnet](https://formulae.brew.sh/formula/dotnet) is installed via [Homebrew](https://brew.sh/).
 
 * Launch `Terminal.app` via Spotlight
-* Navigate to the SoS repo's `Data\System\Source` directory
+* Navigate to the SoS repo's `Data\System` directory
 
 ```
-dotnet build
+dotnet build Source
 ```
