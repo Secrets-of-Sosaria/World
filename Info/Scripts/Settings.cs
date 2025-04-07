@@ -737,7 +737,7 @@ namespace Server
 		public static double S_KoperHerdingChance = 1.0;
 
 	// The KoperCooldown sets the minimum amount of time in seconds between taming/herding skill gain
-	// from fighting for taming, and commanding pets for herding. Minimum is 0, max is 600
+	// from fighting for taming, and commanding pets for herding. Minimum is 0, max is 600, default is 20.
 
 		public static int S_KoperCooldown = 20;
 
