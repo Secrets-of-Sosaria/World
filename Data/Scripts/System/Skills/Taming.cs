@@ -303,7 +303,7 @@ namespace Server.SkillHandlers
 					{
 						m_Tamer.RevealingAction();
 
-						switch ( Utility.Random( 9 ) )
+						switch ( Utility.Random( 11 ) )
 						{
 							case 0: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Easy...easy..."); break;
 							case 1: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Don't be afraid..."); break;
