@@ -527,24 +527,15 @@ namespace Server.Items
 
 		public static double HealTimer( Mobile healer, Mobile patient )
 		{
-			int dex = healer.Dex;
 			double seconds;
-			double resDelay = ( patient.Alive ? 0.0 : 5.0 );
 
 			if ( healer == patient )
-				seconds = 5.0 + (0.5 * ((double)(120 - dex) / 10));
+				seconds = 5.0 + (0.5 * ((double)(120 - healer.Dex) / 10));
+			else if ( (healer.Dex) < 204 )
+				seconds = 5.0 - (Math.Sin((double)healer.Dex/100)*2.5) + ( patient.Alive ? 0.0 : 5.0 );
 			else
-			{
-				if ( GetPrimarySkill( patient ) == SkillName.Veterinary )
-					seconds = 2.0;
-				else
-				{
-					if ( dex < 204 )
-						seconds = 3.2-(Math.Sin((double)dex/130)*2.5) + resDelay;
-					else
-						seconds = 0.7 + resDelay;
-				}
-			}
+				seconds = 0.7 + ( patient.Alive ? 0.0 : 5.0 );
+			
 			seconds *= 1000;
 
 			return seconds;
@@ -552,7 +543,6 @@ namespace Server.Items
 
 		public static BandageContext BeginHeal( Mobile healer, Mobile patient )
 		{
-			bool isDeadPet = ( patient is BaseCreature && ((BaseCreature)patient).IsDeadPet );
 
 			if ( patient.Hunger < 6 && patient is PlayerMobile && patient.Alive )
 			{
@@ -566,7 +556,7 @@ namespace Server.Items
 			{
 				healer.SendLocalizedMessage( 500951 ); // You cannot heal that.
 			}
-			else if ( !patient.Poisoned && patient.Hits == patient.HitsMax && !BleedAttack.IsBleeding( patient ) && !isDeadPet )
+			else if ( !patient.Poisoned && patient.Hits == patient.HitsMax && !BleedAttack.IsBleeding( patient ) && !( patient is BaseCreature && ((BaseCreature)patient).IsDeadPet ) )
 			{
 				healer.SendLocalizedMessage( 500955 ); // That being is not damaged!
 			}
@@ -578,25 +568,23 @@ namespace Server.Items
 			{
 				healer.DoBeneficial( patient );
 
-				double seconds = HealTimer( healer, patient );
-
 				BandageContext context = GetContext( healer );
 
 				if ( context != null )
 					context.StopHeal();
 				
-				context = new BandageContext( healer, patient, TimeSpan.FromMilliseconds( seconds ) );
+				context = new BandageContext( healer, patient, TimeSpan.FromMilliseconds( HealTimer( healer, patient ) ) );
 
 				m_Table[healer] = context;
 
 				if ( healer != patient && patient is PlayerMobile )
 					patient.SendLocalizedMessage( 1008078, false, healer.Name ); //  : Attempting to heal you.
 
-				healer.SendMessage ( "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( seconds ).Ticks).ToString("s.ff") ) + "" );
+				healer.SendMessage ( "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( HealTimer( healer, patient ) ).Ticks).ToString("s.ff") ) + "" );
 				healer.SendLocalizedMessage( 500956 ); // You begin applying the bandages.
 				healer.LocalOverheadMessage( MessageType.Regular, 1150, 500956 );
 
-				BuffInfo.AddBuff( healer, new BuffInfo( BuffIcon.Bandage, 1063670, TimeSpan.FromMilliseconds( seconds ), healer ) );
+				BuffInfo.AddBuff( healer, new BuffInfo( BuffIcon.Bandage, 1063670, TimeSpan.FromMilliseconds( HealTimer( healer, patient ) ), healer ) );
 
 				return context;
 			}
