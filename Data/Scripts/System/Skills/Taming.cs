@@ -303,13 +303,19 @@ namespace Server.SkillHandlers
 					{
 						m_Tamer.RevealingAction();
 
-						switch ( Utility.Random( 5 ) )
+						switch ( Utility.Random( 9 ) )
 						{
 							case 0: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Easy...easy..."); break;
 							case 1: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Don't be afraid..."); break;
 							case 2: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "I won't hurt you..."); break;
 							case 3: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "See? Nothing to be afraid of..."); break;
 							case 4: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Nice and easy..."); break;
+							case 5: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "We will be great friends..."); break;
+							case 6: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "I always wanted a companion like you..."); break;
+							case 7: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "I'll protect you from the dangers of this world..."); break;
+							case 8: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "We could accomplish much by joining forces..."); break;
+							case 9: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "You will make many friends with me..."); break;
+							case 10: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "We will venture far into the unknown together..."); break;
 						}
 
 						if ( !alreadyOwned ) // Passively check druidism for gain
