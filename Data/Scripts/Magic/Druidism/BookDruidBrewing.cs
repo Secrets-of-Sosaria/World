@@ -54,10 +54,10 @@ namespace Server.Items
 				else if ( page == 4 ){ potion = 6; }
 				else if ( page == 5 ){ potion = 8; }
 				else if ( page == 6 ){ potion = 10; }
-				else if ( page == 7 ){ potion = 11; }
-				else if ( page == 8 ){ potion = 12; }
-				else if ( page == 9 ){ potion = 14; }
-				else if ( page == 10 ){ potion = 16; }
+				else if ( page == 7 ){ potion = 12; }
+				else if ( page == 8 ){ potion = 14; }
+				else if ( page == 9 ){ potion = 16; }
+				else if ( page == 10 ){ potion = 18; }
 
 				// --------------------------------------------------------------------------------
 
@@ -116,8 +116,8 @@ namespace Server.Items
 			{
 				Mobile from = state.Mobile;
 				int page = info.ButtonID;
-					if ( page == 99 ){ page = 10; }
-					else if ( page > 10 ){ page = 1; }
+					if ( page == 99 ){ page = 9; }
+					else if ( page > 9 ){ page = 1; }
 
 				if ( info.ButtonID > 0 )
 				{
