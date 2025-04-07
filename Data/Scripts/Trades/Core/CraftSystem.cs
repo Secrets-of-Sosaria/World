@@ -187,7 +187,7 @@ namespace Server.Engines.Craft
 		{
 			if ( m is PlayerMobile )
 				if ( CraftSystem.CraftGetQueue( m ) > 1 )
-					((PlayerMobile)m).CraftDone = DateTime.Now + TimeSpan.FromSeconds( 7.0 );
+					((PlayerMobile)m).CraftDone = DateTime.Now + TimeSpan.FromSeconds( 2.0 );
 		}
 
 		public static bool CraftFinished( Mobile m, BaseTool tool )
