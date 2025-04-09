@@ -321,11 +321,11 @@ namespace Server.SkillHandlers
 							case 13: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Steady. You are safe with me..."); break;
 							case 14: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "You are so fierce. I'll always respect you..."); break;
 							case 15: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Come on now, you're not really going to bite me, are you?"); break;
-							case 16: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "There's no chains here—only trust..."); break;
+							case 16: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "There are no chains here, only trust..."); break;
 							case 17: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "You've been alone a long time, haven't you?"); break;
 							case 18: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "You're fierce, but I see wisdom in your eyes..."); break;
 							case 19: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "I promise, you'll roam far and feast well..."); break;
-							case 20: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "There's a place for you by my side—if you'll have it..."); break;
+							case 20: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "There's a place for you by my side, if you'll have it..."); break;
 							case 21: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "Let go of fear. I'm not your enemy..."); break;
 							case 22: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "I've come a long way for you..."); break;
 							case 23: m_Tamer.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "We can be stronger together..."); break;
