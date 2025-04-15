@@ -138,7 +138,7 @@ namespace Server.Commands
 				case "tapfoot":
 					SoundInt = 37;
 					break;
-				case "wistle":
+				case "whistle":
 					SoundInt = 38;
 					break;
 				case "woohoo":
@@ -694,7 +694,7 @@ namespace Server.Commands
 				case "tapfoot":
 					SoundInt = 37;
 					break;
-				case "wistle":
+				case "whistle":
 					SoundInt = 38;
 					break;
 				case "woohoo":
