@@ -306,15 +306,15 @@ namespace Server
 
 		public static bool S_PedStealThrottle = true;
 
-	// If set to true, then a character will get a warning before they are entering Skara Brae. This area is a
+	// If set to true (default), then a character will get a warning before they are entering Skara Brae. This area is an extensive
 	// quest driven area, that has some quest requirements to be met before they can leave that area.
 
-		public static bool S_WarnSkaraBrae = false;
+		public static bool S_WarnSkaraBrae = true;
 
-	// If set to true, then a character will get a warning before they are entering the Bottle City. This area
-	// is a quest driven area, that has some quest requirements to be met before they can leave that area.
+	// If set to true (default), then a character will get a warning before they are entering the Bottle City. This area
+	// is an extensive quest driven area, that has some quest requirements to be met before they can leave that area.
 
-		public static bool S_WarnBottleCity = false;
+		public static bool S_WarnBottleCity = true;
 
 
 
