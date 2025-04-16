@@ -208,7 +208,7 @@ namespace Server.Items
 
 				AddBackground(0, 0, 400, 160, 9270);
 
-				AddLabel(30, 20, 2120, "Are you sure you want to do search for the");
+				AddLabel(30, 20, 2120, "Are you sure you want to search for The");
 			    AddLabel(30, 40, 2120, GetArtifactListForBook(m_ButtonID, 1) + " ?");
     			AddLabel(30, 70, 2120, "Confirming will consume your Artifact Encyclopedia");
 
