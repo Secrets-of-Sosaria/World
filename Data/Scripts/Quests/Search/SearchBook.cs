@@ -206,16 +206,20 @@ namespace Server.Items
     		    Dragable = true;
 	    	    Resizable = false;
 
-				AddBackground(0, 0, 500, 120, 9270);
+				AddBackground(0, 0, 400, 160, 9270);
 
-				AddLabel(20, 20, 0x34, "Are you sure you want to do search for the "+GetArtifactListForBook(m_ButtonID, 1)+" ?");
+				AddLabel(30, 20, 2120, "Are you sure you want to do search for the");
+			    AddLabel(30, 40, 2120, GetArtifactListForBook(m_ButtonID, 1) + " ?");
+    			AddLabel(30, 70, 2120, "Confirming will consume your Artifact Encyclopedia");
 
-				AddButton(60, 60, 4005, 4006, 1, GumpButtonType.Reply, 0); // Yes
-        		AddLabel(95, 61, 1160, "Yes");
+			
+   				AddButton(80, 120, 4005, 4007, 1, GumpButtonType.Reply, 0); // Yes
+    			AddLabel(115, 122, 2120, "Yes");
 
-  			    AddButton(160, 60, 4007, 4008, 2, GumpButtonType.Reply, 0); // No
-        		AddLabel(195, 61, 1160, "No");
-		    }
+    			AddButton(200, 120, 4017, 4019, 0, GumpButtonType.Reply, 0); // No
+    			AddLabel(235, 122, 2120, "No");
+		    
+			}
 
 		    public override void OnResponse(NetState sender, RelayInfo info)
 		    {
