@@ -9,7 +9,6 @@ namespace Server.Custom.KoperPets
 {
     public static class PetTamingSkillGain
     {
-        // Dictionary to track cooldowns (PlayerMobile -> Last Taming Gain Time)
         private static Dictionary<PlayerMobile, DateTime> _tamingCooldowns = new Dictionary<PlayerMobile, DateTime>();
 
         private static readonly TimeSpan TamingCooldown = TimeSpan.FromSeconds(MyServerSettings.KoperCooldown()); //  Set cooldown time (20 Seconds default)
@@ -105,24 +104,22 @@ namespace Server.Custom.KoperPets
 
             double tamingSkill = owner.Skills[SkillName.Taming].Base;
             double gainChance = 0.0;
-            double minGain = 0.0, maxGain = 0.0;
             double tamingMultiplier = MyServerSettings.KoperTamingChance();  // Determine gain chance and amount based on skill level
-            //double tamingMultiplier = Server.Custom.KoperPets.KoperSkillConfig.TamingChanceMultiplier;  // Determine gain chance and amount based on skill level
-
+          
             // Determine gain chance and amount based on skill level
             if (tamingMultiplier <= 0) tamingMultiplier = 1.0; // Ensure valid value
-            if (tamingSkill <= 30.0) { gainChance = 0.20 * tamingMultiplier; minGain = 0.1; maxGain = 1.0; }
-            else if (tamingSkill <= 50.0) { gainChance = 0.15 * tamingMultiplier; minGain = 0.1; maxGain = 0.5; }
-            else if (tamingSkill <= 70.0) { gainChance = 0.10 * tamingMultiplier; minGain = 0.1; maxGain = 0.2; }
-            else if (tamingSkill < 100.0) { gainChance = 0.05 * tamingMultiplier; minGain = 0.1; maxGain = 0.1; }
-            else return; // No gain if above 100
+            if (tamingMultiplier >= 10) tamingMultiplier = 10.0; // Ensure valid value
+            if (tamingSkill <= 30.0) { gainChance = 0.20 * tamingMultiplier;}
+            else if (tamingSkill <= 50.0) { gainChance = 0.15 * tamingMultiplier;}
+            else if (tamingSkill <= 70.0) { gainChance = 0.10 * tamingMultiplier;}
+            else if (tamingSkill < 125.0) { gainChance = 0.05 * tamingMultiplier;}
+            else return; // No gain if at max skill
 
             // Attempt taming skill gain
             if (Utility.RandomDouble() < gainChance)
             {
-                double tamingGain = minGain + (Utility.RandomDouble() * (maxGain - minGain)); // Random within range
-                owner.Skills[SkillName.Taming].Base += tamingGain;
-
+                owner.CheckSkill(SkillName.Taming, 0.0 , 125.0);
+            
                 // Select a random taming message
                 string message = string.Format(TamingMessages[Utility.Random(TamingMessages.Length)], pet.Name);
 

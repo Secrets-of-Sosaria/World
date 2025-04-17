@@ -8,7 +8,7 @@ namespace Server.Custom.KoperPets
     public static class KoperHerdingGain
     {
         private static readonly Dictionary<Mobile, DateTime> _cooldowns = new Dictionary<Mobile, DateTime>();
-        private static readonly TimeSpan CooldownTime = TimeSpan.FromSeconds(MyServerSettings.KoperCooldown()); // 20-second cooldown
+        private static readonly TimeSpan CooldownTime = TimeSpan.FromSeconds(MyServerSettings.KoperCooldown()); //  Set cooldown time (20 Seconds default)
 
         private static readonly string[] SuccessMessages = new string[]
         {
@@ -42,23 +42,21 @@ namespace Server.Custom.KoperPets
 
             double herdingSkill = owner.Skills[SkillName.Herding].Base;
             double gainChance;
-            double minGain;
-            double maxGain;
             double herdingMultiplier = MyServerSettings.KoperHerdingChance();
 
 
             // Determine gain chance and amount based on skill level
             if (herdingMultiplier <= 0) herdingMultiplier = 1.0; // Ensure valid value
-            if (herdingSkill <= 30.0) { gainChance = 0.20 * herdingMultiplier; minGain = 0.1; maxGain = 1.0; }
-            else if (herdingSkill <= 50.0) { gainChance = 0.15 * herdingMultiplier; minGain = 0.1; maxGain = 0.5; }
-            else if (herdingSkill <= 70.0) { gainChance = 0.10 * herdingMultiplier; minGain = 0.1; maxGain = 0.2; }
-            else if (herdingSkill < 100.0) { gainChance = 0.05 * herdingMultiplier; minGain = 0.1; maxGain = 0.1; }
+            if (herdingMultiplier >= 10) herdingMultiplier = 10.0; // Ensure valid value
+            if (herdingSkill <= 30.0) { gainChance = 0.20 * herdingMultiplier;}
+            else if (herdingSkill <= 50.0) { gainChance = 0.15 * herdingMultiplier;}
+            else if (herdingSkill <= 70.0) { gainChance = 0.10 * herdingMultiplier;}
+            else if (herdingSkill < 125.0) { gainChance = 0.05 * herdingMultiplier;}
             else return; // No gain if at max skill
 
             if (Utility.RandomDouble() <= gainChance)
             {
-                double skillGain = Utility.RandomDouble() * (maxGain - minGain) + minGain;
-                owner.Skills[SkillName.Herding].Base += skillGain;
+                owner.CheckSkill(SkillName.Herding, 0.0 , 125.0 );
 
                 // Select a random message for variety
                 if (MyServerSettings.KoperPetsImmersive()) 
