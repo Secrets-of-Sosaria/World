@@ -68,7 +68,7 @@ namespace Server.Items
 				string color = "#d6c382";
 				SearchBook pedia = (SearchBook)wikipedia;
 
-				int NumberOfArtifacts = 347; // SEE LISTING BELOW AND MAKE SURE IT MATCHES THE AMOUNT
+				int NumberOfArtifacts = 383; // SEE LISTING BELOW AND MAKE SURE IT MATCHES THE AMOUNT
 				decimal PageCount = NumberOfArtifacts / 16;
 				int TotalBookPages = ( 100000 ) + ( (int)Math.Ceiling( PageCount ) );
 
@@ -562,7 +562,37 @@ namespace Server.Items
 			if ( artifact == arty) { name="Artifact_WrathOfTheDryad"; item="Wrath of the Dryad"; } arty++;
 			if ( artifact == arty) { name="Artifact_YashimotosHatsuburi"; item="Yashimoto's Hatsuburi"; } arty++;
 			if ( artifact == arty) { name="Artifact_ZyronicClaw"; item="Zyronic Claw"; } arty++;
-
+			if ( artifact == arty) { name="Artifact_GlovesOfThePiper"; item="Gloves of the Pied Piper";} arty++;
+			if ( artifact == arty) { name="Artifact_PiedPiperFeatheredHat"; item="Pied Piper's Feathered Hat";} arty++;
+			if ( artifact == arty) { name="Artifact_ShirtOfThePiper"; item="Shirt of the Pied Piper";} arty++;
+			if ( artifact == arty) { name="Artifact_BootsOfThePiper"; item="Boots of the Pied Piper";} arty++;
+			if ( artifact == arty) { name="Artifact_TrousersOfThePiper"; item="Trousers of the Pied Piper";} arty++;
+			if ( artifact == arty) { name="Artifact_WhistleofthePiper"; item="Whistle of the Pied Piper";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureVengeanceMask"; item="Mask of Natural Vengeance";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureVengeanceCoat"; item="Coat of Natural Vengeance";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureVengeanceLeggings"; item="Leggings of Natural Vengeance";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureVengeanceArms"; item="Arms of Natural Vengeance";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureVengeanceGloves"; item="Gloves of Natural Vengeance";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureMasterHeaddress"; item="Headdress of the Nature's Master";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureMasterCoat"; item="Coat of the Nature's Master";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureMasterLeggings"; item="Leggings of the Nature's Master";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureMasterArms"; item="Arms of the Nature's Master";} arty++;
+			if ( artifact == arty) { name="Artifact_NatureMasterGloves"; item="Gloves of the Nature's Master";} arty++;
+			if ( artifact == arty) { name="Artifact_ProwleroftheWildsLegging"; item="Leggings of the Prowler";} arty++;
+			if ( artifact == arty) { name="Artifact_ProwleroftheWildsHelmet"; item="Mask of the Prowler";} arty++;
+			if ( artifact == arty) { name="Artifact_ProwleroftheWildsGloves"; item="Gloves of the Prowler";} arty++;
+			if ( artifact == arty) { name="Artifact_ProwleroftheWildsTunic"; item="Tunic of the Prowler";} arty++;
+			if ( artifact == arty) { name="Artifact_ProwleroftheWildsArms"; item="Arms of the Prowler";} arty++;
+			if ( artifact == arty) { name="Artifact_ProtectoroftheWildsChestplate"; item="Chestplate of the Wilds";} arty++;
+			if ( artifact == arty) { name="Artifact_ProtectoroftheWildsLeggings"; item="Leggings of the Wilds";} arty++;
+			if ( artifact == arty) { name="Artifact_ProtectoroftheWildsGloves"; item="Gloves of the Wilds";} arty++;
+			if ( artifact == arty) { name="Artifact_ProtectoroftheWildsArms"; item="Arms of the Wilds";} arty++;
+			if ( artifact == arty) { name="Artifact_ProtectoroftheWildsHelmet"; item="Helmet of the Wilds";} arty++;
+			if ( artifact == arty) { name="Artifact_RobeOfWilds"; item="Robe of the Wilds";} arty++;
+			if ( artifact == arty) { name="Artifact_RobeOfWildLegion"; item="Robe of the Wild Legion";} arty++;
+			if ( artifact == arty) { name="Artifact_StaffoftheWoodlands"; item="Staff of the Woodlands";} arty++;
+			if ( artifact == arty) { name="Artifact_BowOfTheProwler"; item="Bow of the Prowler";} arty++;
+			if ( artifact == arty) { name="Artifact_BladeOfTheWilds"; item="Blade of the Wilds";} arty++;
 			if ( part == 2 ){ item = name; }
 
 			return item;
