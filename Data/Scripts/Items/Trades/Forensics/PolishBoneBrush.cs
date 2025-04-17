@@ -136,6 +136,7 @@ namespace Server.Items
 					else if ( bone.ItemID == 0x3DE0 ){ boneCount = 1; }
 					else if ( bone.ItemID == 0x3DE1 ){ boneCount = 1; }
 					else if ( bone.ItemID == 0x42B5 ){ boneCount = 3; }
+					else if ( bone.ItemID == 0x1b15 ){ boneCount = 1; }
 					else
 					{
 						from.SendMessage( "You cannot polish that." );
