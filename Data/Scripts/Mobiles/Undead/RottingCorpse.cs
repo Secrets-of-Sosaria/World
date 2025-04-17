@@ -38,11 +38,11 @@ namespace Server.Mobiles
 			SetDex( 75 );
 			SetInt( 151, 200 );
 
-			SetHits( 1200 );
+			SetHits( 558, 611  );
 			SetStam( 150 );
 			SetMana( 0 );
 
-			SetDamage( 8, 10 );
+			SetDamage( 16, 20 );
 
 			SetDamageType( ResistanceType.Physical, 0 );
 			SetDamageType( ResistanceType.Cold, 50 );
@@ -55,7 +55,7 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Energy, 20, 30 );
 
 			SetSkill( SkillName.Poisoning, 120.0 );
-			SetSkill( SkillName.MagicResist, 250.0 );
+			SetSkill( SkillName.MagicResist, 120.0 );
 			SetSkill( SkillName.Tactics, 100.0 );
 			SetSkill( SkillName.FistFighting, 90.1, 100.0 );
 
