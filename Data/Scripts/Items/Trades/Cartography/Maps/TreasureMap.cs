@@ -243,9 +243,17 @@ namespace Server.Items
 			if ( m.Backpack == null )
 				return false;
 
-			Item shovel = m.FindItemOnLayer( Layer.TwoHanded );
+			bool canUseBackpackHarvestTool = MySettings.S_AllowBackpackHarvestTool;
+			bool hasShovel = m.Backpack.FindItemByType( typeof( Spade ) ) != null;
 
-			if ( shovel is Spade )
+			if ( canUseBackpackHarvestTool && hasShovel )
+				return true;
+
+			Item shovel = m.FindItemOnLayer( Layer.TwoHanded );
+			
+			bool isHoldingShovel = (shovel != null && shovel is Spade);
+
+			if ( isHoldingShovel )
 				return true;
 
 			return false;
