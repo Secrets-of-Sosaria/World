@@ -66,7 +66,6 @@ namespace Server.Items
 			{
 				m_Book = wikipedia;
 				string color = "#d6c382";
-				SearchBook pedia = (SearchBook)wikipedia;
 
 				int NumberOfArtifacts = 383; // SEE LISTING BELOW AND MAKE SURE IT MATCHES THE AMOUNT
 				decimal PageCount = NumberOfArtifacts / 16;
@@ -175,17 +174,69 @@ namespace Server.Items
 					int page = info.ButtonID - 100000;
 					from.SendGump( new SearchBookGump( from, m_Book, page ) );
 				}
-				else
+				else if (info.ButtonID >= 1 && info.ButtonID != null)
 				{
-					string sType = GetArtifactListForBook( info.ButtonID, 2 );
-					string sName = GetArtifactListForBook( info.ButtonID, 1 );
-					if ( sName != "" )
-					{
-						from.AddToBackpack ( new SearchPage( from, m_Book.LegendLore, sType, sName ) );
-						from.SendMessage( "You tear the page out of the book." );
-						m_Book.Delete();
-					}
+					// we debug like the ancient sumerians did
+					//from.SendMessage("show id: " + info.ButtonID);
+					from.SendGump(new ConfirmGump(from, info.ButtonID, m_Book));
 				}
+			}
+		}
+
+		public class ConfirmGump : Gump
+		{
+			private SearchBook m_Book;
+		    private Mobile m_User;
+		    private int m_ButtonID;
+
+			private static bool gumpOpened = false;
+
+		    public ConfirmGump(Mobile user, int buttonID, SearchBook wikipedia) : base(50, 50)
+		    {
+		    	if (gumpOpened)
+            		return;
+				
+				gumpOpened = true; 
+
+				m_Book = wikipedia;
+		        m_User = user;
+		        m_ButtonID = buttonID;
+				Closable = true;
+    		    Disposable = true;
+    		    Dragable = true;
+	    	    Resizable = false;
+
+				AddBackground(0, 0, 400, 160, 9270);
+
+				AddLabel(30, 20, 2120, "Are you sure you want to search for The");
+			    AddLabel(30, 40, 2120, GetArtifactListForBook(m_ButtonID, 1) + " ?");
+    			AddLabel(30, 70, 2120, "Confirming will consume your Artifact Encyclopedia");
+
+			
+   				AddButton(80, 120, 4005, 4007, 1, GumpButtonType.Reply, 0); // Yes
+    			AddLabel(115, 122, 2120, "Yes");
+
+    			AddButton(200, 120, 4017, 4019, 0, GumpButtonType.Reply, 0); // No
+    			AddLabel(235, 122, 2120, "No");
+		    
+			}
+
+		    public override void OnResponse(NetState sender, RelayInfo info)
+		    {
+		        if (info.ButtonID == 1) // Yes
+		        {
+		            string sType = GetArtifactListForBook(m_ButtonID, 2);
+		            string sName = GetArtifactListForBook(m_ButtonID, 1);
+		            if (sName != "")
+		            {
+		                m_User.AddToBackpack(new SearchPage(m_User, m_Book.LegendLore, sType, sName));
+		                m_User.SendMessage("You tear the page out of the book.");
+		                m_Book.Delete();
+		            }
+		        }
+		        m_User.CloseGump(typeof(SearchBookGump));
+				m_User.CloseGump(typeof(ConfirmGump));
+				gumpOpened = false;
 			}
 		}
 
