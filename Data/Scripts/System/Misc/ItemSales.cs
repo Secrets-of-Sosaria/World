@@ -3038,6 +3038,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	Mailbox	),	158	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Home	),
 			new ItemSalesInfo( typeof(	MaleKimono	),	18	,	0	,	0	,	false	,	false	,	World.Orient	,	Category.None	,	Material.Cloth	,	Market.Monk	),
 			new ItemSalesInfo( typeof(	MalletAndChisel	),	3	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stone	),
+			new ItemSalesInfo( typeof(	MalletStake	),	3	,	150	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	ManyArrows100	),	200	,	10	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
 			new ItemSalesInfo( typeof(	ManyArrows1000	),	2000	,	10	,	101	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
 			new ItemSalesInfo( typeof(	ManyBolts100	),	200	,	10	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Bow	),
