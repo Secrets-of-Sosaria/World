@@ -404,7 +404,8 @@ namespace Server
 		public static bool S_AllowBackpackCraftTool = false;
 
 	// If false, then characters will need to have the appropriate tool equipped to gather resources.
-		
+	// Affects harvest tools that serve additional purposes (such as grave digging or hunting treasure).
+
 		public static bool S_AllowBackpackHarvestTool = false;
 
 
