@@ -29,19 +29,11 @@ namespace Server.Items
 			long ticksNow = TimeNow.Ticks;
 			int minsThen = (int)TimeSpan.FromTicks(ticksThen).TotalMinutes;
 			int minsNow = (int)TimeSpan.FromTicks(ticksNow).TotalMinutes;
-			int CanFillBottle = 120 - ( minsNow - minsThen );
+			int CanFillBottle = 30 - ( minsNow - minsThen );
 
-			if ( Parent != from )
+			if ( CanFillBottle > 0 )
 			{
-				from.SendMessage( "You must be wearing the robe to use it." );
-			}
-			else if ( CanFillBottle > 0 )
-			{
-				TimeSpan t = TimeSpan.FromMinutes( CanFillBottle );
-				string wait = string.Format("{0:D1} hours and {1:D2} minutes", 
-								t.Hours, 
-								t.Minutes);
-				from.SendMessage( "You can squeeze out acid in " + wait + "." );
+				from.SendMessage( "You can squeeze out acid in " + CanFillBottle + " minutes." );
 			}
 			else
 			{
