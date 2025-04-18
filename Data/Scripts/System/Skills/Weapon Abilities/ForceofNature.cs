@@ -70,7 +70,7 @@ namespace Server.Items
 				m_Target = target;
 				m_From = from;
 
-				double spiritLevel = from.Skills[SkillName.Spiritualism].Value / 15;
+				double spiritLevel = from.Skills[SkillName.Druidism].Value / 15;
 
 				m_MinBaseDamage = spiritLevel - 2;
 				m_MaxBaseDamage = spiritLevel + 1;
