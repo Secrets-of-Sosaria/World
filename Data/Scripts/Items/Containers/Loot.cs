@@ -135,11 +135,7 @@ namespace Server
 				typeof( BoneSkirt ),			typeof( HideChest ), 				typeof( HikingBoots ),
 				typeof( SavageArms ), 			typeof( SavageChest ), 				typeof( SavageGloves ),
 				typeof( SavageHelm ), 			typeof( SavageLegs ),				typeof( StuddedHideChest ),
-				typeof( DragonChest ),			typeof( DragonGloves ),				typeof( DragonLegs ),
-				typeof( ScaledLegs ),			typeof( ScaledArms ),				typeof( ScaledChest ),
-				typeof( ScaledGloves ),			typeof( ScaledGorget ),				typeof( ScaledHelm ),
-				typeof( ScalyArms ),			typeof( ScalyLegs ),				typeof( ScalyHelm ),
-				typeof( ScalyGorget ),			typeof( ScalyGloves ),				typeof( ScalyChest )
+				typeof( DragonChest ),			typeof( DragonGloves ),				typeof( DragonLegs )			
 			};
 
 		public static Type[] ArmorTypes{ get{ return m_ArmorTypes; } }
