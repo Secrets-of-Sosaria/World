@@ -672,7 +672,7 @@ namespace Server
 
 		private static Type[] m_RareItemTypes = new Type[]
 			{
-				typeof( SkeletonsKey ),			typeof( PaintCanvas ),					typeof( MagicalDyes ),
+				typeof( SkeletonsKey ),			typeof( MagicalDyes ),
 				typeof( HeavySharpeningStone ),	typeof( ConsecratedSharpeningStone ),	typeof( MyCircusTentEastAddonDeed ),
 				typeof( ManyArrows100 ),		typeof( ManyBolts100 ),					typeof( MyTentSouthAddonDeed ),
 				typeof( RoughSharpeningStone ),	typeof( DenseSharpeningStone ),			typeof( ElementalSharpeningStone ),
