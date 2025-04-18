@@ -396,6 +396,13 @@ namespace Server.SkillHandlers
 							m_Creature.Home = new Point3D(0, 0, 0);
 							m_Creature.FightMode = FightMode.Aggressor;
 							m_Creature.IsBonded = false;
+							m_Creature.ControlOrder = OrderType.Guard;
+							m_Creature.Combatant = null;
+						    m_Creature.FightMode = FightMode.None;
+							if(m_Tamer.Combatant == m_Creature)
+							{
+								m_Tamer.Combatant = null;
+							}
 						}
 						else
 						{
