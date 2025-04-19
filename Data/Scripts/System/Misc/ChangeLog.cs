@@ -21,13 +21,64 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: Honor (02 November 2024)";
+			return "Version: Honesty (19 April 2025)";
 		}
 
 		public static string Versions()
         {
 			string versionTEXT = ""
 
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+				+ "Honesty - 19 April 2025<br>"
+
+				+ "<br>"
+				+ "* Added Ethereal and Eternal power scrolls to the game.<br>"
+				+ "   - They can be found as endgame loot.<br>"
+				+ "* Fixed a bug related to creatures remaining aggressive after being tamed.<br>"
+				+ "* Now containers with items inside cannot be broken down via crafting window.<br>"
+				+ "* Added 5 missing power scrolls and rebalanced their cost.<br>"
+				+ "* Added starting equipment for new characters based on their chosen skills.<br>"
+				+ "   - Mages will start with their spellbooks.<br>"
+				+ "   - Crafters with related tools.<br>"
+				+ "   - Archers with bows and so on.<br>"
+				+ "* Shovels can now be used to dig for treasure directly from the backpack.<br>"
+				+ "* Holy priest mallets can now be bought at priests.<br>"
+				+ "   - The requirement to unlock the class has been lowered.<br>"
+				+ "* Scale armor no longer drops.<br>"
+				+ "   - It can still be crafted.<br>"
+				+ "* Cooldown of the acid proof robe has been reduced from 2 hours to 30 minutes for generating acid bottles.<br>"
+				+ "   - Those bottles can also be used when the robe is not being worn.<br>"
+				+ "* The ability Force of Nature now scales damage out of Druidism instead of Spiritualism.<br>"
+				+ "* Peacemaking used by monsters now has its duration dependent on the monster barding skill.<br>"
+				+ "* Added a confirmation gump to the artifact selection from the sage book.<br>"
+				+ "* Pelvis bones can now be polished.<br>"
+				+ "* Undertaker kits can now be crafted by tinkers.<br>"
+				+ "* Fixed a bug with the [e whistle command.<br>"
+				+ "* Fixed incorrect text on the magic reflection spell.<br>"
+				+ "* Zombie lords now have much lower health and do much more damage.<br>"
+				+ "* Fixed a bug that caused unwanted taming/herding gains.<br>"
+				+ "* Corrected the spawn locations for the animal broker.<br>"
+				+ "* Added 31 new taming-related artifacts to the game.<br>"
+				+ "   - They can be found via random drop and sage quest.<br>"
+				+ "* Added missing potions to the druidic herbalism book.<br>"
+				+ "* Added missing potions to the witch book.<br>"
+				+ "* Fixed the description of the treant potion from druidic herbalism.<br>"
+				+ "* Made hunger/thirst influence skill gain slightly.<br>"
+				+ "   - Well fed characters will have faster gains.<br>"
+				+ "   - Hungry/thirsty characters will have slower gains.<br>"
+				+ "* Allows for the crafting gump to be used while the cooldown for multicraft is still ongoing.<br>"
+				+ "* Increased the cooldown on bandaging pets slightly.<br>"
+				+ "* Using 'dotnet build' now outputs to system dir.<br>"
+				+ "* The warnings for Skara Brae and Kuldar are now on by default in the server settings.<br>"
+				+ "* Added many new messages that are displayed during taming attempts.<br>"
+				+ "* Added a small chance that an adventurer found in the wilds will have a rare item on their bag.<br>"
+				+ "   - It can be stolen or taken if the adventurer is murdered.<br>"
+				+ "* Added missing harvest tool logic.<br>"
+				+ "<br>"
+
+				+ sepLine()
+				
 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 				+ "Justice - 11 March 2025<br>"
