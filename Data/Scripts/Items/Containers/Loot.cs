@@ -700,6 +700,28 @@ namespace Server
 		public static Type[] RareItemTypes{ get{ return m_RareItemTypes; } }
 
 		// ------------------------------------------------------------------------------------------------------------------------------------------
+		private static Type[] m_AdventurerRareItemTypes = new Type[]
+			{
+				typeof( SkeletonsKey ),			typeof( MagicalDyes ),					typeof( EtherealPowerScroll),
+				typeof( HeavySharpeningStone ),	typeof( ConsecratedSharpeningStone ),	typeof( SummonPrison ),
+				typeof( MagicPigment ),			typeof( RunicHammer ),					typeof( RunicSaw ),
+				typeof( RoughSharpeningStone ),	typeof( DenseSharpeningStone ),			typeof( ElementalSharpeningStone ),
+				typeof( ArtifactManual ),		typeof( Runebook ),						typeof( FrankenJournalInBox ),
+				typeof( CrystallineJar ),		typeof( DockingLantern ),				typeof( RunicFletching ),
+				typeof( BoatBuild ),			typeof( MalletStake ), 					typeof( PetBondDeed ),
+				typeof( HairDyeBottle ),		typeof( MagicalWand ),					typeof( MagicalWand ),
+				typeof( RareAnvil ),			typeof( MasterSkeletonsKey ),			typeof( InvulnerabilityPotion ),
+				typeof( AlternateRealityMap ),	typeof( UnusualDyes ),					typeof( RunicLeatherKit ),
+				typeof( CarpetBuild ),			typeof( RunicScales ),					typeof( GolemManual ),
+				typeof( SmallHollowBook ),		typeof( LargeHollowBook ),				typeof( RecallRune),
+				typeof( SlaversNet ),			typeof( TelescopeAddonDeed ),			typeof( RunicUndertaker ),
+				typeof( RunicTinker ),			typeof( RunicSewingKit )				
+			};
+
+		public static Type[] AdventurerRareItemTypes{ get{ return m_RareItemTypes; } }
+		// ------------------------------------------------------------------------------------------------------------------------------------------
+
+		// ------------------------------------------------------------------------------------------------------------------------------------------
 
 		private static Type[] m_CraftsTypes = new Type[]
 			{
