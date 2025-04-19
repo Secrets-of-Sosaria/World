@@ -128,6 +128,15 @@ namespace Server.Mobiles
 			if ( CitizenLevel > 4 ){ AddLoot( LootPack.Rich ); }
 			if ( CitizenLevel > 2 ){ AddLoot( LootPack.Average ); }
 			AddLoot( LootPack.Meager );
+			// adventurers have a 1 in 25 chance of having one rare item in their pack 
+			if (Utility.Random(25) == 0)
+    		{
+    		    Type rareType = Loot.AdventurerRareItemTypes[Utility.Random(Loot.AdventurerRareItemTypes.Length)];
+    		    Item rare = Activator.CreateInstance(rareType) as Item;
+    		    if (rare != null)
+    		        PackItem(rare);
+    		}
+
 
 			if ( CitizenType == 1 ){ AddLoot( LootPack.MedScrolls, ( (int)( ( CitizenLevel / 3 ) + 1 ) ) ); }
 		}

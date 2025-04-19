@@ -16,7 +16,7 @@ namespace Server.Items
 
 	public class Campfire : Item
 	{
-		public override string DefaultDescription{ get{ return "The fire can then be used by adventurers, to recovery health and stamina much quicker. There cannot be any enemies nearby for anyone to benefit from the effects."; } }
+		public override string DefaultDescription{ get{ return "Campfires can be used by adventurers to recover health and stamina more quickly. There cannot be any enemies nearby for anyone to benefit from the effects."; } }
 
 		private Timer m_Timer;
 		private DateTime m_Created;

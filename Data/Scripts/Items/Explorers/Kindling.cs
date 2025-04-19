@@ -9,7 +9,7 @@ namespace Server.Items
 {
 	public class Kindling : Item
 	{
-		public override string DefaultDescription{ get{ return "Kindling can be used by proficient campers, to make a campfire. The fire can then be used by adventurers, to recovery health and stamina much quicker. There cannot be any enemies nearby for anyone to benefit from the effects."; } }
+		public override string DefaultDescription{ get{ return "Kindling can be used by proficient campers to make a campfire. The fires can then be used by adventurers to recover health and stamina more quickly. There cannot be any enemies nearby for anyone to benefit from the effects."; } }
 
 		[Constructable]
 		public Kindling() : this( 1 )
