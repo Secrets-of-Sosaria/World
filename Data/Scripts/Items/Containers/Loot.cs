@@ -135,11 +135,7 @@ namespace Server
 				typeof( BoneSkirt ),			typeof( HideChest ), 				typeof( HikingBoots ),
 				typeof( SavageArms ), 			typeof( SavageChest ), 				typeof( SavageGloves ),
 				typeof( SavageHelm ), 			typeof( SavageLegs ),				typeof( StuddedHideChest ),
-				typeof( DragonChest ),			typeof( DragonGloves ),				typeof( DragonLegs ),
-				typeof( ScaledLegs ),			typeof( ScaledArms ),				typeof( ScaledChest ),
-				typeof( ScaledGloves ),			typeof( ScaledGorget ),				typeof( ScaledHelm ),
-				typeof( ScalyArms ),			typeof( ScalyLegs ),				typeof( ScalyHelm ),
-				typeof( ScalyGorget ),			typeof( ScalyGloves ),				typeof( ScalyChest )
+				typeof( DragonChest ),			typeof( DragonGloves ),				typeof( DragonLegs )			
 			};
 
 		public static Type[] ArmorTypes{ get{ return m_ArmorTypes; } }
@@ -510,7 +506,7 @@ namespace Server
 
 		private static Type[] m_ArtyTypes = new Type[]
 			{
-				typeof( Artifact_AbysmalGloves ), 	typeof( Artifact_ArmsOfTheHarrower ), 	typeof( Artifact_CandleEnergy ), 	typeof( Artifact_DivineLeggings ), 	typeof( Artifact_GeishasObi ), 	typeof( Artifact_HolyKnightsArmPlates ), 	typeof( Artifact_JesterHatofChuckles ), 	typeof( Artifact_MidnightBracers ), 	typeof( Artifact_RamusNecromanticScalpel ), 	typeof( Artifact_ShadowDancerTunic ), 	typeof( Artifact_TotemGloves ), 	typeof( QuiverOfRage ),
+				typeof ( EternalPowerScroll), 		typeof( Artifact_AbysmalGloves ), 	typeof( Artifact_ArmsOfTheHarrower ), 	typeof( Artifact_CandleEnergy ), 	typeof( Artifact_DivineLeggings ), 	typeof( Artifact_GeishasObi ), 	typeof( Artifact_HolyKnightsArmPlates ), 	typeof( Artifact_JesterHatofChuckles ), 	typeof( Artifact_MidnightBracers ), 	typeof( Artifact_RamusNecromanticScalpel ), 	typeof( Artifact_ShadowDancerTunic ), 	typeof( Artifact_TotemGloves ), 	typeof( QuiverOfRage ),
 				typeof( Artifact_AchillesShield ), 	typeof( Artifact_ArmsOfToxicity ), 	typeof( Artifact_CandleFire ), 	typeof( Artifact_DivineTunic ), 	typeof( Artifact_GiantBlackjack ), 	typeof( Artifact_HolyKnightsBreastplate ), 	typeof( Artifact_JinBaoriOfGoodFortune ), 	typeof( Artifact_MidnightGloves ), 	typeof( Artifact_ResilientBracer ), 	typeof( Artifact_ShaMontorrossbow ), 	typeof( Artifact_TotemGorget ), 	typeof( Artifact_RobeofStratos ),
 				typeof( Artifact_AchillesSpear ), 	typeof( Artifact_AuraOfShadows ), 	typeof( Artifact_CandleNecromancer ), 	typeof( Artifact_DjinnisRing ), 	typeof( Artifact_GladiatorsCollar ), 	typeof( Artifact_HolyKnightsGloves ), 	typeof( Artifact_KamiNarisIndestructableDoubleAxe ), 	typeof( Artifact_MidnightHelm ), 	typeof( Artifact_Retort ), 	typeof( Artifact_ShardThrasher ), 	typeof( Artifact_TotemLeggings ), 	typeof( Artifact_BootsofHydros ),
 				typeof( Artifact_AcidProofRobe ), 	typeof( Artifact_AxeOfTheHeavens ), 	typeof( Artifact_CandlePoison ), 	typeof( Artifact_DreadPirateHat ), 	typeof( Artifact_GlassSword ), 	typeof( Artifact_HolyKnightsGorget ), 	typeof( Artifact_KodiakBearMask ), 	typeof( Artifact_MidnightLegs ), 	typeof( Artifact_RighteousAnger ), 	typeof( Artifact_ShieldOfInvulnerability ), 	typeof( Artifact_TotemOfVoid ), 	typeof( Artifact_BootsofLithos ),
@@ -697,7 +693,8 @@ namespace Server
 				typeof( ECrystalAltarDeed ),	typeof( ECrystalBeggarStatueDeed ),		typeof( RunicUndertaker ),
 				typeof( RunicLeatherKit ),		typeof( RunicScales ),					typeof( GolemManual ),
 				typeof( SummonPrison ),			typeof( MagicalWand ),					typeof( MagicalWand ),
-				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( FrankenJournalInBox )
+				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( FrankenJournalInBox ),
+				typeof( EtherealPowerScroll)	
 			};
 
 		public static Type[] RareItemTypes{ get{ return m_RareItemTypes; } }

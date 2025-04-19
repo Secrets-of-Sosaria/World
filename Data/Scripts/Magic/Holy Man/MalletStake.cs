@@ -65,7 +65,7 @@ namespace Server.Items
 			    if( !( m_Mobile is PlayerMobile ) )
 				return;
 
-				if ( m_Stake.VampiresSlain >= 10000 )
+				if ( m_Stake.VampiresSlain >= 250 )
 				{
 					m_Mobile.SendMessage("This has killed enough vampires.");
 					return;
@@ -116,16 +116,17 @@ namespace Server.Items
 
 						if ( typeof( VampireWoods ) == c.Owner.GetType() ){ score = 10; }
 						else if ( typeof( Vampire ) == c.Owner.GetType() ){ score = 20; }
-						else if ( typeof( VampireLord ) == c.Owner.GetType() ){ score = 40; }
-						else if ( typeof( VampirePrince ) == c.Owner.GetType() ){ score = 60; }
-						else if ( typeof( Dracula ) == c.Owner.GetType() ){ score = 400; }
-						else if ( typeof( VampiricDragon ) == c.Owner.GetType() ){ score = 500; }
+						else if ( typeof( VampireLord ) == c.Owner.GetType() ){ score = 30; }
+						else if ( typeof( VampirePrince ) == c.Owner.GetType() ){ score = 40; }
+						else if ( typeof( Dracula ) == c.Owner.GetType() ){ score = 200; }
+						else if ( typeof( VampiricDragon ) == c.Owner.GetType() ){ score = 250; }
 
 						if ( score > 0 )
 						{
 							m_Stake.VampiresSlain = m_Stake.VampiresSlain + score;
-								if ( m_Stake.VampiresSlain > 10000 ){ m_Stake.VampiresSlain = 10000; }
-							from.SendMessage("Vampire Reward: " + m_Stake.VampiresSlain + " Gold!");
+								if ( m_Stake.VampiresSlain > 250 ){ m_Stake.VampiresSlain = 250; }
+									from.SendMessage("Vampire Reward: " + m_Stake.VampiresSlain + " Gold!");
+
 							c.VisitedByTaxidermist = true;
 							from.PlaySound( 0x13E );
 							m_Stake.InvalidateProperties();

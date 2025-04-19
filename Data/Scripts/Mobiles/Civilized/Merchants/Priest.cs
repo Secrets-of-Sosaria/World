@@ -72,6 +72,7 @@ namespace Server.Mobiles
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,			ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Healer,	ItemSalesInfo.World.None,	typeof( RefreshPotion )	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,			ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Healer,	ItemSalesInfo.World.None,	typeof( HealPotion )	 );
 					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.Christmas,	ItemSalesInfo.Material.All,			ItemSalesInfo.Market.All,		ItemSalesInfo.World.None,	null	 );
+					ItemInformation.GetSellList( m_Merchant, this, 	ItemSalesInfo.Category.All,			ItemSalesInfo.Material.All,			ItemSalesInfo.Market.Healer,	ItemSalesInfo.World.None,	typeof( MalletStake )	 );
 				}
 			}
 

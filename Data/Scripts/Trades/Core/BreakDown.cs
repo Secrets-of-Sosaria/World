@@ -193,6 +193,12 @@ namespace Server.Engines.Craft
 						return;
 					}
 
+					if (((Item)targeted).Items.Count > 0)
+					{	
+						from.SendMessage( "You cannot break down a container that has items inside of it" );
+						return;
+					}
+
 					int num = m_CraftSystem.CanCraft( from, m_Tool, null );
 
 					if ( num > 0 )
