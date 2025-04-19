@@ -46,6 +46,9 @@ namespace Server.Gumps
 
 			AddHtml( 12, 12, 200, 20, @"<BODY><BASEFONT Color=" + color + ">LIBRARY</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(869, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
+
+			// Search gump
+			AddImageTiled( 100, 12, 200, 20, 3004 );
 			AddTextEntry( 100, 12, 200, 20, 1152, 1001, m_SearchText );
 			AddButton( 300, 10, 4011, 4011, 1000, GumpButtonType.Reply, 0 );
 			AddButton( 325, 10, 4018, 4018, 1002, GumpButtonType.Reply, 0 );
