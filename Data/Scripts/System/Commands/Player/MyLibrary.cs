@@ -168,6 +168,14 @@ namespace Server.Gumps
 				}
 			}
 
+			book = bookInfo( entryid, 1 ); // search only titles of things i can't read the contents of
+			if ( book.ToLower().Contains( text.ToLower() ) )
+			{
+				item.Delete();
+
+				return true;
+			}
+
 			item.Delete();
 
 			return false;
