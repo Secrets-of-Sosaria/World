@@ -285,6 +285,35 @@ namespace Server.Mobiles
 				m_Giver = giver;
 			}
 
+			private static int GetTamingBODAmount(Mobile from)
+			{
+			    if (from == null)
+			        return 1;
+
+			    double totalSkill = from.Skills[SkillName.Druidism].Value
+			                      + from.Skills[SkillName.Taming].Value
+			                      + from.Skills[SkillName.Herding].Value
+			                      + from.Skills[SkillName.Veterinary].Value;
+
+			    int skillSum = (int)totalSkill;
+
+			    if (skillSum < 100)
+			        return Utility.RandomMinMax(1, 3);
+				// 125 in taming, druidism, herding, veterinary
+			    else if (skillSum == 500)
+			        return Utility.RandomMinMax(11, 21);
+			    else if (skillSum >= 499)
+			        return Utility.RandomMinMax(9, 17);
+			    else if (skillSum >= 400)
+			        return Utility.RandomMinMax(7, 13);
+			    else if (skillSum >= 300)
+			        return Utility.RandomMinMax(5, 9);
+			    else if (skillSum >= 200)
+			        return Utility.RandomMinMax(3, 7);
+			    else // 100 - 199
+			        return Utility.RandomMinMax(2, 5);
+			}
+
 			public override void OnClick()
 			{
 				if( !( m_Mobile is PlayerMobile ) )
@@ -299,7 +328,8 @@ namespace Server.Mobiles
 				else if(CanGetContract(mobile))
 				{
 					mobile.SendGump(new SpeechGump( mobile, "The Animal Broker", SpeechFunctions.SpeechText( m_Giver, m_Mobile, "Animal Broker" ) ));
-					mobile.AddToBackpack( new TamingBOD() );
+					int amount = GetTamingBODAmount(mobile);
+					mobile.AddToBackpack(new TamingBOD(amount));
 				}
 				else
 				{
