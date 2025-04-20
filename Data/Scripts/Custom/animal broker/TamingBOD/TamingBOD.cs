@@ -114,11 +114,11 @@ namespace Server.Items
 				reward = Utility.RandomMinMax(200, 400); // 25% easy // 62% medium // 13% rare
 			else if (goldAmount < 60000)
 				reward = Utility.RandomMinMax(300, 500); // 37% medium // 48% rare // 15% impossible
-			else if (goldAmount < 100000)
+			else if (goldAmount < 120000)
 				reward = Utility.RandomMinMax(400, 510); // 70% rare // 30% impossible
-			else if (goldAmount < 150000)
+			else if (goldAmount < 175000)
 				reward = Utility.RandomMinMax(450, 525); // 40% rare // 60% impossible
-			else if (goldAmount >= 150000)
+			else if (goldAmount >= 225000)
 				reward = Utility.RandomMinMax(490, 600); // 40% rare // 60% impossible
 				
 			if (500 < reward)  // impossible finds
