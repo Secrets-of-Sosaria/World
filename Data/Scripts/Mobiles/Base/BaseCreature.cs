@@ -6348,7 +6348,7 @@ namespace Server.Mobiles
 
 		public bool DispelChecks( Mobile m )
 		{
-			double DispelChance = 0.75; // 75% chance to dispel at gm magery
+			double DispelChance = 0.33; // 33% chance to dispel at gm magery
 
 			bool willDispel = true;
 			int nope = MySettings.S_DispelFailure;
