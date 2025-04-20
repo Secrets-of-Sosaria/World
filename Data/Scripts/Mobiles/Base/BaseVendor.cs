@@ -2028,14 +2028,15 @@ namespace Server.Mobiles
 				this.CoinPurse -= GiveGold;
 
 				this.InvalidateProperties();
-
-				while ( GiveGold > 60000 )
+				
+				if(GiveGold > 20000)
 				{
-					seller.AddToBackpack( new Gold( 60000 ) );
-					GiveGold -= 60000;
+					seller.AddToBackpack( new BankCheck( GiveGold ) );
+				} 
+				else
+				{
+					seller.AddToBackpack( new Gold( GiveGold ) );
 				}
-
-				seller.AddToBackpack( new Gold( GiveGold ) );
 
 				seller.PlaySound( 0x0037 );//Gold dropping sound
 
