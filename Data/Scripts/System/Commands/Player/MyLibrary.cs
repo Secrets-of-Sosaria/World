@@ -146,8 +146,7 @@ namespace Server.Gumps
 				LoreBook lore = (LoreBook)item; 
 				lore.writeBook( refer ); 
 
-				if ( lore.BookText.ToLower().Contains( text.ToLower() ) ||
-				 lore.BookTitle.ToLower().Contains( text.ToLower() ) )
+				if ( containsText( lore.BookAuthor, lore.BookTitle, lore.BookText, text ) )
 				{
 					item.Delete();
 
@@ -159,8 +158,7 @@ namespace Server.Gumps
 			{
 				DynamicBook dyn = (DynamicBook)item;
 
-				if ( dyn.BookText.ToLower().Contains( text.ToLower() ) ||
-				 dyn.BookTitle.ToLower().Contains( text.ToLower() ) )
+				if ( containsText( dyn.BookAuthor, dyn.BookTitle, dyn.BookText, text ) )
 				{
 					item.Delete();
 
@@ -177,6 +175,20 @@ namespace Server.Gumps
 			}
 
 			item.Delete();
+
+			return false;
+		}
+
+		private bool containsText( string author, string title, string contents, string text )
+		{
+			// this won't get an exact match, and i'm too lazy to make an option for exact and partial matches
+			// also, authors can change on reloading some books seemingly 
+			if ( author.ToLower().Contains( text.ToLower() ) ||
+			 title.ToLower().Contains( text.ToLower() ) ||
+			 contents.ToLower().Contains( text.ToLower() ) )
+			{
+				return true;
+			}
 
 			return false;
 		}
