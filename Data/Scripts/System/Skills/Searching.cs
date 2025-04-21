@@ -214,7 +214,10 @@ namespace Server.SkillHandlers
 				}
 				else if ( item is HiddenChest )
 				{
-					int level = (int)(m.Skills[SkillName.Searching].Value / 10);
+					int minLevel = (int)(m.Skills[SkillName.Searching].Value / 25 );
+					int maxLevel = (int)(m.Skills[SkillName.Searching].Value / 10 );
+					// at 100 searching, generates a box between level 4 and 10
+					int level = Utility.RandomMinMax(minLevel,maxLevel);
 						if (level < 1){level = 1;}
 						if (level > 10){level = 10;}
 
