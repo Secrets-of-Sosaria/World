@@ -170,10 +170,6 @@ namespace Server.SkillHandlers
 				{
 					m_Thief.SendMessage( "You are just not that strong." );
 				}
-				else if ( !IsEmptyHanded( m_Thief ) )
-				{
-					m_Thief.SendMessage( "You cannot be wielding a weapon when trying to steal something." );
-				}
 				else if ( root is Mobile && ((Mobile)root).Player && IsInnocentTo( m_Thief, (Mobile)root ) && !IsInGuild( m_Thief ) )
 				{
 					m_Thief.SendLocalizedMessage( 1005596 ); // You must be in the thieves guild to steal from other players.
@@ -456,53 +452,11 @@ namespace Server.SkillHandlers
 			}
 		}
 
-		public static bool IsEmptyHanded( Mobile from )
-		{
-			if ( from.FindItemOnLayer( Layer.OneHanded ) != null )
-			{
-				if ( from.FindItemOnLayer( Layer.OneHanded ) is BaseWeapon )
-				{
-					if ( 
-						!( from.FindItemOnLayer( Layer.OneHanded ) is PugilistGlove ) && 
-						!( from.FindItemOnLayer( Layer.OneHanded ) is PugilistGloves ) 
-					)
-					{
-						return false;
-					}
-				}
-			}
-			if ( from.FindItemOnLayer( Layer.TwoHanded ) != null )
-			{
-				if ( from.FindItemOnLayer( Layer.TwoHanded ) is BaseWeapon )
-				{
-					if ( 
-						!( from.FindItemOnLayer( Layer.TwoHanded ) is PugilistGlove ) && 
-						!( from.FindItemOnLayer( Layer.TwoHanded ) is PugilistGloves ) 
-					)
-					{
-						return false;
-					}
-				}
-			}
-
-			return true;
-		}
-
 		public static TimeSpan OnUse( Mobile m )
 		{
-			if ( !IsEmptyHanded( m ) )
-			{
-				m.SendMessage( "You cannot be wielding a weapon when trying to steal something." );
-			}
-			else
-			{
 				m.Target = new Stealing.StealingTarget( m );
-				//m.RevealingAction(); // NO REVEALING ON THIS SERVER
-
 				m.SendLocalizedMessage( 502698 ); // Which item do you want to steal?
-			}
-
-			return TimeSpan.FromSeconds( 5.0 );
+				return TimeSpan.FromSeconds( 5.0 );
 		}
 	}
 
