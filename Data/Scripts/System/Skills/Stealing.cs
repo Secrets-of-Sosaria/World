@@ -12,7 +12,6 @@ using Server.Spells.Necromancy;
 using Server.Spells;
 using Server.Spells.Ninjitsu;
 using Server.Misc;
-using Server.Systems;
 
 namespace Server.SkillHandlers
 {
@@ -413,11 +412,6 @@ namespace Server.SkillHandlers
 					from.AddToBackpack( stolen );
 
 					StolenItem.Add( stolen, m_Thief, root as Mobile );
-					Mobile m = target as Mobile;
-					if (m != null)
-					{
-					    ContrabandSystem.TryGiveContraband(from, m);
-					}
 				}
 
 				if ( caught )
