@@ -346,6 +346,25 @@ namespace Server.Mobiles
 		    mobile.AddToBackpack(rewardBag);
 			mobile.SendMessage("The Guildmaster rewards you for your skill and discretion.");
 			Effects.PlaySound(mobile.Location, mobile.Map, 0x32);
+
+			int fame = 0;
+
+			if (box is CommonContrabandBox)
+			    fame = Utility.RandomMinMax(10, 50);
+			else if (box is UncommonContrabandBox)
+			    fame = Utility.RandomMinMax(60, 120);
+			else if (box is RareContrabandBox)
+			    fame = Utility.RandomMinMax(130, 190);
+			else if (box is VeryRareContrabandBox)
+			    fame = Utility.RandomMinMax(250, 350);
+			else if (box is ExtremelyRareContrabandBox)
+			    fame = Utility.RandomMinMax(600, 800);
+			else if (box is LegendaryContrabandBox)
+			    fame = Utility.RandomMinMax(1200, 1800);
+
+			Titles.AwardFame(mobile, fame, false);
+			LoggingFunctions.LogStandard( mobile, "has smuggled a " + box.Name + "!" );
+
 		}
 
 
