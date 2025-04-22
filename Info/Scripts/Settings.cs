@@ -116,8 +116,8 @@ namespace Server
 
 	// There are almost 300 classic artifacts in the game, as well as artifacts created for this game that are specifically named
 	// and designed. These are items like 'Stormbringer' or 'Conan's Lost Sword'. By default, these items will retain their
-	// appearance and color no matter what is done to them. Setting this to true will allow a player to use items like the Magic
-	// Scissors or Magic Hammer to change the appearance of the items, but they will always retain their name. This is false by default.
+	// appearance and color no matter what is done to them. Setting this to true will allow a player to use items to change the appearance of the items, 
+	// but they will always retain their name. This is false by default.
 
 		public static bool S_ChangeArtyLook = false;
 
