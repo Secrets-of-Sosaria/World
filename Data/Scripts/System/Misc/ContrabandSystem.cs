@@ -17,9 +17,6 @@ namespace Server.Systems
 
     public static class ContrabandSystem
     {
-        /// <summary>
-        /// Call this after a successful steal attempt to possibly award a contraband box.
-        /// </summary>
         public static void TryGiveContraband(Mobile thief, Mobile victim)
         {
             if (thief == null || victim == null)

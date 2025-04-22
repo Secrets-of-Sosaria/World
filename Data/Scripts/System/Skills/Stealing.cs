@@ -413,6 +413,7 @@ namespace Server.SkillHandlers
 					from.AddToBackpack( stolen );
 
 					StolenItem.Add( stolen, m_Thief, root as Mobile );
+					//contraband boxes can only be found if the thief suceeded at stealing something
 					Mobile m = target as Mobile;
 					if (m != null)
 					{

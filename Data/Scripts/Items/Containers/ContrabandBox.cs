@@ -5,9 +5,6 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    /// <summary>
-    /// Base class for contraband boxes. Unopenable, immovable, with a default graphic.
-    /// </summary>
     public abstract class ContrabandBox : Item
     {
         public ContrabandBox(int itemID, int hue) : base(itemID)

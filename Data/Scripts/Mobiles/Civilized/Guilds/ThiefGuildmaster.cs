@@ -181,7 +181,7 @@ namespace Server.Mobiles
 
 	    		if (pm == null || pm.NpcGuild != NpcGuild.ThievesGuild)
 	    		{
-	    		    SayTo(from, "Sorry, I do not do business with those I don't trust. Guild members only, {0}.", from.Name);
+	    		    SayTo(from, "Sorry but I do not do business with those I don't trust. Guild members only, {0}.", from.Name);
 	    		    return false;
 	    		}
 
