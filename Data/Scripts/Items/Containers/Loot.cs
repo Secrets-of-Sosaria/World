@@ -669,9 +669,9 @@ namespace Server
 		private static Type[] m_RareItemTypes = new Type[]
 			{
 				typeof( SkeletonsKey ),			typeof( MagicalDyes ),
-				typeof( HeavySharpeningStone ),	typeof( ConsecratedSharpeningStone ),	typeof( MyCircusTentEastAddonDeed ),
+				typeof( HeavyEnhancementStone ),typeof( ConsecratedEnhancementStone ),	typeof( MyCircusTentEastAddonDeed ),
 				typeof( ManyArrows100 ),		typeof( ManyBolts100 ),					typeof( MyTentSouthAddonDeed ),
-				typeof( RoughSharpeningStone ),	typeof( DenseSharpeningStone ),			typeof( ElementalSharpeningStone ),
+				typeof( RoughEnhancementStone ),typeof( DenseEnhancementStone ),		typeof( ElementalEnhancementStone ),
 				typeof( ArtifactManual ),		typeof( light_dragon_brazier ), 		typeof( MoonStone ),
 				typeof( CrystallineJar ),		typeof( TrophyBase ),					typeof( DockingLantern ),
 				typeof( BoatBuild ),			typeof( TrapKit ),						typeof( MalletStake ), 
@@ -703,9 +703,9 @@ namespace Server
 		private static Type[] m_AdventurerRareItemTypes = new Type[]
 			{
 				typeof( SkeletonsKey ),			typeof( MagicalDyes ),					typeof( EtherealPowerScroll),
-				typeof( HeavySharpeningStone ),	typeof( ConsecratedSharpeningStone ),	typeof( SummonPrison ),
+				typeof( HeavyEnhancementStone ),typeof( ConsecratedEnhancementStone ),	typeof( SummonPrison ),
 				typeof( MagicPigment ),			typeof( RunicHammer ),					typeof( RunicSaw ),
-				typeof( RoughSharpeningStone ),	typeof( DenseSharpeningStone ),			typeof( ElementalSharpeningStone ),
+				typeof( RoughEnhancementStone ),typeof( DenseEnhancementStone ),		typeof( ElementalEnhancementStone ),
 				typeof( ArtifactManual ),		typeof( Runebook ),						typeof( FrankenJournalInBox ),
 				typeof( CrystallineJar ),		typeof( DockingLantern ),				typeof( RunicFletching ),
 				typeof( BoatBuild ),			typeof( MalletStake ), 					typeof( PetBondDeed ),
