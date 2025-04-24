@@ -34,13 +34,26 @@ namespace Server.SkillHandlers
 				AllowNonlocal = true;
 			}
 
-			protected override void OnTarget( Mobile from, object targeted )
+			protected override void OnTarget(Mobile from, object targeted)
 			{
-				if ( targeted is Item )
-				{
-					Item examine = (Item)targeted;
-					RelicFunctions.IDItem( from, from, examine, SkillName.ArmsLore );
-				}
+			   if (targeted is Item)
+			   {
+			       Item examine = (Item)targeted;
+			       int identified = RelicIDHelper.TryRecursiveIdentify(from, examine, IDSkill.ArmsLore, SkillName.ArmsLore);
+
+			       if (examine is Container)
+			       {
+			           if (identified == 0)
+			               from.SendMessage("There is nothing in this container that requires Arms Lore to identify.");
+			           else
+			               from.SendMessage("You inspect the contents of the container using your Arms Lore skill.");
+			       }
+			       else
+			       {
+			           if (identified == 0)
+			               from.SendMessage("That item cannot be identified with Arms Lore.");
+			       }
+			   }
 			}
 		}
 	}
