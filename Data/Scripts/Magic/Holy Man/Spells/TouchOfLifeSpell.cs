@@ -16,7 +16,7 @@ namespace Server.Spells.HolyMan
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 3 ); } }
-		public override int RequiredTithing{ get{ return 40; } }
+		public override int RequiredTithing{ get{ return 20; } }
 		public override double RequiredSkill{ get{ return 20.0; } }
 		public override int RequiredMana{ get{ return 10; } }
 

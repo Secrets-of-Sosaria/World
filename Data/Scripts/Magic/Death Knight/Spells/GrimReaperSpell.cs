@@ -18,7 +18,7 @@ namespace Server.Spells.DeathKnight
 			);
 
 		public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds( 0.5 ); } }
-		public override int RequiredTithing{ get{ return 42; } }
+		public override int RequiredTithing{ get{ return 21; } }
 		public override double RequiredSkill{ get{ return 30.0; } }
 		public override bool BlocksMovement{ get{ return false; } }
 		public override int RequiredMana{ get{ return 28; } }

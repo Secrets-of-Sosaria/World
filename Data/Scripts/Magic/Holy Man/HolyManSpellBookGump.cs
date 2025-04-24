@@ -165,7 +165,7 @@ namespace Server.Gumps
 				{
 					grav1 = Worlds.GetTown( 0, "the Village of Springvale", Map.Internal, out placer_1, out xc_1, out yc_1 );
 					name1 = "Banish";
-					pity1 = "120";
+					pity1 = "60";
 					skil1 = "60";
 					mana1 = "30";
 					text1 = ""; if ( !this.HasSpell( from, 770) ){ m_NotHave_1 = true; z1=220; text1 = "Patriarch Morden rests south of the Village of Springvale<br>" + grav1 + "<br><br>Mantra: exilium<BR><BR>"; }
@@ -174,7 +174,7 @@ namespace Server.Gumps
 
 					grav2 = Worlds.GetTown( 0, "the Village of Whisper", Map.Internal, out placer_2, out xc_2, out yc_2 );
 					name2 = "Dampen Spirit";
-					pity2 = "140";
+					pity2 = "70";
 					skil2 = "70";
 					mana2 = "35";
 					text2 = ""; if ( !this.HasSpell( from, 771) ){ m_NotHave_2 = true; z2=220; text2 = "Archbishop Halyrn rests by the Village of Whisper<br>" + grav2 + "<br><br>Mantra: accipe spiritum<BR><BR>"; }
@@ -185,7 +185,7 @@ namespace Server.Gumps
 				{
 					grav1 = Worlds.GetTown( 0, "the City of Kuldara", Map.Internal, out placer_1, out xc_1, out yc_1 );
 					name1 = "Enchant";
-					pity1 = "180";
+					pity1 = "90";
 					skil1 = "90";
 					mana1 = "45";
 					text1 = ""; if ( !this.HasSpell( from, 772) ){ m_NotHave_1 = true; z1=220; text1 = "Bishop Leantre rests in the Kuldar Cemetery<br>" + grav1 + "<br><br>Mantra: fascinare<BR><BR>"; }
@@ -194,7 +194,7 @@ namespace Server.Gumps
 
 					grav2 = Worlds.GetTown( 0, "the City of Elidor", Map.Internal, out placer_2, out xc_2, out yc_2 );
 					name2 = "Hammer of Faith";
-					pity2 = "100";
+					pity2 = "50";
 					skil2 = "50";
 					mana2 = "25";
 					text2 = ""; if ( !this.HasSpell( from, 773) ){ m_NotHave_2 = true; z2=220; text2 = "Deacon Wilems rests in the City of Elidor<br>" + grav2 + "<br><br>Mantra: malleo fidei<BR><BR>"; }
@@ -205,7 +205,7 @@ namespace Server.Gumps
 				{
 					grav1 = Worlds.GetTown( 0, "the City of Britain", Map.Internal, out placer_1, out xc_1, out yc_1 );
 					name1 = "Heavenly Light";
-					pity1 = "20";
+					pity1 = "10";
 					skil1 = "10";
 					mana1 = "5";
 					text1 = ""; if ( !this.HasSpell( from, 774) ){ m_NotHave_1 = true; z1=220; text1 = "Drumat the Apostle rests by the City of Britain<br>" + grav1 + "<br><br>Mantra: caelesti lumine<BR><BR>"; }
@@ -214,7 +214,7 @@ namespace Server.Gumps
 
 					grav2 = Worlds.GetTown( 0, "the Town of Moon", Map.Internal, out placer_2, out xc_2, out yc_2 );
 					name2 = "Nourish";
-					pity2 = "20";
+					pity2 = "10";
 					skil2 = "10";
 					mana2 = "5";
 					text2 = ""; if ( !this.HasSpell( from, 775) ){ m_NotHave_2 = true; z2=220; text2 = "Vincent the Priest rests by the Town of Moon<br>" + grav2 + "<br><br>Mantra: famem prohibere<BR><BR>"; }
@@ -225,7 +225,7 @@ namespace Server.Gumps
 				{
 					grav1 = Worlds.GetTown( 0, "the Town of Renika", Map.Internal, out placer_1, out xc_1, out yc_1 );
 					name1 = "Purge";
-					pity1 = "80";
+					pity1 = "40";
 					skil1 = "40";
 					mana1 = "20";
 					text1 = ""; if ( !this.HasSpell( from, 776) ){ m_NotHave_1 = true; z1=220; text1 = "Abigayl the Preacher rests near the Church of the Divine in the Town of Renika<br>" + grav1 + "<br><br>Mantra: deiectionem<BR><BR>"; }
@@ -234,7 +234,7 @@ namespace Server.Gumps
 
 					grav2 = Worlds.GetTown( 0, "Greensky Village", Map.Internal, out placer_2, out xc_2, out yc_2 );
 					name2 = "Rebirth";
-					pity2 = "400";
+					pity2 = "200";
 					skil2 = "80";
 					mana2 = "40";
 					text2 = ""; if ( !this.HasSpell( from, 777) ){ m_NotHave_2 = true; z2=220; text2 = "Cardinal Greggs rests near the Greensky Village<br>" + grav2 + "<br><br>Mantra: reditus vitae<BR><BR>"; }
@@ -245,7 +245,7 @@ namespace Server.Gumps
 				{
 					grav1 = Worlds.GetTown( 0, "the Village of Grey", Map.Internal, out placer_1, out xc_1, out yc_1 );
 					name1 = "Sacred Boon";
-					pity1 = "40";
+					pity1 = "20";
 					skil1 = "20";
 					mana1 = "10";
 					text1 = ""; if ( !this.HasSpell( from, 778) ){ m_NotHave_1 = true; z1=220; text1 = "Father Michal rests by the Village of Grey<br>" + grav1 + "<br><br>Mantra: sacrum munus<BR><BR>"; }
@@ -254,7 +254,7 @@ namespace Server.Gumps
 
 					grav2 = Worlds.GetTown( 0, "the City of Montor", Map.Internal, out placer_2, out xc_2, out yc_2 );
 					name2 = "Sanctify";
-					pity2 = "60";
+					pity2 = "30";
 					skil2 = "30";
 					mana2 = "15";
 					text2 = ""; if ( !this.HasSpell( from, 779) ){ m_NotHave_2 = true; z2=220; text2 = "Sister Tiana rests south of the City of Montor<br>" + grav2 + "<br><br>Mantra: benedicite<BR><BR>"; }
@@ -265,7 +265,7 @@ namespace Server.Gumps
 				{
 					grav1 = Worlds.GetTown( 0, "the Village of Islegem", Map.Internal, out placer_1, out xc_1, out yc_1 );
 					name1 = "Seance";
-					pity1 = "120";
+					pity1 = "60";
 					skil1 = "60";
 					mana1 = "30";
 					text1 = ""; if ( !this.HasSpell( from, 780) ){ m_NotHave_1 = true; z1=220; text1 = "Brother Kurklan rests near the Village of Islegem<br>" + grav1 + "<br><br>Mantra: spiritus mundi<BR><BR>"; }
@@ -274,7 +274,7 @@ namespace Server.Gumps
 
 					grav2 = Worlds.GetTown( 0, "the City of Lodoria", Map.Internal, out placer_2, out xc_2, out yc_2 );
 					name2 = "Smite";
-					pity2 = "80";
+					pity2 = "40";
 					skil2 = "40";
 					mana2 = "20";
 					text2 = ""; if ( !this.HasSpell( from, 781) ){ m_NotHave_2 = true; z2=220; text2 = "Edwin the Pope rests in the Lodoria Cemetery<br>" + grav2 + "<br><br>Mantra: percutiat<BR><BR>"; }
@@ -285,7 +285,7 @@ namespace Server.Gumps
 				{
 					grav1 = Worlds.GetTown( 0, "the Town of Devil Guard", Map.Internal, out placer_1, out xc_1, out yc_1 );
 					name1 = "Touch of Life";
-					pity1 = "40";
+					pity1 = "20";
 					skil1 = "20";
 					mana1 = "10";
 					text1 = ""; if ( !this.HasSpell( from, 782) ){ m_NotHave_1 = true; z1=220; text1 = "Xephyn the Monk rests near the Town of Devil Guard<br>" + grav1 + "<br><br>Mantra: tactus vitae<BR><BR>"; }
@@ -294,7 +294,7 @@ namespace Server.Gumps
 
 					grav2 = Worlds.GetTown( 0, "the Village of Fawn", Map.Internal, out placer_2, out xc_2, out yc_2 );
 					name2 = "Trial by Fire";
-					pity2 = "500";
+					pity2 = "250";
 					skil2 = "30";
 					mana2 = "15";
 					text2 = ""; if ( !this.HasSpell( from, 783) ){ m_NotHave_2 = true; z2=220; text2 = "Chancellor Davis rests on an island near the Village of Fawn<br>" + grav2 + "<br><br>Mantra: igne iudicii<BR><BR>"; }
