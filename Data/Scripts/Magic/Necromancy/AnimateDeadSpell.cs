@@ -106,8 +106,7 @@ namespace Server.Spells.Necromancy
 						else if ( bc.PoisonImmune == Poison.Lethal ){ immune = 5; }
 
 						// THIS MODIFIES THE MONSTER BASED ON THE LEVEL OF THE CORPSE AND THE SKILLS OF THE CASTER
-						// TO GET A ANIMATED CREATURE WITH FULL STATS, A CASTER NEEDS A 125 IN BOTH SKILLS
-						int modify = level_caster - ( level_corpse + 50 );
+						int modify = level_caster - ( level_corpse );
 						double mod = 1.0;
 						if ( modify < 0 )
 						{
