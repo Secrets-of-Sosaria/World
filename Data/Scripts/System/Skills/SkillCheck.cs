@@ -175,6 +175,9 @@ namespace Server.Misc
 			if ( from is BaseCreature && ((BaseCreature)from).Controlled )
 				gc *= 2;
 
+			if (from.Player && SkillGainSettings.ShowChance(from))
+   				 from.SendMessage("Skill gain chance for {0}: {1:0.00}%", skillName, gc*100.0);
+
 			if ( from.Alive && ( ( gc >= Utility.RandomDouble() && AllowGain( from, skill, amObj ) ) || skill.Base < 10.0 ) )
 			{
 				// CAN ONLY GAIN SEAFARING SKILL ON A BOAT AFTER REACHING 50
