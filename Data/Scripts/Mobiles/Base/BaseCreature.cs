@@ -5329,6 +5329,14 @@ namespace Server.Mobiles
 
 					this.InvalidateProperties();
 
+int excessGold = dropped.Amount - trainingCost ;
+
+ if (excessGold > 0)
+            {
+                from.AddToBackpack(new Gold(excessGold));
+				from.SendMessage("You have been refunded the excess gold.");
+            }
+
 					dropped.Delete();
 					return true;
 				}
