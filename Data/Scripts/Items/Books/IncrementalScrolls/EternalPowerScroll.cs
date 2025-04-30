@@ -184,15 +184,6 @@ namespace Server.Items
 
                     m_User.SendMessage(string.Format("Your maximum {0} skill cap has increased from {1:F1} to {2:F1}.", m_Skill.Name, oldCap, m_Skill.Cap));
                     m_User.PlaySound(0x1EA);
-
-                    Effects.SendLocationParticles(EffectItem.Create(m_User.Location, m_User.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
-                    Effects.PlaySound(m_User.Location, m_User.Map, 0x243);
-
-                    Effects.SendMovingParticles(new Entity(0, new Point3D(m_User.X - 6, m_User.Y - 6, m_User.Z + 15), m_User.Map), m_User, 0x36D4, 7, 0, false, true, 0x497, 0, 9502, 1, 0, (EffectLayer)255, 0x100);
-                    Effects.SendMovingParticles(new Entity(0, new Point3D(m_User.X - 4, m_User.Y - 6, m_User.Z + 15), m_User.Map), m_User, 0x36D4, 7, 0, false, true, 0x497, 0, 9502, 1, 0, (EffectLayer)255, 0x100);
-                    Effects.SendMovingParticles(new Entity(0, new Point3D(m_User.X - 6, m_User.Y - 4, m_User.Z + 15), m_User.Map), m_User, 0x36D4, 7, 0, false, true, 0x497, 0, 9502, 1, 0, (EffectLayer)255, 0x100);
-                  
-                    Effects.SendTargetParticles(m_User, 0x375A, 35, 90, 0x00, 0x00, 9502, (EffectLayer)255, 0x100);
                     m_Scroll.Delete();
                 }
                 else
