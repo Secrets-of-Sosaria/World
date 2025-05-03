@@ -1713,19 +1713,27 @@ namespace Server.Mobiles
 			{
 				if ( CitizenCost > 0 && CitizenCost == dropped.Amount )
 				{
-					dropped.Delete();
-					sound = 0x2E6;
-					say = "That is a fair trade.";
 					Item give = null;
 					List<Item> belongings = new List<Item>();
 					foreach( Item i in this.Backpack.Items )
 					{
 						give = i;
+						break;
 					}
-					give.Movable = true;
-					give.InvalidateProperties();
-					from.AddToBackpack( give );
-					CitizenService = 0;
+					if (give != null)
+            		{
+						dropped.Delete();
+						sound = 0x2E6;
+						say = "That is a fair trade.";
+		    		    give.Movable = true;
+            		    give.InvalidateProperties();
+            		    from.AddToBackpack(give);
+            		    CitizenService = 0;
+            		}
+            		else
+            		{
+            		    say = "I have nothing left to give you.";
+            		}
 				}
 			}
 			else if ( CitizenType == 1 )
