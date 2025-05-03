@@ -149,8 +149,7 @@ namespace Server
 				typeof( WoodenShield ),			typeof( SunShield ),			typeof( VirtueShield ),
 				typeof( ChaosShield ),			typeof( OrderShield ),			typeof( RoyalShield ),
 				typeof( GuardsmanShield ),		typeof( ElvenShield ),			typeof( DarkShield ),
-				typeof( CrestedShield ),		typeof( ChampionShield ),		typeof( JeweledShield ),
-				typeof( ScalemailShield ),		typeof( ScaledShield )
+				typeof( CrestedShield ),		typeof( ChampionShield ),		typeof( JeweledShield )
 			};
 
 		public static Type[] ShieldTypes{ get{ return m_ShieldTypes; } }
