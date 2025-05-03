@@ -564,6 +564,10 @@ namespace Server.Items
 			{
 				healer.SendLocalizedMessage( 501042 ); // Target cannot be resurrected at that location.
 			}
+			else if (HealingCooldownTracker.IsOnVetSupplyCooldown(healer))
+			{
+				healer.SendMessage("You cannot use bandages while veterinary supplies are in use.");
+			}
 			else if ( healer.CanBeBeneficial( patient, true, true ) )
 			{
 				healer.DoBeneficial( patient );
@@ -583,9 +587,8 @@ namespace Server.Items
 				healer.SendMessage ( "" + String.Format(" {0:0.0}s", new DateTime(TimeSpan.FromMilliseconds( HealTimer( healer, patient ) ).Ticks).ToString("s.ff") ) + "" );
 				healer.SendLocalizedMessage( 500956 ); // You begin applying the bandages.
 				healer.LocalOverheadMessage( MessageType.Regular, 1150, 500956 );
-
 				BuffInfo.AddBuff( healer, new BuffInfo( BuffIcon.Bandage, 1063670, TimeSpan.FromMilliseconds( HealTimer( healer, patient ) ), healer ) );
-
+				HealingCooldownTracker.SetBandageCooldown(healer, TimeSpan.FromMilliseconds( HealTimer( healer, patient ) ));
 				return context;
 			}
 

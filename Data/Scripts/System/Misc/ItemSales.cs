@@ -1484,7 +1484,8 @@ namespace Server
 			Wax = 65,
 			Witch = 66,
 			Wizard = 67,
-			All = 68
+			All = 68,
+			Veterinarian = 69 //nice
 		}
 
 		public static ItemSalesInfo[] m_SellingInfo = new ItemSalesInfo[]
@@ -1960,6 +1961,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	BambooScreen	),	334	,	0	,	0	,	false	,	false	,	World.Orient	,	Category.None	,	Material.None	,	Market.Monk	),
 			new ItemSalesInfo( typeof(	Banana	),	2	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Farmer	),
 			new ItemSalesInfo( typeof(	Bandage	),	2	,	60	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Healer	),
+			new ItemSalesInfo( typeof(	VeterinarySupplies	),	100	,	60	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Veterinarian	),
 			new ItemSalesInfo( typeof(	Bandana	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	DDRelicBanner	),	1	,	0	,	200	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Art	),
 			new ItemSalesInfo( typeof(	BannerDeed	),	5000	,	1	,	95	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Art	),
