@@ -672,7 +672,7 @@ namespace Server
 				typeof( ManyArrows100 ),		typeof( ManyBolts100 ),					typeof( MyTentSouthAddonDeed ),
 				typeof( RoughEnhancementStone ),typeof( DenseEnhancementStone ),		typeof( ElementalEnhancementStone ),
 				typeof( ArtifactManual ),		typeof( light_dragon_brazier ), 		typeof( MoonStone ),
-				typeof( CrystallineJar ),		typeof( TrophyBase ),					typeof( DockingLantern ),
+				typeof( CrystallineJar ),		typeof( TrophyBase ),					typeof( EtherealPowerScroll),
 				typeof( BoatBuild ),			typeof( TrapKit ),						typeof( MalletStake ), 
 				typeof( CandleLarge ),			typeof( Candelabra ),					typeof( CandelabraStand ),
 				typeof( HairDyeBottle ),		typeof( GothicCandelabraA ),			typeof( GothicCandelabraB ),
@@ -692,8 +692,7 @@ namespace Server
 				typeof( ECrystalAltarDeed ),	typeof( ECrystalBeggarStatueDeed ),		typeof( RunicUndertaker ),
 				typeof( RunicLeatherKit ),		typeof( RunicScales ),					typeof( GolemManual ),
 				typeof( SummonPrison ),			typeof( MagicalWand ),					typeof( MagicalWand ),
-				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( FrankenJournalInBox ),
-				typeof( EtherealPowerScroll)	
+				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( FrankenJournalInBox )
 			};
 
 		public static Type[] RareItemTypes{ get{ return m_RareItemTypes; } }
