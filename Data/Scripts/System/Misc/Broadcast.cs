@@ -70,7 +70,7 @@ namespace Server
 					{
 						m.Send(SpeedControl.Disable);
 						shoes.Weight = 5.0;
-						if ( !(shoes is HikingBoots) ){ m.SendMessage( "These shoes seem to have their magic diminished here." ); }
+						if ( !(shoes is HikingBoots || shoes is LevelHikingBoots || shoes is GiftHikingBoots) ){ m.SendMessage( "These shoes seem to have their magic diminished here." ); }
 					}
 					else
 					{

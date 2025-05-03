@@ -339,7 +339,7 @@ namespace Server.Mobiles
 					return true;
 
 				Item shoes = from.FindItemOnLayer( Layer.Shoes );
-				if ( ( shoes is Artifact_BootsofHermes || shoes is Artifact_SprintersSandals || ( shoes is HikingBoots && from.RaceID > 0 ) ) && shoes.Weight < 5.0 )
+				if ( ( shoes is Artifact_BootsofHermes || shoes is Artifact_SprintersSandals || ( (shoes is HikingBoots || shoes is LevelHikingBoots || shoes is GiftHikingBoots) && from.RaceID > 0 ) ) && shoes.Weight < 5.0 )
 					return true;
 
 				if ( Spells.Syth.SythSpeed.UnderEffect( (PlayerMobile)from ) )
