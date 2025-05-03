@@ -305,7 +305,10 @@ namespace Server.Spells
 		}
 
 		public virtual bool ConsumeReagents()
-		{
+        {
+			if ( !m_Caster.Player )
+				return true;
+
 			if ( m_Caster.ItemCastSpell )
 				return true;
 
