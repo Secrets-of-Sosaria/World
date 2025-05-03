@@ -97,8 +97,7 @@ namespace Server.Items
 						}
 						else
 						{
-							drink.Pour_OnTarget( from, from );
-							from.SendMessage( "You swallowed a bit too much!" );
+							from.SendMessage( "This looks tempting, but you are unsure if its safe to drink." );
 						}
 					}
 					else
