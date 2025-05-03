@@ -89,7 +89,7 @@ namespace Server.Items
 					switch( counter )
 					{
 						case 1:  myIcon = 0x1;		myAttack = "Achilles Strike";			myMana = 20; myDescribe1 = "A strike from the weapon will greatly hurt the target's Achilles tendon."; break;
-						case 2:  myIcon = 0x2;		myAttack = "Armor Ignore";				myMana = 20; myDescribe1 = "Ignores the Target’s Resists but deals slightly lower damage than the weapon's maximum potential."; break;
+						case 2:  myIcon = 0x2;		myAttack = "Armor Ignore";				myMana = 20; myDescribe1 = "Ignores the Target's Resists but deals slightly lower damage than the weapon's maximum potential."; break;
 						case 3:  myIcon = 0x3;		myAttack = "Armor Pierce";				myMana = 20; myDescribe1 = "Strike your foe with armor piercing force and inflicting greater damage."; break;
 						case 4:  myIcon = 0x4;		myAttack = "Bladeweave";				myMana = 10; myDescribe1 = "The warrior becomes one with their weapon, allowing it to guide their hand."; myDescribe2 = "The effects of this attack are unpredictable, but effective (10+? Mana)."; break;
 						case 5:  myIcon = 0x5;		myAttack = "Bleed Attack";				myMana = 30; myDescribe1 = "Causes the target to bleed profusely, causing Direct Damage several times over"; myDescribe2 = "the next few seconds. The amount of Damage dealt decreases each time."; break;
@@ -103,7 +103,7 @@ namespace Server.Items
 						case 13: myIcon = 0x13;		myAttack = "Disarm";					myMana = 20; myDescribe1 = "Disarms Target and prevents them from rearming any weapon for a short duration."; break;
 						case 14: myIcon = 0x14;		myAttack = "Dismount";					myMana = 20; myDescribe1 = "Dislodges Target from their Mount and deals a moderate amount of Direct damage to them."; break;
 						case 15: myIcon = 0x15;		myAttack = "Disrobe";					myMana = 15; myDescribe1 = "Forces your target to lose their outer clothing."; break;
-						case 16: myIcon = 0x16;		myAttack = "Double Shot";				myMana = 30; myDescribe1 = "Send two arrows flying at your opponent if you're mounted."; break;
+						case 16: myIcon = 0x16;		myAttack = "Double Shot";				myMana = 30; myDescribe1 = "Send two arrows flying at your opponent."; break;
 						case 17: myIcon = 0x17;		myAttack = "Double Strike";				myMana = 30; myDescribe1 = "The next Target the user strikes will be hit by the weapon twice."; break;
 						case 18: myIcon = 0x18;		myAttack = "Double Whirlwind Attack";	myMana = 25; myDescribe1 = "Hits all enemies in range, with extra bonus damage if there are many targets around you."; break;
 						case 19: myIcon = 0x19;		myAttack = "Drain Dexterity";			myMana = 25; myDescribe1 = "Drains the target's dexterity when they are struck."; break;
@@ -123,7 +123,7 @@ namespace Server.Items
 						case 33: myIcon = 0x3ED;	myAttack = "Frenzied Whirlwind";		myMana = 20; myDescribe1 = "A quick attack to all enemies in range of your weapon that causes damage over time."; break;
 						case 34: myIcon = 0x3EE;	myAttack = "Greater Magic Protection";	myMana = 30; myDescribe1 = "Allows you to absorb a great amount of magical energy."; break;
 						case 35: myIcon = 0x3EF;	myAttack = "Greater Melee Protection";	myMana = 30; myDescribe1 = "Allows you to absorb a great amount of physical damage."; break;
-						case 36: myIcon = 0x3F0;	myAttack = "Infectious Strike";			myMana = 15; myDescribe1 = "Attempts to apply a poisoned weapon’s poison to the Target. The higher the Poisoning skill of the"; myDescribe2 = "user, the higher the chance the strength of the applied Poison will be increased by one."; break;
+						case 36: myIcon = 0x3F0;	myAttack = "Infectious Strike";			myMana = 15; myDescribe1 = "Attempts to apply a poisoned weapon's poison to the Target. The higher the Poisoning skill of the"; myDescribe2 = "user, the higher the chance the strength of the applied Poison will be increased by one."; break;
 						case 37: myIcon = 0x3F1;	myAttack = "Lightning Arrow";			myMana = 20; myDescribe1 = "A charged arrow that arcs lightning into its target's allies."; break;
 						case 38: myIcon = 0x3F2;	myAttack = "Lightning Strike";			myMana = 20; myDescribe1 = "Causes the weapon to do an extra amount of energy damage."; break;
 						case 39: myIcon = 0x3F3;	myAttack = "Magic Protection";			myMana = 25; myDescribe1 = "Allows you to absorb a good amount of magical energy."; break;
@@ -136,7 +136,7 @@ namespace Server.Items
 						case 46: myIcon = 0x3FA;	myAttack = "Riding Attack";				myMana = 20; myDescribe1 = "Gives your attacks on horseback a much more deadly effect."; break;
 						case 47: myIcon = 0x3FB;	myAttack = "Riding Swipe";				myMana = 30; myDescribe1 = "If you are on foot, dismounts your opponent and damages the ethereal's rider or the live mount"; myDescribe2 = "(which must be healed before ridden again)."; break;
 						case 48: myIcon = 0x3FC;	myAttack = "Serpent Arrow";				myMana = 30; myDescribe1 = "Fires a snake at the target, poisoning them in addition to normal damage with a successful hit."; myDescribe2 = "The archer must be skilled in poisoning and nimble of hand to achieve success."; break;
-						case 49: myIcon = 0x3FD;	myAttack = "Shadow Infectious Strike";	myMana = 25; myDescribe1 = "Attempts to apply a poisoned weapon’s poison to the Target when sneaking and hidden. The higher the"; myDescribe2 = "Poisoning skill of the user, the higher the chance the strength of the applied Poison will be increased by one."; break;
+						case 49: myIcon = 0x3FD;	myAttack = "Shadow Infectious Strike";	myMana = 25; myDescribe1 = "Attempts to apply a poisoned weapon's poison to the Target when sneaking and hidden. The higher the"; myDescribe2 = "Poisoning skill of the user, the higher the chance the strength of the applied Poison will be increased by one."; break;
 						case 50: myIcon = 0x3FE;	myAttack = "Shadow Strike";				myMana = 20; myDescribe1 = "This attack does moderate extra Damage to the Target and immediately hides the"; myDescribe2 = "user. In order to attempt a Shadowstrike you must have a high amount of the Stealth skill."; break;
 						case 51: myIcon = 0x3FF;	myAttack = "Spin Attack";				myMana = 20; myDescribe1 = "Causes one to spin around really fast, hitting multiple times with their weapon."; break;
 						case 52: myIcon = 0x400;	myAttack = "Stunning Strike";			myMana = 20; myDescribe1 = "One hit with a weapon will be seriously stunned."; break;
