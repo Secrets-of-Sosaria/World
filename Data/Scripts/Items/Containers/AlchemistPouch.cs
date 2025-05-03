@@ -55,6 +55,41 @@ namespace Server.Items
 			return false;
         }
 
+		public void OrganizePotions( Mobile from )
+		{
+			int count = 0;
+
+			foreach ( Item item in getAllItems( from.Backpack ) )
+				if ( isAlchemy( item ) ) 
+					if ( TryDropItem( from, item, false ) )
+						count++;
+
+			if ( count > 0 )
+				from.SendMessage( "You have moved " + count + " potion(s) into the alchemist's belt pouch." );
+			else
+				from.SendMessage( "No potions were found to organize." );
+		}
+
+		private IEnumerable<Item> getAllItems( Container container )
+		{
+			var items = container.Items.ToArray();
+
+			foreach ( Item item in items )
+			{
+				yield return item;
+
+				if ( ( item is Container ) && !( item is AlchemistPouch ) )
+				{
+					Container subcon = item as Container;
+
+					foreach ( Item subitem in getAllItems( subcon ) )
+					{
+						yield return subitem;
+					}
+				}
+			}
+		}
+
 		public class AlchemistBag : Gump
 		{
 			private AlchemistPouch m_Pouch;
@@ -774,7 +809,12 @@ namespace Server.Items
 				item is RejuvenatePotion || 
 				item is GreaterRejuvenatePotion || 
 				item is StrengthPotion || 
-				item is GreaterStrengthPotion 
+				item is GreaterStrengthPotion ||
+				item is ResurrectPotion ||
+				item is BottleOfAcid ||
+				item is DurabilityPotion ||
+				item is RepairPotion ||
+				item is SuperPotion
 			){ return true; }
 			return false;
 		}
@@ -812,7 +852,7 @@ namespace Server.Items
 			private AlchemistPouch AlchemistBag; 
 			private Mobile m_From; 
 
-			public BagWindow( Mobile from, AlchemistPouch bag ) : base( 6172, 1 ) 
+			public BagWindow( Mobile from, AlchemistPouch bag ) : base( 0097, 1 ) 
 			{ 
 				m_From = from; 
 				AlchemistBag = bag; 
@@ -831,14 +871,37 @@ namespace Server.Items
 					m_From.SendMessage( "This must be in your backpack to organize." );
 				} 
 			} 
+		}
+
+		private class OrganizePotionsEntry : ContextMenuEntry
+		{
+			private readonly Mobile m_From;
+			private readonly AlchemistPouch m_Pouch;
+
+			public OrganizePotionsEntry( Mobile from, AlchemistPouch pouch ) : base( 6172, 1 )
+			{
+				m_From = from;
+				m_Pouch = pouch;
+			}
+
+			public override void OnClick()
+			{
+				if ( m_Pouch.IsChildOf( m_From.Backpack ) )
+					m_Pouch.OrganizePotions( m_From );
+				else
+					m_From.SendMessage( "This pouch must be in your backpack to organize potions." );
+			}
 		} 
 
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list ) 
 		{
 			base.GetContextMenuEntries( from, list );
 
-			if ( from.Alive )
+			if ( from.Alive && IsChildOf( from.Backpack ) )
+			{
 				list.Add( new BagWindow( from, this ) );
+				list.Add( new OrganizePotionsEntry(from, this) );
+			}
 		}
 
 		public int Bar;
