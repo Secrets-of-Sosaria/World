@@ -3,12 +3,63 @@ using Server.Targeting;
 using Server.Items;
 using Server.Network;
 using Server.Mobiles;
+using System.Collections;
 
 namespace Server
 {
 	public interface IRelic
 	{
 	}
+
+	public static class RelicIDHelper
+		{
+		    public static int TryRecursiveIdentify(Mobile from, Item item, IDSkill skillType, SkillName skillName)
+		    {
+		        int count = 0;
+
+		        if (item == null)
+		            return 0;
+
+		        // Check NotIDSkill and NotIdentified properties
+		        System.Reflection.PropertyInfo skillProp = item.GetType().GetProperty("NotIDSkill");
+		        System.Reflection.PropertyInfo notIdProp = item.GetType().GetProperty("NotIdentified");
+
+		        if (skillProp != null && notIdProp != null)
+		        {
+		            object skillVal = skillProp.GetValue(item, null);
+		            object notIdVal = notIdProp.GetValue(item, null);
+
+		            if (skillVal is IDSkill && ((IDSkill)skillVal) == skillType &&
+		                notIdVal is bool && ((bool)notIdVal) == true)
+		            {
+		                try
+		                {
+		                    RelicFunctions.IDItem(from, from, item, skillName);
+		                    count++;
+		                }
+		                catch (Exception ex)
+		                {
+		                    Console.WriteLine("Error identifying item: " + ex.Message);
+		                }
+		            }
+		        }
+
+		        // Recursively id items in containers
+		        if (item is Container)
+		        {
+		            Container c = (Container)item;
+		            ArrayList items = new ArrayList(c.Items);
+
+		            for (int i = 0; i < items.Count; ++i)
+		            {
+		                Item sub = items[i] as Item;
+		                if (sub != null)
+		                    count += TryRecursiveIdentify(from, sub, skillType, skillName);
+		            }
+		        }
+		        return count;
+		    }
+		}
 
 	public class RelicFunctions
 	{
