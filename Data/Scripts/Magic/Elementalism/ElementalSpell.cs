@@ -395,7 +395,7 @@ namespace Server.Spells.Elementalism
 			else if ( id == 321 ){ description = "Marks a rune to the elementalist’s current location. There are magic spells and abilities that can be used on the rune to teleport one to the location it is marked with."; }
 			else if ( id == 322 )
 			{
-				description = "Creates a volcanic storm of molten magma, causing physical and fire damage.";
+				description = "Creates a volcanic storm of molten magma, causing <br>physical and fire damage.";
 				if ( elm == "air" ){ description = "Creates a swirling storms of wind around the target, causing physical and energy damage."; }
 				else if ( elm == "earth" ){ description = "Causes a swirling storm of poison ivy around the target, dealing poison and physical damage."; }
 				else if ( elm == "water" ){ description = "Calls forth a typhoon of swirling wind and water, causing physical and cold damage."; }
