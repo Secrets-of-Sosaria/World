@@ -30,100 +30,111 @@ namespace Server.Spells.Elementalism
  
         public void Target( Mobile m )
         {
-			string elm = ElementalSpell.GetElement( Caster );
-			string orb = "air";
-			int color = 0xAFE;
-			int hue = 0x8CB-1;
+					string elm = ElementalSpell.GetElement( Caster );
+					string orb = "air";
+					int color = 0xAFE;
+					int hue = 0x8CB-1;
 
-			if ( elm == "air" )
-			{
-				orb = "air";
-				color = 0xAFE;
-				hue = 0x8CB-1;
-			}
-			else if ( elm == "earth" )
-			{
-				orb = "the earth";
-				color = 0xB79;
-				hue = 0;
-			}
-			else if ( elm == "fire" )
-			{
-				orb = "fire";
-				color = 0xB17;
-				hue = 0xAC8-1;
-			}
-			else if ( elm == "water" )
-			{
-				orb = "water";
-				color = 0xB3F;
-				hue = 0x90F-1;
-			}
-
-            if ( !Caster.CanSee( m ) )
-            {
-                Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
-            }
-            else if ( m == Caster && CheckBSequence( m, true ) )
-            {
-				ArrayList targets = new ArrayList();
-				foreach ( Item item in World.Items.Values )
-				if ( item is SoulOrb )
-				{
-					SoulOrb myOrb = (SoulOrb)item;
-					if ( myOrb.m_Owner == m )
+					if ( elm == "air" )
 					{
-						targets.Add( item );
+						orb = "air";
+						color = 0xAFE;
+						hue = 0x8CB-1;
 					}
-				}
-				for ( int i = 0; i < targets.Count; ++i )
-				{
-					Item item = ( Item )targets[ i ];
-					item.Delete();
-				}
+					else if ( elm == "earth" )
+					{
+						orb = "the earth";
+						color = 0xB79;
+						hue = 0;
+					}
+					else if ( elm == "fire" )
+					{
+						orb = "fire";
+						color = 0xB17;
+						hue = 0xAC8-1;
+					}
+					else if ( elm == "water" )
+					{
+						orb = "water";
+						color = 0xB3F;
+						hue = 0x90F-1;
+					}
 
-                m.PlaySound( 0x214 );
-                m.FixedEffect( 0x3039, 10, 16, hue, 0 );
-				m.SendMessage( "You summon a magical orb of " + orb + " to protect your soul." );
-				SoulOrb iOrb = new SoulOrb();
-				iOrb.m_Owner = m;
-				iOrb.Hue = color;
-				iOrb.Name = "magical orb of " + orb + "";
-				m.AddToBackpack( iOrb );
-				Server.Items.SoulOrb.OnSummoned( m, iOrb );
-            }
-            else if ( m == Caster )
-            {
-				Caster.SendMessage("You failed to summon an orb.");
-			}
-            else if ( !Caster.Alive )
-            {
-                Caster.SendLocalizedMessage( 501040 ); // The resurrecter must be alive.
-            }
-            else if (m.Alive)
-            {
-                Caster.SendLocalizedMessage( 501041 ); // Target is not dead.
-            }
-            else if ( !Caster.InRange( m, 2 ) )
-            {
-                Caster.SendLocalizedMessage( 501042 ); // Target is not close enough.
-            }
-            else if ( m.Map == null || !m.Map.CanFit( m.Location, 16, false, false ) )
-            {
-                Caster.SendLocalizedMessage( 501042 ); // Target can not be resurrected at that location.
-                m.SendLocalizedMessage( 502391 ); // Thou can not be resurrected there!
-            }
-            else if ( m is PlayerMobile && CheckBSequence( m, true ) )
-            {
-                SpellHelper.Turn( Caster, m );
- 
-                m.PlaySound( 0x214 );
-                m.FixedEffect( 0x3039, 10, 16, hue, 0 );
- 
-                m.CloseGump( typeof( ResurrectGump ) );
-                m.SendGump( new ResurrectGump( m, Caster ) );
-            }
-            else if (m is BaseCreature && CheckBSequence( m, true ) )
+					if ( !Caster.CanSee( m ) )
+					{
+							Caster.SendLocalizedMessage( 500237 ); // Target can not be seen.
+					}
+					else if ( m == Caster && CheckBSequence( m, true ) )
+					{
+						SoulOrb iOrb = new SoulOrb();
+
+						// Check if backpack is full
+						if (m.Backpack == null || !m.Backpack.CheckHold(m, iOrb, false, true, 0, 0))
+						{
+							iOrb.Delete();
+							m.SendMessage("You cannot cast that spell because your inventory is full.");
+							return;
+						}
+
+						// Remove existing orb(s) from the caster
+						ArrayList targets = new ArrayList();
+						foreach ( Item item in World.Items.Values )
+						if ( item is SoulOrb )
+						{
+							SoulOrb myOrb = (SoulOrb)item;
+							if ( myOrb.m_Owner == m )
+							{
+								targets.Add( item );
+							}
+						}
+						for ( int i = 0; i < targets.Count; ++i )
+						{
+							Item item = ( Item )targets[ i ];
+							item.Delete();
+						}
+				
+						// Create new orb
+						m.PlaySound( 0x214 );
+						m.FixedEffect( 0x3039, 10, 16, hue, 0 );
+						m.SendMessage( "You summon a magical orb of " + orb + " to protect your soul." );
+						iOrb.m_Owner = m;
+						iOrb.Hue = color;
+						iOrb.Name = "magical orb of " + orb + "";
+						m.AddToBackpack( iOrb );
+						Server.Items.SoulOrb.OnSummoned( m, iOrb );
+					}
+					else if ( m == Caster )
+					{
+						Caster.SendMessage("You failed to summon an orb.");
+					}
+					else if ( !Caster.Alive )
+					{
+							Caster.SendLocalizedMessage( 501040 ); // The resurrecter must be alive.
+					}
+					else if (m.Alive)
+					{
+							Caster.SendLocalizedMessage( 501041 ); // Target is not dead.
+					}
+					else if ( !Caster.InRange( m, 2 ) )
+					{
+							Caster.SendLocalizedMessage( 501042 ); // Target is not close enough.
+					}
+					else if ( m.Map == null || !m.Map.CanFit( m.Location, 16, false, false ) )
+					{
+							Caster.SendLocalizedMessage( 501042 ); // Target can not be resurrected at that location.
+							m.SendLocalizedMessage( 502391 ); // Thou can not be resurrected there!
+					}
+					else if ( m is PlayerMobile && CheckBSequence( m, true ) )
+					{
+							SpellHelper.Turn( Caster, m );
+
+							m.PlaySound( 0x214 );
+							m.FixedEffect( 0x3039, 10, 16, hue, 0 );
+
+							m.CloseGump( typeof( ResurrectGump ) );
+							m.SendGump( new ResurrectGump( m, Caster ) );
+					}
+					else if (m is BaseCreature && CheckBSequence( m, true ) )
 			{
 				BaseCreature pet = (BaseCreature)m;
 				Mobile master = pet.GetMaster();
