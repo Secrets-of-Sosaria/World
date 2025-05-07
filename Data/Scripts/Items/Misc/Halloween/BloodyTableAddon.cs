@@ -135,7 +135,7 @@ namespace Server.Items
 		[Constructable]
 		public BloodyTableAddonDeed()
 		{
-			Name = "BloodyTable";
+			Name = "Bloody Table";
 			Hue = 0x96C;
 		}
 

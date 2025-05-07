@@ -185,7 +185,7 @@ namespace Server.Items
 		[Constructable]
 		public GypsyCampAddonDeed()
 		{
-			Name = "GypsyCamp";
+			Name = "Gypsy Camp";
 		}
 
 		public GypsyCampAddonDeed( Serial serial ) : base( serial )
