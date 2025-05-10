@@ -77,7 +77,7 @@ namespace Server.Mobiles
 				toEat = Utility.RandomMinMax( 1, nGold );
 				pack.ConsumeTotal(typeof(Gold), toEat);
 				m.PlaySound( Utility.Random( 0x3A, 3 ) );
-				m.SendMessage( "The xorn ate some of your gold!" );
+				m.PublicOverheadMessage(MessageType.Regular, 0x35, false, "The xorn ate some of your gold!");
 			}
 		}
 
