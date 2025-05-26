@@ -1516,6 +1516,11 @@ namespace Server.Mobiles
 
 			m_NextMovementTime += speed;
 
+			if (Alive && MySettings.S_PlayerTerrainFootstepSounds)
+			{
+				PlayerMobileFootsteps.PlaySound(this);
+			}
+            
 			return true;
 		}
 		// this is the 'skill reset' method that is called when a player enters a region and absolutely nukes their stats if they played with the skill settings.
