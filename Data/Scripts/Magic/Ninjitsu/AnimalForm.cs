@@ -155,6 +155,15 @@ namespace Server.Spells.Ninjitsu
 			NoSkill
 		}
 
+		private static double GetMorphChance(Mobile m, AnimalFormEntry entry)
+		{
+			double ninjitsu = m.Skills.Ninjitsu.Value;
+
+            return ninjitsu < entry.ReqSkill + 37.5 
+				? (ninjitsu - entry.ReqSkill) / 37.5
+				: 1;
+        }
+
 		public static MorphResult Morph(Mobile m, int entryID)
 		{
 			if (entryID < 0 || entryID >= m_Entries.Length)
@@ -171,15 +180,9 @@ namespace Server.Spells.Ninjitsu
 				return MorphResult.NoSkill;
 			}
 
-			double ninjitsu = m.Skills.Ninjitsu.Value;
-
-			if (ninjitsu < entry.ReqSkill + 37.5)
-			{
-				double chance = (ninjitsu - entry.ReqSkill) / 37.5;
-
-				if (chance < Utility.RandomDouble())
-					return MorphResult.Fail;
-			}
+			double chance = GetMorphChance(m, entry);
+			if (chance < 1 && chance < Utility.RandomDouble())
+				return MorphResult.Fail;
 
 			m.CheckSkill(SkillName.Ninjitsu, 0.0, 37.5);
 
@@ -383,7 +386,8 @@ namespace Server.Spells.Ninjitsu
 
 				for (int i = 0; i < entries.Length; ++i)
 				{
-					bool enabled = (ninjitsu >= entries[i].ReqSkill && BaseFormTalisman.EntryEnabled(caster, entries[i].Type));
+					var entry = entries[i];
+					bool enabled = (ninjitsu >= entry.ReqSkill && BaseFormTalisman.EntryEnabled(caster, entry.Type));
 
 					int page = current / 10 + 1;
 					int pos = current % 10;
@@ -410,10 +414,10 @@ namespace Server.Spells.Ninjitsu
 						int x = (pos % 2 == 0) ? 14 : 264;
 						int y = (pos / 2) * 64 + 44;
 
-						Rectangle2D b = ItemBounds.Table[entries[i].ItemID];
-
-						AddImageTiledButton(x, y, 0x918, 0x919, i + 1, GumpButtonType.Reply, 0, entries[i].ItemID, 0x0, 40 - b.Width / 2 - b.X, 30 - b.Height / 2 - b.Y, entries[i].Tooltip);
-						AddHtmlLocalized(x + 84, y, 250, 60, entries[i].Name, 0x7FFF, false, false);
+                        Rectangle2D b = ItemBounds.Table[entry.ItemID];
+						AddImageTiledButton(x, y, 0x918, 0x919, i + 1, GumpButtonType.Reply, 0, entry.ItemID, 0x0, 40 - b.Width / 2 - b.X, 30 - b.Height / 2 - b.Y, entry.Tooltip);
+						AddHtmlLocalized(x + 84, y, 250, 20, entry.Name, 0x7FFF, false, false);
+                		TextDefinition.AddHtmlText(this, x + 84, y + 20, 100, 20, string.Format("Req. Skill: {0}", entry.ReqSkill), false, false, 0x7FFF, 0x7FFF);
 
 						current++;
 					}

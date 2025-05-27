@@ -20,10 +20,14 @@ namespace Server.Gumps
     public class MyLibrary : Gump
     {
 		public int m_Origin;
+		private bool m_Searching;
+		private string m_SearchText = "Search...";
 
-		public MyLibrary ( Mobile from, int source ) : base ( 50, 50 )
+		public MyLibrary ( Mobile from, int source, bool searching = false, string searchtext = "Search..." ) : base ( 50, 50 )
 		{
 			m_Origin = source;
+			m_Searching = searching;
+			m_SearchText = searchtext;
 
 			if ( from.AccessLevel >= AccessLevel.GameMaster )
 				((PlayerMobile)from).MyLibrary = "1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#1#";
@@ -42,6 +46,12 @@ namespace Server.Gumps
 
 			AddHtml( 12, 12, 200, 20, @"<BODY><BASEFONT Color=" + color + ">LIBRARY</BASEFONT></BODY>", (bool)false, (bool)false);
 			AddButton(869, 10, 4017, 4017, 0, GumpButtonType.Reply, 0);
+
+			// Search gump
+			AddImageTiled( 100, 12, 200, 20, 3004 );
+			AddTextEntry( 100, 12, 200, 20, 1152, 1001, m_SearchText );
+			AddButton( 300, 10, 4011, 4011, 1000, GumpButtonType.Reply, 0 );
+			AddButton( 325, 10, 4018, 4018, 1002, GumpButtonType.Reply, 0 );
 
 			int x = 16;
 			int y = 52;
@@ -98,14 +108,89 @@ namespace Server.Gumps
 					{
 						if ( rows == 24 || rows == 48 || rows == 72 ){ x = x+i; y = 52; }
 
-						AddButton(x, y, 4011, 4011, entry, GumpButtonType.Reply, 0);
-						AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + bookInfo( entry, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
-						y=y+d;
-						rows++;
+						if ( !m_Searching || m_SearchText.Trim() == "" )
+						{
+							AddButton(x, y, 4011, 4011, entry, GumpButtonType.Reply, 0);
+							AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + bookInfo( entry, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+							y=y+d;
+							rows++;
+						}
+						else 
+						{
+							if ( searchBooks( entry, m_SearchText ) )
+							{
+								AddButton(x, y, 4011, 4011, entry, GumpButtonType.Reply, 0);
+								AddHtml( x+38, y, 200, 20, @"<BODY><BASEFONT Color=" + color + ">" + bookInfo( entry, 1 ) + "</BASEFONT></BODY>", (bool)false, (bool)false);
+								y=y+d;
+								rows++;
+							}
+						}
 					}
 					entry++;
 				}
 			}
+		}
+
+		private bool searchBooks( int entryid, string text )
+		{
+			int refer = Int32.Parse( bookInfo( entryid, 2 ) );
+			string book = bookInfo( entryid, 0 );
+
+			Item item = null;
+			Type itemType = ScriptCompiler.FindTypeByName( book );
+			item = (Item)Activator.CreateInstance(itemType);
+			item.Weight = -50.0;
+
+			if ( item is LoreBook )
+			{ 
+				LoreBook lore = (LoreBook)item; 
+				lore.writeBook( refer ); 
+
+				if ( containsText( lore.BookAuthor, lore.BookTitle, lore.BookText, text ) )
+				{
+					item.Delete();
+
+					return true;
+				}
+			}
+			
+			if ( item is DynamicBook )
+			{
+				DynamicBook dyn = (DynamicBook)item;
+
+				if ( containsText( dyn.BookAuthor, dyn.BookTitle, dyn.BookText, text ) )
+				{
+					item.Delete();
+
+					return true;
+				}
+			}
+
+			book = bookInfo( entryid, 1 ); // search only titles of things i can't read the contents of
+			if ( book.ToLower().Contains( text.ToLower() ) )
+			{
+				item.Delete();
+
+				return true;
+			}
+
+			item.Delete();
+
+			return false;
+		}
+
+		private bool containsText( string author, string title, string contents, string text )
+		{
+			// this won't get an exact match, and i'm too lazy to make an option for exact and partial matches
+			// also, authors can change on reloading some books seemingly 
+			if ( author.ToLower().Contains( text.ToLower() ) ||
+			 title.ToLower().Contains( text.ToLower() ) ||
+			 contents.ToLower().Contains( text.ToLower() ) )
+			{
+				return true;
+			}
+
+			return false;
 		}
 
 		public override void OnResponse( NetState sender, RelayInfo info )
@@ -120,9 +205,29 @@ namespace Server.Gumps
 				int refer = Int32.Parse( bookInfo( button, 2 ) );
 				string book = bookInfo( button, 0 );
 
-				from.SendGump( new MyLibrary( from, m_Origin ) );
+				if ( !m_Searching )
+					from.SendGump( new MyLibrary( from, m_Origin ) );
+				else
+					from.SendGump( new MyLibrary( from, m_Origin, m_Searching, m_SearchText ) );
 
-				if ( button >= 400 ) // BUILT IN HELP
+				if ( button >= 1000 ) // SEARCHING
+				{
+					if ( button == 1000 )
+					{
+						m_Searching = true;
+						m_SearchText = info.GetTextEntry(1001).Text.Trim();
+						from.CloseGump( typeof( MyLibrary ) );
+						from.SendGump( new MyLibrary( from, m_Origin, m_Searching, m_SearchText ) );
+					}
+					else if ( button == 1002 )
+					{
+						m_Searching = false;
+						m_SearchText = "Search...";
+						from.CloseGump( typeof( MyLibrary ) );
+						from.SendGump( new MyLibrary( from, m_Origin ) );
+					}
+				}
+				else if ( button >= 400 ) // BUILT IN HELP
 				{
 					if ( button == 400 ){ from.CloseGump( typeof( BeginnerBookGump ) ); from.SendGump( new BeginnerBookGump( from, 1 ) ); }
 					else if ( button == 401 ){ from.CloseGump( typeof( CreatureHelpGump ) ); from.SendGump( new CreatureHelpGump( from, 0 ) ); }

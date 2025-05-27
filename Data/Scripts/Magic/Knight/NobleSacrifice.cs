@@ -38,13 +38,27 @@ namespace Server.Spells.Chivalry
 			{
 				List<Mobile> targets = new List<Mobile>();
 
-				foreach ( Mobile m in Caster.GetMobilesInRange( 3 ) ) // TODO: Validate range
+				foreach ( Mobile m in Caster.GetMobilesInRange( 3 ) )
 				{
-					if ( m is BaseCreature && ((BaseCreature)m).IsAnimatedDead )
-						continue;
+				    if (m == null || m.Deleted)
+				        continue;
 
-					if ( Caster != m && m.InLOS( Caster ) && Caster.CanBeBeneficial( m, false, true ) && !(m is Golem) && !((BaseCreature)m).IsDeadBondedPet )
-						targets.Add( m );
+				    BaseCreature bc = m as BaseCreature;
+
+				    if (bc != null)
+				    {
+				        if (bc.IsAnimatedDead || bc.IsDeadBondedPet || bc is Golem)
+				            continue;
+
+				        if (Caster != bc && bc.InLOS(Caster) && Caster.CanBeBeneficial(bc, false, true))
+				            targets.Add(m);
+				    }
+				    else
+				    {
+				        // Handle players or non-creature mobiles safely
+				        if (m != Caster && m.InLOS(Caster) && Caster.CanBeBeneficial(m, false, true))
+				            targets.Add(m);
+				    }
 				}
 
 				Caster.PlaySound( 0x244 );

@@ -1598,238 +1598,234 @@ namespace Server.Mobiles
 			}
 		}
 
-        public virtual bool OnBuyItems( Mobile buyer, List<BuyItemResponse> list )
+    public virtual bool OnBuyItems(Mobile buyer, List<BuyItemResponse> list) {
+		
+		if (!IsActiveSeller || !buyer.CheckAlive() || !CheckVendorAccess(buyer))
 		{
-			if ( !IsActiveSeller )
-				return false;
+			Say("I have no business with you.");
+			return false;
+		}
 
-			if ( !buyer.CheckAlive() )
-				return false;
+		UpdateBuyInfo();
 
-			if ( !CheckVendorAccess( buyer ) )
+		IBuyItemInfo[] buyInfo = GetBuyInfo();
+		IShopSellInfo[] sellInfo = GetSellInfo();
+		List<BuyItemResponse> validBuy = new List<BuyItemResponse>(list.Count);
+
+		int totalCost = 0;
+		int controlSlots = buyer.FollowersMax - buyer.Followers;
+		bool fullPurchase = true;
+		bool tryGettingArty = false;
+
+		foreach (BuyItemResponse buy in list)
+		{
+			Serial ser = buy.Serial;
+			int amount = buy.Amount;
+
+			if (ser.IsItem)
 			{
-				//Say( 501522 ); // I shall not treat with scum like thee!
-				this.Say( "I have no business with you." );
-				return false;
-			}
+				Item item = World.FindItem(ser);
 
-			UpdateBuyInfo();
-
-			IBuyItemInfo[] buyInfo = this.GetBuyInfo();
-			IShopSellInfo[] info = GetSellInfo();
-			int totalCost = 0;
-            List<BuyItemResponse> validBuy = new List<BuyItemResponse>( list.Count );
-			Container cont;
-			bool bought = false;
-			bool fromBank = false;
-			bool fullPurchase = true;
-			int controlSlots = buyer.FollowersMax - buyer.Followers;
-			bool tryGettingArty = false;
-
-			foreach ( BuyItemResponse buy in list )
-			{
-				Serial ser = buy.Serial;
-				int amount = buy.Amount;
-
-				if ( ser.IsItem )
+				if (item != null && item.ArtifactLevel > 0)
 				{
-					Item item = World.FindItem( ser );
-
-					if ( item.ArtifactLevel > 0 )
-					{
-						item = null;
-						tryGettingArty = true;
-					}
-
-					if ( item == null )
-						continue;
-
-					GenericBuyInfo gbi = LookupDisplayObject( item );
-
-					if ( gbi != null )
-					{
-						ProcessSinglePurchase( buy, gbi, validBuy, ref controlSlots, ref fullPurchase, ref totalCost );
-					}
-					else if ( item != this.BuyPack && item.IsChildOf( this.BuyPack ) )
-					{
-						if ( amount > item.Amount )
-							amount = item.Amount;
-
-						if ( amount <= 0 )
-							continue;
-
-						foreach ( IShopSellInfo ssi in info )
-						{
-							if ( ssi.IsSellable( item ) )
-							{
-								if ( ssi.IsResellable( item ) )
-								{
-									totalCost += ssi.GetBuyPriceFor( item ) * amount;
-									validBuy.Add( buy );
-									break;
-								}
-							}
-						}
-					}
+					item = null;
+					tryGettingArty = true;
 				}
-				else if ( ser.IsMobile )
-				{
-					Mobile mob = World.FindMobile( ser );
 
-					if ( mob == null )
-						continue;
-
-					GenericBuyInfo gbi = LookupDisplayObject( mob );
-
-					if ( gbi != null )
-						ProcessSinglePurchase( buy, gbi, validBuy, ref controlSlots, ref fullPurchase, ref totalCost );
-				}
-			}//foreach
-
-			if ( tryGettingArty )
-			{
-				SayTo( buyer, true, "No! Those are research items and not actual artifacts!" );
-				this.PlaySound( this.Female ? 802 : 1074 );
-			}
-			else if ( fullPurchase && validBuy.Count == 0 )
-				SayTo( buyer, 500190 ); // Thou hast bought nothing!
-			else if ( validBuy.Count == 0 )
-				SayTo( buyer, 500187 ); // Your order cannot be fulfilled, please try again.
-
-			if ( validBuy.Count == 0 || tryGettingArty )
-				return false;
-
-			bought = ( buyer.AccessLevel >= AccessLevel.GameMaster );
-
-			cont = buyer.Backpack;
-			if ( !bought && cont != null )
-			{
-				if ( cont.ConsumeTotal( typeof( Gold ), totalCost ) )
-					bought = true;
-				else if ( totalCost < 2000 )
-					SayTo( buyer, 500192 );//Begging thy pardon, but thou casnt afford that.
-			}
-
-			if ( !bought && totalCost >= 2000 )
-			{
-				cont = buyer.FindBankNoCreate();
-				if ( cont != null && cont.ConsumeTotal( typeof( Gold ), totalCost ) )
-				{
-					bought = true;
-					fromBank = true;
-				}
-				else
-				{
-					SayTo( buyer, 500191 ); //Begging thy pardon, but thy bank account lacks these funds.
-				}
-			}
-
-			if ( !bought )
-				return false;
-			else
-				buyer.PlaySound( 0x32 );
-
-			cont = buyer.Backpack;
-			if ( cont == null )
-				cont = buyer.BankBox;
-
-			foreach ( BuyItemResponse buy in validBuy )
-			{
-				Serial ser = buy.Serial;
-				int amount = buy.Amount;
-
-				if ( amount < 1 )
+				if (item == null)
 					continue;
 
-				if ( ser.IsItem )
-				{
-					Item item = World.FindItem( ser );
+				GenericBuyInfo gbi = LookupDisplayObject(item);
 
-					if ( item == null )
+				if (gbi != null)
+				{
+					ProcessSinglePurchase(buy, gbi, validBuy, ref controlSlots, ref fullPurchase, ref totalCost);
+				}
+				else if (item != this.BuyPack && item.IsChildOf(this.BuyPack))
+				{
+					if (amount > item.Amount)
+						amount = item.Amount;
+
+					if (amount <= 0)
 						continue;
 
-					GenericBuyInfo gbi = LookupDisplayObject( item );
-
-					if ( gbi != null )
+					foreach (IShopSellInfo ssi in sellInfo)
 					{
-						ProcessValidPurchase( amount, gbi, buyer, cont );
-					}
-					else
-					{
-						if ( amount > item.Amount )
-							amount = item.Amount;
-
-						foreach ( IShopSellInfo ssi in info )
+						if (ssi.IsSellable(item) && ssi.IsResellable(item))
 						{
-							if ( ssi.IsSellable( item ) )
-							{
-								if ( ssi.IsResellable( item ) )
-								{
-									Item buyItem;
-									if ( amount >= item.Amount )
-									{
-										buyItem = item;
-									}
-									else
-									{
-										buyItem = Mobile.LiftItemDupe( item, item.Amount - amount );
-
-										if ( buyItem == null )
-											buyItem = item;
-									}
-
-									if ( buyItem is Spear ){ buyItem.ItemID = 0xF62; }
-									else if ( buyItem is Club ){ buyItem.ItemID = 0x13B4; }
-									else if ( buyItem is Cleaver ){ buyItem.ItemID = 0xEC3; }
-
-									if ( cont == null || !cont.TryDropItem( buyer, buyItem, false ) )
-										buyItem.MoveToWorld( buyer.Location, buyer.Map );
-
-									break;
-								}
-							}
+							totalCost += ssi.GetBuyPriceFor(item) * amount;
+							validBuy.Add(buy);
+							break;
 						}
 					}
 				}
-				else if ( ser.IsMobile )
-				{
-					Mobile mob = World.FindMobile( ser );
-
-					if ( mob == null )
-						continue;
-
-					GenericBuyInfo gbi = LookupDisplayObject( mob );
-
-					if ( gbi != null )
-						ProcessValidPurchase( amount, gbi, buyer, cont );
-				}
-			}//foreach
-
-			if ( fullPurchase )
+			}
+			else if (ser.IsMobile)
 			{
-				this.CoinPurse += totalCost;
-				if ( buyer.AccessLevel >= AccessLevel.GameMaster )
-					SayTo( buyer, true, "I would not presume to charge thee anything.  Here are the goods you requested." );
-				else if ( fromBank )
-					SayTo( buyer, true, "The total of thy purchase is {0} gold, which has been withdrawn from your bank account.  My thanks for the patronage.", totalCost );
-				else
-					SayTo( buyer, true, "The total of thy purchase is {0} gold.  My thanks for the patronage.", totalCost );
+				Mobile mob = World.FindMobile(ser);
+
+				if (mob == null)
+					continue;
+
+				GenericBuyInfo gbi = LookupDisplayObject(mob);
+
+				if (gbi != null)
+					ProcessSinglePurchase(buy, gbi, validBuy, ref controlSlots, ref fullPurchase, ref totalCost);
+			}
+		}
+
+		if (tryGettingArty)
+		{
+			SayTo(buyer, true, "No! Those are research items and not actual artifacts!");
+			PlaySound(Female ? 802 : 1074);
+			return false;
+		}
+
+		if (validBuy.Count == 0)
+		{
+			SayTo(buyer, fullPurchase ? 500190 : 500187);
+			return false;
+		}
+
+		bool bought = (buyer.AccessLevel >= AccessLevel.GameMaster);
+		bool fromBank = false;
+		int fromPack = 0, fromBankAmount = 0;
+
+		if (!bought)
+		{
+			Container pack = buyer.Backpack;
+			Container bank = buyer.BankBox;
+
+			int packGold = pack != null ? pack.GetAmount(typeof(Gold)) : 0;
+			int bankGold = bank != null ? bank.GetAmount(typeof(Gold)) : 0;
+			int totalGold = packGold + bankGold;
+
+			if (totalGold >= totalCost)
+			{
+				int toConsume = totalCost;
+
+				if (packGold > 0)
+				{
+					fromPack = Math.Min(packGold, toConsume);
+					pack.ConsumeTotal(typeof(Gold), fromPack);
+					toConsume -= fromPack;
+				}
+
+				if (toConsume > 0 && bankGold > 0)
+				{
+					fromBankAmount = Math.Min(bankGold, toConsume);
+					bank.ConsumeTotal(typeof(Gold), fromBankAmount);
+					toConsume -= fromBankAmount;
+					fromBank = true;
+				}
+
+				bought = true;
 			}
 			else
 			{
-				this.CoinPurse += totalCost;
-				if ( buyer.AccessLevel >= AccessLevel.GameMaster )
-					SayTo( buyer, true, "I would not presume to charge thee anything.  Unfortunately, I could not sell you all the goods you requested." );
-				else if ( fromBank )
-					SayTo( buyer, true, "The total of thy purchase is {0} gold, which has been withdrawn from your bank account.  My thanks for the patronage.  Unfortunately, I could not sell you all the goods you requested.", totalCost );
-				else
-					SayTo( buyer, true, "The total of thy purchase is {0} gold.  My thanks for the patronage.  Unfortunately, I could not sell you all the goods you requested.", totalCost );
+				SayTo(buyer, 500191); // Bank lacks the funds
+				return false;
 			}
-
-			this.InvalidateProperties();
-
-			return true;
 		}
+
+		buyer.PlaySound(0x32);
+
+		Container dropContainer = buyer.Backpack ?? buyer.BankBox;
+
+		foreach (BuyItemResponse buy in validBuy)
+		{
+			Serial ser = buy.Serial;
+			int amount = buy.Amount;
+
+			if (amount < 1)
+				continue;
+
+			if (ser.IsItem)
+			{
+				Item item = World.FindItem(ser);
+				if (item == null)
+					continue;
+
+				GenericBuyInfo gbi = LookupDisplayObject(item);
+
+				if (gbi != null)
+				{
+					ProcessValidPurchase(amount, gbi, buyer, dropContainer);
+				}
+				else
+				{
+					if (amount > item.Amount)
+						amount = item.Amount;
+
+					foreach (IShopSellInfo ssi in sellInfo)
+					{
+						if (ssi.IsSellable(item) && ssi.IsResellable(item))
+						{
+							Item buyItem = (amount >= item.Amount)
+								? item
+								: Mobile.LiftItemDupe(item, item.Amount - amount) ?? item;
+
+							if (buyItem is Spear) buyItem.ItemID = 0xF62;
+							else if (buyItem is Club) buyItem.ItemID = 0x13B4;
+							else if (buyItem is Cleaver) buyItem.ItemID = 0xEC3;
+
+							if (dropContainer == null || !dropContainer.TryDropItem(buyer, buyItem, false))
+								buyItem.MoveToWorld(buyer.Location, buyer.Map);
+
+							break;
+						}
+					}
+				}
+			}
+			else if (ser.IsMobile)
+			{
+				Mobile mob = World.FindMobile(ser);
+				if (mob == null)
+					continue;
+
+				GenericBuyInfo gbi = LookupDisplayObject(mob);
+
+				if (gbi != null)
+					ProcessValidPurchase(amount, gbi, buyer, dropContainer);
+			}
+		}
+
+		this.CoinPurse += totalCost;
+
+		if (buyer.AccessLevel >= AccessLevel.GameMaster)
+		{
+			SayTo(buyer, true, fullPurchase
+				? "I would not presume to charge thee anything. Here are the goods you requested."
+				: "I would not presume to charge thee anything. Unfortunately, I could not sell you all the goods you requested.");
+		}
+		else
+		{
+			if (fromPack > 0 && fromBankAmount > 0)
+			{
+				SayTo(buyer, true, fullPurchase
+					? "The total of thy purchase is {0} gold. {1} taken from your backpack and {2} from your bank. My thanks for the patronage."
+					: "The total of thy purchase is {0} gold. {1} taken from your backpack and {2} from your bank. My thanks for the patronage. Unfortunately, I could not sell you all the goods you requested.",
+					totalCost, fromPack, fromBankAmount);
+			}
+			else if (fromBankAmount > 0)
+			{
+				SayTo(buyer, true, fullPurchase
+					? "The total of thy purchase is {0} gold, withdrawn from your bank. My thanks for the patronage."
+					: "The total of thy purchase is {0} gold, withdrawn from your bank. My thanks for the patronage. Unfortunately, I could not sell you all the goods you requested.",
+					totalCost);
+			}
+			else
+			{
+				SayTo(buyer, true, fullPurchase
+					? "The total of thy purchase is {0} gold, taken from your backpack. My thanks for the patronage."
+					: "The total of thy purchase is {0} gold, taken from your backpack. My thanks for the patronage. Unfortunately, I could not sell you all the goods you requested.",
+					totalCost);
+			}
+		}
+
+		this.InvalidateProperties();
+		return true;
+	}
 
 		public virtual bool CheckVendorAccess( Mobile from )
 		{
@@ -2028,14 +2024,15 @@ namespace Server.Mobiles
 				this.CoinPurse -= GiveGold;
 
 				this.InvalidateProperties();
-
-				while ( GiveGold > 60000 )
+				
+				if(GiveGold > 20000)
 				{
-					seller.AddToBackpack( new Gold( 60000 ) );
-					GiveGold -= 60000;
+					seller.AddToBackpack( new BankCheck( GiveGold ) );
+				} 
+				else
+				{
+					seller.AddToBackpack( new Gold( GiveGold ) );
 				}
-
-				seller.AddToBackpack( new Gold( GiveGold ) );
 
 				seller.PlaySound( 0x0037 );//Gold dropping sound
 

@@ -84,7 +84,8 @@ namespace Server.Custom.KoperPets
 
         public static void TryTamingGain(BaseCreature pet, Mobile target)
         {
-            if (pet == null || target == null || !MyServerSettings.KoperPets())
+            // only apply gains to pets that are not summoned and not henchman
+            if (pet == null || target == null || !MyServerSettings.KoperPets() || pet.Summoned || pet.Body.IsHuman)
                 return;
 
             PlayerMobile owner = pet.ControlMaster as PlayerMobile;

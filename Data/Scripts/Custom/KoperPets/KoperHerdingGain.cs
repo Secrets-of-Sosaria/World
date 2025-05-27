@@ -31,8 +31,39 @@ namespace Server.Custom.KoperPets
 
         public static void TryGainHerdingSkill(Mobile owner)
         {
-            if (owner == null || !owner.Alive || !MyServerSettings.KoperPets())
-                return; // No skill gain for dead players/system disabled
+
+            bool hasNonSummoned = false;
+            bool hasNonHumanBody = false;
+
+            if (owner.Map != null)
+            {
+            	IPooledEnumerable eable = owner.Map.GetMobilesInRange(owner.Location, 5);
+
+            	foreach (Mobile m in eable)
+            	{
+            		if (m is BaseCreature)
+            		{
+            			BaseCreature pet = (BaseCreature)m;
+                        // we need to check if the player has followers that are not summons or henchman before applying the rest of the function
+            			if (pet.Controlled && pet.ControlMaster == owner)
+            			{
+            				if (!pet.Summoned)
+            					hasNonSummoned = true;
+
+            				if (!pet.Body.IsHuman)
+            					hasNonHumanBody = true;
+
+            				if (hasNonSummoned && hasNonHumanBody)
+            					break;
+            			}
+            		}
+            	}
+            	eable.Free();
+            }
+
+
+            if (owner == null || !owner.Alive || !MyServerSettings.KoperPets() || !hasNonSummoned || !hasNonHumanBody)
+                return; // No skill gain for dead players/system disabled// or players that have only summons or henchman
 
             // Check if the player is on cooldown
             if (_cooldowns.ContainsKey(owner) && DateTime.UtcNow < _cooldowns[owner])

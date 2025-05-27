@@ -60,7 +60,7 @@ namespace Server.Items
 					Map map = m.Map;
 					string where = Server.Misc.Worlds.GetRegionName( m.Map, m.Location );
 
-					int money = Utility.RandomMinMax( 100, 200 );
+					int money = Utility.RandomMinMax( 50, 150 );
 
 					switch( Utility.RandomMinMax( 1, level ) )
 					{

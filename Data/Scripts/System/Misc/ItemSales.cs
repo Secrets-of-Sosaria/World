@@ -1484,7 +1484,8 @@ namespace Server
 			Wax = 65,
 			Witch = 66,
 			Wizard = 67,
-			All = 68
+			All = 68,
+			Veterinarian = 69 //nice
 		}
 
 		public static ItemSalesInfo[] m_SellingInfo = new ItemSalesInfo[]
@@ -1937,6 +1938,13 @@ namespace Server
 			new ItemSalesInfo( typeof(	Artifact_BladeOfTheWilds	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	Artifact_WhistleofthePiper	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
 
+			// contraband boxes
+			new ItemSalesInfo( typeof(	CommonContrabandBox	),	50	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	UncommonContrabandBox	),	150	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	RareContrabandBox	),	350	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	VeryRareContrabandBox	),	850	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	ExtremelyRareContrabandBox	),	1200	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	LegendaryContrabandBox	),	10000	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
 
 			new ItemSalesInfo( typeof(	ArtifactLargeVase	),	5000	,	1	,	95	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Art	),
 			new ItemSalesInfo( typeof(	ArtifactVase	),	5000	,	1	,	95	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Art	),
@@ -1960,6 +1968,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	BambooScreen	),	334	,	0	,	0	,	false	,	false	,	World.Orient	,	Category.None	,	Material.None	,	Market.Monk	),
 			new ItemSalesInfo( typeof(	Banana	),	2	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Farmer	),
 			new ItemSalesInfo( typeof(	Bandage	),	2	,	60	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Healer	),
+			new ItemSalesInfo( typeof(	VeterinarySupplies	),	100	,	60	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Veterinarian	),
 			new ItemSalesInfo( typeof(	Bandana	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	DDRelicBanner	),	1	,	0	,	200	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Art	),
 			new ItemSalesInfo( typeof(	BannerDeed	),	5000	,	1	,	95	,	false	,	false	,	World.None	,	Category.Rare	,	Material.None	,	Market.Art	),
@@ -3609,16 +3618,16 @@ namespace Server
 			new ItemSalesInfo( typeof(	SavageHelm	),	44	,	3	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Bone	,	Market.Undertaker	),
 			new ItemSalesInfo( typeof(	SavageLegs	),	122	,	3	,	0	,	false	,	false	,	World.None	,	Category.Armor	,	Material.Bone	,	Market.Undertaker	),
 			new ItemSalesInfo( typeof(	SkeletonsKey	),	100	,	1	,	80	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Thief	),
-			new ItemSalesInfo( typeof(	DemonSkins	),	1235	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	DragonSkins	),	1235	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	NightmareSkins	),	1228	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	SnakeSkins	),	1214	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	TrollSkins	),	1221	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	UnicornSkins	),	1228	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	DeadSkins	),	1250	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	IcySkins	),	1250	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	LavaSkins	),	1250	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
-			new ItemSalesInfo( typeof(	Seaweeds	),	1250	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	DemonSkins	),	133	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	DragonSkins	),	133	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	NightmareSkins	),	122	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	SnakeSkins	),	121	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	TrollSkins	),	88	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	UnicornSkins	),	122	,	0	,	80	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	DeadSkins	),	68	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	IcySkins	),	99	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	LavaSkins	),	68	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
+			new ItemSalesInfo( typeof(	Seaweeds	),	68	,	0	,	90	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Leather	),
 			new ItemSalesInfo( typeof(	SkinningKnife	),	15	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Butcher	),
 			new ItemSalesInfo( typeof(	Skirt	),	12	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),
 			new ItemSalesInfo( typeof(	SkullCap	),	7	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.Cloth	,	Market.Tailor	),

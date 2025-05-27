@@ -21,7 +21,7 @@ namespace Server.Items
 
 	public class MapRanger : Item
 	{
-		public override string DefaultDescription{ get{ return "This is a trail map that shows a secret path to get to the location drawn on the map. You can only use these maps if you have at least an 80 in either skills of tracking or cartography. They can never be copied and they eventually wear out from use. If you double click the map while it is in your pack, you will follow the path of the map by yourself. No one will be able to follow you on your quick journey to this place. If you set the map down and double click it, then others will be able to use the map to go with you on your journey as they can double click the map left behind to follow you. The original map will be put back into your pack, while this map left behind will only remain for about 30 seconds so your comrades should make haste and follow. If a map goes to a world you have not discovered the way into on your own, then you will toss the map out as you cannot seem to find the path to this place."; } }
+		public override string DefaultDescription{ get{ return "This is a trail map that shows a secret path to get to the location drawn on the map. You can only use these maps if you have at least an 80 in either skills of tracking or cartography. They can never be copied and they eventually wear out from use. If you double click the map while it is in your pack, you will follow the path of the map by yourself. No one will be able to follow you on your quick journey to this place. If you set the map down and double click it, then others will be able to use the map to go with you on your journey as they can double click the map left behind to follow you. The original map will be put back into your pack, while this map left behind will only remain for about 30 seconds so your comrades should make haste and follow. If a map goes to a world you have not discovered the way into on your own, then you will be warned of it."; } }
 
 		private MapRangerEffect m_MapRangerEffect;
 		private int m_Charges;
@@ -98,8 +98,7 @@ namespace Server.Items
 			}
 			else if ( CanUseMap == false )
 			{
-				from.SendMessage( "Not knowing how to get to this world, you throw the map away." );
-				this.Delete();
+				from.SendMessage( "You are unfamiliar with the world described in the map." );
 				return;
 			}
 			else if ( IsChildOf( from.Backpack ) && Charges > 0 ) 

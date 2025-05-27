@@ -14,7 +14,9 @@ namespace Server.Mobiles
 { 
    public class AnimalTrainerLord : BaseCreature//was BaseVendor 
    { 
-      
+      	private static Dictionary<Mobile, DateTime> m_LastPetSale = new Dictionary<Mobile, DateTime>();
+		private static TimeSpan PetSaleCooldown = TimeSpan.FromHours(1);
+
     	private bool AppraiseMode = false;
 
       	[Constructable]
@@ -85,93 +87,108 @@ namespace Server.Mobiles
 			} 
 		} 
 
-		public void BeginPetSale( Mobile from, bool appraise ) 
-		{ 
-		if ( Deleted || !from.CheckAlive() ) 
-			return; 
+		public void BeginPetSale(Mobile from, bool appraise)
+		{
+			if (Deleted || !from.Alive)
+				return;
 
-		AppraiseMode = appraise;
+			if (!appraise)
+			{
+				DateTime lastSale;
 
-		if (appraise)
-			SayTo( from, "Which beast would you like to appraise?" ); 
-		else
-			SayTo( from, "Which beast are you selling?" ); 
+				if (m_LastPetSale.ContainsKey(from))
+				{
+					lastSale = (DateTime)m_LastPetSale[from];
+					TimeSpan remaining = (lastSale + PetSaleCooldown) - DateTime.UtcNow;
 
-		from.Target = new PetSaleTarget( this ); 
-		} 
+					if (remaining > TimeSpan.Zero)
+					{
+						SayTo(from, "My pens are still full! You must wait " + remaining.Minutes + " minutes and " + remaining.Seconds + " seconds before selling another pet.");
+						return;
+					}
+				}
+			}
+
+			AppraiseMode = appraise;
+
+			if (appraise)
+				SayTo(from, "Which beast would you like to appraise?");
+			else
+				SayTo(from, "Which beast are you selling?");
+
+			from.Target = new PetSaleTarget(this);
+		}
 
 		//RUFO beginfunction
 		private void SellPetForGold(Mobile from, BaseCreature pet, int goldamount)
 		{
 			
 			double chance = pet.MinTameSkill/150;
-			
-						Item gold = null;
-						if (goldamount < 60000)
-							gold = new Gold(goldamount);
-						else 
-							gold = new BankCheck(goldamount);
+			Item gold = null;
+
+			if (goldamount < 10000)
+				gold = new Gold(goldamount);
+			else 
+				gold = new BankCheck(goldamount);
 							
-						pet.ControlTarget = null; 
-						pet.ControlOrder = OrderType.None; 
-						pet.Internalize(); 
-						pet.SetControlMaster( null ); 
-						pet.SummonMaster = null;
-						pet.Delete();
+			pet.ControlTarget = null; 
+			pet.ControlOrder = OrderType.None; 
+			pet.Internalize(); 
+			pet.SetControlMaster( null ); 
+			pet.SummonMaster = null;
+			pet.Delete();
 
-						Container backpack = from.Backpack;
-						if ( backpack == null || !backpack.TryDropItem( from, gold, false ) ) 
-						{ 
-							gold.MoveToWorld( from.Location, from.Map );
-						}		
-
+			Container backpack = from.Backpack;
+			if ( backpack == null || !backpack.TryDropItem( from, gold, false ) ) 
+			{ 
+				gold.MoveToWorld( from.Location, from.Map );
+			}		
 		}
 		//RUFO endfunction
 
 		public static int ValuatePet(BaseCreature pet, Mobile broker)
 		{
 				
-				double basevalue = pet.MinTameSkill;
-				if (basevalue >= 125)
+			double basevalue = pet.MinTameSkill;
+			if (basevalue >= 125)
+			{
+				pet.MinTameSkill = 124;//divide by 0 check
+				basevalue = 124;
+			}
+			
+			if (!pet.CanAngerOnTame) // easier tames are worth less this way
+				basevalue /= 1.15;
+			
+			double final = 0;
+			double step = 10;
+			double factorial = 1/ ((125-basevalue)/(pet.MinTameSkill*15));
+			if (basevalue < step)
+				final = basevalue * factorial;				
+			else 
+			{	
+				while ( basevalue > 0 )
 				{
-					pet.MinTameSkill = 124;//divide by 0 check
-					basevalue = 124;
-				}
-				
-				if (!pet.CanAngerOnTame) // easier tames are worth less this way
-					basevalue /= 1.15;
-
-				double final = 0;
-				double step = 10;
-				double factorial = 1/ ((125-basevalue)/(pet.MinTameSkill*15));
-
-				if (basevalue < step)
-					final = basevalue * factorial;				
-				else 
-				{	
-					while ( basevalue > 0 )
+					if (basevalue > step)
 					{
-						if (basevalue > step)
-						{
-							basevalue -= step;
-							final += step * factorial;
-									
-						}
-						else
-						{
-							final += basevalue * factorial;
-							basevalue = 0;
-						}
+						basevalue -= step;
+						final += step * factorial;
+								
 					}
-				}		
-
-				double petprice = final;
-				int petpriceint = Convert.ToInt32(petprice);
-				
-				if (petpriceint <= 10)
-					petpriceint = 10;
-				
-				return petpriceint;
+					else
+					{
+						final += basevalue * factorial;
+						basevalue = 0;
+					}
+				}
+			}		
+			// to counter money-printing tameables
+			double petprice = final / 3.0;
+			int petpriceint = Convert.ToInt32(petprice);
+			
+			if (petpriceint <= 10)
+				petpriceint = 10;
+			
+			return petpriceint;
 
 		}
 		public void EndPetSale( Mobile from, BaseCreature pet ) 
@@ -202,6 +219,10 @@ namespace Server.Mobiles
 					this.Say("I can pay you " + petpriceint + " for this pet.");
 					pet.MinTameSkill = oldvalue; // resets the value to what it was;
 					return;
+				} 
+				else
+				{
+					m_LastPetSale[from] = DateTime.UtcNow;
 				}
 
 				SellPetForGold(from, pet, petpriceint);
@@ -213,13 +234,13 @@ namespace Server.Mobiles
 				else if (petpriceint <= 1000)	
 					this.Say( "Thank you {0}, I will add this " + pet.Name + " to my collection!  Here is " + petpriceint + " for your troubles",from.Name  );
 				
-				else if (petpriceint <= 5000)	
+				else if (petpriceint <= 3000)	
 					this.Say( "A Rare find!!! Thank you for " + pet.Name + " it's worth " + petpriceint + " to the right buyer..");
 				
-				else if (petpriceint <= 10001)	
+				else if (petpriceint <= 6000)	
 					this.Say( "What an amazing Specimen!  I will pay you " + petpriceint + " for it! " );
 				
-				else if (petpriceint >= 40001)	
+				else if (petpriceint >= 12000)	
 					this.Say( "I'll pay " + petpriceint + "!  I've always wanted one of these!!! " );
 				
 				
@@ -285,25 +306,66 @@ namespace Server.Mobiles
 				m_Giver = giver;
 			}
 
+			private static int GetTamingBODAmount(Mobile from)
+			{
+			    if (from == null)
+			        return 1;
+
+			    double totalSkill = from.Skills[SkillName.Druidism].Value
+			                      + from.Skills[SkillName.Taming].Value
+			                      + from.Skills[SkillName.Herding].Value
+			                      + from.Skills[SkillName.Veterinary].Value;
+
+			    int skillSum = (int)totalSkill;
+
+			    if (skillSum < 100)
+			        return Utility.RandomMinMax(1, 3);
+				// 125 in taming, druidism, herding, veterinary
+			    else if (skillSum == 500)
+			        return Utility.RandomMinMax(11, 21);
+			    else if (skillSum >= 499)
+			        return Utility.RandomMinMax(9, 17);
+			    else if (skillSum >= 400)
+			        return Utility.RandomMinMax(7, 13);
+			    else if (skillSum >= 300)
+			        return Utility.RandomMinMax(5, 9);
+			    else if (skillSum >= 200)
+			        return Utility.RandomMinMax(3, 7);
+			    else // 100 - 199
+			        return Utility.RandomMinMax(2, 5);
+			}
+
 			public override void OnClick()
 			{
 				if( !( m_Mobile is PlayerMobile ) )
 					return;
 				
 				PlayerMobile mobile = (PlayerMobile) m_Mobile;
+				DateTime lastUse;
+				
+    			if (LastUsers.TryGetValue(mobile, out lastUse))
+    			{
+    			    TimeSpan cooldown = Delay - (DateTime.UtcNow - lastUse);
 
-				if(mobile.Skills[SkillName.Taming].Base < 25.0 || mobile.Skills[SkillName.Druidism].Base < 25.0)
+    			    if (cooldown > TimeSpan.Zero)
+    			    {
+				     m_Giver.Say(String.Format("I'll have another contract for you in  {0} hour{1} and {2} minute{3}.",
+  					 cooldown.Hours, cooldown.Hours == 1 ? "" : "s",
+  					 cooldown.Minutes, cooldown.Minutes == 1 ? "" : "s"));
+    			        return;
+    			    } 
+    			}
+				
+				if(mobile.Skills[SkillName.Taming].Value +  mobile.Skills[SkillName.Druidism].Value < 50.0)
 				{
 					m_Giver.Say( "Sorry, I don't think you have the skills to help me. Come back when you have learned more about the art of animal taming!" );
 				}
 				else if(CanGetContract(mobile))
 				{
 					mobile.SendGump(new SpeechGump( mobile, "The Animal Broker", SpeechFunctions.SpeechText( m_Giver, m_Mobile, "Animal Broker" ) ));
-					mobile.AddToBackpack( new TamingBOD() );
-				}
-				else
-				{
-					m_Giver.Say( "Sorry, I don't have a contract available for you yet." );
+					int amount = GetTamingBODAmount(mobile);
+					mobile.AddToBackpack(new TamingBOD(amount));
+					LastUsers[mobile] = DateTime.UtcNow;
 				}
 			}
 			

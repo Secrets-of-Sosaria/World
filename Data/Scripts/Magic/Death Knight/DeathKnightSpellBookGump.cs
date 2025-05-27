@@ -165,7 +165,7 @@ namespace Server.Gumps
 				{
 					sGrave = Worlds.GetAreaEntrance( 0, "the Ancient Pyramid", Map.Sosaria, out placer_1, out xc_1, out yc_1 );
 					name1 = "Banish";
-					soul1 = "56";
+					soul1 = "38";
 					skil1 = "40";
 					mana1 = "36";
 					text1 = ""; if ( !this.HasSpell( from, 750) ){ m_NotHave_1 = true; z1=220; text1 = "Saint Kargoth<BR>Land of Sosaria: Ancient Pyramid<BR>" + sGrave + "<BR><BR>"; }
@@ -174,7 +174,7 @@ namespace Server.Gumps
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Clues", Map.Sosaria, out placer_2, out xc_2, out yc_2 );
 					name2 = "Demonic Touch";
-					soul2 = "21";
+					soul2 = "11";
 					skil2 = "15";
 					mana2 = "16";
 					text2 = ""; if ( !this.HasSpell( from, 751) ){ m_NotHave_2 = true; z2=220; text2 = "Lord Monduiz Dephaar<BR>Land of Sosaria: Dungeon Clues<BR>" + sGrave + "<BR><BR>"; }
@@ -185,7 +185,7 @@ namespace Server.Gumps
 				{
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Doom", Map.Sosaria, out placer_1, out xc_1, out yc_1 );
 					name1 = "Devil Pact";
-					soul1 = "98";
+					soul1 = "49";
 					skil1 = "90";
 					mana1 = "60";
 					text1 = ""; if ( !this.HasSpell( from, 752) ){ m_NotHave_1 = true; z1=220; text1 = "Lady Kath of Naelex<BR>Land of Sosaria: Dungeon Doom<BR>" + sGrave + "<BR><BR>"; }
@@ -194,7 +194,7 @@ namespace Server.Gumps
 
 					sGrave = Worlds.GetAreaEntrance( 0, "the Fires of Hell", Map.Sosaria, out placer_2, out xc_2, out yc_2 );
 					name2 = "Grim Reaper";
-					soul2 = "42";
+					soul2 = "21";
 					skil2 = "30";
 					mana2 = "28";
 					text2 = ""; if ( !this.HasSpell( from, 753) ){ m_NotHave_2 = true; z2=220; text2 = "Prince Myrhal of Rax<BR>Land of Sosaria: Fires of Hell<BR>" + sGrave + "<BR><BR>"; }
@@ -205,7 +205,7 @@ namespace Server.Gumps
 				{
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Exodus", Map.Sosaria, out placer_1, out xc_1, out yc_1 );
 					name1 = "Hag Hand";
-					soul1 = "7";
+					soul1 = "3";
 					skil1 = "5";
 					mana1 = "8";
 					text1 = ""; if ( !this.HasSpell( from, 754) ){ m_NotHave_1 = true; z1=220; text1 = "Sir Maeril of Naelax<BR>Land of Sosaria: Dungeon Exodus<BR>" + sGrave + "<BR><BR>"; }
@@ -214,7 +214,7 @@ namespace Server.Gumps
 
 					sGrave = Worlds.GetAreaEntrance( 0, "the City of the Dead", Map.Sosaria, out placer_2, out xc_2, out yc_2 );
 					name2 = "Hellfire";
-					soul2 = "84";
+					soul2 = "42";
 					skil2 = "70";
 					mana2 = "52";
 					text2 = ""; if ( !this.HasSpell( from, 755) ){ m_NotHave_2 = true; z2=220; text2 = "Sir Farian of Lirtham<BR>Land of Ambrosia: City of the Dead<BR>" + sGrave + "<BR><BR>"; }
@@ -225,7 +225,7 @@ namespace Server.Gumps
 				{
 					sGrave = Worlds.GetAreaEntrance( 0, "the Mausoleum", Map.Sosaria, out placer_1, out xc_1, out yc_1 );
 					name1 = "Lucifer's Bolt";
-					soul1 = "35";
+					soul1 = "18";
 					skil1 = "25";
 					mana1 = "24";
 					text1 = ""; if ( !this.HasSpell( from, 756) ){ m_NotHave_1 = true; z1=220; text1 = "Lord Androma of Gara<BR>Island of Umber Veil: the Mausoleum<BR>" + sGrave + "<BR><BR>"; }
@@ -234,7 +234,7 @@ namespace Server.Gumps
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Despise", Map.Lodor, out placer_2, out xc_2, out yc_2 );
 					name2 = "Orb of Orcus";
-					soul2 = "200";
+					soul2 = "100";
 					skil2 = "80";
 					mana2 = "56";
 					text2 = ""; if ( !this.HasSpell( from, 757) ){ m_NotHave_2 = true; z2=220; text2 = "Sir Oslan Knarren<BR>Land of Lodoria: Dungeon Despise<BR>" + sGrave + "<BR><BR>"; }
@@ -245,7 +245,7 @@ namespace Server.Gumps
 				{
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Deceit", Map.Lodor, out placer_1, out xc_1, out yc_1 );
 					name1 = "Shield of Hate";
-					soul1 = "77";
+					soul1 = "38";
 					skil1 = "60";
 					mana1 = "48";
 					text1 = ""; if ( !this.HasSpell( from, 758) ){ m_NotHave_1 = true; z1=220; text1 = "Sir Rezinar of Haxx<BR>Land of Lodoria: Dungeon Deceit<BR>" + sGrave + "<BR><BR>"; }
@@ -254,7 +254,7 @@ namespace Server.Gumps
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Wrong", Map.Lodor, out placer_2, out xc_2, out yc_2 );
 					name2 = "Soul Reaper";
-					soul2 = "63";
+					soul2 = "33";
 					skil2 = "45";
 					mana2 = "40";
 					text2 = ""; if ( !this.HasSpell( from, 759) ){ m_NotHave_2 = true; z2=220; text2 = "Lord Thyrian of Naelax<BR>Land of Lodoria: Dungeon Wrong<BR>" + sGrave + "<BR><BR>"; }
@@ -265,7 +265,7 @@ namespace Server.Gumps
 				{
 					sGrave = Worlds.GetAreaEntrance( 0, "the Lodoria Catacombs", Map.Lodor, out placer_1, out xc_1, out yc_1 );
 					name1 = "Strength of Steel";
-					soul1 = "28";
+					soul1 = "14";
 					skil1 = "20";
 					mana1 = "20";
 					text1 = ""; if ( !this.HasSpell( from, 760) ){ m_NotHave_1 = true; z1=220; text1 = "Sir Minar of Darmen<BR>Land of Lodoria: Lodoria Catacombs<BR>" + sGrave + "<BR><BR>"; }
@@ -274,7 +274,7 @@ namespace Server.Gumps
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Shame", Map.Lodor, out placer_2, out xc_2, out yc_2 );
 					name2 = "Strike";
-					soul2 = "14";
+					soul2 = "7";
 					skil2 = "10";
 					mana2 = "12";
 					text2 = ""; if ( !this.HasSpell( from, 761) ){ m_NotHave_2 = true; z2=220; text2 = "Duke Urkar of Torquann<BR>Land of Lodoria: Dungeon Shame<BR>" + sGrave + "<BR><BR>"; }
@@ -285,7 +285,7 @@ namespace Server.Gumps
 				{
 					sGrave = Worlds.GetAreaEntrance( 0, "the City of Embers", Map.Lodor, out placer_1, out xc_1, out yc_1 );
 					name1 = "Succubus Skin";
-					soul1 = "49";
+					soul1 = "25";
 					skil1 = "35";
 					mana1 = "32";
 					text1 = ""; if ( !this.HasSpell( from, 762) ){ m_NotHave_1 = true; z1=220; text1 = "Sir Luren the Boar<BR>Land of Lodoria: the City of Embers<BR>" + sGrave + "<BR><BR>"; }
@@ -294,7 +294,7 @@ namespace Server.Gumps
 
 					sGrave = Worlds.GetAreaEntrance( 0, "Dungeon Hythloth", Map.Lodor, out placer_2, out xc_2, out yc_2 );
 					name2 = "Wrath";
-					soul2 = "70";
+					soul2 = "35";
 					skil2 = "50";
 					mana2 = "44";
 					text2 = ""; if ( !this.HasSpell( from, 763) ){ m_NotHave_2 = true; z2=220; text2 = "Lord Khayven of Rax<BR>Land of Lodoria: Dungeon Hythloth<BR>" + sGrave + "<BR><BR>"; }

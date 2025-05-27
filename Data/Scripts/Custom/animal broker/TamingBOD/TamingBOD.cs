@@ -104,7 +104,7 @@ namespace Server.Items
 		private static Item TryGetItem(int goldAmount)
 		{
 			int reward = 0;
-			if (goldAmount < 2500)
+			if (goldAmount < 1000)
 				reward = Utility.RandomMinMax(0, 60); // 100% nothing
 			else if (goldAmount < 5000)
 				reward = Utility.RandomMinMax(50, 250); // 20% nothing, 80% easy
@@ -116,9 +116,9 @@ namespace Server.Items
 				reward = Utility.RandomMinMax(300, 500); // 37% medium // 48% rare // 15% impossible
 			else if (goldAmount < 100000)
 				reward = Utility.RandomMinMax(400, 510); // 70% rare // 30% impossible
-			else if (goldAmount < 150000)
+			else if (goldAmount < 120000)
 				reward = Utility.RandomMinMax(450, 525); // 40% rare // 60% impossible
-			else if (goldAmount >= 150000)
+			else if (goldAmount >= 160000)
 				reward = Utility.RandomMinMax(490, 600); // 40% rare // 60% impossible
 				
 			if (500 < reward)  // impossible finds
@@ -126,23 +126,23 @@ namespace Server.Items
 				switch ( Utility.Random( 62 ) ) // 8%
 				{
 					case 0: return new ParagonPetDeed();
-					case 1: return new PowerScroll( SkillName.Druidism, 120);
-					case 2: return new PowerScroll( SkillName.Taming, 120);
+					case 1: return new PowerScroll( SkillName.Druidism, 125);
+					case 2: return new PowerScroll( SkillName.Taming, 125);
 					case 3: return Construct( m_MegaRareMorph ) as Item;
 				}
 			}
 
 			if (470 < reward)  // impossible finds
 			{
-				switch ( Utility.Random( 280 ) ) // 5%
+				switch ( Utility.Random( 140 ) ) // 5%
 				{
 					case 0: return new ParagonPetDeed();
 					case 1: return new PetDyeTub();
-					case 2: return new PowerScroll( SkillName.Druidism, 115);
-					case 3: return new PowerScroll( SkillName.Taming, 115);
+					case 2: return new PowerScroll( SkillName.Druidism, 120);
+					case 3: return new PowerScroll( SkillName.Taming, 120);
 					case 4: return new PetGrowthDeedStrong( );
-					case 5: return Construct( m_MegaRareMorph ) as Item;
-					case 6: return Construct( m_RareMorph ) as Item;
+					case 5: return Construct( m_RareMorph ) as Item;
+					case 6: return new PetEasingDeed();
 				}
 			}
 
@@ -154,8 +154,8 @@ namespace Server.Items
 					case 1: return new PetBondDeed();
 					case 2: return new BallOfSummoning();
 					case 3: return new BraceletOfBinding();
-					case 4: return new PowerScroll( SkillName.Druidism, 110);
-					case 5: return new PowerScroll( SkillName.Taming, 110);
+					case 4: return new PowerScroll( SkillName.Druidism, 115);
+					case 5: return new PowerScroll( SkillName.Taming, 115);
 					case 6: return new AlienEgg( );
 					case 7: return new DragonEgg( );
 					case 8: return new PetGrowthDeedMid( );
@@ -176,8 +176,8 @@ namespace Server.Items
 					case 5: return new IceBluePetDye();
 					case 6: return new IceGreenPetDye();
 					case 7: return new PetControlDeed();
-					case 8: return new PowerScroll( SkillName.Druidism, 105);
-					case 9: return new PowerScroll( SkillName.Taming, 105);
+					case 8: return new PowerScroll( SkillName.Druidism, 110);
+					case 9: return new PowerScroll( SkillName.Taming, 110);
 					case 10: return new PetGrowthDeedWeak( );
 					case 11: return Construct( m_LowMorph ) as Item;
 					case 12: return Construct( m_MidMorph ) as Item;

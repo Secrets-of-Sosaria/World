@@ -2116,7 +2116,7 @@ namespace Server.Mobiles
 						{
 							this.Send(SpeedControl.Disable);
 							shoes.Weight = 5.0;
-							if ( !(shoes is HikingBoots) ){ this.SendMessage( "These shoes seem to have their magic diminished here." ); }
+							if ( !(shoes is HikingBoots) || !(shoes is LevelHikingBoots || !(shoes is GiftHikingBoots)) ){ this.SendMessage( "These shoes seem to have their magic diminished here." ); }
 						}
 
 						Server.Spells.Mystic.WindRunner.RemoveEffect( this );
@@ -2140,7 +2140,7 @@ namespace Server.Mobiles
 					shoes.Weight = 3.0;
 					this.Send(SpeedControl.MountSpeed);
 				}
-				else if ( shoes is HikingBoots && shoes.Weight > 3.0 && RaceID > 0 )
+				else if ( (shoes is HikingBoots || shoes is LevelHikingBoots || shoes is GiftHikingBoots) && shoes.Weight > 3.0 && RaceID > 0 )
 				{
 					shoes.Weight = 3.0;
 					this.Send(SpeedControl.MountSpeed);
@@ -2161,7 +2161,7 @@ namespace Server.Mobiles
 					shoes.Weight = 3.0;
 					this.Send(SpeedControl.MountSpeed);
 				}
-				else if ( shoes is HikingBoots && shoes.Weight > 3.0 && RaceID > 0 )
+				else if ( (shoes is HikingBoots || shoes is LevelHikingBoots || shoes is GiftHikingBoots) && shoes.Weight > 3.0 && RaceID > 0 )
 				{
 					shoes.Weight = 3.0;
 					this.Send(SpeedControl.MountSpeed);
@@ -4017,7 +4017,7 @@ namespace Server.Mobiles
 					Item shoes = pm.FindItemOnLayer( Layer.Shoes );
 					if ( shoes is Artifact_BootsofHermes ){ return true; }
 					else if ( shoes is Artifact_SprintersSandals ){ return true; }
-					else if ( shoes is HikingBoots && pm.RaceID > 0 ){ return true; }
+					else if ( (shoes is HikingBoots || shoes is LevelHikingBoots || shoes is GiftHikingBoots) && pm.RaceID > 0 ){ return true; }
 				}
 				if ( Spells.Mystic.WindRunner.UnderEffect( pm ) )
 				{
@@ -4535,7 +4535,7 @@ namespace Server.Mobiles
 					if ( pet is IMount && ((IMount)pet).Rider != null )
 						continue;
 
-					if ( (pet is PackLlama || pet is PackHorse || pet is Beetle || pet is HordeMinionFamiliar) && (pet.Backpack != null && pet.Backpack.Items.Count > 0) )
+					if ( (pet is PackMule || pet is PackLlama || pet is PackHorse || pet is Beetle || pet is HordeMinionFamiliar) && (pet.Backpack != null && pet.Backpack.Items.Count > 0) )
 						continue;
 
 					pet.ControlTarget = null;
