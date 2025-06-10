@@ -1728,6 +1728,7 @@ namespace Server.Engines.Help
 				+ "[private - Turns on/off detailed messages of your journey for the town crier and local citizen chatter.<br><br>"
 				+ "[quests - Opens a scroll to show certain quest events.<br><br>"
 				+ "[quickbar - Opens a small, vertical bar with common game functions for easier use.<br><br>"
+				+ "[checksecure - Checks player house for unsecured/unlocked items ont he ground to prevent loss of items. The unsecure items will be marked with red color and a sound will be played by client if found any.<br><br>"
 				+ "[sad - Opens the weapon's special abilities.<br><br>"
 				+ "[set1 - Sets your weapon's first ability to active.<br>"
 				+ "[set2 - Sets your weapon's second ability to active.<br>"
