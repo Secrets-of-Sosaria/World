@@ -411,8 +411,10 @@ namespace Server.SkillHandlers
 					StolenItem.Add( stolen, m_Thief, root as Mobile );
 					//contraband boxes can only be found if the thief suceeded at stealing something
 					Mobile m = target as Mobile;
-					if (m != null)
+					if (m != null && !m.Player)
 					{
+						BaseCreature creature = m as BaseCreature;
+						if(creature == null || (!creature.Controlled && !creature.Summoned))
 					    ContrabandSystem.TryGiveContraband(from, m);
 					}
 				}
