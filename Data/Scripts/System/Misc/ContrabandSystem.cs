@@ -2,6 +2,8 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Items;
+using System.Collections.Generic;
+
 
 namespace Server.Systems
 {
@@ -17,11 +19,22 @@ namespace Server.Systems
 
     public static class ContrabandSystem
     {
+        private static Dictionary<Mobile, DateTime> _lastContrabandTime = new Dictionary<Mobile, DateTime>();
+
         public static void TryGiveContraband(Mobile thief, Mobile victim)
         {
             if (thief == null || victim == null)
                 return;
 
+            // Check cooldown
+            DateTime lastTime;
+            if (_lastContrabandTime.TryGetValue(thief, out lastTime))
+            {
+                if (DateTime.UtcNow < lastTime + TimeSpan.FromHours(1))
+                {
+                    return;
+                }
+           }
             // Base chance: stealing skill / 10
             double stealSkill = thief.Skills[SkillName.Stealing].Value;
             // Luck bonus: 2000 luck = +10% => luck / 20000
@@ -29,14 +42,14 @@ namespace Server.Systems
             if (thief.Luck <= 0)
             {
                 luckBonus = 0;
-            } 
-            else if (thief.Luck > 2000) 
+            }
+            else if (thief.Luck > 2000)
             {
                 luckBonus = 10.0;
-            } 
+            }
             else
             {
-                luckBonus = thief.Luck / 20000.0; 
+                luckBonus = thief.Luck / 20000.0;
             }
 
             double chance = (stealSkill / 10.0) + luckBonus;
@@ -44,6 +57,8 @@ namespace Server.Systems
             // Roll for any contraband
             if (Utility.RandomDouble() * 100.0 > chance)
                 return;
+            
+            _lastContrabandTime[thief] = DateTime.UtcNow;
 
             // Determine rarity
             ContrabandRarity rarity = DetermineRarity(victim.Fame);
