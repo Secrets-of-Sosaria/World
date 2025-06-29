@@ -294,7 +294,7 @@ namespace Server.Mobiles
 		        rewardBag.DropItem(Loot.RandomPotion(12, false));
 
 		        if (Utility.Random(5) == 0)
-		            rewardBag.DropItem(PowerScroll.CreateRandom(105, 110));
+		            rewardBag.DropItem(PowerScroll.CreateRandom(5, 10));
 
 		        if (Utility.Random(5) == 0)
 		            rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
@@ -309,7 +309,7 @@ namespace Server.Mobiles
 		        rewardBag.DropItem(new Gold(amount));
 
 		        if (Utility.RandomBool())
-		            rewardBag.DropItem(PowerScroll.CreateRandom(105, 110));
+		            rewardBag.DropItem(PowerScroll.CreateRandom(5, 10));
 		        else
 		            rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
 
@@ -322,7 +322,7 @@ namespace Server.Mobiles
 		        int amount = GetGoldByLuck(min, max, luck);
 		        rewardBag.DropItem(new BankCheck(amount));
 
-		        rewardBag.DropItem(PowerScroll.CreateRandom(105, 115));
+		        rewardBag.DropItem(PowerScroll.CreateRandom(5, 15));
 		        rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 25));
 
 		        if (Utility.Random(5) == 0)
@@ -342,7 +342,7 @@ namespace Server.Mobiles
 				if (arty != null)
 		            rewardBag.DropItem(arty);
 
-		        rewardBag.DropItem(PowerScroll.CreateRandom(110, 120));
+		        rewardBag.DropItem(PowerScroll.CreateRandom(10, 20));
 		        rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 35));
 		        rewardBag.DropItem(Loot.RandomRare(Utility.RandomMinMax(6, 12), mobile));
 		        rewardBag.DropItem(Loot.RandomRare(Utility.RandomMinMax(6, 12), mobile));
