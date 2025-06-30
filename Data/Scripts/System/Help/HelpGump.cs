@@ -1729,7 +1729,10 @@ namespace Server.Engines.Help
 				+ "[quests - Opens a scroll to show certain quest events.<br><br>"
 				+ "[quickbar - Opens a small, vertical bar with common game functions for easier use.<br><br>"
 <<<<<<< HEAD
+<<<<<<< HEAD
 				+ "[checksecure - Checks player house for unsecured/unlocked items on the ground to prevent loss of items. The unsecure items will be marked with red color and a sound will be played by client if found any.<br><br>"
+=======
+>>>>>>> parent of a9a7061 (Fixes help menu player command summary)
 =======
 >>>>>>> parent of a9a7061 (Fixes help menu player command summary)
 				+ "[sad - Opens the weapon's special abilities.<br><br>"
