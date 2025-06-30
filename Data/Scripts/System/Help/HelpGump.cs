@@ -1737,6 +1737,7 @@ namespace Server.Engines.Help
 >>>>>>> parent of a9a7061 (Fixes help menu player command summary)
 =======
 >>>>>>> parent of a9a7061 (Fixes help menu player command summary)
+>>>>>>> parent of ed6f9bd (Update help menu to add [checksecure command)
 				+ "[sad - Opens the weapon's special abilities.<br><br>"
 				+ "[set1 - Sets your weapon's first ability to active.<br>"
 				+ "[set2 - Sets your weapon's second ability to active.<br>"
