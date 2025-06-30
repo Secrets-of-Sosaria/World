@@ -33,13 +33,26 @@ namespace Server.Items
 				AllowNonlocal = true;
 			}
 
-			protected override void OnTarget( Mobile from, object targeted )
+			protected override void OnTarget(Mobile from, object targeted)
 			{
-				if ( targeted is Item )
-				{
-					Item examine = (Item)targeted;
-					RelicFunctions.IDItem( from, from, examine, SkillName.Mercantile );
-				}
+			    if (targeted is Item)
+			    {
+			        Item examine = (Item)targeted;
+			        int identified = RelicIDHelper.TryRecursiveIdentify(from, examine, IDSkill.Mercantile, SkillName.Mercantile);
+
+			        if (examine is Container)
+			        {
+			            if (identified == 0)
+			                from.SendMessage("There is nothing in this container that requires Mercantile to identify.");
+			            else
+			                from.SendMessage("You examine the goods using your Mercantile knowledge.");
+			        }
+			        else
+			        {
+			            if (identified == 0)
+			                from.SendMessage("That item cannot be identified with Mercantile.");
+			        }
+			    }
 			}
 		}
 	}

@@ -319,6 +319,8 @@ namespace Server.Misc
 
 		public static bool IsWaterSea( Mobile m )
 		{
+			if (m == null || m.Map == null) return false;
+
 			if ( IsExploringSeaAreas( m ) )
 				return true;
 
@@ -333,6 +335,8 @@ namespace Server.Misc
 
 		public static bool IsSeaDungeon( Point3D p, Map map )
 		{
+			if (map == null) return false;
+	
 			Region reg = Region.Find( p, map );
 
 			if ( reg.IsPartOf( "the Depths of Carthax Lake" ) || 
@@ -455,7 +459,7 @@ namespace Server.Misc
 
 		public static bool IsOnBoat( Mobile m )
 		{
-			if ( m.Z > -1 || m.Z < -3 )
+			if ( m.Z > -1 || m.Z < -3 || m == null || m.Map == null)
 				return false;
 
 			int KeepSearching = 0;
@@ -477,7 +481,7 @@ namespace Server.Misc
 
 		public static bool ItemOnBoat( Item i )
 		{
-			if ( i.Z > -1 || i.Z < -3 )
+			if ( i.Z > -1 || i.Z < -3 || i == null || i.Map == null)
 				return false;
 
 			int KeepSearching = 0;

@@ -1544,7 +1544,101 @@ namespace Server
 			}
 		}
 
-		public override string ToString()
+        public object GetTopMobileSurface(Point3D p)
+        {
+            object surface = null;
+            int surfaceZ = int.MinValue;
+
+            StaticTile[] staticTiles = Tiles.GetStaticTiles(p.X, p.Y, true);
+
+            for (int i = 0; i < staticTiles.Length; i++)
+            {
+                StaticTile tile = staticTiles[i];
+                ItemData id = TileData.ItemTable[tile.ID & TileData.MaxItemValue];
+
+                if (id.Surface || (id.Flags & TileFlag.Wet) != 0)
+                {
+                    int tileZ = tile.Z;
+
+                    if (tileZ > surfaceZ && tileZ <= p.Z)
+                    {
+                        surface = tile;
+                        surfaceZ = tileZ;
+
+                        if (surfaceZ == p.Z)
+						{
+                            return surface;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < staticTiles.Length; i++)
+            {
+                StaticTile tile = staticTiles[i];
+                ItemData id = TileData.ItemTable[tile.ID & TileData.MaxItemValue];
+
+                if (id.Surface || (id.Flags & TileFlag.Wet) != 0)
+                {
+                    int tileZ = tile.Z + id.CalcHeight;
+
+                    if (tileZ > surfaceZ && tileZ <= p.Z)
+                    {
+                        surface = tile;
+                        surfaceZ = tileZ;
+
+                        if (surfaceZ == p.Z)
+                            return surface;
+                    }
+                }
+            }
+
+            LandTile lt = Tiles.GetLandTile(p.X, p.Y);
+
+            if (!lt.Ignored)
+            {
+                int avgZ = GetAverageZ(p.X, p.Y);
+
+                if (avgZ <= p.Z)
+                {
+                    surface = lt;
+                    surfaceZ = avgZ;
+
+                    if (surfaceZ == p.Z)
+                        return surface;
+                }
+            }
+
+            Sector sector = GetSector(p.X, p.Y);
+
+            for (int i = 0; i < sector.Items.Count; i++)
+            {
+                Item item = sector.Items[i];
+
+                if (!(item is BaseMulti) && item.ItemID <= TileData.MaxItemValue && item.AtWorldPoint(p.X, p.Y) && !item.Movable)
+                {
+                    ItemData id = item.ItemData;
+
+                    if (id.Surface || (id.Flags & TileFlag.Wet) != 0)
+                    {
+                        int itemZ = item.Z + id.CalcHeight;
+
+                        if (itemZ > surfaceZ && itemZ <= p.Z)
+                        {
+                            surface = item;
+                            surfaceZ = itemZ;
+
+                            if (surfaceZ == p.Z)
+                                return surface;
+                        }
+                    }
+                }
+            }
+
+            return surface;
+        }
+
+        public override string ToString()
 		{
 			return m_Name;
 		}

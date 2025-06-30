@@ -5822,7 +5822,7 @@
 *|gargoyle:firegargoyle:hellhound:imp:gazer:fireelemental||||||857|2682|0|2|90101|90102|2|2|3318|1|0|0|0|0|0
 *|gargoyle:firegargoyle:hellhound:imp:gazer:fireelemental||||||857|2694|0|2|90101|90102|2|2|3319|1|0|0|0|0|0
 *|gargoyle:firegargoyle:hellhound:imp:gazer:fireelemental||||||872|2665|0|2|90101|90102|2|2|3329|1|0|0|0|0|0
-*|gargoyle:firegargoyle:hellhound:imp:gazer:fireelemental||||||877|2691|0|2|90101|90102|2|2|3330|1|0|0|0|0|0
+*|gargoyle:firegargoyle:hellhound:adventurers:fireelemental||||||877|2691|0|2|90101|90102|2|2|3330|1|0|0|0|0|0
 *|gargoyle:firegargoyle:hellhound:imp:gazer:fireelemental||||||881|2664|0|2|90101|90102|2|2|3335|1|0|0|0|0|0
 *|gargoyle:firegargoyle:hellhound:imp:gazer:fireelemental||||||894|2652|0|2|90101|90102|2|2|3348|1|0|0|0|0|0
 *|gargoyle:firegargoyle:hellhound:imp:gazer:fireelemental||||||894|2674|0|2|90101|90102|2|2|3349|1|0|0|0|0|0
@@ -5870,7 +5870,7 @@
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2683|3498|0|2|90101|90102|2|2|4084|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2683|3526|0|2|90101|90102|2|2|4085|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2684|3539|0|2|90101|90102|2|2|4089|1|0|0|0|0|0
-*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2688|3551|0|2|90101|90102|2|2|4096|1|0|0|0|0|0
+*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2688|3551|0|2|90101|90102|2|2|4096|2|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2698|3536|0|2|90101|90102|2|2|4109|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2708|3527|0|2|90101|90102|2|2|4114|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2709|3487|0|2|90101|90102|2|2|4116|1|0|0|0|0|0
@@ -5962,7 +5962,7 @@
 *|ogre:ettin:troll:slime:giantserpent:hugelizard:orc:orcishmage:ogre:ettin:troll:CaveBearRiding:CaveBearRiding||||||5761|403|0|2|90101|90102|2|2|6079|1|0|0|0|0|0
 *|ogre:ettin:troll:slime:giantserpent:hugelizard:orc:orcishmage:ogre:ettin:troll:CaveBearRiding:CaveBearRiding||||||5761|458|0|2|90101|90102|2|2|6080|1|0|0|0|0|0
 *|ogre:ettin:troll:slime:giantserpent:hugelizard:orc:orcishmage:ogre:ettin:troll:CaveBearRiding:CaveBearRiding||||||5569|348|0|2|90101|90102|2|2|5611|1|0|0|0|0|0
-*|ogre:ettin:troll:slime:giantserpent:hugelizard:orc:orcishmage:ogre:ettin:troll:CaveBearRiding:CaveBearRiding||||||5575|366|0|2|90101|90102|2|2|5624|1|0|0|0|0|0
+*|ogre:ettin:troll:slime:giantserpent:hugelizard:adventurers:orcishmage:ogre:ettin:troll:CaveBearRiding:CaveBearRiding||||||5575|366|0|2|90101|90102|2|2|5624|1|0|0|0|0|0
 *|ogre:ettin:troll:slime:giantserpent:hugelizard:orc:orcishmage:ogre:ettin:troll:CaveBearRiding:CaveBearRiding||||||5598|350|0|2|90101|90102|2|2|5697|1|0|0|0|0|0
 *|ogre:ettin:troll:slime:giantserpent:hugelizard:orc:orcishmage:ogre:ettin:troll:CaveBearRiding:CaveBearRiding||||||5674|452|0|2|90101|90102|2|2|5943|1|0|0|0|0|0
 *|ogre:ettin:troll:slime:giantserpent:hugelizard:orc:orcishmage:ogre:ettin:troll:CaveBearRiding:CaveBearRiding||||||5685|370|0|2|90101|90102|2|2|5971|1|0|0|0|0|0
@@ -6105,7 +6105,7 @@
 *|rogue||||||5407|2348|0|2|90101|90102|1|1|5468|1|0|0|0|0|0
 *|rogue:minstrel:evilmage:berserker:gazer:earthelemental:mudelemental:dustelemental:shadowironelemental:airelemental:fireelemental||||||5624|2234|0|2|90101|90102|1|1|5794|1|0|0|0|0|0
 *|rogue:minstrel:evilmage:berserker:gazer:earthelemental:mudelemental:dustelemental:shadowironelemental:airelemental:fireelemental||||||5630|2222|0|2|90101|90102|1|1|5811|1|0|0|0|0|0
-*|rogue:minstrel:evilmage:berserker:gazer:earthelemental:mudelemental:dustelemental:shadowironelemental:airelemental:fireelemental||||||5641|2236|0|2|90101|90102|1|1|5845|1|0|0|0|0|0
+*|rogue:minstrel:evilmage:adventurers:earthelemental:mudelemental:dustelemental:shadowironelemental:airelemental:fireelemental||||||5641|2236|0|2|90101|90102|1|1|5845|1|0|0|0|0|0
 *|rogue:minstrel:evilmage:berserker:gazer:earthelemental:mudelemental:dustelemental:shadowironelemental:airelemental:fireelemental||||||5653|2220|0|2|90101|90102|1|1|5882|1|0|0|0|0|0
 *|rogue:minstrel:evilmage:berserker:gazer:earthelemental:mudelemental:dustelemental:shadowironelemental:airelemental:fireelemental||||||5657|2236|0|2|90101|90102|1|1|5897|1|0|0|0|0|0
 *|rogue:minstrel:evilmage:berserker:gazer:earthelemental:mudelemental:dustelemental:shadowironelemental:airelemental:fireelemental||||||5662|2180|0|2|90101|90102|1|1|5914|1|0|0|0|0|0
@@ -6242,7 +6242,7 @@
 *|boneknight:bonemagi:fleshgolem:zombie:Skeleton:SkeletonArcher:restlesssoul:skeletalknight:vampirebat:WailingBanshee:skeletalmage||||||5305|99|0|2|90101|90102|2|2|5270|1|0|0|0|0|0
 *|boneknight:bonemagi:fleshgolem:zombie:Skeleton:SkeletonArcher:restlesssoul:skeletalknight:vampirebat:WailingBanshee:skeletalmage||||||5305|141|0|2|90101|90102|2|2|5271|1|0|0|0|0|0
 *|boneknight:bonemagi:fleshgolem:zombie:Skeleton:SkeletonArcher:restlesssoul:skeletalknight:vampirebat:WailingBanshee:skeletalmage||||||5305|152|0|2|90101|90102|2|2|5272|1|0|0|0|0|0
-*|boneknight:bonemagi:fleshgolem:zombie:Skeleton:SkeletonArcher:restlesssoul:skeletalknight:vampirebat:WailingBanshee:skeletalmage||||||5306|303|0|2|90101|90102|2|2|5278|1|0|0|0|0|0
+*|boneknight:fleshgolem:zombie:adventurers:skeletalknight:WailingBanshee:skeletalmage||||||5306|303|0|2|90101|90102|2|2|5278|1|0|0|0|0|0
 *|boneknight:bonemagi:fleshgolem:zombie:Skeleton:SkeletonArcher:restlesssoul:skeletalknight:vampirebat:WailingBanshee:skeletalmage||||||5307|276|0|2|90101|90102|2|2|5282|1|0|0|0|0|0
 *|boneknight:bonemagi:fleshgolem:zombie:Skeleton:SkeletonArcher:restlesssoul:skeletalknight:vampirebat:WailingBanshee:skeletalmage||||||5307|288|0|2|90101|90102|2|2|5283|1|0|0|0|0|0
 *|boneknight:bonemagi:fleshgolem:zombie:Skeleton:SkeletonArcher:restlesssoul:skeletalknight:vampirebat:WailingBanshee:skeletalmage:HellSteed||||||5310|78|0|2|90101|90102|2|2|5293|1|0|0|0|0|0
@@ -6322,7 +6322,7 @@
 *|firegargoyle:hellhound:eldergazer:stonegargoyle:efreet:lavaserpent:ghoul:zombie:bonemagi:boneknight:shade:wraith:PredatorHellCatRiding||||||5858|605|0|2|90101|90102|2|2|6142|1|0|0|0|0|0
 *|firegargoyle:hellhound:eldergazer:stonegargoyle:efreet:lavaserpent:ghoul:zombie:bonemagi:boneknight:shade:wraith:PredatorHellCatRiding||||||5858|650|0|2|90101|90102|2|2|6145|1|0|0|0|0|0
 *|firegargoyle:hellhound:eldergazer:stonegargoyle:efreet:lavaserpent:ghoul:zombie:bonemagi:boneknight:shade:wraith:PredatorHellCatRiding||||||5862|631|0|2|90101|90102|2|2|6156|1|0|0|0|0|0
-*|firegargoyle:hellhound:eldergazer:stonegargoyle:efreet:lavaserpent:ghoul:zombie:bonemagi:boneknight:shade:wraith:PredatorHellCatRiding||||||5941|566|0|2|90101|90102|2|2|6417|1|0|0|0|0|0
+*|adventurers:eldergazer:stonegargoyle:efreet:lavaserpent:bonemagi:boneknight:wraith:PredatorHellCatRiding||||||5941|566|0|2|90101|90102|2|2|6417|1|0|0|0|0|0
 *|firegargoyle:hellhound:eldergazer:stonegargoyle:efreet:lavaserpent:ghoul:zombie:bonemagi:boneknight:shade:wraith:PredatorHellCatRiding||||||5944|659|0|2|90101|90102|2|2|6431|1|0|0|0|0|0
 *|firegargoyle:hellhound:eldergazer:stonegargoyle:efreet:lavaserpent:ghoul:zombie:bonemagi:boneknight:shade:wraith:PredatorHellCatRiding||||||5885|643|0|2|90101|90102|2|2|6195|1|0|0|0|0|0
 *|firegargoyle:hellhound:eldergazer:stonegargoyle:efreet:lavaserpent:ghoul:zombie:bonemagi:boneknight:shade:wraith:PredatorHellCatRiding||||||5955|631|0|2|90101|90102|2|2|6473|1|0|0|0|0|0
@@ -6417,7 +6417,7 @@
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||5981|810|0|2|90101|90102|2|2|6549|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||5984|764|0|2|90101|90102|2|2|6558|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||5913|788|0|2|90101|90102|2|2|6299|1|0|0|0|0|0
-*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||5985|824|0|2|90101|90102|2|2|6561|1|0|0|0|0|0
+*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||5985|824|0|2|90101|90102|2|2|6561|2|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||5914|834|0|2|90101|90102|2|2|6302|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||5994|816|0|2|90101|90102|2|2|6576|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||5919|807|0|2|90101|90102|2|2|6318|1|0|0|0|0|0
@@ -6447,6 +6447,7 @@
 *|BrewCauldron||||||5356|886|0|2|90103|90104|0|0|5393|1|0|0|0|0|0
 *|SandSpider||||||5348|706|0|2|90101|90102|4|4|5371|3|0|0|0|0|0
 *|SandSpider||||||5287|789|0|2|90101|90102|4|4|5238|4|0|0|0|0|0
+*|gorilla:monkey||||||5351|885|0|2|5|10|1|1|1|3|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade||||||5319|461|0|2|90101|90102|2|2|5309|1|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade||||||5321|559|0|2|90101|90102|2|2|5315|1|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade||||||5210|545|0|2|90101|90102|2|2|5132|1|0|0|0|0|0
@@ -6518,9 +6519,9 @@
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5329|703|0|2|90101|90102|2|2|5335|1|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5236|750|0|2|90101|90102|2|2|5152|1|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5332|752|0|2|90101|90102|2|2|5344|1|0|0|0|0|0
-*|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5332|771|0|2|90101|90102|2|2|5345|1|0|0|0|0|0
+*|adventurers:wraith:zombie:ghoul:mummy:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5332|771|0|2|90101|90102|2|2|5345|1|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5333|723|0|2|90101|90102|2|2|5351|1|0|0|0|0|0
-*|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5241|762|0|2|90101|90102|2|2|5162|1|0|0|0|0|0
+*|adventurers:zombie:ghoul:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5241|762|0|2|90101|90102|2|2|5162|1|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5246|751|0|2|90101|90102|2|2|5166|1|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5249|782|0|2|90101|90102|2|2|5171|1|0|0|0|0|0
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5346|730|0|2|90101|90102|2|2|5364|1|0|0|0|0|0
@@ -6556,29 +6557,31 @@
 *|skeleton:spectre:wraith:zombie:ghoul:mummy:shade:mummy:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5313|752|0|2|90101|90102|2|2|5300|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5314|959|0|2|90101|90102|2|2|5303|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5316|917|0|2|90101|90102|2|2|5307|1|0|0|0|0|0
-*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5326|895|0|2|90101|90102|2|2|5328|1|0|0|0|0|0
+*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5326|895|0|2|90101|90102|2|2|5328|2|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5328|922|0|2|90101|90102|2|2|5332|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5328|939|0|2|90101|90102|2|2|5333|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5330|957|0|2|90101|90102|2|2|5336|1|0|0|0|0|0
-*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5331|885|0|2|90101|90102|2|2|5340|1|0|0|0|0|0
+*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5331|885|0|2|90101|90102|2|2|5340|2|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5335|896|0|2|90101|90102|2|2|5352|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5341|946|0|2|90101|90102|2|2|5359|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5344|965|0|2|90101|90102|2|2|5362|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5351|922|0|2|90101|90102|2|2|5379|1|0|0|0|0|0
-*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5355|939|0|2|90101|90102|2|2|5390|1|0|0|0|0|0
-*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5355|955|0|2|90101|90102|2|2|5391|1|0|0|0|0|0
-*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5357|922|0|2|90101|90102|2|2|5394|1|0|0|0|0|0
+*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5355|939|0|2|90101|90102|2|2|5390|2|0|0|0|0|0
+*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5355|955|0|2|90101|90102|2|2|5391|2|0|0|0|0|0
+*|mummy:adventurers:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5357|922|0|2|90101|90102|2|2|5394|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5368|963|0|2|90101|90102|2|2|5408|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5290|908|0|2|90101|90102|2|2|5243|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5291|898|0|2|90101|90102|2|2|5246|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5292|946|0|2|90101|90102|2|2|5249|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5391|768|0|2|90101|90102|2|2|5447|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5403|765|0|2|90101|90102|2|2|5462|1|0|0|0|0|0
-*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5305|909|0|2|90101|90102|2|2|5276|1|0|0|0|0|0
+*|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5305|909|0|2|90101|90102|2|2|5276|2|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5416|766|0|2|90101|90102|2|2|5474|1|0|0|0|0|0
 *|spectre:mummy:shade:ghoul:mummy:skeletalmage:skeletalknight:bonemagi:boneknight||||||5308|959|0|2|90101|90102|2|2|5291|1|0|0|0|0|0
 *|vampire||||||5283|905|0|2|90101|90102|4|4|5225|1|0|0|0|0|0
 *|vampire||||||5306|899|0|2|90101|90102|4|4|5279|1|0|0|0|0|0
+*|giantbat||||||5282|909|0|2|5|10|4|4|1|1|0|0|0|0|0
+*|giantbat||||||5306|900|0|2|5|10|4|4|1|2|0|0|0|0|0
 #|||||||||||||||||||||
 # the Brigand Fort-----------------------------------------------------------------------|||||||||||||||||||||
 #|||||||||||||||||||||
@@ -7046,7 +7049,7 @@
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2793|3976|0|2|90101|90102|2|2|4183|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2801|3965|0|2|90101|90102|2|2|4187|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2804|3976|0|2|90101|90102|2|2|4188|1|0|0|0|0|0
-*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2812|3962|0|2|90101|90102|2|2|4191|1|0|0|0|0|0
+*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2812|3962|0|2|90101|90102|2|2|4191|2|0|0|0|0|0
 #|||||||||||||||||||||
 # the City of the Dead-----------------------------------------------------------------------|||||||||||||||||||||
 #|||||||||||||||||||||
@@ -7266,7 +7269,7 @@
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2403|3294|0|2|90101|90102|2|2|3933|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2414|3306|0|2|90101|90102|2|2|3941|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2417|3264|0|2|90101|90102|2|2|3944|1|0|0|0|0|0
-*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2427|3241|1|2|90101|90102|2|2|3954|1|0|0|0|0|0
+*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2427|3241|1|2|90101|90102|2|2|3954|2|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2428|3284|0|2|90101|90102|2|2|3955|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2432|3305|0|2|90101|90102|2|2|3960|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2441|3242|0|2|90101|90102|2|2|3975|1|0|0|0|0|0
@@ -7481,7 +7484,7 @@
 *|boneknight:bonemagi:efreet:eldergazer:gargoyle:stonegargoyle:gazer:hellhound:mummy:poisonelemental:spectre:zombie:skeleton||||||5651|592|0|2|90101|90102|1|1|5878|1|0|0|0|0|0
 *|boneknight:bonemagi:efreet:eldergazer:gargoyle:stonegargoyle:gazer:hellhound:mummy:poisonelemental:spectre:zombie:skeleton||||||5651|622|0|2|90101|90102|1|1|5879|1|0|0|0|0|0
 *|boneknight:bonemagi:efreet:eldergazer:gargoyle:stonegargoyle:gazer:hellhound:mummy:poisonelemental:spectre:zombie:skeleton||||||5577|892|0|2|90101|90102|1|1|5633|1|0|0|0|0|0
-*|boneknight:bonemagi:efreet:eldergazer:gargoyle:stonegargoyle:gazer:hellhound:mummy:poisonelemental:spectre:zombie:skeleton||||||5655|564|0|2|90101|90102|1|1|5885|1|0|0|0|0|0
+*|boneknight:bonemagi:efreet:eldergazer:gargoyle:stonegargoyle:gazer:hellhound:mummy:poisonelemental:adventurers||||||5655|564|0|2|90101|90102|1|1|5885|1|0|0|0|0|0
 *|boneknight:bonemagi:efreet:eldergazer:gargoyle:stonegargoyle:gazer:hellhound:mummy:poisonelemental:spectre:zombie:skeleton||||||5655|585|0|2|90101|90102|1|1|5886|1|0|0|0|0|0
 *|boneknight:bonemagi:efreet:eldergazer:gargoyle:stonegargoyle:gazer:hellhound:mummy:poisonelemental:spectre:zombie:skeleton||||||5580|562|0|2|90101|90102|1|1|5640|1|0|0|0|0|0
 *|boneknight:bonemagi:efreet:eldergazer:gargoyle:stonegargoyle:gazer:hellhound:mummy:poisonelemental:spectre:zombie:skeleton||||||5581|586|0|2|90101|90102|1|1|5642|1|0|0|0|0|0
@@ -7585,7 +7588,7 @@
 *|BoneMagi:EvilMage:FireElemental:FireToad:HellHound:Hellcat:LavaLizard:LavaSnake:SkeletalMage:Gazer:Efreet:FireBat:FireSteed:Gargoyle||||||5904|1987|20|2|90101|90102|1|1|6268|1|0|0|0|0|0
 *|BoneMagi:EvilMage:FireElemental:FireToad:HellHound:Hellcat:LavaLizard:LavaSnake:SkeletalMage:Gazer:Efreet:FireBat:FireSteed:Gargoyle||||||5908|2020|20|2|90101|90102|1|1|6285|1|0|0|0|0|0
 *|BoneMagi:EvilMage:FireElemental:FireToad:HellHound:Hellcat:LavaLizard:LavaSnake:SkeletalMage:Gazer:Efreet:FireBat:FireSteed:Gargoyle||||||5986|1980|20|2|90101|90102|1|1|6562|1|0|0|0|0|0
-*|BoneMagi:EvilMage:FireElemental:FireToad:HellHound:Hellcat:LavaLizard:LavaSnake:SkeletalMage:Gazer:Efreet:FireBat:FireSteed:Gargoyle||||||5995|2035|20|2|90101|90102|1|1|6580|1|0|0|0|0|0
+*|BoneMagi:EvilMage:FireElemental:FireToad:HellHound:Hellcat:adventurers:Gazer:Efreet:FireBat:FireSteed:Gargoyle||||||5995|2035|20|2|90101|90102|1|1|6580|1|0|0|0|0|0
 *|BoneMagi:EvilMage:FireElemental:FireToad:HellHound:Hellcat:LavaLizard:LavaSnake:SkeletalMage:Gazer:Efreet:FireBat:FireSteed:Gargoyle||||||6000|1953|20|2|90101|90102|1|1|6587|1|0|0|0|0|0
 *|BoneMagi:EvilMage:FireElemental:FireToad:HellHound:Hellcat:LavaLizard:LavaSnake:SkeletalMage:Gazer:Efreet:FireBat:FireSteed:Gargoyle||||||6003|2009|20|2|90101|90102|1|1|6595|1|0|0|0|0|0
 *|BoneMagi:EvilMage:FireElemental:FireToad:HellHound:Hellcat:LavaLizard:LavaSnake:SkeletalMage:Gazer:Efreet:FireBat:FireSteed:Gargoyle||||||5926|1949|20|2|90101|90102|1|1|6350|1|0|0|0|0|0
@@ -7610,7 +7613,7 @@
 *|evilmagelord||||||5296|1390|0|2|90101|90102|4|4|5260|1|0|0|0|0|0
 *|fireelemental||||||5284|1373|0|2|90101|90102|4|4|5231|1|0|0|0|0|0
 *|fireelemental||||||5294|1372|0|2|90101|90102|4|4|5252|1|0|0|0|0|0
-*|FireElemental:LavaElemental:LavaSerpent:LavaLizard:HellHound:FireSteed:Nightmare:PredatorHellCatRiding:ElderGazer:Efreet:EvilMageLord:FireGargoyle:Gargoyle||||||5486|1304|0|2|90101|90102|1|1|5503|1|0|0|0|0|0
+*|FireSteed:Nightmare:ElderGazer:Efreet:EvilMageLord||||||5486|1304|0|2|90101|90102|1|1|5503|3|0|0|0|0|0
 *|FireElemental:LavaElemental:LavaSerpent:LavaLizard:HellHound:FireSteed:Nightmare:PredatorHellCatRiding:ElderGazer:Efreet:EvilMageLord:FireGargoyle:Gargoyle||||||5493|1240|0|2|90101|90102|1|1|5508|1|0|0|0|0|0
 *|FireElemental:LavaElemental:LavaSerpent:LavaLizard:HellHound:FireSteed:Nightmare:PredatorHellCatRiding:ElderGazer:Efreet:EvilMageLord:FireGargoyle:Gargoyle||||||5496|1291|0|2|90101|90102|1|1|5511|1|0|0|0|0|0
 *|FireElemental:LavaElemental:LavaSerpent:LavaLizard:HellHound:FireSteed:Nightmare:PredatorHellCatRiding:ElderGazer:Efreet:EvilMageLord:FireGargoyle:Gargoyle||||||5497|1265|0|2|90101|90102|1|1|5512|1|0|0|0|0|0
@@ -7671,7 +7674,7 @@
 *|firegargoyle:gargoyle:hellhound:imp:gazer:Gazer:stonegargoyle:fireelemental:evilmage:boneknight:LavaElemental:CinderElemental:MagmaElemental||||||5244|1376|0|2|90101|90102|2|2|5165|1|0|0|0|0|0
 *|firegargoyle:gargoyle:hellhound:imp:gazer:Gazer:stonegargoyle:fireelemental:evilmage:boneknight:LavaElemental:CinderElemental:MagmaElemental||||||5344|1401|0|2|90101|90102|2|2|5363|1|0|0|0|0|0
 *|firegargoyle:gargoyle:hellhound:imp:gazer:Gazer:stonegargoyle:fireelemental:evilmage:boneknight:LavaElemental:CinderElemental:MagmaElemental||||||5346|1349|0|2|90101|90102|2|2|5367|1|0|0|0|0|0
-*|firegargoyle:gargoyle:hellhound:imp:gazer:Gazer:stonegargoyle:fireelemental:evilmage:boneknight:LavaElemental:CinderElemental:MagmaElemental||||||5347|1447|0|2|90101|90102|2|2|5369|1|0|0|0|0|0
+*|firegargoyle:adventurers:stonegargoyle:fireelemental:evilmage:boneknight:LavaElemental:CinderElemental:MagmaElemental||||||5347|1447|0|2|90101|90102|2|2|5369|1|0|0|0|0|0
 *|firegargoyle:gargoyle:hellhound:imp:gazer:Gazer:stonegargoyle:fireelemental:evilmage:boneknight:LavaElemental:CinderElemental:MagmaElemental||||||5256|1394|0|2|90101|90102|2|2|5176|1|0|0|0|0|0
 *|firegargoyle:gargoyle:hellhound:imp:gazer:Gazer:stonegargoyle:fireelemental:evilmage:boneknight:LavaElemental:CinderElemental:MagmaElemental||||||5257|1357|0|2|90101|90102|2|2|5177|1|0|0|0|0|0
 *|firegargoyle:gargoyle:hellhound:imp:gazer:Gazer:stonegargoyle:fireelemental:evilmage:boneknight:LavaElemental:CinderElemental:MagmaElemental||||||5348|1374|0|2|90101|90102|2|2|5372|1|0|0|0|0|0
@@ -7722,7 +7725,7 @@
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2421|3528|0|2|90101|90102|2|2|3951|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2422|3513|0|2|90101|90102|2|2|3952|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2432|3526|0|2|90101|90102|2|2|3961|1|0|0|0|0|0
-*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2437|3496|0|2|90101|90102|2|2|3968|1|0|0|0|0|0
+*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2437|3496|0|2|90101|90102|2|2|3968|2|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2437|3515|0|2|90101|90102|2|2|3969|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2440|3537|0|2|90101|90102|2|2|3971|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2440|3551|0|2|90101|90102|2|2|3972|1|0|0|0|0|0
@@ -7796,7 +7799,7 @@
 *|iceelemental:snowelemental:iceserpent:frostooze:frosttroll:ArcticEttin:icesnake:iceghoul:FrozenCorpse||||||5184|2927|0|2|90101|90102|2|2|5126|1|0|0|0|0|0
 *|iceelemental:snowelemental:iceserpent:frostooze:frosttroll:ArcticEttin:icesnake:iceghoul:FrozenCorpse||||||5196|2905|0|2|90101|90102|2|2|5127|1|0|0|0|0|0
 *|iceelemental:snowelemental:iceserpent:frostooze:frosttroll:ArcticEttin:icesnake:iceghoul:FrozenCorpse||||||5213|2905|0|2|90101|90102|2|2|5134|1|0|0|0|0|0
-*|iceelemental:snowelemental:iceserpent:frostooze:frosttroll:ArcticEttin:icesnake:iceghoul:FrozenCorpse||||||5222|2929|0|2|90101|90102|2|2|5142|1|0|0|0|0|0
+*|iceelemental:snowelemental:frosttroll:ArcticEttin:adventurers||||||5222|2929|0|2|90101|90102|2|2|5142|1|0|0|0|0|0
 *|iceelemental:snowelemental:iceserpent:frostooze:frosttroll:ArcticEttin:icesnake:iceghoul:FrozenCorpse||||||5393|2888|25|2|90101|90102|2|2|5452|1|0|0|0|0|0
 *|iceelemental:snowelemental:iceserpent:frostooze:frosttroll:ArcticEttin:icesnake:iceghoul:FrozenCorpse||||||5394|2929|0|2|90101|90102|2|2|5453|1|0|0|0|0|0
 *|iceelemental:snowelemental:iceserpent:frostooze:frosttroll:ArcticEttin:icesnake:iceghoul:FrozenCorpse||||||5448|2917|0|2|90101|90102|2|2|5485|1|0|0|0|0|0
@@ -7836,7 +7839,7 @@
 *|iceserpent:frostooze:frosttroll:ArcticEttin:ArcticEttin:frostspider||||||4294|3631|0|2|90101|90102|2|2|4927|1|0|0|0|0|0
 *|iceserpent:frostooze:frosttroll:ArcticEttin:ArcticEttin:frostspider||||||4302|3663|0|2|90101|90102|2|2|4929|1|0|0|0|0|0
 *|iceserpent:frostooze:frosttroll:ArcticEttin:ArcticEttin:frostspider||||||4306|3603|0|2|90101|90102|2|2|4932|1|0|0|0|0|0
-*|iceserpent:frostooze:frosttroll:ArcticEttin:ArcticEttin:frostspider||||||4320|3617|0|2|90101|90102|2|2|4941|1|0|0|0|0|0
+*|adventurers:frosttroll:ArcticEttin:ArcticEttin:frostspider||||||4320|3617|0|2|90101|90102|2|2|4941|1|0|0|0|0|0
 *|iceserpent:frostooze:frosttroll:ArcticEttin:ArcticEttin:frostspider||||||4320|3636|0|2|90101|90102|2|2|4942|1|0|0|0|0|0
 *|iceserpent:frostooze:frosttroll:ArcticEttin:ArcticEttin:frostspider||||||4323|3657|0|2|90101|90102|2|2|4944|1|0|0|0|0|0
 *|iceserpent:frostooze:frosttroll:ArcticEttin:ArcticEttin:frostspider||||||4334|3627|0|2|90101|90102|2|2|4948|1|0|0|0|0|0
@@ -8062,10 +8065,11 @@
 *|undead||||||7045|108|0|2|90101|90102|4|4|1|1|0|0|0|0|0
 *|undead||||||7035|119|0|2|90101|90102|4|4|1|1|0|0|0|0|0
 *|undead||||||7042|145|0|2|90101|90102|4|4|1|1|0|0|0|0|0
+*|undead||||||7124|127|0|2|5|10|4|4|1|1|0|0|0|0|0
 #|||||||||||||||||||||
 # the Magma Vaults-----------------------------------------------------------------------|||||||||||||||||||||
 #|||||||||||||||||||||
-*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2334|3723|0|2|90101|90102|2|2|3879|1|0|0|0|0|0
+*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2334|3723|0|2|90101|90102|2|2|3879|2|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2349|3786|0|2|90101|90102|2|2|3887|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2352|3707|0|2|90101|90102|2|2|3891|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2353|3737|0|2|90101|90102|2|2|3892|1|0|0|0|0|0
@@ -8445,7 +8449,7 @@
 *|ghoul:shade:Skeleton:SkeletonArcher:spectre:wraith:zombie:boneknight:bonemagi:skeletalknight:skeletalmage:mummy:vampire:ghoul||||||5892|435|0|2|90101|90102|2|2|6214|1|0|0|0|0|0
 *|ghoul:shade:Skeleton:SkeletonArcher:spectre:wraith:zombie:boneknight:bonemagi:skeletalknight:skeletalmage:mummy:vampire:ghoul||||||5892|450|0|2|90101|90102|2|2|6215|1|0|0|0|0|0
 *|ghoul:shade:Skeleton:SkeletonArcher:spectre:wraith:zombie:boneknight:bonemagi:skeletalknight:skeletalmage:mummy:vampire:ghoul||||||5958|417|0|2|90101|90102|2|2|6485|1|0|0|0|0|0
-*|ghoul:shade:Skeleton:SkeletonArcher:spectre:wraith:zombie:boneknight:bonemagi:skeletalknight:skeletalmage:mummy:vampire:ghoul||||||5960|452|0|2|90101|90102|2|2|6489|1|0|0|0|0|0
+*|adventurers:wraith:zombie:boneknight:bonemagi:skeletalknight:skeletalmage:mummy:vampire:ghoul||||||5960|452|0|2|90101|90102|2|2|6489|1|0|0|0|0|0
 *|harpy||||||5931|168|0|2|90101|90102|2|2|6368|1|0|0|0|0|0
 *|magicpool||||||5879|403|0|2|90101|90102|0|0|6178|1|0|0|0|0|0
 *|BrewCauldron||||||5919|390|0|2|90103|90104|0|0|6317|1|0|0|0|0|0
@@ -8587,7 +8591,7 @@
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2363|3986|0|2|90101|90102|2|2|3900|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2364|3964|0|2|90101|90102|2|2|3901|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2365|3975|0|2|90101|90102|2|2|3902|1|0|0|0|0|0
-*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2365|4052|0|2|90101|90102|2|2|3903|1|0|0|0|0|0
+*|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2365|4052|0|2|90101|90102|2|2|3903|2|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2380|4016|0|2|90101|90102|2|2|3910|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2380|4034|0|2|90101|90102|2|2|3911|1|0|0|0|0|0
 *|bandit:mongbat:Gnome:GnomeWarrior:GnomeMage:Kobold:carcassworm:frailskeleton:giantbat:giantlizard:goblin:largespider:phantom:giantrat:slime:bullfrog:largesnake||||||2381|3985|0|2|90101|90102|2|2|3912|1|0|0|0|0|0

@@ -149,8 +149,7 @@ namespace Server
 				typeof( WoodenShield ),			typeof( SunShield ),			typeof( VirtueShield ),
 				typeof( ChaosShield ),			typeof( OrderShield ),			typeof( RoyalShield ),
 				typeof( GuardsmanShield ),		typeof( ElvenShield ),			typeof( DarkShield ),
-				typeof( CrestedShield ),		typeof( ChampionShield ),		typeof( JeweledShield ),
-				typeof( ScalemailShield ),		typeof( ScaledShield )
+				typeof( CrestedShield ),		typeof( ChampionShield ),		typeof( JeweledShield )
 			};
 
 		public static Type[] ShieldTypes{ get{ return m_ShieldTypes; } }
@@ -669,11 +668,11 @@ namespace Server
 		private static Type[] m_RareItemTypes = new Type[]
 			{
 				typeof( SkeletonsKey ),			typeof( MagicalDyes ),
-				typeof( HeavySharpeningStone ),	typeof( ConsecratedSharpeningStone ),	typeof( MyCircusTentEastAddonDeed ),
+				typeof( HeavyEnhancementStone ),typeof( ConsecratedEnhancementStone ),	typeof( MyCircusTentEastAddonDeed ),
 				typeof( ManyArrows100 ),		typeof( ManyBolts100 ),					typeof( MyTentSouthAddonDeed ),
-				typeof( RoughSharpeningStone ),	typeof( DenseSharpeningStone ),			typeof( ElementalSharpeningStone ),
+				typeof( RoughEnhancementStone ),typeof( DenseEnhancementStone ),		typeof( ElementalEnhancementStone ),
 				typeof( ArtifactManual ),		typeof( light_dragon_brazier ), 		typeof( MoonStone ),
-				typeof( CrystallineJar ),		typeof( TrophyBase ),					typeof( DockingLantern ),
+				typeof( CrystallineJar ),		typeof( TrophyBase ),					typeof( EtherealPowerScroll),
 				typeof( BoatBuild ),			typeof( TrapKit ),						typeof( MalletStake ), 
 				typeof( CandleLarge ),			typeof( Candelabra ),					typeof( CandelabraStand ),
 				typeof( HairDyeBottle ),		typeof( GothicCandelabraA ),			typeof( GothicCandelabraB ),
@@ -693,8 +692,7 @@ namespace Server
 				typeof( ECrystalAltarDeed ),	typeof( ECrystalBeggarStatueDeed ),		typeof( RunicUndertaker ),
 				typeof( RunicLeatherKit ),		typeof( RunicScales ),					typeof( GolemManual ),
 				typeof( SummonPrison ),			typeof( MagicalWand ),					typeof( MagicalWand ),
-				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( FrankenJournalInBox ),
-				typeof( EtherealPowerScroll)	
+				typeof( BrokenBedDeed ),		typeof( Runebook ),						typeof( FrankenJournalInBox )
 			};
 
 		public static Type[] RareItemTypes{ get{ return m_RareItemTypes; } }
@@ -703,9 +701,9 @@ namespace Server
 		private static Type[] m_AdventurerRareItemTypes = new Type[]
 			{
 				typeof( SkeletonsKey ),			typeof( MagicalDyes ),					typeof( EtherealPowerScroll),
-				typeof( HeavySharpeningStone ),	typeof( ConsecratedSharpeningStone ),	typeof( SummonPrison ),
+				typeof( HeavyEnhancementStone ),typeof( ConsecratedEnhancementStone ),	typeof( SummonPrison ),
 				typeof( MagicPigment ),			typeof( RunicHammer ),					typeof( RunicSaw ),
-				typeof( RoughSharpeningStone ),	typeof( DenseSharpeningStone ),			typeof( ElementalSharpeningStone ),
+				typeof( RoughEnhancementStone ),typeof( DenseEnhancementStone ),		typeof( ElementalEnhancementStone ),
 				typeof( ArtifactManual ),		typeof( Runebook ),						typeof( FrankenJournalInBox ),
 				typeof( CrystallineJar ),		typeof( DockingLantern ),				typeof( RunicFletching ),
 				typeof( BoatBuild ),			typeof( MalletStake ), 					typeof( PetBondDeed ),

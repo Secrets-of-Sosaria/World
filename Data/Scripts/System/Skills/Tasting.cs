@@ -97,8 +97,7 @@ namespace Server.Items
 						}
 						else
 						{
-							drink.Pour_OnTarget( from, from );
-							from.SendMessage( "You swallowed a bit too much!" );
+							from.SendMessage( "This looks tempting, but you are unsure if its safe to drink." );
 						}
 					}
 					else
@@ -109,7 +108,20 @@ namespace Server.Items
 				else if ( targeted is Item )
 				{
 					Item examine = (Item)targeted;
-					RelicFunctions.IDItem( from, from, examine, SkillName.Tasting );
+					int identified = RelicIDHelper.TryRecursiveIdentify(from, examine, IDSkill.Tasting, SkillName.Tasting);
+
+       				if (examine is Container)
+       				{
+       				    if (identified == 0)
+       				        from.SendMessage("There is nothing in this container that requires Tasting to identify.");
+       				    else
+       				        from.SendMessage("You sample and inspect the items using your Tasting skill.");
+       				}
+       				else
+       				{
+       				    if (identified == 0)
+       				        from.SendMessage("That item cannot be identified with Tasting.");
+       				}
 				}
 			}
 		}

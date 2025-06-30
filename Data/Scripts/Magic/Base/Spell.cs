@@ -215,7 +215,7 @@ namespace Server.Spells
 			if ( MyServerSettings.SpellDamageIncreaseVsMonsters() > 0 && sdiBonus > MyServerSettings.SpellDamageIncreaseVsMonsters() )
 				sdiBonus = MyServerSettings.SpellDamageIncreaseVsMonsters();
 
-			// PvP spell damage increase cap of 15% from an item’s magic property
+			// PvP spell damage increase cap of 15% from an item's magic property
 			if ( playerVsPlayer && MyServerSettings.SpellDamageIncreaseVsPlayers() > 0 && sdiBonus > MyServerSettings.SpellDamageIncreaseVsPlayers() )
 				sdiBonus = MyServerSettings.SpellDamageIncreaseVsPlayers();
 
@@ -305,7 +305,10 @@ namespace Server.Spells
 		}
 
 		public virtual bool ConsumeReagents()
-		{
+        {
+			if ( !m_Caster.Player )
+				return true;
+
 			if ( m_Caster.ItemCastSpell )
 				return true;
 
@@ -509,7 +512,7 @@ namespace Server.Spells
 
 		public virtual void SayMantra()
 		{
-			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && m_Caster.Player )
+			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0)
 				m_Caster.PublicOverheadMessage( MessageType.Spell, m_Caster.SpeechHue, true, m_Info.Mantra, false );
 		}
 

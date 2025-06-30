@@ -16,7 +16,7 @@ namespace Server.Spells.DeathKnight
 
 		private static Hashtable m_Table = new Hashtable();
         public override TimeSpan CastDelayBase { get { return TimeSpan.FromSeconds(3); } }
-		public override int RequiredTithing{ get{ return 49; } }
+		public override int RequiredTithing{ get{ return 25; } }
         public override int RequiredMana { get { return 32; } }
 		public override double RequiredSkill{ get{ return 35.0; } }
 

@@ -3142,19 +3142,9 @@ namespace Server
 
 			if ( m_InnOpen )
 			{
-				bool leaveOpen = false;
-
-				foreach ( Item i in this.GetItemsInRange( 3 ) )
-				{
-					if ( i is InnRoom && ((InnRoom)i).Owner == this )
-						leaveOpen = true;
-				}
-				if ( !leaveOpen )
-				{
-					InnOpen = false;
-					m_InnRoom.ItemID = 0x4CF0;
-					this.BankBox.DropItem( m_InnRoom );
-				}
+				InnOpen = false;
+				m_InnRoom.ItemID = 0x4CF0;
+				this.BankBox.DropItem( m_InnRoom );
 			}
 
 			if( (m_Direction & Direction.Mask) == (d & Direction.Mask) )

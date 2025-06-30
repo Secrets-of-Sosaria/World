@@ -12,14 +12,16 @@ using Server.Spells.Necromancy;
 using Server.Spells;
 using Server.Spells.Ninjitsu;
 using Server.Misc;
+using Server.Systems;
 
 namespace Server.SkillHandlers
 {
 	public class Stealing
 	{
+		private static Dictionary<Mobile, DateTime> _lastStealTime = new Dictionary<Mobile, DateTime>();
 		public static void Initialize()
 		{
-			SkillInfo.Table[33].Callback = new SkillUseCallback( OnUse );
+			SkillInfo.Table[33].Callback = new SkillUseCallback(OnUse);
 		}
 
 		public static readonly bool ClassicMode = false;
@@ -169,10 +171,6 @@ namespace Server.SkillHandlers
 				else if ( toSteal is SunkenShip )
 				{
 					m_Thief.SendMessage( "You are just not that strong." );
-				}
-				else if ( !IsEmptyHanded( m_Thief ) )
-				{
-					m_Thief.SendMessage( "You cannot be wielding a weapon when trying to steal something." );
 				}
 				else if ( root is Mobile && ((Mobile)root).Player && IsInnocentTo( m_Thief, (Mobile)root ) && !IsInGuild( m_Thief ) )
 				{
@@ -390,17 +388,78 @@ namespace Server.SkillHandlers
 					root = ((Item)target).RootParent;
 					stolen = TryStealItem( (Item)target, ref caught );
 				} 
+				
 				else if ( target is Mobile )
 				{
-					Container pack = ((Mobile)target).Backpack;
+				    Mobile victim = (Mobile)target;
+				    Container pack = victim.Backpack;				
 
-					if ( pack != null && pack.Items.Count > 0 )
-					{
-						int randomIndex = Utility.Random( pack.Items.Count );
+				    BaseCreature bc = victim as BaseCreature;
+				    bool isCreature = (bc != null);
+				    bool isValidNpc = isCreature && !bc.Controlled && !bc.Summoned;				
 
-						root = target;
-						stolen = TryStealItem( pack.Items[randomIndex], ref caught );
-					}
+				    if (isValidNpc && pack != null && pack.Items.Count > 0)
+				    {
+				        if (_lastStealTime.ContainsKey(from))
+				        {
+							DateTime last = (DateTime)_lastStealTime[from];
+   							DateTime nextAllowedTime = last + TimeSpan.FromMinutes(1);
+   							if (DateTime.UtcNow < nextAllowedTime)
+   							{
+   							    TimeSpan remaining = nextAllowedTime - DateTime.UtcNow;
+   							    int secondsLeft = (int)remaining.TotalSeconds;
+								from.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, string.Format("You must wait {0} seconds before you can attempt to steal again.", secondsLeft));
+   							    from.SendMessage(string.Format("You must wait {0} seconds before you can attempt to steal again.", secondsLeft));
+   							    return;
+   							}
+				        }				
+
+				        _lastStealTime[from] = DateTime.UtcNow;				
+
+				        int fame = victim.Fame;
+				        int gold = 0;				
+
+				        if (fame < 100) gold = Utility.RandomMinMax(2, 5);
+				        else if (fame < 500) gold = Utility.RandomMinMax(2, 12);
+				        else if (fame < 1000) gold = Utility.RandomMinMax(4, 32);
+				        else if (fame < 2500) gold = Utility.RandomMinMax(8, 62);
+				        else if (fame < 5000) gold = Utility.RandomMinMax(16, 102);
+				        else if (fame < 7500) gold = Utility.RandomMinMax(32, 162);
+				        else if (fame < 10000) gold = Utility.RandomMinMax(48, 242);
+				        else if (fame < 14999) gold = Utility.RandomMinMax(80, 362);
+				        else gold = Utility.RandomMinMax(160, 442);				
+
+				        // Success roll
+				        if (from.CheckSkill(SkillName.Stealing, 0, 100))
+				        {
+				            Gold stolenGold = new Gold(gold);
+				            from.AddToBackpack(stolenGold);
+							from.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, string.Format("You successfully stole {0} gold.", gold));
+							from.SendMessage(string.Format("You successfully stole {0} gold.", gold));
+				            Titles.AwardKarma(from, -60, true);
+				            from.PlaySound(0x2E6); // Coin sound				
+
+				            // Contraband check
+				            ContrabandSystem.TryGiveContraband(from, victim);
+				        }
+				        else
+				        {
+							from.PublicOverheadMessage(MessageType.Regular, 0x3B2, false, "You failed to steal anything.");
+							from.SendMessage(string.Format("You failed to steal anything."));
+				            from.RevealingAction();
+				            caught = true;
+				        }				
+
+				        return;
+				    }				
+					// fallback - mostly for pet stealing for macroing
+				    if (pack != null && pack.Items.Count > 0)
+				    {
+				        int randomIndex = Utility.Random(pack.Items.Count);				
+
+				        root = target;
+				        stolen = TryStealItem(pack.Items[randomIndex], ref caught);
+				    }
 				} 
 				else 
 				{
@@ -412,6 +471,14 @@ namespace Server.SkillHandlers
 					from.AddToBackpack( stolen );
 
 					StolenItem.Add( stolen, m_Thief, root as Mobile );
+					//contraband boxes can only be found if the thief suceeded at stealing something
+					Mobile m = target as Mobile;
+					if (m != null && !m.Player)
+					{
+						BaseCreature creature = m as BaseCreature;
+						if(creature == null || (!creature.Controlled && !creature.Summoned))
+					    ContrabandSystem.TryGiveContraband(from, m);
+					}
 				}
 
 				if ( caught )
@@ -456,53 +523,11 @@ namespace Server.SkillHandlers
 			}
 		}
 
-		public static bool IsEmptyHanded( Mobile from )
-		{
-			if ( from.FindItemOnLayer( Layer.OneHanded ) != null )
-			{
-				if ( from.FindItemOnLayer( Layer.OneHanded ) is BaseWeapon )
-				{
-					if ( 
-						!( from.FindItemOnLayer( Layer.OneHanded ) is PugilistGlove ) && 
-						!( from.FindItemOnLayer( Layer.OneHanded ) is PugilistGloves ) 
-					)
-					{
-						return false;
-					}
-				}
-			}
-			if ( from.FindItemOnLayer( Layer.TwoHanded ) != null )
-			{
-				if ( from.FindItemOnLayer( Layer.TwoHanded ) is BaseWeapon )
-				{
-					if ( 
-						!( from.FindItemOnLayer( Layer.TwoHanded ) is PugilistGlove ) && 
-						!( from.FindItemOnLayer( Layer.TwoHanded ) is PugilistGloves ) 
-					)
-					{
-						return false;
-					}
-				}
-			}
-
-			return true;
-		}
-
 		public static TimeSpan OnUse( Mobile m )
 		{
-			if ( !IsEmptyHanded( m ) )
-			{
-				m.SendMessage( "You cannot be wielding a weapon when trying to steal something." );
-			}
-			else
-			{
 				m.Target = new Stealing.StealingTarget( m );
-				//m.RevealingAction(); // NO REVEALING ON THIS SERVER
-
 				m.SendLocalizedMessage( 502698 ); // Which item do you want to steal?
-			}
-
-			return TimeSpan.FromSeconds( 5.0 );
+				return TimeSpan.FromSeconds( 5.0 );
 		}
 	}
 
