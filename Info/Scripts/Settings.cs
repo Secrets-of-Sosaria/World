@@ -306,10 +306,6 @@ namespace Server
 
 		public static bool S_DecoArtySteal = false;
 
-	// If set to true, then characters will not receive artifacts from stealable boxes in dungeons. 
-
-		public static bool S_PedStealThrottle = true;
-
 	// If set to true (default), then a character will get a warning before they are entering Skara Brae. This area is an extensive
 	// quest driven area, that has some quest requirements to be met before they can leave that area.
 
