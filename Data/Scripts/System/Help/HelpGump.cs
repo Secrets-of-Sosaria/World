@@ -1742,7 +1742,7 @@ namespace Server.Engines.Help
 				+ "[statistics - Shows you some statistics of the server.<br><br>"
 				+ "[wealth - Opens a small, horizontal bar showing your gold value for the various forms of currency and gold in your bank and backpack. Currency are items you would have a banker convert to gold for you (silver, copper, xormite, jewels, and crystals). If you put these items in your bank, you can update the values on the wealth bar by right clicking on it.<br><br>"
 				+ "[ShowSkillGainChance - toggles the skill gain chance display in your journal. <br><br>"
-				+ "[VetSupplies - automatically finds and uses veterinarian supplies from the character's inventory if they are there.<br><br
+				+ "[VetSupplies - automatically finds and uses veterinarian supplies from the character's inventory if they are there.<br><br>"
 				+ "<br><br>"
 
 				+ "Area Difficulty Levels: When you enter many dangerous areas, there will be a message to you that you entered a particular area. There may be a level of difficulty shown in parenthesis, that will give you an indication on the difficulty of the area. Below are the descriptions for each level.<br><br>"
