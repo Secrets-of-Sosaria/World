@@ -1,3 +1,8 @@
-Data/Logs
-Data/System/Source/obj
+/Data/Data.bin
+/Data/Data.hash
+/Data/Data.pdb
+/Data/Data.ref
+/Data/Logs
+/Data/System/Source/obj
+World.exe
 throttle.log
