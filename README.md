@@ -1,5 +1,7 @@
 # Secrets of Sosaria
 
+[![Build and Release](../../actions/workflows/build.yml/badge.svg)](../../actions/workflows/build.yml)
+
 For instructions, see [Manual.pdf](Manual.pdf).
 
 ## Vision Statement
