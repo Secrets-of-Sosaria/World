@@ -1,6 +1,6 @@
 # Secrets of Sosaria
 
-For instructions, see [Manual.pdf](Manual.pdf).
+For instructions, see the [manual](Docs/Manual.md).
 
 ## Vision Statement
 
