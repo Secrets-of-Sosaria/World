@@ -546,6 +546,9 @@ namespace Server.SkillHandlers
 			if ( index >= 0 && index < m_List.Count && index < 16 )
 			{
 				Mobile m = m_List[index];
+				HunterMarkSystem.MarkTarget(m_From, m); 
+				m_From.SendMessage("You have marked your prey for the hunt.");
+				m.PublicOverheadMessage(MessageType.Emote, 0x22, false, "*is marked by "+m_From.Name.ToString()+" *");
 
 				m_From.QuestArrow = new TrackArrow( m_From, m, m_Range * 2 );
 
