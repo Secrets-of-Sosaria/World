@@ -17,8 +17,8 @@ namespace Server.Items
 		public override WeaponAbility FifthAbility{ get{ return WeaponAbility.DoubleWhirlwindAttack; } }
 
 		public override int AosStrengthReq{ get{ return 35; } }
-		public override int AosMinDamage{ get{ return Core.ML ? 16 : 18; } }
-		public override int AosMaxDamage{ get{ return 20; } }
+		public override int AosMinDamage{ get{ return Core.ML ? (int)(16 * GetDamageScaling()) : (int)(18 * GetDamageScaling()); } }
+		public override int AosMaxDamage{ get{ return (int)(20 * GetDamageScaling()); } }
 		public override int AosSpeed{ get{ return 25; } }
 		public override float MlSpeed{ get{ return 4.5f; } }
 
