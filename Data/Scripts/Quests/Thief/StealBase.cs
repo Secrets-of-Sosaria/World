@@ -337,8 +337,7 @@ namespace Server.Items
 
 				if ( TakeBox )
 				{
-					bool stealingThrottled = MySettings.S_PedStealThrottle;
-
+					
 					if ( BoxType == 1 )
 					{
 						Item Bags = new StealMetalBox();
@@ -348,10 +347,9 @@ namespace Server.Items
 						bag.Name = BoxOrigin;
 						bag.BoxName = BoxOrigin;
 						bag.BoxMarkings = BoxCarving;
-						FillMeUp( bag, from, stealingThrottled );
+						FillMeUp( bag, from );
 						from.AddToBackpack( bag );
-						if ( !stealingThrottled )
-							bag.Weight = 10.0;
+						bag.Weight = 10.0;
 					}
 					else if ( BoxType == 2 )
 					{
@@ -362,7 +360,7 @@ namespace Server.Items
 						bag.Name = BoxOrigin;
 						bag.BoxName = BoxOrigin;
 						bag.BoxMarkings = BoxCarving;
-						FillMeUp( bag, from, stealingThrottled );
+						FillMeUp( bag, from );
 						from.AddToBackpack( bag );
 					}
 					else
@@ -374,7 +372,7 @@ namespace Server.Items
 						bag.Name = BoxOrigin;
 						bag.BagName = BoxOrigin;
 						bag.BagMarkings = BoxCarving;
-						FillMeUp( bag, from, stealingThrottled );
+						FillMeUp( bag, from );
 						from.AddToBackpack( bag );
 
 					}
@@ -417,82 +415,68 @@ namespace Server.Items
             BoxCarving = reader.ReadString();
 		}
 
-		public void FillMeUp( Container box, Mobile from, bool stealingThrottled )
+		public void FillMeUp( Container box, Mobile from )
 		{
 			Item i = null;
-			if ( !stealingThrottled && Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
+			int rewardChance = from.Luck / 400; 
+			//5% caps at base reward chance at 2k luck
+			if (rewardChance > 5)
+			{
+				rewardChance = 5;
+			}
+			else if (rewardChance < 0)
+			{
+				rewardChance = 0;
+			}
+					
+			if (Utility.Random(1, 101) < rewardChance)
 			{
 				i = Loot.RandomArty();
 				box.DropItem(i);
 			}
 
-			if ( !stealingThrottled && Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
+			if (Utility.Random(1, 101) < (double)(rewardChance * 1.25)) //caps 6.25% chance of Orient Arty
 			{
-				i = Loot.RandomSArty( Server.LootPackEntry.playOrient( from ), from );
+				i = Loot.RandomSArty(Server.LootPackEntry.playOrient(from), from);
 				box.DropItem(i);
 			}
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
+			if (Utility.Random(1, 101) < (double)(rewardChance * 1.50)) // caps at 7.50% chance of relic
 			{
-				Item relic = Loot.RandomRelic( from );
-				box.DropItem( relic );
+				Item relic = Loot.RandomRelic(from);
+				box.DropItem(relic);
 			}
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
-				box.DropItem( Loot.RandomRare( Utility.RandomMinMax(6,12), from ) );
+			if (Utility.Random(1, 101) < rewardChance * 4) // caps at 20% chance of rare
+			{
+				box.DropItem( Loot.RandomRare( Utility.RandomMinMax(6,12), from ) );				
+			}
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
-				box.DropItem( Loot.RandomBooks( Utility.RandomMinMax(6,12) ) );
-
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) )
-				box.DropItem( Loot.RandomScroll( Utility.Random(12)+1 ) );
-
-			int minG = 3000;
-			int maxG = 9000;
-
-			int givG = Utility.RandomMinMax( minG, maxG );
-
-			givG = (int)(givG * (MyServerSettings.GetGoldCutRate() * .01));
-
-			int luck = from.Luck;
-				if ( luck > 4000 )
-					luck = 4000;
-
-			i = new Gold( ( luck + givG ) );
-			box.DropItem(i);
-			LootPackChange.MakeCoins( box, from );
-
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
+			if (Utility.Random(1, 101) < rewardChance * 5) // caps at 25% for magic item
 			{
 				Item item = Loot.RandomMagicalItem( Server.LootPackEntry.playOrient( from ) );
-				item = LootPackEntry.Enchant( from, 500, item );
+				item = LootPackEntry.Enchant( from, 300, item );
 				box.DropItem(item);
 			}
+			// gold on boxes scale with luck so a newbie thief can't steal their way into a brand new castle after two hours of macroing. 
+			int awardedGold;
+			int luck = from.Luck;
+			// high variance on top end bags helps to mitigate inflation on thieves spamming boxes
+			if (luck >= 2000)
+				awardedGold = Utility.RandomMinMax(1250, 6000);
+			else if (luck >= 1000)
+				awardedGold = Utility.RandomMinMax(850, 3000);
+			else if (luck >= 500)
+				awardedGold = Utility.RandomMinMax(450, 1500);
+			else if (luck >= 250)
+				awardedGold = Utility.RandomMinMax(225, 750);
+			else
+				awardedGold = Utility.RandomMinMax(99, 375);
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
-			{
-				Item lute = Loot.RandomInstrument();
-				lute = LootPackEntry.Enchant( from, 500, lute );
-				box.DropItem(lute);
-			}
+			awardedGold = (int)(awardedGold * (MyServerSettings.GetGoldCutRate() * 0.01));
 
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
-			{
-				i = Loot.RandomGem();
-				box.DropItem(i);
-			}
-
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
-			{
-				i = Loot.RandomPotion( Utility.RandomMinMax(6,12), true );
-				box.DropItem(i);
-			}
-
-			if ( Server.Misc.GetPlayerInfo.LuckyPlayer( (int)( 20 + ( from.Luck / 2 ) ) ) == true )
-			{
-				Item wand = new MagicalWand(0);
-				box.DropItem( wand );
-			}
+			i = new Gold(awardedGold);
+			box.DropItem(i);
 
 			List<Item> iY = new List<Item>();
 			foreach( Item iZ in box.Items )
