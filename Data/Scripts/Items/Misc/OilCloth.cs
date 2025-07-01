@@ -43,18 +43,27 @@ namespace Server.Items
 			return true;
 		}
 
-		public override void OnDoubleClick( Mobile from )
-		{
-			if ( IsChildOf( from.Backpack ) )
-			{
-				from.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( OnTarget ) );
-				from.SendLocalizedMessage( 1005424 ); // Select the weapon or armor you wish to use the cloth on.
-			}
-			else
-			{
-				from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
-			}
-		}
+			public override void OnDoubleClick( Mobile from )
+{
+    if ( IsChildOf( from.Backpack ) )
+    {
+        if ( DisguiseTimers.IsDisguised(from) ) // Check if the player is disguised
+        {
+            DisguiseTimers.RemoveDisguise(from);
+            from.SendMessage("You use the oil cloth to remove your disguise.");
+            Consume(); 
+        }
+        else
+        {
+            from.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( OnTarget ) );
+            from.SendLocalizedMessage( 1005424 ); // Select the weapon or armor you wish to use the cloth on.
+        }
+    }
+    else
+    {
+        from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
+    }
+}
 
 		public void OnTarget( Mobile from, object obj )
 		{

@@ -1507,11 +1507,19 @@ namespace Server.Items
 				if( i_Beverage.IsChildOf( m_From.Backpack ) ) 
 				{ 
 					m_From.PlaySound( 0x23F );
+					if (i_Beverage is WaterBottle)
+					{
+						i_Beverage.Delete();
+						m_From.SendMessage("You dump out the liquid, and the magical flask vanishes!");
+        }
+		else
+		{
 					i_Beverage.Poisoner = null;
 					i_Beverage.Poison = null;
 					i_Beverage.Content = BeverageType.Water;
 					i_Beverage.Quantity = 0;
 					m_From.SendMessage( "You dump out the liquid." );
+		}
 				} 
 				else 
 				{
