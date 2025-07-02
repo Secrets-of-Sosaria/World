@@ -88,8 +88,8 @@ namespace Server.Items
 		}
 
 		public override int AosStrengthReq{ get{ return 20; } }
-		public override int AosMinDamage{ get{ return 12; } }
-		public override int AosMaxDamage{ get{ return 16; } }
+		public override int AosMinDamage{ get{ return (int)(12 * GetDamageScaling()); } }
+		public override int AosMaxDamage{ get{ return (int)(16 * GetDamageScaling()); } }
 		public override int AosSpeed{ get{ return 23; } }
 		public override float MlSpeed{ get{ return 4.00f; } }
 

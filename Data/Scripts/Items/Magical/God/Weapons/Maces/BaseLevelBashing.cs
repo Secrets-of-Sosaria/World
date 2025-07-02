@@ -30,6 +30,11 @@ namespace Server.Items
 			ArtifactLevel = 3;
         }
 
+        protected double GetDamageScaling()
+        {
+            return 1.0 + (m_Level / 100.0) * 0.75;
+        }
+
 		public override bool DisplayLootType{ get{ return false; } }
 
         public BaseLevelBashing(Serial serial)
