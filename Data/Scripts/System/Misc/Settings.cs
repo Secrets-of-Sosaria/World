@@ -326,6 +326,11 @@ namespace Server
 			return false;
 		}
 
+		public static bool RandomCityVisitor()
+		{
+			return MySettings.S_RandomCityVisitorsChance > Utility.Random(100);
+		}
+
 		public static bool BlackMarket()
 		{
 			if ( MySettings.S_BlackMarket )

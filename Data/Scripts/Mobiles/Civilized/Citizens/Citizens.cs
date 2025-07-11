@@ -1135,17 +1135,17 @@ namespace Server.Mobiles
 			for ( int i = 0; i < meetingPets.Count; ++i )
 			{
 				Item spot = ( Item )meetingPets[ i ];
-				if ( MyServerSettings.Humanoid() ){ CreatePets( spot ); }
+				if ( MyServerSettings.RandomCityVisitor() && MyServerSettings.Humanoid() ){ CreatePets( spot ); }
 			}
 			for ( int i = 0; i < meetingLawns.Count; ++i )
 			{
 				Item spot = ( Item )meetingLawns[ i ];
-				CreateCitizenss( spot );
+				if ( MyServerSettings.RandomCityVisitor() ){ CreateCitizenss( spot ); }
 			}
 			for ( int i = 0; i < meetingDemons.Count; ++i )
 			{
 				Item spot = ( Item )meetingDemons[ i ];
-				CreateDaemons( spot );
+				if ( MyServerSettings.RandomCityVisitor() ){ CreateDaemons( spot ); }
 			}
 			CreateDragonRiders();
 		}
@@ -1578,7 +1578,7 @@ namespace Server.Mobiles
 
 		public static bool PeopleMeetingHere( Item spot )
 		{
-			if ( Utility.RandomBool() )
+			if ( Utility.RandomBool() && MyServerSettings.RandomCityVisitor() )
 				return true;
 
 			if ( (Region.Find( spot.Location, spot.Map )).Name == "the Lyceum" ) 
