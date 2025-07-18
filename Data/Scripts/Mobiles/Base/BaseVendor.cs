@@ -1930,12 +1930,22 @@ namespace Server.Mobiles
 
 			seller.PlaySound( 0x32 );
 
+			// Calculate maximum affordable amount if using remaining gold
+			int maxAffordableGold = SoldPrice;
+			if ( !MySettings.S_RichMerchants && SoldPrice > this.CoinPurse && MySettings.S_UseRemainingGold )
+			{
+				maxAffordableGold = this.CoinPurse;
+				SayTo( seller, true, "I give you my remaining {0} gold.", this.CoinPurse );
+			}
+
+			bool isBegging = BeggingPose(seller) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType());
+
 			foreach ( SellItemResponse resp in list )
 			{
 				if ( resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || ( resp.Item is Container && ( (Container)resp.Item ).Items.Count != 0 ) )
 					continue;
 
-				if ( BeggingPose(seller) > 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+				if ( isBegging )
 				{
 					Titles.AwardKarma( seller, -BeggingKarma( seller ), true );
 				}
@@ -1949,6 +1959,40 @@ namespace Server.Mobiles
 						if ( amount > resp.Item.Amount )
 							amount = resp.Item.Amount;
 
+						// Calculate the price for this item
+						int barter = (int)seller.Skills[SkillName.Mercantile].Value;
+						if ( barter < 100 && this.NpcGuild != NpcGuild.None && this.NpcGuild == pm.NpcGuild ){ barter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
+
+						if ( isBegging && GuildMember == 0 )
+						{
+							barter = (int)seller.Skills[SkillName.Begging].Value;
+						}
+
+						int itemPrice = ssi.GetSellPriceFor( resp.Item, barter ) * amount;
+
+						// Check if this item would exceed the affordable limit
+						if ( GiveGold + itemPrice > maxAffordableGold )
+						{
+							// If we can't afford any of this item, skip it entirely
+							if ( GiveGold >= maxAffordableGold )
+								break;
+								
+							// Calculate how much we can afford of this item
+							int remainingGold = maxAffordableGold - GiveGold;
+							int unitPrice = ssi.GetSellPriceFor( resp.Item, barter );
+							
+							if ( unitPrice <= 0 )
+								break;
+								
+							int affordableAmount = remainingGold / unitPrice;
+							
+							if ( affordableAmount <= 0 )
+								break;
+								
+							// Reduce the amount to what we can afford
+							amount = Math.Min( amount, affordableAmount );
+							itemPrice = unitPrice * amount;
+						}
 						if ( ssi.IsResellable( resp.Item ) )
 						{
 							bool found = false;
@@ -1998,16 +2042,12 @@ namespace Server.Mobiles
 								resp.Item.Delete();
 						}
 
-						int barter = (int)seller.Skills[SkillName.Mercantile].Value;
-						if ( barter < 100 && this.NpcGuild != NpcGuild.None && this.NpcGuild == pm.NpcGuild ){ barter = 100; GuildMember = 1; } // FOR GUILD MEMBERS
-
-						if ( BeggingPose(seller) > 0 && GuildMember == 0 && !(typeof( PlayerVendor ) == this.GetType()) && !(typeof( PlayerBarkeeper ) == this.GetType()) ) // LET US SEE IF THEY ARE BEGGING
+						if ( isBegging && GuildMember == 0 )
 						{
 							seller.CheckSkill( SkillName.Begging, 0, 125 );
-							barter = (int)seller.Skills[SkillName.Begging].Value;
 						}
 
-						GiveGold += ssi.GetSellPriceFor( resp.Item, barter ) * amount;
+						GiveGold += itemPrice;
 						break;
 					}
 				}
@@ -2015,12 +2055,6 @@ namespace Server.Mobiles
 
 			if ( GiveGold > 0 )
 			{
-				if ( !MySettings.S_RichMerchants && GiveGold > this.CoinPurse && MySettings.S_UseRemainingGold )
-				{
-					GiveGold = this.CoinPurse;
-					SayTo( seller, true, "I give you my remaining {0} gold.", this.CoinPurse );
-				}
-
 				this.CoinPurse -= GiveGold;
 
 				this.InvalidateProperties();
