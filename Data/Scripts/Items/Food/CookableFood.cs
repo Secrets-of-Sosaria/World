@@ -60,15 +60,13 @@ namespace Server.Items
 			}
 		}
 
-#if false
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !Movable )
 				return;
 
-			from.Target = new InternalTarget( this );
+			from.SendMessage( "You must use cooking tools to prepare this." );
 		}
-#endif
 
 		public static bool IsHeatSource( object targeted )
 		{
