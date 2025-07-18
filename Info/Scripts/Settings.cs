@@ -768,6 +768,11 @@ namespace Server
 
 		public static bool S_Humanoids = true;
 
+	// This setting controls the number of random visitors that will randomly appear in cities e.g.
+	// adventurers that stand around practicing magery. This value is a percentage between 0 and 100
+	// used when determining whether a visitor appear in a spot for the day.
+
+		public static int S_RandomCityVisitorsChance = 50;
 
 
 
