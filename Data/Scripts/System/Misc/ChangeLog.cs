@@ -21,7 +21,7 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: Honesty (19 April 2025)";
+			return "Version: Spirituality (20 July 2025)";
 		}
 
 		public static string Versions()
@@ -30,7 +30,7 @@ namespace Server.Misc
 
 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-				+ "Spirituality - ? July 2025<br>"
+				+ "Spirituality - 20 July 2025<br>"
 
 				+ "<br>"
 
