@@ -1,6 +1,9 @@
 using System;
 using Server.Network;
 using Server.Engines.Craft;
+using Server.ContextMenus;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Server.Items
 {
@@ -60,6 +63,88 @@ namespace Server.Items
 			get{ return m_Quality; }
 			set{ m_Quality = value; InvalidateProperties(); }
 		}
+
+		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
+		{
+			base.GetContextMenuEntries( from, list );
+
+			if ( from.Alive && IsChildOf( from ) )
+				list.Add( new OrganizeQuiverEntry( this, from ) );
+		}
+
+		public override bool OnDragDrop( Mobile from, Item dropped )
+		{
+			if ( dropped == null || dropped.Deleted )
+				return false;
+
+			Item current = Ammo;
+			int capacity = Capacity;
+			int currentAmount = (current != null && !current.Deleted) ? current.Amount : 0;
+
+			if ( dropped is Arrow || dropped is Bolt )
+			{
+				if ( current != null && current.GetType() != dropped.GetType() )
+				{
+					from.SendMessage( "You cannot mix arrows and bolts in the same quiver." );
+					return false;
+				}
+
+				int spaceLeft = capacity - currentAmount;
+
+				if ( spaceLeft <= 0 )
+				{
+					from.SendMessage( "Your quiver is already full." );
+					return false;
+				}
+
+				int toAdd = Math.Min( dropped.Amount, spaceLeft );
+
+				Item partToAdd;
+
+				if ( dropped is Arrow )
+					partToAdd = new Arrow();
+				else
+					partToAdd = new Bolt();
+
+				partToAdd.Amount = toAdd;
+
+				if ( base.TryDropItem( from, partToAdd, false ) )
+				{
+					int leftover = dropped.Amount - toAdd;
+
+					dropped.Delete();
+
+					if ( leftover > 0 )
+					{
+						Item remainder;
+
+						if ( dropped is Arrow )
+							remainder = new Arrow();
+						else
+							remainder = new Bolt();
+
+						remainder.Amount = leftover;
+						from.Backpack.DropItem( remainder );
+					}
+
+					from.SendMessage( "You add {0} ammunition to your quiver. The rest remains in your pack.", toAdd );
+					InvalidateWeight();
+					return true;
+				}
+				else
+				{
+					partToAdd.Delete();
+					from.SendMessage( "You could not add that to your quiver." );
+					return false;
+				}
+			}
+
+			from.SendLocalizedMessage( 1074836 ); // The container can not hold that type of object.
+			return false;
+		}
+
+
+
 		
 		public Item Ammo
 		{
@@ -501,5 +586,104 @@ namespace Server.Items
 			return quality;
 		}
 		#endregion
+	}
+
+	public class OrganizeQuiverEntry : ContextMenuEntry
+	{
+		private BaseQuiver m_Quiver;
+		private Mobile m_From;
+
+		public OrganizeQuiverEntry( BaseQuiver quiver, Mobile from ) : base( 0097, 1 ) 
+		{
+			m_Quiver = quiver;
+			m_From = from;
+		}
+
+		public override void OnClick()
+		{
+			if ( m_Quiver == null || m_Quiver.Deleted || m_From == null || !m_From.Alive )
+				return;
+
+			if ( m_From.Backpack == null )
+				return;
+
+			Item currentAmmo = m_Quiver.Ammo;
+			int capacity = m_Quiver.Capacity;
+			int currentAmount = (currentAmmo != null && !currentAmmo.Deleted) ? currentAmmo.Amount : 0;
+			int spaceLeft = capacity - currentAmount;
+
+			if ( spaceLeft <= 0 )
+			{
+				m_From.SendMessage("Your quiver is already full.");
+				return;
+			}
+
+			bool acceptArrows = (currentAmmo == null || currentAmmo is Arrow);
+			bool acceptBolts = (currentAmmo == null || currentAmmo is Bolt);
+
+			int added = 0;
+
+			List<Item> foundAmmo = new List<Item>();
+			GetAllAmmoInBackpack( m_From.Backpack, foundAmmo, acceptArrows, acceptBolts );
+
+			for ( int i = 0; i < foundAmmo.Count && spaceLeft > 0; i++ )
+			{
+				Item item = foundAmmo[i];
+
+				if ( item == null || item.Deleted )
+					continue;
+
+				int moveAmount = Math.Min( item.Amount, spaceLeft );
+
+				Item toAdd;
+
+				if ( item is Arrow )
+					toAdd = new Arrow();
+				else
+					toAdd = new Bolt();
+
+				toAdd.Amount = moveAmount;
+
+				if ( m_Quiver.TryDropItem( m_From, toAdd, false ) )
+				{
+					spaceLeft -= moveAmount;
+					added += moveAmount;
+					item.Amount -= moveAmount;
+
+					if ( item.Amount <= 0 )
+						item.Delete();
+				}
+				else
+				{
+					toAdd.Delete(); 
+				}
+			}
+
+			if ( added > 0 )
+				m_From.SendMessage("You add {0} ammunition into your quiver.", added);
+			else
+				m_From.SendMessage("You have no suitable ammunition to organize.");
+		}
+
+		private void GetAllAmmoInBackpack( Container container, List<Item> list, bool acceptArrows, bool acceptBolts )
+		{
+			if ( container == null )
+				return;
+
+			foreach ( Item item in container.Items )
+			{
+				if ( item == null || item.Deleted )
+					continue;
+
+				if ( item is Container )
+				{
+					GetAllAmmoInBackpack( (Container)item, list, acceptArrows, acceptBolts );
+				}
+				else if ( (acceptArrows && item is Arrow) || (acceptBolts && item is Bolt) )
+				{
+					list.Add( item );
+				}
+			}
+		}
 	}
 }
