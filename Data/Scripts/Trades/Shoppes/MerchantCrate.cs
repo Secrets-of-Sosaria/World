@@ -24,7 +24,7 @@ namespace Server.Items
 				if ( !MySettings.S_MerchantCrates )
 					return "These crates are commonly used by merchants to store wares.";
 
-				return "Merchant crates are something that craftsmen can secure in their homes and sell the goods they make. Once a day, someone from the Merchants Guild will pick up anything left in the crate. They will leave gold in the crate for the owner's hard work. When you put something in the crate, you will be aware of the gold value of the item placed in it. A craftsmen may only acquire gold from armor, weapons, or clothing that were crafted. Any non-crafted armor, weapons, or clothing will be valued at 0 gold. Crafted armor and weapons will have varying values depending on the resources used to create the item. Also durability and quality may increase the value. Almost anything crafted will have a value to the Merchants Guild. Other items like potions, scrolls, tools, furniture, or food can be sold for a price. Any tools must have at least 50 uses to be of any value. So if an item cannot be crafted, then you probably will not get any gold for it. The exception to this are ingots and logs, as they are highly sought in the land. Different types of ingots are worth more depending on the type.<br><br>The crate will indicate how much gold it has available to transfer to yourself in the form of a bank check. Single click the crate and select the 'Transfer' option to withdraw all of the gold from the crate. Although there is a gold value indicated on the crate, the one withdrawing the amount may get more depending on whether they are in the Merchants Guild and/or they have a good Mercantile skill. These crates must be secured in a home to be of any use.";
+				return "Merchant crates are something that craftsmen can secure in their homes and sell the goods they make. Once a day, someone from the Merchants Guild will pick up anything left in the crate. They will leave gold in the crate for the owner's hard work. When you put something in the crate, you will be aware of the gold value of the item placed in it. A craftsmen may only acquire gold from armor, weapons, or clothing that were crafted. Any non-crafted armor, weapons, or clothing will be valued at 0 gold. Crafted armor and weapons will have varying values depending on the resources used to create the item. Also durability and quality may increase the value. Almost anything crafted will have a value to the Merchants Guild. Other items like potions, scrolls, tools, furniture, or food can be sold for a price. Any tools must have at least 50 uses to be of any value. So if an item cannot be crafted, then you probably will not get any gold for it. <br><br>The crate will indicate how much gold it has available to transfer to yourself in the form of a bank check. Single click the crate and select the 'Transfer' option to withdraw all of the gold from the crate. Although there is a gold value indicated on the crate, the one withdrawing the amount may get more depending on whether they are in the Merchants Guild and/or they have a good Mercantile skill. These crates must be secured in a home to be of any use.";
 			}
 		}
 
@@ -180,7 +180,7 @@ namespace Server.Items
 			if ( !base.OnDragDrop( from, dropped ) )
 				return false;
 
-			from.SendMessage( "The item will be picked up in about a day" );
+			from.SendMessage( "The item will be picked up in about one day" );
 			PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue( dropped, dropped.Amount ).ToString() + " gold");
 
 			if ( m_Timer != null )
@@ -212,7 +212,7 @@ namespace Server.Items
 			if ( !base.OnDragDropInto( from, item, p ) )
 				return false;
 
-			from.SendMessage( "The item will be picked up in about a day" );
+			from.SendMessage( "The item will be picked up in about an hour" );
 			PublicOverheadMessage (MessageType.Regular, 0x3B2, true, "Worth " + GetItemValue( item, item.Amount ).ToString() + " gold");
 
 			if ( m_Timer != null )
@@ -241,7 +241,11 @@ namespace Server.Items
 							continue;
 
 						CrateGold = CrateGold + GetItemValue( items[i], items[i].Amount );
-						items[i].Delete();
+					
+						if(GetItemValue( items[i], items[i].Amount ) > 0) {
+							items[i].Delete();
+						}
+
 					}
 				}
 			}
@@ -278,8 +282,7 @@ namespace Server.Items
 		{
 			private MerchantCrate m_Crate;
 
-			//public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromHours( 2.0 ) )
-			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromMinutes( 1.0 ) )
+			public EmptyTimer( MerchantCrate crate ) : base( TimeSpan.FromHours( 24.0 ) )
 			{
 				m_Crate = crate;
 				Priority = TimerPriority.FiveSeconds;
@@ -309,7 +312,7 @@ namespace Server.Items
 
 		public static int GetItemValue( Item item, int amount )
 		{
-			if ( !item.Built )
+			if ( !item.Built || item.BuiltBy == null )
 				return 0;
 
 			return ItemInformation.GetBuysPrice( ItemInformation.GetInfo( item.GetType() ), false, item, false, false ) * amount;
