@@ -466,7 +466,7 @@ namespace Server.Items
 			return base.CheckHold( m, item, false, checkItems, plusItems, plusWeight );
 		}
 
-		public override int DefaultMaxWeight{ get{ return 65000; } }
+		public override int DefaultMaxWeight{ get{ return 6500; } }
 
 		public override bool CheckContentDisplay( Mobile from )
 		{
