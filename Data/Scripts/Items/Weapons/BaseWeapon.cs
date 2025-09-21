@@ -245,11 +245,11 @@ namespace Server.Items
 
 		public virtual bool CanFortify{ get{ return true; } }
 
-		public override int PhysicalResistance{ get{ return (int)(GetResourceAttrs().ArmorPhysicalResist/3) + m_AosWeaponAttributes.ResistPhysicalBonus; } }
-		public override int FireResistance{ get{ return (int)(GetResourceAttrs().ArmorFireResist/2) + m_AosWeaponAttributes.ResistFireBonus; } }
-		public override int ColdResistance{ get{ return (int)(GetResourceAttrs().ArmorColdResist/2) + m_AosWeaponAttributes.ResistColdBonus; } }
-		public override int PoisonResistance{ get{ return (int)(GetResourceAttrs().ArmorPoisonResist/2) + m_AosWeaponAttributes.ResistPoisonBonus; } }
-		public override int EnergyResistance{ get{ return (int)(GetResourceAttrs().ArmorEnergyResist/2) + m_AosWeaponAttributes.ResistEnergyBonus; } }
+		public override int PhysicalResistance{ get{ return m_AosWeaponAttributes.ResistPhysicalBonus; } }
+		public override int FireResistance{ get{ return m_AosWeaponAttributes.ResistFireBonus; } }
+		public override int ColdResistance{ get{ return m_AosWeaponAttributes.ResistColdBonus; } }
+		public override int PoisonResistance{ get{ return m_AosWeaponAttributes.ResistPoisonBonus; } }
+		public override int EnergyResistance{ get{ return m_AosWeaponAttributes.ResistEnergyBonus; } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override Density Density { get { return CraftResources.GetDensity( this ); } }
