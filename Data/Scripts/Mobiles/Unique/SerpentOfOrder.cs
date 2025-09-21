@@ -74,32 +74,26 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
-			int CanDie = 0;
-			int CanDie2 = 0;
 			Mobile winner = this;
-
+			Item rock = null;
+			Item balance = null;
 			foreach ( Mobile m in this.GetMobilesInRange( 30 ) )
 			{
 				if ( m is PlayerMobile && !m.Blessed )
 				{
-					Item rock = m.Backpack.FindItemByType( typeof ( BlackrockSerpentOrder ) );
-					Item rockDeco = m.Backpack.FindItemByType( typeof ( BlackrockSerpentOrderDecoration ) );
-					if ( rock != null || rockDeco != null )
+					if (rock == null)
 					{
-						CanDie = 1;
-						winner = m;
-						rock.Delete();
+						rock = m.Backpack.FindItemByType( typeof ( BlackrockSerpentOrder ) );
+						if ( rock != null )
+							winner = m;
 					}
 
-					Item balance = m.Backpack.FindItemByType( typeof ( SerpentCapturedBalance ) );
-					if ( balance != null )
-					{
-						CanDie2 = 1;
-					}
+					if ( balance == null )
+						balance = m.Backpack.FindItemByType( typeof ( SerpentCapturedBalance ) );
 				}
 			}
 
-			if ( CanDie != 1 || CanDie2 != 1 )
+			if ( rock == null || balance == null )
 			{
 				this.Hits = this.HitsMax;
 				this.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
@@ -120,7 +114,9 @@ namespace Server.Mobiles
 
 				if ( winner is PlayerMobile )
 				{
+					rock.Delete();
 					winner.AddToBackpack( new SerpentCapturedOrder() );
+					winner.AddToBackpack (new BlackrockSerpentOrderDecoration() );
 					winner.SendMessage( "You have subdued the Serpent of Order!" );
 					LoggingFunctions.LogGenericQuest( winner, "has subdued the serpent of order" );
 				}
