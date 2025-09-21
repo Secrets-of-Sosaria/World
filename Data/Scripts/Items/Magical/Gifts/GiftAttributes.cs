@@ -23,7 +23,7 @@ namespace Server.Items
 			new GiftAttributeInfo( AosAttribute.RegenHits, "Regen Hits", GiftAttributeCategory.Stats, 5, 5 ),
 			new GiftAttributeInfo( AosAttribute.RegenStam, "Regen Stamina", GiftAttributeCategory.Stats, 5, 5 ),
 			new GiftAttributeInfo( AosAttribute.RegenMana, "Regen Mana", GiftAttributeCategory.Stats, 5, 5 ),
-			new GiftAttributeInfo( AosAttribute.DefendChance, "Defence Chance Increase", GiftAttributeCategory.Melee, 8, 15 ),
+			new GiftAttributeInfo( AosAttribute.DefendChance, "Defence Chance Increase", GiftAttributeCategory.Melee, 10, 15 ),
 			new GiftAttributeInfo( AosAttribute.AttackChance, "Hit Chance Increase", GiftAttributeCategory.Melee, 10, 15 ),
 			new GiftAttributeInfo( AosAttribute.BonusStr, "Bonus Strength", GiftAttributeCategory.Stats, 10, 10 ),
 			new GiftAttributeInfo( AosAttribute.BonusDex, "Bonus Dex", GiftAttributeCategory.Stats, 10, 10 ),
@@ -32,14 +32,14 @@ namespace Server.Items
 			new GiftAttributeInfo( AosAttribute.BonusStam, "Bonus Stamina", GiftAttributeCategory.Stats, 5, 20 ),
 			new GiftAttributeInfo( AosAttribute.BonusMana, "Bonus Mana", GiftAttributeCategory.Stats, 5, 20 ),
 			new GiftAttributeInfo( AosAttribute.WeaponDamage, "Damage Increase", GiftAttributeCategory.Melee, 5, 50 ),
-			new GiftAttributeInfo( AosAttribute.WeaponSpeed, "Swing Speed Increase", GiftAttributeCategory.Melee, 6, 40 ),
-			new GiftAttributeInfo( AosAttribute.SpellDamage, "Spell Damage", GiftAttributeCategory.Magic, 4, 25 ),
+			new GiftAttributeInfo( AosAttribute.WeaponSpeed, "Swing Speed Increase", GiftAttributeCategory.Melee, 5, 40 ),
+			new GiftAttributeInfo( AosAttribute.SpellDamage, "Spell Damage", GiftAttributeCategory.Magic, 5, 25 ),
 			new GiftAttributeInfo( AosAttribute.CastRecovery, "Faster Cast Recovery", GiftAttributeCategory.Magic, 20, 4 ),
 			new GiftAttributeInfo( AosAttribute.CastSpeed, "Faster Casting", GiftAttributeCategory.Magic, 20, 4 ),
 			new GiftAttributeInfo( AosAttribute.LowerManaCost, "Lower Mana Cost", GiftAttributeCategory.Magic, 5, MyServerSettings.LowMana() ),
 			new GiftAttributeInfo( AosAttribute.LowerRegCost, "Lower Reagent Cost", GiftAttributeCategory.Magic, 5, MyServerSettings.LowReg() ),
 			new GiftAttributeInfo( AosAttribute.ReflectPhysical, "Reflect Physical Damage", GiftAttributeCategory.Melee, 2, 50 ),
-			new GiftAttributeInfo( AosAttribute.EnhancePotions, "Enhance Potions", GiftAttributeCategory.Magic, 2, 25 ),
+			new GiftAttributeInfo( AosAttribute.EnhancePotions, "Enhance Potions", GiftAttributeCategory.Magic, 5, 25 ),
 			new GiftAttributeInfo( AosAttribute.Luck, "Luck", GiftAttributeCategory.Misc, 2, 500 ),
 			new GiftAttributeInfo( AosAttribute.SpellChanneling, "Spell Channeling", GiftAttributeCategory.Magic, 15, 1 ),
 			new GiftAttributeInfo( AosAttribute.NightSight, "Nightsight", GiftAttributeCategory.Misc, 6, 1 )
@@ -71,7 +71,7 @@ namespace Server.Items
 			new WeaponGiftAttributeInfo( AosWeaponAttribute.ResistPoisonBonus, "Resist Poison Bonus", GiftAttributeCategory.Resists, 5, 20 ),
 			new WeaponGiftAttributeInfo( AosWeaponAttribute.ResistEnergyBonus, "Resist Energy Bonus", GiftAttributeCategory.Resists, 5, 20 ),
 			new WeaponGiftAttributeInfo( AosWeaponAttribute.UseBestSkill, "Use Best Weapon Skill", GiftAttributeCategory.Misc, 10, 1 ),
-			new WeaponGiftAttributeInfo( AosWeaponAttribute.MageWeapon, "Mage Weapon", GiftAttributeCategory.Magic, 5, 1 ),
+			new WeaponGiftAttributeInfo( AosWeaponAttribute.MageWeapon, "Mage Weapon", GiftAttributeCategory.Magic, 10, 1 ),
             new WeaponGiftAttributeInfo( AosWeaponAttribute.DurabilityBonus, "Durability Bonus", GiftAttributeCategory.Misc, 1, 255 )
 		};
 
@@ -80,28 +80,28 @@ namespace Server.Items
 		{
             new ArmorGiftAttributeInfo( AosArmorAttribute.LowerStatReq, "Lower Stat Requirement", GiftAttributeCategory.Stats, 2, 100 ),
             new ArmorGiftAttributeInfo( AosArmorAttribute.SelfRepair, "Self Repair", GiftAttributeCategory.Misc, 2, 5 ),
-            new ArmorGiftAttributeInfo( AosArmorAttribute.MageArmor, "Mage Armor", GiftAttributeCategory.Magic, 5, 1 ),
+            new ArmorGiftAttributeInfo( AosArmorAttribute.MageArmor, "Mage Armor", GiftAttributeCategory.Magic, 10, 1 ),
             new ArmorGiftAttributeInfo( AosArmorAttribute.DurabilityBonus, "Durability Bonus", GiftAttributeCategory.Misc, 1, 255 )
         };
 
         //Armor specific
         public static GiftResistanceTypeInfo[] m_ResistanceTypes = new GiftResistanceTypeInfo[]
 		{
-            new GiftResistanceTypeInfo( ResistanceType.Physical, "Physical Resistance", GiftAttributeCategory.Resists, 2, 20 ),
-            new GiftResistanceTypeInfo( ResistanceType.Fire, "Fire Resistance", GiftAttributeCategory.Resists, 2, 20 ),
-            new GiftResistanceTypeInfo( ResistanceType.Cold, "Cold Resistance", GiftAttributeCategory.Resists, 2, 20 ),
-            new GiftResistanceTypeInfo( ResistanceType.Poison, "Poison Resistance", GiftAttributeCategory.Resists, 2, 20 ),
-            new GiftResistanceTypeInfo( ResistanceType.Energy, "Energy Resistance", GiftAttributeCategory.Resists, 2, 20 )
+            new GiftResistanceTypeInfo( ResistanceType.Physical, "Physical Resistance", GiftAttributeCategory.Resists, 5, 20 ),
+            new GiftResistanceTypeInfo( ResistanceType.Fire, "Fire Resistance", GiftAttributeCategory.Resists, 5, 20 ),
+            new GiftResistanceTypeInfo( ResistanceType.Cold, "Cold Resistance", GiftAttributeCategory.Resists, 5, 20 ),
+            new GiftResistanceTypeInfo( ResistanceType.Poison, "Poison Resistance", GiftAttributeCategory.Resists, 5, 20 ),
+            new GiftResistanceTypeInfo( ResistanceType.Energy, "Energy Resistance", GiftAttributeCategory.Resists, 5, 20 )
         };
 
         //Jewel & Clothing Specific Resists
         public static ElementGiftAttributeInfo[] m_ElementAttributes = new ElementGiftAttributeInfo[]
 		{
-            new ElementGiftAttributeInfo( AosElementAttribute.Physical, "Physical Resistance", GiftAttributeCategory.Resists, 2, 20 ),
-            new ElementGiftAttributeInfo( AosElementAttribute.Fire, "Fire Resistance", GiftAttributeCategory.Resists, 2, 20 ),
-            new ElementGiftAttributeInfo( AosElementAttribute.Cold, "Cold Resistance", GiftAttributeCategory.Resists, 2, 20 ),
-            new ElementGiftAttributeInfo( AosElementAttribute.Poison, "Poison Resistance", GiftAttributeCategory.Resists, 2, 20 ),
-            new ElementGiftAttributeInfo( AosElementAttribute.Energy, "Energy Resistance", GiftAttributeCategory.Resists, 2, 20 )
+            new ElementGiftAttributeInfo( AosElementAttribute.Physical, "Physical Resistance", GiftAttributeCategory.Resists, 5, 20 ),
+            new ElementGiftAttributeInfo( AosElementAttribute.Fire, "Fire Resistance", GiftAttributeCategory.Resists, 5, 20 ),
+            new ElementGiftAttributeInfo( AosElementAttribute.Cold, "Cold Resistance", GiftAttributeCategory.Resists, 5, 20 ),
+            new ElementGiftAttributeInfo( AosElementAttribute.Poison, "Poison Resistance", GiftAttributeCategory.Resists, 5, 20 ),
+            new ElementGiftAttributeInfo( AosElementAttribute.Energy, "Energy Resistance", GiftAttributeCategory.Resists, 5, 20 )
         };
 	}
 
