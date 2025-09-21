@@ -217,7 +217,7 @@ namespace Server.Items
                 if (AccessDelayMessage != "")
                     from.SendMessage(Utility.RandomNeutralHue(), AccessDelayMessage);
 
-                from.SendMessage(String.Format("You will need to wait approximately {0} more Seconds before you can try again",
+                from.SendMessage(String.Format("You will need to wait approximately {0} more seconds before you can try again",
                     NextAccessTime.Subtract(DateTime.Now).Seconds));
 
                 return false;
