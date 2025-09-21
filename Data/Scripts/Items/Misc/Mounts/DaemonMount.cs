@@ -8,7 +8,7 @@ namespace Server.Items
 	public class DaemonMount : EtherealMount 
 	{ 
 		[Constructable] 
-		public DaemonMount() : base( 11669, 16016 ) 
+		public DaemonMount() : base( 11669, 384 ) 
 		{ 
 			Name = "Daemon Servant";
 			ItemID = 11669;
