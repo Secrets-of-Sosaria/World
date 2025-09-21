@@ -100,6 +100,9 @@ namespace Server.Gumps
 			{
 				if (GiftAttributes.m_Attributes[i].m_Category == cat)
 				{
+					if (GiftAttributes.m_Attributes[i].m_Attribute == AosAttribute.SpellChanneling && !(m_Item is BaseWeapon))
+            			continue;
+
 					pageindex = index % 10;
 
 					if ( pageindex == 0 )
