@@ -46,10 +46,18 @@ namespace Server.Mobiles
 
 			if ( !IntelligentAction.GetMyEnemies( from, this, false ) && pm.NpcGuild != this.NpcGuild )
 			{
-				if ( ((PlayerMobile)from).Fugitive == 1 && from.Kills < 2 && this is ThiefGuildmaster )
-					list.Add( new JoinEntry( from, this ) );
-				else if ( ((PlayerMobile)from).Fugitive == 1 ){} else
-					list.Add( new JoinEntry( from, this ) );
+				if ( ((PlayerMobile)from).Fugitive == 1 && from.Kills < 2 )
+				{
+					switch( Worlds.GetRegionName( from.Map, from.Location ) )
+					{
+						case "the Black Magic Guild":
+						case "the Thieves Guild":
+							list.Add( new JoinEntry( from, this ) );
+							break;
+					}
+				}
+				else
+					list.Add(new JoinEntry(from, this));
 			}
 
 			if ( pm.NpcGuild == this.NpcGuild )
