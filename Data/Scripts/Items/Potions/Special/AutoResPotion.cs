@@ -27,7 +27,7 @@ namespace Server.Items
         }
 
         private Timer m_Timer;
-        private static TimeSpan m_Delay = TimeSpan.FromSeconds( 30.0 ); /*TimeSpan.Zero*/
+        private static TimeSpan m_Delay = TimeSpan.FromSeconds( 10.0 ); /*TimeSpan.Zero*/
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TimeSpan Delay { get { return m_Delay; } set { m_Delay = value; } }
