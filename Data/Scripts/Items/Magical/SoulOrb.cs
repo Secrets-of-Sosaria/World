@@ -13,6 +13,7 @@ namespace Server.Items
     {
 		private static Dictionary<Mobile, SoulOrb> m_ResList;
 		
+        public override string DefaultDescription{ get{ return "These items will resurrect you automatically, after 10 seconds, if you meet an untimely end. If you want to dispose of it, use it in your pack, where it will then disappear from the world."; } } 
         public Mobile m_Owner;
 
         [CommandProperty( AccessLevel.GameMaster )]

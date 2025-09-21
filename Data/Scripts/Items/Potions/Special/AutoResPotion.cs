@@ -11,7 +11,7 @@ namespace Server.Items
 {
     public class AutoResPotion : Item
     {
-		public override string DefaultDescription{ get{ return "Drink this potion while you are still in the land of the living. If you reach an untimely end, you will automatically be resurrected within 30 seconds. It is best to guide your spirit to a safe place before that occurs, or you could suffer the same fate again."; } }
+		public override string DefaultDescription{ get{ return "Drink this potion while you are still in the land of the living. If you reach an untimely end, you will automatically be resurrected within 10 seconds. It is best to guide your spirit to a safe place before that occurs, or you could suffer the same fate again."; } }
 
 		public override Catalogs DefaultCatalog{ get{ return Catalogs.Potion; } }
 
