@@ -870,10 +870,10 @@ namespace Server.Engines.Harvest
 
 						switch ( Utility.Random( 8 ) )
 						{
+							case 0: preLoot = Loot.RandomArty(); break;
 							case 1: preLoot = new ShipwreckedItem( Utility.Random( 0xE9F, 10 ), sos.ShipName ); break;
 							case 2: preLoot = new ShipwreckedItem( Utility.Random( 0x13A4, 11 ), sos.ShipName ); break;
 							case 3: preLoot = new ShipwreckedItem( Utility.Random( 0xFC4, 9 ), sos.ShipName ); break;
-							case 0:
 							case 4:
 							case 5:
 							case 6:
