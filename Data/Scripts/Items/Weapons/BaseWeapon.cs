@@ -848,22 +848,24 @@ namespace Server.Items
 		{
 			SkillName sk;
 
-			if ( checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0 )
+			if (checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0)
 			{
 				double swrd = m.Skills[SkillName.Swords].Value;
 				double fenc = m.Skills[SkillName.Fencing].Value;
 				double mcng = m.Skills[SkillName.Bludgeoning].Value;
+				double fist = m.Skills[SkillName.FistFighting].Value;
 				double val;
 
 				sk = SkillName.Swords;
 				val = swrd;
 
-				if ( fenc > val ){ sk = SkillName.Fencing; val = fenc; }
-				if ( mcng > val ){ sk = SkillName.Bludgeoning; val = mcng; }
+				if ( fenc > val ) { sk = SkillName.Fencing; val = fenc; }
+				if ( mcng > val ) { sk = SkillName.Bludgeoning; val = mcng; }
+				if ( fist > val ) { sk = SkillName.FistFighting; val = fist; }
 			}
-			else if ( m_AosWeaponAttributes.MageWeapon != 0 )
+			else if (m_AosWeaponAttributes.MageWeapon != 0)
 			{
-				if ( m.Skills[SkillName.Magery].Value > m.Skills[Skill].Value )
+				if (m.Skills[SkillName.Magery].Value > m.Skills[Skill].Value)
 					sk = SkillName.Magery;
 				else
 					sk = Skill;
@@ -872,7 +874,7 @@ namespace Server.Items
 			{
 				sk = Skill;
 
-				if ( sk != SkillName.FistFighting && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.FistFighting].Value > m.Skills[sk].Value )
+				if (sk != SkillName.FistFighting && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.FistFighting].Value > m.Skills[sk].Value)
 					sk = SkillName.FistFighting;
 			}
 
