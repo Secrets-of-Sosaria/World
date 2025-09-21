@@ -754,7 +754,7 @@ namespace Server
 				new SkillInfo( 23, "Inscription",		0.0,	2.0,	8.0,	"Scribe",	null,	0.0,	0.2,	0.8,	1.0 ),
 				new SkillInfo( 24, "Lockpicking",		0.0,	25.0,	0.0,	"Lockpicker",	null,	0.0,	2.0,	0.0,	1.0 ),
 				new SkillInfo( 25, "Magery",			0.0,	0.0,	15.0,	"Wizard",		null,	0.0,	0.0,	1.5,	1.0 ),
-				new SkillInfo( 26, "Magic Resistance",	0.0,	0.0,	0.0,	"Magic Warder",		null,	0.25,	0.25,	0.5,	1.0 ),
+				new SkillInfo( 26, "Magic Resistance",	0.0,	0.0,	0.0,	"Magic Warder",		null,	0.25,	0.25,	0.5,	3.0 ),
 				new SkillInfo( 27, "Tactics",			0.0,	0.0,	0.0,	"Tactician",	null,	0.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( 28, "Snooping",			0.0,	25.0,	0.0,	"Spy",	null,	0.0,	2.5,	0.0,	1.0 ),
 				new SkillInfo( 29, "Musicianship",		0.0,	0.0,	0.0,	"Bard",		null,	0.0,	0.8,	0.2,	1.0 ),
