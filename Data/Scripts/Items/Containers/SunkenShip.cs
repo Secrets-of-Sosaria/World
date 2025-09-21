@@ -28,17 +28,20 @@ namespace Server.Items
 
 		public override void Open( Mobile from )
 		{
-			if ( this.Weight > 50 )
+			if (PassiveSearching(this, from))
+				return;
+			
+			if (this.Weight > 50)
 			{
 				int FillMeUpLevel = (int)(this.Weight - 51);
 				this.Weight = 5.0;
 
-				if ( GetPlayerInfo.LuckyPlayer( from.Luck ) )
+				if (GetPlayerInfo.LuckyPlayer(from.Luck))
 				{
-					FillMeUpLevel = FillMeUpLevel + Utility.RandomMinMax( 1, 2 );
+					FillMeUpLevel = FillMeUpLevel + Utility.RandomMinMax(1, 2);
 				}
 
-				ContainerFunctions.FillTheContainer( FillMeUpLevel, this, from );
+				ContainerFunctions.FillTheContainer(FillMeUpLevel, this, from);
 			}
 
 			base.Open( from );

@@ -49,20 +49,23 @@ namespace Server.Items
 
 		public override void Open( Mobile from )
 		{
-			if ( this.Weight > 20 )
-			{
-				int FillMeUpLevel = Utility.RandomList( 5, 4, 4, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1 );
+			if (PassiveSearching(this,from))
+				return;
 
-				if ( GetPlayerInfo.LuckyPlayer( from.Luck ) )
+			if (this.Weight > 20)
+			{
+				int FillMeUpLevel = Utility.RandomList(5, 4, 4, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1);
+
+				if (GetPlayerInfo.LuckyPlayer(from.Luck))
 				{
-					FillMeUpLevel = FillMeUpLevel + Utility.RandomMinMax( 1, 2 );
+					FillMeUpLevel = FillMeUpLevel + Utility.RandomMinMax(1, 2);
 				}
 
-				ContainerFunctions.FillTheContainer( FillMeUpLevel, this, from );
+				ContainerFunctions.FillTheContainer(FillMeUpLevel, this, from);
 
 				this.Weight = 5.0;
-				if ( isBody ( this.ItemID ) ){ LoggingFunctions.LogLoot( from, this.Name, "corpse" ); }
-				else { ContainerFunctions.FillTheContainer( FillMeUpLevel, this, from ); LoggingFunctions.LogLoot( from, this.Name, "wagon" ); }
+				if (isBody(this.ItemID)) { LoggingFunctions.LogLoot(from, this.Name, "corpse"); }
+				else { ContainerFunctions.FillTheContainer(FillMeUpLevel, this, from); LoggingFunctions.LogLoot(from, this.Name, "wagon"); }
 			}
 
 			base.Open( from );

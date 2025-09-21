@@ -26,16 +26,19 @@ namespace Server.Items
 
 		public override void Open( Mobile from )
 		{
-			if ( this.Weight > 50 )
-			{
-				int FillMeUpLevel = Utility.RandomList( 5, 4, 4, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1 );
+			if (PassiveSearching(this, from))
+				return;
 
-				if ( GetPlayerInfo.LuckyPlayer( from.Luck ) )
+			if (this.Weight > 50)
+			{
+				int FillMeUpLevel = Utility.RandomList(5, 4, 4, 3, 3, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1);
+
+				if (GetPlayerInfo.LuckyPlayer(from.Luck))
 				{
-					FillMeUpLevel = FillMeUpLevel + Utility.RandomMinMax( 1, 2 );
+					FillMeUpLevel = FillMeUpLevel + Utility.RandomMinMax(1, 2);
 				}
 
-				if ( Utility.RandomBool() )
+				if (Utility.RandomBool())
 				{
 					int[] list = new int[]
 						{
@@ -44,15 +47,15 @@ namespace Server.Items
 							0x1B0D, 0x1B0E, 0x1B0F, 0x1B10,
 						};
 
-					Item bones = new BodyPart( Utility.RandomList( list ) );
-					bones.Name = ContainerFunctions.GetOwner( "BodySailor" );
-					this.DropItem( bones );
+					Item bones = new BodyPart(Utility.RandomList(list));
+					bones.Name = ContainerFunctions.GetOwner("BodySailor");
+					this.DropItem(bones);
 				}
 
-				ContainerFunctions.FillTheContainer( FillMeUpLevel, this, from );
+				ContainerFunctions.FillTheContainer(FillMeUpLevel, this, from);
 
 				this.Weight = 5.0;
-				LoggingFunctions.LogLoot( from, this.Name, "boat" );
+				LoggingFunctions.LogLoot(from, this.Name, "boat");
 			}
 
 			base.Open( from );

@@ -232,25 +232,28 @@ namespace Server.Items
 
 			if ( CheckLocked( from ) )
 				return;
+			
+			if (PassiveSearching(this, from))
+				return;
 
-			if ( /* from.AccessLevel == AccessLevel.Player && */ ContainerTouched != 1 && !from.Blessed )
+			if ( /* from.AccessLevel == AccessLevel.Player && */ ContainerTouched != 1 && !from.Blessed)
 			{
-				OpenCoffin( from, this.ItemID, ContainerLevel );
+				OpenCoffin(from, this.ItemID, ContainerLevel);
 
 				int FillMeUpLevel = ContainerLevel;
 
-				if ( GetPlayerInfo.LuckyPlayer( from.Luck ) )
+				if (GetPlayerInfo.LuckyPlayer(from.Luck))
 				{
-					FillMeUpLevel = FillMeUpLevel + Utility.RandomMinMax( 1, 2 );
+					FillMeUpLevel = FillMeUpLevel + Utility.RandomMinMax(1, 2);
 				}
 
-				ContainerFunctions.FillTheContainer( ContainerLevel, this, from );
+				ContainerFunctions.FillTheContainer(ContainerLevel, this, from);
 
-				LoggingFunctions.LogLoot( from, this.Name, "box" );
-				StandardQuestFunctions.CheckTarget( from, null, this );
+				LoggingFunctions.LogLoot(from, this.Name, "box");
+				StandardQuestFunctions.CheckTarget(from, null, this);
 				ContainerTouched = 1;
 				RemoveBox();
-				Server.Misc.PlayerSettings.LootContainer( from, this );
+				Server.Misc.PlayerSettings.LootContainer(from, this);
 			}
 
 			base.Open( from );
