@@ -30,7 +30,7 @@ namespace Server.Mobiles
 				if ( barter > 0 )
 				{
 					if ( barter > 100 ){ barter = 100; }
-					double nId = 1 + ( barter * 0.03 );
+					double nId = 1 + ( barter * 0.01 );
 					price = (int)(price * nId);
 				}
 				if ( price < 1 )
