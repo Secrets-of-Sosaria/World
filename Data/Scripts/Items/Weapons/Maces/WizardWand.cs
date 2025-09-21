@@ -63,22 +63,9 @@ namespace Server.Items
 					case 14: Name = make + " of the Mages";			break;
 				}
 
-				int mana = 5;
-				int reg = 5;
-				int gain = 5;
-				int power = Utility.RandomMinMax( 0, 100 );
-
-				if ( power >= 99 ){ 		mana = Utility.RandomMinMax( 35, 40 );		reg = Utility.RandomMinMax( 35, 40 );		gain = Utility.RandomMinMax( 13, 14 ); }
-				else if ( power >= 95 ){ 	mana = Utility.RandomMinMax( 30, 35 );		reg = Utility.RandomMinMax( 30, 35 );		gain = Utility.RandomMinMax( 11, 12 ); }
-				else if ( power >= 90 ){ 	mana = Utility.RandomMinMax( 25, 30 );		reg = Utility.RandomMinMax( 25, 30 );		gain = Utility.RandomMinMax( 9, 10 ); }
-				else if ( power >= 80 ){ 	mana = Utility.RandomMinMax( 20, 25 );		reg = Utility.RandomMinMax( 20, 25 );		gain = Utility.RandomMinMax( 7, 8 ); }
-				else if ( power >= 65 ){ 	mana = Utility.RandomMinMax( 15, 20 );		reg = Utility.RandomMinMax( 15, 20 );		gain = Utility.RandomMinMax( 5, 6 ); }
-				else if ( power >= 45 ){ 	mana = Utility.RandomMinMax( 10, 15 );		reg = Utility.RandomMinMax( 10, 15 );		gain = Utility.RandomMinMax( 3, 4 ); }
-				else { 						mana = Utility.RandomMinMax( 5, 10 );		reg = Utility.RandomMinMax( 5, 10 );		gain = Utility.RandomMinMax( 1, 2 ); }
-
-				Attributes.LowerManaCost = mana;
-				Attributes.LowerRegCost = reg;
-				Attributes.RegenMana = gain;
+				Attributes.LowerManaCost = Utility.RandomMinMax( 1, MyServerSettings.LowerMana()/2 );
+				Attributes.LowerRegCost = Utility.RandomMinMax( 1, MyServerSettings.LowReg() );
+				Attributes.RegenMana = Utility.RandomMinMax(3,5);	
 			}
 		}
 
