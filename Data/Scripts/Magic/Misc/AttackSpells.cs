@@ -63,7 +63,8 @@ namespace Server.Spells.Magical
 				else if ( magery >= 10 && Caster.Mana >= 9 ){ 			circle = 3; }
 				else if ( Caster.Mana >= 6 && Utility.RandomBool() ){ 	circle = 2; }
 
-				circle = Utility.RandomMinMax( 1, circle );
+				int minCircle = circle / 2 < 1 ? 1 : circle / 2;
+				circle = Utility.RandomMinMax( minCircle , circle );
 
 				if ( circle == 8 ){ 		Caster.Mana = Caster.Mana - 46; }
 				else if ( circle == 7 ){ 	Caster.Mana = Caster.Mana - 36; }
