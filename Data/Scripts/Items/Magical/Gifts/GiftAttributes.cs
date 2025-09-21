@@ -42,14 +42,14 @@ namespace Server.Items
 			new GiftAttributeInfo( AosAttribute.EnhancePotions, "Enhance Potions", GiftAttributeCategory.Magic, 5, 25 ),
 			new GiftAttributeInfo( AosAttribute.Luck, "Luck", GiftAttributeCategory.Misc, 2, 500 ),
 			new GiftAttributeInfo( AosAttribute.SpellChanneling, "Spell Channeling", GiftAttributeCategory.Magic, 15, 1 ),
-			new GiftAttributeInfo( AosAttribute.NightSight, "Nightsight", GiftAttributeCategory.Misc, 6, 1 )
+			new GiftAttributeInfo( AosAttribute.NightSight, "Nightsight", GiftAttributeCategory.Misc, 5, 1 )
 		};
 
         //Weapon Specific
 		public static WeaponGiftAttributeInfo[] m_WeaponAttributes = new WeaponGiftAttributeInfo[]
 		{
-			new WeaponGiftAttributeInfo( AosWeaponAttribute.LowerStatReq, "Lower Stat Requirement", GiftAttributeCategory.Stats, 2, 100 ),
-			new WeaponGiftAttributeInfo( AosWeaponAttribute.SelfRepair, "Self Repair", GiftAttributeCategory.Misc, 2, 10 ),
+			new WeaponGiftAttributeInfo( AosWeaponAttribute.LowerStatReq, "Lower Stat Requirement", GiftAttributeCategory.Stats, 1, 100 ),
+			new WeaponGiftAttributeInfo( AosWeaponAttribute.SelfRepair, "Self Repair", GiftAttributeCategory.Misc, 5, 10 ),
 			new WeaponGiftAttributeInfo( AosWeaponAttribute.HitLeechHits, "Hit Life Leech", GiftAttributeCategory.Hits, 3, 50 ),
 			new WeaponGiftAttributeInfo( AosWeaponAttribute.HitLeechStam, "Hit Stamina Leech", GiftAttributeCategory.Hits, 3, 50 ),
 			new WeaponGiftAttributeInfo( AosWeaponAttribute.HitLeechMana, "Hit Mana Leech", GiftAttributeCategory.Hits, 3, 50 ),
@@ -78,8 +78,8 @@ namespace Server.Items
 		//Armor specific attributes
         public static ArmorGiftAttributeInfo[] m_ArmorAttributes = new ArmorGiftAttributeInfo[]
 		{
-            new ArmorGiftAttributeInfo( AosArmorAttribute.LowerStatReq, "Lower Stat Requirement", GiftAttributeCategory.Stats, 2, 100 ),
-            new ArmorGiftAttributeInfo( AosArmorAttribute.SelfRepair, "Self Repair", GiftAttributeCategory.Misc, 2, 5 ),
+            new ArmorGiftAttributeInfo( AosArmorAttribute.LowerStatReq, "Lower Stat Requirement", GiftAttributeCategory.Stats, 1, 100 ),
+            new ArmorGiftAttributeInfo( AosArmorAttribute.SelfRepair, "Self Repair", GiftAttributeCategory.Misc, 5, 5 ),
             new ArmorGiftAttributeInfo( AosArmorAttribute.MageArmor, "Mage Armor", GiftAttributeCategory.Magic, 10, 1 ),
             new ArmorGiftAttributeInfo( AosArmorAttribute.DurabilityBonus, "Durability Bonus", GiftAttributeCategory.Misc, 1, 255 )
         };
