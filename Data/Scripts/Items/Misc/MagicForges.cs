@@ -799,7 +799,8 @@ namespace Server.Items
 									{
 										ResourceMods.SetResource( enchant, CraftResource.GildedSpec );
 										Item mod = (Item)enchant;
-										mod = Server.LootPackEntry.Enchant( m, 350, mod );
+										// setting an item as gilded and applying this giant enchant was creating gear that was way too powerful
+										//mod = Server.LootPackEntry.Enchant( m, 350, mod );
 										enchant.InfoText1 = "Golden Rangers";
 										Effects.SendLocationParticles( EffectItem.Create( enchant.Location, enchant.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
 										Effects.PlaySound( enchant.Location, enchant.Map, 0x1ED );
