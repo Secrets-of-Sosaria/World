@@ -323,7 +323,7 @@ namespace Server.Misc
 			{
 				case 6: // Mage
 				{
-					m.InitStats( 15, 20, 45 ); // 80
+					m.InitStats( 30, 10, 40 ); // 80
 					skills = new SkillNameValue[]
 						{
 							new SkillNameValue( SkillName.Magery, 35 ),
@@ -335,7 +335,7 @@ namespace Server.Misc
 				}
 				case 7:	// Archer
 				{
-					m.InitStats( 30, 35, 15 ); // 80
+					m.InitStats( 35, 35, 10 ); // 80
 					skills = new SkillNameValue[]
 						{
 							new SkillNameValue( SkillName.Marksmanship, 35 ),
@@ -357,7 +357,7 @@ namespace Server.Misc
 				}
 				case 4: // Necromancer
 				{
-					m.InitStats( 15, 20, 45 ); // 80
+					m.InitStats( 30, 10, 40 ); // 80
 					skills = new SkillNameValue[]
 						{
 							new SkillNameValue( SkillName.Necromancy, 35 ),
@@ -369,7 +369,7 @@ namespace Server.Misc
 				}
 				case 1: // Thief
 				{
-					m.InitStats( 20, 40, 20 ); // 80
+					m.InitStats( 30, 40, 10 ); // 80
 					skills = new SkillNameValue[]
 						{
 							new SkillNameValue( SkillName.Stealing, 35 ),
@@ -381,7 +381,7 @@ namespace Server.Misc
 				}
 				case 2: // Bard
 				{
-					m.InitStats( 25, 30, 20 ); // 80
+					m.InitStats( 35, 30, 15 ); // 80
 					skills = new SkillNameValue[]
 						{
 							new SkillNameValue( SkillName.Musicianship, 35 ),
@@ -393,7 +393,7 @@ namespace Server.Misc
 				}
 				case 3: // Druid
 				{
-					m.InitStats( 20, 20, 40 ); // 80
+					m.InitStats( 35, 10, 35 ); // 80
 					skills = new SkillNameValue[]
 						{
 							new SkillNameValue( SkillName.Druidism, 35 ),
@@ -479,17 +479,16 @@ namespace Server.Misc
 					case SkillName.Alchemy:
 						PackItem(bag, new MortarPestle());
 						PackItem(bag, new Bottle { Amount = 15 });
+						PackItem(bag, new HealPotion{ Amount = 5 });
 						break;
 
-					case SkillName.Anatomy:
-						PackItem(bag, new Bandage { Amount = 250 });
-						break;
-
+					
 					case SkillName.Druidism:
 						PackItem(bag, new DruidCauldron());
 						PackItem(bag, new BookDruidBrewing());
 						break;
 
+					case SkillName.Anatomy:
 					case SkillName.Mercantile:
 					case SkillName.ArmsLore:
 					case SkillName.Begging:
@@ -500,6 +499,10 @@ namespace Server.Misc
 					case SkillName.Stealing:
 					case SkillName.Meditation:
 					case SkillName.Focus:
+					case SkillName.Hiding:
+					case SkillName.MagicResist:
+					case SkillName.Tactics:
+					case SkillName.Stealth:
 						PackRandomGold(bag, 50, 125);
 						break;
 
@@ -527,7 +530,7 @@ namespace Server.Misc
 
 					case SkillName.Camping:
 						PackItem(bag, new SmallTent());
-						PackItem(bag, new Kindling { Amount = 10 });
+						PackItem(bag, new Kindling { Amount = 25 });
 						break;
 
 					case SkillName.Carpentry:
@@ -542,7 +545,7 @@ namespace Server.Misc
 
 					case SkillName.Cooking:
 						PackItem(bag, new CulinarySet());
-						PackItem(bag, new RawBird { Amount = 5 });
+						PackItem(bag, new RawBird { Amount = 15 });
 						break;
 
 					case SkillName.Healing:
@@ -564,11 +567,6 @@ namespace Server.Misc
 					case SkillName.Herding:
 						PackItem(bag, new ShepherdsCrook());
 						PackItem(bag, new CagedSheep { Weight = 10 });
-						break;
-
-					case SkillName.Hiding:
-						PackItem(bag, new LeatherNinjaHood());
-						PackItem(bag, new LeatherNinjaJacket());
 						break;
 
 					case SkillName.Inscribe:
@@ -602,13 +600,6 @@ namespace Server.Misc
 						var mageBag = new BagOfReagents();
 						mageBag.Open(m);
 						PackItem(bag, mageBag);
-						break;
-
-					case SkillName.MagicResist:
-					case SkillName.Tactics:
-						PackItem(bag, new RefreshPotion{ Amount = 3});
-						PackItem(bag, new LesserCurePotion { Amount = 3 });
-						PackItem(bag, new HealPotion { Amount = 3 });
 						break;
 
 					case SkillName.Poisoning:
@@ -660,11 +651,10 @@ namespace Server.Misc
 						break;
 
 					case SkillName.Swords:
-						switch (Utility.RandomMinMax(1, 3))
+						switch (Utility.RandomMinMax(1, 2))
 						{
-							case 1: PackItem(bag, new Bokuto()); break;
-							case 2: PackItem(bag, new Cleaver()); break;
-							case 3: PackItem(bag, new Cutlass()); break;
+							case 1: PackItem(bag, new Cleaver()); break;
+							case 2: PackItem(bag, new Cutlass()); break;
 						}
 						break;
 
@@ -725,11 +715,6 @@ namespace Server.Misc
 
 					case SkillName.Ninjitsu:
 						PackItem(bag, new BookOfNinjitsu());
-						break;
-
-					case SkillName.Stealth:
-						PackItem(bag, new LeatherNinjaMitts());
-						PackItem(bag, new LeatherNinjaPants());
 						break;
 
 					case SkillName.Elementalism:
