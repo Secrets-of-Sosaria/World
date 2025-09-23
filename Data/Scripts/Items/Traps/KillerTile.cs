@@ -30,9 +30,21 @@ namespace Server.Items
 			}
 			else if ( m is PlayerMobile && m.Blessed == false && m.Alive && m.AccessLevel == AccessLevel.Player && Server.Misc.SeeIfGemInBag.GemInPocket( m ) == false && Server.Misc.SeeIfJewelInBag.JewelInPocket( m ) == false )
 			{
-				m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You made a fatal mistake!");
-				m.Damage( 10000, m );
-				LoggingFunctions.LogKillTile( m, this.Name );
+				double chance = 90 <= m.Skills[SkillName.RemoveTrap].Value
+					? 0.25 + (125 - m.Skills[SkillName.RemoveTrap].Value) * 0.02 // Base chance with up to +75%, for 95% chance
+					: 0;
+				if ( 0 < chance && m.CheckSkill(SkillName.RemoveTrap, chance ) )
+				{
+					m.PlaySound( m.Female ? 778 : 1049 ); m.Say( "*ah!*" );
+					m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "Watch out!");
+					m.Hits = 1;
+				}
+				else
+				{
+					m.LocalOverheadMessage(MessageType.Emote, 0x916, true, "You made a fatal mistake!");
+					m.Damage( 10000, m );
+					LoggingFunctions.LogKillTile( m, this.Name );
+				}
 			}
 			return true;
 		}
