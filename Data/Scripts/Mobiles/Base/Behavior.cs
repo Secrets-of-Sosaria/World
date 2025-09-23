@@ -3303,9 +3303,15 @@ namespace Server.Misc
 
 		public static void ChooseFighter( Mobile m, string race )
 		{
-			BaseCreature bc = (BaseCreature)m;
+			BaseCreature bc = m as BaseCreature;
 
-			Region reg = Region.Find( bc.Home, m.Map );
+			if (bc == null || m.Map == null)
+				return;
+
+			Point3D location = (bc.Home != Point3D.Zero) ? bc.Home : m.Location;
+
+			Region reg = Region.Find(location, m.Map);
+			
 
 			int level = 0;
 			int equip = 0;
@@ -9633,7 +9639,7 @@ namespace Server.Mobiles
 							spell = GetRandomManaDrainSpell();
 							break;
 						}
-					case 7:
+					/* case 7:
 						{
 							//m_Mobile.DebugSay( "Attempting to Invis" );
 
@@ -9643,7 +9649,7 @@ namespace Server.Mobiles
 							}
 
 							break;
-						}
+						} */
 
 					default: // Damage them.
 						{
