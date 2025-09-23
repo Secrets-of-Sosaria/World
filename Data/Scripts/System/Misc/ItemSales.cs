@@ -2809,7 +2809,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	BankChest	),	500000	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Banker	),
 			new ItemSalesInfo( typeof(	IvoryTusk	),	500	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Provisions	),
 			new ItemSalesInfo( typeof(	JadeStatueMaker	),	50000	,	1	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stone	),
-			new ItemSalesInfo( typeof(	Jar	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Res_DW	),
+			new ItemSalesInfo( typeof(	Jar	),	6	,	15	,	0	,	false	,	false	,	World.None	,	Category.Resource	,	Material.None	,	Market.Reg_AHDW	),
 			new ItemSalesInfo( typeof(	JarHoney	),	600	,	15	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	JarsOfWaxInstrument	),	160	,	5	,	75	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
 			new ItemSalesInfo( typeof(	JarsOfWaxLeather	),	160	,	5	,	75	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Wax	),
