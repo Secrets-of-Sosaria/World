@@ -7,14 +7,14 @@ using Server.ContextMenus;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "a bear corpse" )]
-	public class PackBear : BaseCreature
+	[CorpseName( "a lobster corpse" )]
+	public class PackLobster : BaseCreature
 	{
 		[Constructable]
-		public PackBear() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
+		public PackLobster() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{
-			Name = "a pack bear";
-			Body = Utility.RandomList( 177, 179 );
+			Name = "a pack lobster";
+			Body = 34;
 			BaseSoundID = 0xA3;
 
 			ControlSlots = 5;
@@ -35,7 +35,7 @@ namespace Server.Mobiles
 			AddItem( pack );
 		}
 
-		public override FoodType FavoriteFood{ get{ return FoodType.Fish | FoodType.Meat | FoodType.FruitsAndVegies; } }
+		public override FoodType FavoriteFood{ get{ return FoodType.Fish; } }
 		public override bool ClickTitle{ get{ return false; } }
 		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool AlwaysAttackable{ get{ return false; } }
@@ -44,7 +44,7 @@ namespace Server.Mobiles
 		public override bool IsBondable{ get{ return true; } }
 		public override bool CanBeRenamedBy( Mobile from ){ return true; }
 
-		public PackBear( Serial serial ) : base( serial )
+		public PackLobster( Serial serial ) : base( serial )
 		{
 		}
 

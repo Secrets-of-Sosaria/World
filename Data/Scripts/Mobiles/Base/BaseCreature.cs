@@ -1802,6 +1802,7 @@ namespace Server.Mobiles
 		public static bool AlwaysInvulnerable( Mobile m )
 		{
 			if ( m is PackBear ){ return true; }
+			else if ( m is PackLobster ){ return true; }
 			else if ( m is PackMule ){ return true; }
 			else if ( m is PackStegosaurus ){ return true; }
 			else if ( m is PackTurtle ){ return true; }

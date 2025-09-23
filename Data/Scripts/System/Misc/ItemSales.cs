@@ -4113,6 +4113,7 @@ namespace Server
 			new ItemSalesInfo( typeof(	CagedMastadon	),	4520	,	1	,	75	,	false	,	false	,	World.Savage	,	Category.None	,	Material.None	,	Market.Stable	),
 			new ItemSalesInfo( typeof(	CagedMouse	),	107	,	5	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.Stable	),
 			new ItemSalesInfo( typeof(	CagedPackBear	),	12500	,	5	,	25	,	false	,	false	,	World.Dread	,	Category.Pack	,	Material.None	,	Market.Animals	),
+			new ItemSalesInfo( typeof(	CagedPackLobster	),	12500	,	5	,	25	,	false	,	false	,	World.Dread	,	Category.Pack	,	Material.None	,	Market.Animals	),
 			new ItemSalesInfo( typeof(	CagedPackHorse	),	631	,	5	,	25	,	false	,	false	,	World.None	,	Category.Pack	,	Material.None	,	Market.Animals	),
 			new ItemSalesInfo( typeof(	CagedPackLlama	),	565	,	5	,	25	,	false	,	false	,	World.Sosaria	,	Category.Pack	,	Material.None	,	Market.Animals	),
 			new ItemSalesInfo( typeof(	CagedPackMule	),	10000	,	5	,	50	,	false	,	false	,	World.None	,	Category.Pack	,	Material.None	,	Market.Animals	),
