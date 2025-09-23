@@ -16,6 +16,7 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
+			HunterMarkSystem.Initialize();
 			Timer.DelayCall( TimeSpan.FromSeconds( 2.5 ), new TimerCallback( Run ) );
 		}
 
