@@ -29,6 +29,16 @@ namespace Server.Custom.KoperPets
             "Your steady guidance makes the animals trust you more."
         };
 
+        private static readonly string[] BondingMessages = new string[]
+        {
+            "Your deep understanding of animal behavior has forged a special bond!",
+            "Through your skilled herding, the creature has grown to trust you completely.",
+            "Your patient guidance has earned the creature's unwavering loyalty.",
+            "The animal looks at you with newfound devotion and trust.",
+            "Your herding expertise has created a bond that will last a lifetime.",
+            "The creature's eyes reflect a deep connection forged through your skill."
+        };
+
         public static void TryGainHerdingSkill(Mobile owner)
         {
 
@@ -89,6 +99,9 @@ namespace Server.Custom.KoperPets
             {
                 owner.CheckSkill(SkillName.Herding, 0.0 , 125.0 );
 
+                // Check for pet bonding after skill check
+                TryBondUnbondedPets(owner, herdingSkill);
+
                 // Select a random message for variety
                 if (MyServerSettings.KoperPetsImmersive()) 
                 {
@@ -96,6 +109,47 @@ namespace Server.Custom.KoperPets
                 }
                 // Start cooldown timer
                 _cooldowns[owner] = DateTime.UtcNow + CooldownTime;
+            }
+        }
+
+        private static void TryBondUnbondedPets(Mobile owner, double herdingSkill)
+        {
+            if (owner.Map == null) return;
+
+            // 1% chance at skill 1, 25% chance at skill 125)
+            double bondingChance = Math.Max(1.0, Math.Min(25.0, (herdingSkill / 125.0) * 25.0)) / 100.0;
+
+            List<BaseCreature> unbondedPets = new List<BaseCreature>();
+
+            IPooledEnumerable eable = owner.Map.GetMobilesInRange(owner.Location, 5);
+            foreach (Mobile m in eable)
+            {
+                if (m is BaseCreature)
+                {
+                    BaseCreature pet = (BaseCreature)m;
+                    if (pet.Controlled && pet.ControlMaster == owner && !pet.Summoned && 
+                        !pet.Body.IsHuman && !pet.IsBonded && pet.BondingBegin != DateTime.MinValue)
+                    {
+                        unbondedPets.Add(pet);
+                    }
+                }
+            }
+            eable.Free();
+
+            foreach (BaseCreature pet in unbondedPets)
+            {
+                if (Utility.RandomDouble() <= bondingChance)
+                {
+                    pet.IsBonded = true;
+                    pet.BondingBegin = DateTime.MinValue; // Clear bonding timer
+                    pet.Loyalty = BaseCreature.MaxLoyalty; // Set to maximum loyalty
+
+                    if (MyServerSettings.KoperPetsImmersive())
+                    {
+                        owner.SendMessage(BondingMessages[Utility.Random(BondingMessages.Length)]);
+                        owner.PublicOverheadMessage(Network.MessageType.Regular, 0x3B2, false, "Your " + pet.Name + " has bonded with you!");
+                    }
+                }
             }
         }
     }
