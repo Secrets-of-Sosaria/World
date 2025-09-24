@@ -95,7 +95,14 @@ namespace Server.Mobiles
 			{
 				m_From = from;
 				m_Giver = giver;
-				Enabled = m_Giver.CheckVendorAccess( from );
+				if (MySettings.S_Bribery > 1000)
+				{
+					Enabled = true; // a character doesnt need to be in the assassins guild to hire the guildmaster to remove kill counts. 
+				}
+				else
+				{
+					Enabled = false;// bribery system not enabled
+				}
 			}
 
 			public override void OnClick()
