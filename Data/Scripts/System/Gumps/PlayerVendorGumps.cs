@@ -179,11 +179,6 @@ namespace Server.Gumps
 			AddImageTiled( 35, 20, 510, 160, 0xA40 );
 			AddAlphaRegion( 35, 20, 510, 160 );
 
-			AddImage( 10, 0, 0x28DC );
-			AddImage( 537, 175, 0x28DC );
-			AddImage( 10, 175, 0x28DC );
-			AddImage( 537, 0, 0x28DC );
-
 			if ( goldHeld < perRealWorldDay )
 			{
 				int goldNeeded = perRealWorldDay - goldHeld;
