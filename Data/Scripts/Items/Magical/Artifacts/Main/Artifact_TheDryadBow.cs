@@ -14,15 +14,13 @@ namespace Server.Items
 			Name = "Dryad Bow";
 			ItemID = 0x13B1;
 			Hue = 0x48F;
-			WeaponAttributes.SelfRepair = 5;
-			Attributes.WeaponSpeed = 50;
-			Attributes.WeaponDamage = 35;
+			Attributes.WeaponSpeed = 15;
 			WeaponAttributes.ResistPoisonBonus = 15;
-			SkillBonuses.SetValues( 0, SkillName.Druidism, 25 );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 25 );
-			SkillBonuses.SetValues( 2, SkillName.Veterinary, 25 );
+			SkillBonuses.SetValues( 0, SkillName.Druidism, 20 );
+			SkillBonuses.SetValues( 1, SkillName.Taming, 20 );
+			SkillBonuses.SetValues( 2, SkillName.Veterinary, 20 );
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 11, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TheDryadBow( Serial serial ) : base( serial )

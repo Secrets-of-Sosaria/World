@@ -11,15 +11,15 @@ namespace Server.Items
 			ItemID = 0x1F04;
 			Name = "Robe of the Eclipse";
 			Hue = 0x486;
-			Attributes.Luck = 200;
+			Attributes.Luck = 50;
 			Resistances.Physical = 10;
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 25;
+			Attributes.LowerManaCost = 10;
 			SkillBonuses.SetValues(0, SkillName.Necromancy, 20);
 			SkillBonuses.SetValues(1, SkillName.Spiritualism, 10);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RobeOfTheEclipse( Serial serial ) : base( serial )

@@ -19,7 +19,7 @@ namespace Server.Items
 			Attributes.WeaponSpeed = 10;
 			Attributes.WeaponDamage = 11;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_NightsKiss( Serial serial ) : base( serial )

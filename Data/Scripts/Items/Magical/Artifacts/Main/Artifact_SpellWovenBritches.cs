@@ -15,12 +15,11 @@ namespace Server.Items
 			ItemID = 0x13cb;
 			Name = "Spell Woven Britches";
 			SkillBonuses.SetValues( 0, SkillName.Meditation, 25.0 );
-
-			Attributes.BonusInt = 8;
-			Attributes.SpellDamage = 10;
-			Attributes.LowerManaCost = 10;
+			Attributes.BonusInt = 11;
+			Attributes.SpellDamage = 12;
+			Attributes.LowerManaCost = 11;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_SpellWovenBritches( Serial serial ) : base( serial )

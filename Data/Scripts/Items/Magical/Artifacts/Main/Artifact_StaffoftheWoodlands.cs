@@ -17,14 +17,12 @@ namespace Server.Items
 			
 			Attributes.SpellChanneling = 1;
 			Attributes.RegenMana = 3;
-			Attributes.RegenHits = 3;
-			Attributes.RegenStam = 3;
 			Attributes.DefendChance = 15;
-			SkillBonuses.SetValues(0, SkillName.Druidism,  5 + (Utility.RandomMinMax(0,3)*5));
-			SkillBonuses.SetValues(1, SkillName.Taming,  5 + (Utility.RandomMinMax(0,3)*5));
-			SkillBonuses.SetValues(2, SkillName.Herding,  5 + (Utility.RandomMinMax(0,3)*5));
+			SkillBonuses.SetValues(0, SkillName.Druidism,  10);
+			SkillBonuses.SetValues(1, SkillName.Taming,  10);
+			SkillBonuses.SetValues(2, SkillName.Herding,  10);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

@@ -13,12 +13,11 @@ namespace Server.Items
 		{
 			Name = "Wrath of the Dryad";
 			Hue = 0x29C;
-			WeaponAttributes.HitLeechMana = 50;
-			WeaponAttributes.HitLightning = 33;
-			Attributes.AttackChance = 15;
-			Attributes.WeaponDamage = 40;
+			WeaponAttributes.HitLeechMana = 30;
+			WeaponAttributes.HitLightning = 30;
+			Attributes.AttackChance = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

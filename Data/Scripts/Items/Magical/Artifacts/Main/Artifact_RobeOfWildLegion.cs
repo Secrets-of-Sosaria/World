@@ -10,12 +10,12 @@ namespace Server.Items
 		{
 			Name = "Robe of the Wild Legion";
 			Hue = 0x8A0;
-			Attributes.Luck = 100 + (Utility.RandomMinMax(0,3)*50);
+			Attributes.Luck = 110;
 			Resistances.Poison = 10;
-			SkillBonuses.SetValues(0, SkillName.Herding,  5 + (Utility.RandomMinMax(0,3)*5));
-			SkillBonuses.SetValues(1, SkillName.Taming,  5 + (Utility.RandomMinMax(0,3)*5));
+			SkillBonuses.SetValues(0, SkillName.Herding,  10);
+			SkillBonuses.SetValues(1, SkillName.Taming,  10);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RobeOfWildLegion( Serial serial ) : base( serial )

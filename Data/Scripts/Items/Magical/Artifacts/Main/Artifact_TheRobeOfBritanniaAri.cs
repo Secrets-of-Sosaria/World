@@ -10,13 +10,13 @@ namespace Server.Items
 		{
 			Name = "Robe of Sosaria";
 			Hue = 0x48b;
-			Resistances.Physical = 10;
-			Resistances.Cold = 10;
-			Resistances.Fire = 10;
-			Resistances.Energy = 10;
-			Resistances.Poison = 10;
+			Resistances.Physical = 30;
+			Resistances.Cold = 30;
+			Resistances.Fire = 30;
+			Resistances.Energy = 30;
+			Resistances.Poison = 30;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TheRobeOfBritanniaAri( Serial serial ) : base( serial )

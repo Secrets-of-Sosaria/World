@@ -21,14 +21,12 @@ namespace Server.Items
 		{
 			Name = "Yashimoto's Hatsuburi";
 			Hue = 1157;
-			ArmorAttributes.LowerStatReq = 50;
 			ArmorAttributes.SelfRepair = 5;
 			Attributes.AttackChance = 15;
 			Attributes.DefendChance = 15;
-			Attributes.RegenHits = 10;
-			Attributes.WeaponDamage = 15;
+			Attributes.WeaponDamage = 6;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_YashimotosHatsuburi( Serial serial ) : base( serial )

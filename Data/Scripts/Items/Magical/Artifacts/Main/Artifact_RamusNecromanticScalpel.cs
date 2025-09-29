@@ -20,7 +20,7 @@ namespace Server.Items
 			Attributes.WeaponSpeed = 10;
 			Slayer = SlayerName.Repond ;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RamusNecromanticScalpel( Serial serial ) : base( serial )

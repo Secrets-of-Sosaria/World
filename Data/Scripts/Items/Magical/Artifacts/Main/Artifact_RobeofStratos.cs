@@ -11,18 +11,16 @@ namespace Server.Items
 			ItemID = 0x2B6A;
 			Name = "Robe of the Mystic Voice";
 			Hue = 0xAFE;
-			Resistances.Physical = 8;
-			Resistances.Energy = 16;
+			Resistances.Energy = 15;
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
 			Attributes.LowerManaCost = 20;
-			Attributes.LowerRegCost = 20;
-			Attributes.RegenStam = 4;
+			Attributes.LowerRegCost = 22;
 			SkillBonuses.SetValues(0, SkillName.Elementalism, 20);
 			SkillBonuses.SetValues(1, SkillName.Focus, 15);
 			SkillBonuses.SetValues(2, SkillName.Meditation, 15);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "Stratos' Magical Robe" );
+			Server.Misc.Arty.ArtySetup( this, 10, "Stratos' Magical Robe" );
 		}
 
 		public Artifact_RobeofStratos( Serial serial ) : base( serial )

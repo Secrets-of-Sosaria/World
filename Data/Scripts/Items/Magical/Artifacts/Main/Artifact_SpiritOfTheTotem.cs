@@ -13,10 +13,9 @@ namespace Server.Items
 			Hue = 0x455;
 			Name = "Spirit of the Totem";
 			Attributes.BonusStr = 20;
-			Attributes.ReflectPhysical = 15;
-			Attributes.AttackChance = 15;
+			Attributes.AttackChance = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_SpiritOfTheTotem( Serial serial ) : base( serial )

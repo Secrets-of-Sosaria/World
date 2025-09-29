@@ -10,12 +10,12 @@ namespace Server.Items
 		{
 			Name = "Good Samaritan Robe";
 			Hue = 0x2a3;
-			Attributes.Luck = 400;
+			Attributes.Luck = 100;
 			Resistances.Physical = 10;
 			SkillBonuses.SetValues(0, SkillName.Knightship, 20);
 			Attributes.ReflectPhysical = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_SamaritanRobe( Serial serial ) : base( serial )

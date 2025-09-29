@@ -19,9 +19,10 @@ namespace Server.Items
 			ItemID = 0x13C7;
 			Attributes.BonusStr = 8;
 			Attributes.RegenHits = 5;
-			Attributes.RegenStam = 3;
+			Attributes.RegenStam = 5;
+			Attributes.Luck = 65;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_VoiceOfTheFallenKing( Serial serial ) : base( serial )

@@ -23,12 +23,13 @@ namespace Server.Items
 			Hue = 2956;
 			ItemID = 0x1413;
 			ArmorAttributes.MageArmor = 1;
-			ArmorAttributes.SelfRepair = 3;
+			ArmorAttributes.SelfRepair = 5;
 			Attributes.AttackChance = 10;
 			Attributes.BonusHits = 10;
-			Attributes.LowerManaCost = 5;
+			Attributes.LowerManaCost = 10;
+			Attributes.Luck = 40;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RoyalGuardsGorget( Serial serial ) : base( serial )

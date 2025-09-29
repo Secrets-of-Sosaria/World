@@ -20,12 +20,9 @@ namespace Server.Items
 
 			Attributes.BonusDex = 8;
 			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 35;
-
-			WeaponAttributes.HitHarm = 33;
-			WeaponAttributes.UseBestSkill = 1;
+			WeaponAttributes.HitHarm = 23;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TalonBite( Serial serial ) : base( serial )

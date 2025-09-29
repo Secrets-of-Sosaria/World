@@ -18,8 +18,9 @@ namespace Server.Items
 			Attributes.SpellDamage = 20;
 			Attributes.CastRecovery = 2;
 			Attributes.LowerManaCost = 20;
+			Attributes.CastSpeed = 2;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_StaffOfPower( Serial serial ) : base( serial )

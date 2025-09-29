@@ -15,11 +15,10 @@ namespace Server.Items
 			Hue = 0x485;
 			ItemID = 0xF45;
 			Slayer = SlayerName.ElementalBan;
-			WeaponAttributes.HitLeechMana = 50;
-			Attributes.AttackChance = 30;
-			Attributes.WeaponDamage = 50;
+			WeaponAttributes.HitLeechMana = 57;
+			Attributes.AttackChance = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

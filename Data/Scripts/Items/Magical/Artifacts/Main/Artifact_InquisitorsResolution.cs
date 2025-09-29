@@ -24,7 +24,7 @@ namespace Server.Items
 			Attributes.LowerRegCost = 10;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_InquisitorsResolution( Serial serial ) : base( serial )

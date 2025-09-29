@@ -14,16 +14,13 @@ namespace Server.Items
 			Hue = 0x491;
 			ItemID = 0x1441;
 			Name = "Sword of Sinbad";
-			Attributes.BonusDex = 10;
-			SkillBonuses.SetValues( 0, SkillName.Cartography, 30 );
-			SkillBonuses.SetValues( 1, SkillName.Seafaring, 30 );
-			SkillBonuses.SetValues( 2, SkillName.Lockpicking, 30 );
-			Quality = WeaponQuality.Exceptional;
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
+			Attributes.BonusDex = 8;
+			SkillBonuses.SetValues( 0, SkillName.Cartography, 10 );
+			SkillBonuses.SetValues( 1, SkillName.Seafaring, 15 );
+			SkillBonuses.SetValues( 2, SkillName.Lockpicking, 15 );
 			Attributes.AttackChance = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_SinbadsSword( Serial serial ) : base( serial )

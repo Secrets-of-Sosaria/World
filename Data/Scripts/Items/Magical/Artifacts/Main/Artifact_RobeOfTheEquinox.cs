@@ -11,15 +11,15 @@ namespace Server.Items
 			ItemID = 0x1F04;
 			Name = "Robe of the Equinox";
 			Hue = 0xD6;
-			Attributes.Luck = 200;
+			Attributes.Luck = 50;
 			Resistances.Physical = 10;
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 25;
+			Attributes.LowerManaCost = 10;
 			SkillBonuses.SetValues(0, SkillName.Magery, 20);
 			SkillBonuses.SetValues(1, SkillName.Psychology, 10);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RobeOfTheEquinox( Serial serial ) : base( serial )

@@ -12,10 +12,11 @@ namespace Server.Items
 		{
 			Name = "Sprinter's Sandals";
 			Hue = 1372;
-			Attributes.BonusStam = 15;
-			Attributes.RegenStam = 5;
+			Attributes.BonusStam = 20;
+			Attributes.BonusDex = 5;
+			Attributes.Luck = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 15, "Sprinting " );
+			Server.Misc.Arty.ArtySetup( this, 10, "Sprinting " );
 		}
 
 		public override bool OnEquip( Mobile from )

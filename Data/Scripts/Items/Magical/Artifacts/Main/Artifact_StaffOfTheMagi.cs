@@ -17,7 +17,7 @@ namespace Server.Items
 			Attributes.SpellChanneling = 1;
 			Attributes.CastSpeed = 1;
 			Attributes.SpellDamage = 30;
-			Attributes.WeaponDamage = 100;
+			Attributes.WeaponDamage = 20;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

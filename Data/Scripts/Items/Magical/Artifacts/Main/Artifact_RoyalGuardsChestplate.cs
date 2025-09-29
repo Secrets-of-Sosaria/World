@@ -20,13 +20,13 @@ namespace Server.Items
 			Name = "Royal Guard's Chest Plate";
 			Hue = 0x47E;
 			ItemID = 0x1415;
-			Attributes.BonusHits = 10;
-			Attributes.BonusMana = 10;
-			Attributes.BonusStam = 10;
-			Attributes.RegenHits = 5;
-			Attributes.ReflectPhysical = 25;
+			Attributes.BonusHits = 12;
+			Attributes.BonusMana = 12;
+			Attributes.BonusStam = 12;
+			Attributes.RegenHits = 12;
+			Attributes.ReflectPhysical = 30;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RoyalGuardsChestplate( Serial serial ) : base( serial )

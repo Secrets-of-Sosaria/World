@@ -10,15 +10,11 @@ namespace Server.Items
         {
             Name = "Warrior's Clasp";
             Hue = 2117;
+            SkillBonuses.SetValues( 0, SkillName.Tactics, 10.0 );
             Attributes.AttackChance = 10;
             Attributes.DefendChance = 10;
-            Attributes.BonusMana = 5;
-            Attributes.BonusHits = 7;
-            Attributes.BonusStam = 15;
-            Attributes.RegenHits = 3;
-            Attributes.RegenStam = 3;
-            Attributes.RegenMana = 3;
-            SkillBonuses.SetValues( 0, SkillName.Tactics, 10.0 );
+            Attributes.BonusMana = 9;
+            Attributes.BonusHits = 9;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

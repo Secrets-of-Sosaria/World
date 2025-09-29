@@ -20,9 +20,12 @@ namespace Server.Items
 			ItemID = 0x13C6;
 			SkillBonuses.SetValues( 0, SkillName.Stealth, 10.0 );
 			SkillBonuses.SetValues( 1, SkillName.Stealing, 10.0 );
-			Attributes.BonusDex = 5;
+			Attributes.BonusDex = 6;
+			Attributes.BonusStam = 4;
+			Attributes.RegenStam = 4;
+			Attributes.Luck = 70;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ShadowDancerGloves( Serial serial ) : base( serial )

@@ -16,10 +16,9 @@ namespace Server.Items
 			WeaponAttributes.HitPhysicalArea = 30;
 			Attributes.BonusStam = 8;
 			Attributes.AttackChance = 10;
-			Attributes.WeaponSpeed = 35;
-			Attributes.WeaponDamage = 40;
+			Attributes.WeaponSpeed = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ShardThrasher( Serial serial ) : base( serial )

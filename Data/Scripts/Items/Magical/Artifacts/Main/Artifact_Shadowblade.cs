@@ -14,22 +14,17 @@ namespace Server.Items
 		{
 			Name = "Blade of the Shadows";
 			ItemID = 0xF61;
-			Attributes.AttackChance = 20;
+			Attributes.AttackChance = 5;
             Attributes.BonusDex = 2;
 		    Attributes.CastSpeed = 1;
-            Attributes.ReflectPhysical = 5;
-            Attributes.RegenHits = 1;
             Attributes.SpellChanneling = 1;
-            Attributes.SpellDamage = 20;
-			Attributes.WeaponDamage = 45;
-			Attributes.WeaponSpeed = 30;
+            Attributes.SpellDamage = 21;
 			WeaponAttributes.HitFireball = 10;
             WeaponAttributes.HitLeechMana = 10;
             WeaponAttributes.HitLeechStam = 10;
-			WeaponAttributes.SelfRepair = 1;
 			Hue = 1899;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 15, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ShadowBlade( Serial serial ) : base( serial )

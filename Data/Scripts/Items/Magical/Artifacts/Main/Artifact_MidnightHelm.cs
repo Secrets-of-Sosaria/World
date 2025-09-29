@@ -23,7 +23,7 @@ namespace Server.Items
 			Attributes.RegenMana = 5;
 			Attributes.Luck = 75;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_MidnightHelm( Serial serial ) : base( serial )

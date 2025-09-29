@@ -12,7 +12,7 @@ namespace Server.Items
 			Hue = 0xAFF;
 			base.Attributes.Luck = 150;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 0, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LuckyNecklace( Serial serial ) : base( serial )

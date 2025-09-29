@@ -22,7 +22,7 @@ namespace Server.Items
 
 			WeaponAttributes.HitLeechStam = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_OblivionsNeedle( Serial serial ) : base( serial )

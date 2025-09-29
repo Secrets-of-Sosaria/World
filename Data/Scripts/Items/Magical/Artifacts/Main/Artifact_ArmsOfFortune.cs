@@ -18,7 +18,7 @@ namespace Server.Items
 			Attributes.LowerRegCost = 8;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArmsOfFortune( Serial serial ) : base( serial )

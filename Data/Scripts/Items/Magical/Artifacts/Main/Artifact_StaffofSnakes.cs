@@ -23,9 +23,10 @@ namespace Server.Items
 			AosElementDamages.Poison = 100;
 			Attributes.SpellChanneling = 1;
 			Slayer = SlayerName.SnakesBane;
+			Attributes.SpellDamage = 6;
 			WeaponAttributes.HitPoisonArea = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "(Summons Snakes) " );
+			Server.Misc.Arty.ArtySetup( this, 10, "(Summons Snakes) " );
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -35,7 +36,7 @@ namespace Server.Items
 			long ticksNow = TimeNow.Ticks;
 			int minsThen = (int)TimeSpan.FromTicks(ticksThen).TotalMinutes;
 			int minsNow = (int)TimeSpan.FromTicks(ticksNow).TotalMinutes;
-			int CanUseMagic = 60 - ( minsNow - minsThen );
+			int CanUseMagic = 30 - ( minsNow - minsThen );
 
 			if ( Parent != from )
 			{

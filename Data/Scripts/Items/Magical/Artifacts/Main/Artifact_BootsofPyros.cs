@@ -22,7 +22,7 @@ namespace Server.Items
 			SkillBonuses.SetValues(1, SkillName.Focus, 10);
 			SkillBonuses.SetValues(2, SkillName.Meditation, 10);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 11, "Pyros' Vile Boots" );
+			Server.Misc.Arty.ArtySetup( this, 10, "Pyros' Vile Boots" );
 		}
 
 		public Artifact_BootsofPyros( Serial serial ) : base( serial )

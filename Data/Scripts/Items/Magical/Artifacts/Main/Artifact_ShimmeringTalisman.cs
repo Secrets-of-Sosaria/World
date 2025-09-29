@@ -15,7 +15,7 @@ namespace Server.Items
 			Attributes.RegenMana = 10;
 			Attributes.LowerRegCost = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 		
 		public Artifact_ShimmeringTalisman( Serial serial ) :  base( serial )

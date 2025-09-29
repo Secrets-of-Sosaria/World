@@ -16,9 +16,9 @@ namespace Server.Items
 			Attributes.RegenHits = 5;
 			Attributes.RegenMana = 5;
 			Attributes.RegenStam = 5;
-			Attributes.Luck = 95;
-			Attributes.ReflectPhysical = 44;
-			Attributes.SpellDamage = 35;
+			Attributes.Luck = 50;
+			Attributes.ReflectPhysical = 50;
+			Attributes.SpellDamage = 5;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
