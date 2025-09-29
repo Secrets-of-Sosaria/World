@@ -9601,6 +9601,8 @@ namespace Server.Mobiles
 				if ( m is BaseCreature )
 				{
 					BaseCreature c = (BaseCreature)m;
+					Mobile master = c.ControlMaster;
+					if ( master != null && master.Map == Map.Internal ) continue;
 
 					if ( c.IsDeadPet )
 					{
