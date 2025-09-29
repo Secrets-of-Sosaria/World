@@ -274,7 +274,7 @@ namespace Server.Mobiles
 		        int min = 50, max = 250;
 		        int amount = GetGoldByLuck(min, max, luck);
 		        rewardBag.DropItem(new Gold(amount));
-		        rewardBag.DropItem(Loot.RandomMagicalItem());
+		        GenerateEnchantedItem(mobile, 75, rewardBag);
 		        rewardBag.DropItem(Loot.RandomPotion(4, false));
 		    }
 		    else if (box is UncommonContrabandBox)
@@ -282,8 +282,7 @@ namespace Server.Mobiles
 		        int min = 250, max = 450;
 		        int amount = GetGoldByLuck(min, max, luck);
 		        rewardBag.DropItem(new Gold(amount));
-		        rewardBag.DropItem(Loot.RandomMagicalItem());
-		        rewardBag.DropItem(Loot.RandomMagicalItem());
+		        GenerateEnchantedItem(mobile, 150, rewardBag);
 		        rewardBag.DropItem(Loot.RandomPotion(8, false));
 		    }
 		    else if (box is RareContrabandBox)
@@ -291,7 +290,7 @@ namespace Server.Mobiles
 		        int min = 550, max = 1090;
 		        int amount = GetGoldByLuck(min, max, luck);
 		        rewardBag.DropItem(new Gold(amount));
-		        rewardBag.DropItem(Loot.RandomPotion(12, false));
+		        GenerateEnchantedItem(mobile, 200, rewardBag);
 
 		        if (Utility.Random(5) == 0)
 		            rewardBag.DropItem(PowerScroll.CreateRandom(5, 10));
@@ -307,7 +306,7 @@ namespace Server.Mobiles
 		        int min = 1540, max = 2800;
 		        int amount = GetGoldByLuck(min, max, luck);
 		        rewardBag.DropItem(new Gold(amount));
-
+				GenerateEnchantedItem(mobile, 300, rewardBag);
 		        if (Utility.RandomBool())
 		            rewardBag.DropItem(PowerScroll.CreateRandom(5, 10));
 		        else
@@ -321,7 +320,7 @@ namespace Server.Mobiles
 		        int min = 3500, max = 6600;
 		        int amount = GetGoldByLuck(min, max, luck);
 		        rewardBag.DropItem(new BankCheck(amount));
-
+				GenerateEnchantedItem(mobile, 400, rewardBag);
 		        rewardBag.DropItem(PowerScroll.CreateRandom(5, 15));
 		        rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 25));
 
@@ -336,7 +335,7 @@ namespace Server.Mobiles
 		        int min = 10000, max = 12000;
 		        int amount = GetGoldByLuck(min, max, luck);
 		        rewardBag.DropItem(new BankCheck(amount));
-
+				GenerateEnchantedItem(mobile, 500, rewardBag);
 		        Item arty = Loot.RandomArty();
 		        
 				if (arty != null)
@@ -373,6 +372,15 @@ namespace Server.Mobiles
 
 		}
 
+		private static void GenerateEnchantedItem(Mobile from, int enchantLevel, Container rewardBag)
+        {
+            Item item = Loot.RandomMagicalItem(Server.LootPackEntry.playOrient(from));
+            if (item != null)
+            {
+                item = LootPackEntry.Enchant(from, enchantLevel, item);
+                rewardBag.DropItem(item);
+            }
+        }
 
 		private static int GetGoldByLuck(int min, int max, int luck)
 		{
