@@ -17,7 +17,7 @@ namespace Server.Items
 			
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
 			WeaponAttributes.ResistFireBonus = 25;
-			WeaponAttributes.WeaponDamage = 29;
+			Attributes.WeaponDamage = 29;
 			Velocity = 15;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
