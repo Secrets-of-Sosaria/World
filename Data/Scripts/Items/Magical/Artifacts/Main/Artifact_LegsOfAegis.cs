@@ -17,11 +17,11 @@ namespace Server.Items
 			Hue = 0x47E;
 			ItemID = 0x46AA;
 			ArmorAttributes.SelfRepair = 5;
-			Attributes.ReflectPhysical = 18;
-			Attributes.DefendChance = 18;
-			Attributes.LowerManaCost = 14;
+			Attributes.ReflectPhysical = 20;
+			Attributes.DefendChance = 20;
+			Attributes.LowerManaCost = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LeggingsOfAegis( Serial serial ) : base( serial )

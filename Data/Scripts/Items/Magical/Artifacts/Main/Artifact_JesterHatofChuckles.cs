@@ -12,14 +12,14 @@ namespace Server.Items
 			Name = "Jester Hat of Chuckles";
 			ItemID = 5916;
 			Hue = Utility.RandomList( 0x13e, 0x03, 0x172, 0x3f );
-			Attributes.Luck = 300;
+			Attributes.Luck = 90;
 			Resistances.Physical = 12;
 			Resistances.Cold = 12;
 			Resistances.Energy = 12;
 			Resistances.Fire = 12;
 			Resistances.Poison = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_JesterHatofChuckles( Serial serial ) : base( serial )

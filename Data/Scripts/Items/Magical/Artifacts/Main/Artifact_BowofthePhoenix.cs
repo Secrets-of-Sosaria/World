@@ -15,10 +15,8 @@ namespace Server.Items
 			ItemID = 0x2D1E;
 			Name = "Bow of the Phoenix";
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 5 );
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
 			AosElementDamages.Fire = 100; 
-			WeaponAttributes.HitFireball = 100;
+			WeaponAttributes.HitFireball = 95;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

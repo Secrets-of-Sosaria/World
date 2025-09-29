@@ -5,19 +5,18 @@ namespace Server.Items
 {
 	public class Artifact_CoifOfBane : GiftChainCoif
 	{
-		public override int BasePoisonResistance{ get{ return 16; } }
-
 		[Constructable]
 		public Artifact_CoifOfBane()
 		{
 			Name = "Coif of Bane";
 			Hue = 0x4F5;
 			ItemID = 0x13BB;
-			ArmorAttributes.DurabilityBonus = 50;
+			ArmorAttributes.DurabilityBonus = 30;
 			Attributes.BonusStam = 8;
 			Attributes.AttackChance = 20;
+			PoisonBonus = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CoifOfBane( Serial serial ) : base( serial )

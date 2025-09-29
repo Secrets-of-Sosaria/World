@@ -6,9 +6,6 @@ namespace Server.Items
 	public class Artifact_DupresShield : GiftOrderShield
 	{
 		public override int BasePhysicalResistance { get { return 10; } }
-		public override int BaseFireResistance { get { return 0; } }
-		public override int BaseColdResistance { get { return 0; } }
-		public override int BasePoisonResistance { get { return 0; } }
 		public override int BaseEnergyResistance { get { return 10; } }
 
 		public override int InitMinHits { get { return 80; } }
@@ -17,10 +14,11 @@ namespace Server.Items
 		[Constructable]
 		public Artifact_DupresShield()
 		{
-			Name = "Dupre’s Shield";
+			Name = "Dupre's Shield";
 			Weight = 6.0;
 			Attributes.BonusHits = 5;
 			Attributes.RegenHits = 5;
+			Attributes.Luck = 70;
 			SkillBonuses.SetValues( 0, SkillName.Swords, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Parry, 10 );
 			SkillBonuses.SetValues( 2, SkillName.Tactics, 10 );

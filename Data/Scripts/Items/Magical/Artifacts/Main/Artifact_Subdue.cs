@@ -18,12 +18,10 @@ namespace Server.Items
 			ItemID = 0x26BA;
 
 			Attributes.SpellChanneling = 1;
-			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponSpeed = 10;
+			Attributes.WeaponDamage = 10;
 			Attributes.AttackChance = 10;
-
-			WeaponAttributes.HitLeechMana = 100;
-			WeaponAttributes.UseBestSkill = 1;
+			WeaponAttributes.HitLeechMana = 25;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

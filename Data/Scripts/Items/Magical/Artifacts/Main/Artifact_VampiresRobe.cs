@@ -14,8 +14,9 @@ namespace Server.Items
 			Attributes.BonusHits = 50;
 			SkillBonuses.SetValues( 0, SkillName.Spiritualism, 20 );
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 20 );
+			Attributes.Luck = 70;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_VampiresRobe( Serial serial ) : base( serial )

@@ -16,17 +16,15 @@ namespace Server.Items
 			Name = "Kami-Naris Indestructable Axe";
 			Hue = 1161;
 			ItemID = 0xF4B;
-			WeaponAttributes.DurabilityBonus = 100;
-			WeaponAttributes.HitFireArea = 25;
-			WeaponAttributes.HitHarm = 100;
+			WeaponAttributes.DurabilityBonus = 75;
+			WeaponAttributes.HitFireArea = 15;
+			WeaponAttributes.HitHarm = 20;
 			WeaponAttributes.HitLeechHits = 15;
 			WeaponAttributes.HitLeechStam = 15;
 			WeaponAttributes.HitLightning = 15;
 			WeaponAttributes.SelfRepair = 5;
-			Attributes.WeaponDamage = 50;
-			Attributes.WeaponSpeed = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_KamiNarisIndestructableDoubleAxe( Serial serial ) : base( serial )

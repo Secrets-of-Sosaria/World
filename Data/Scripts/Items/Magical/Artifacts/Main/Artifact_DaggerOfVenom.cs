@@ -16,6 +16,10 @@ namespace Server.Items
 			Name = "Dagger of Venom";
 			Hue = 0x4F6;
 			ItemID = 0x2677;
+			AccuracyLevel = WeaponAccuracyLevel.Supremely;
+			DamageLevel = WeaponDamageLevel.Vanq;
+			Attributes.AttackChance = 10;
+			Attributes.BonusDex = 10;
 			AosElementDamages.Physical = 50;
 			AosElementDamages.Poison = 50;
 			ArtifactLevel = 2;
@@ -26,14 +30,54 @@ namespace Server.Items
 		{
 			base.OnHit( attacker, defender, damageBonus );
 
-			switch ( Utility.RandomMinMax( 0, 12 ) ) 
-			{
-				case 0: defender.ApplyPoison( attacker, Poison.Lesser ); Misc.Titles.AwardKarma( attacker, -50, true ); break;
-				case 1: defender.ApplyPoison( attacker, Poison.Regular ); Misc.Titles.AwardKarma( attacker, -60, true ); break;
-				case 2: defender.ApplyPoison( attacker, Poison.Greater ); Misc.Titles.AwardKarma( attacker, -70, true ); break;
-				case 3: defender.ApplyPoison( attacker, Poison.Deadly ); Misc.Titles.AwardKarma( attacker, -80, true ); break;
-				case 4: defender.ApplyPoison( attacker, Poison.Deadly ); Misc.Titles.AwardKarma( attacker, -90, true ); break;
-			}
+			if (Utility.RandomDouble() > 0.25)
+				return;
+			double poisoning = attacker.Skills[SkillName.Poisoning].Value;
+		    double roll = Utility.RandomDouble();
+			Poison chosen = null;
+
+    		if (poisoning < 25.0)
+    		{
+    		    if (roll < 0.20) chosen = Poison.Regular;
+    		    else chosen = Poison.Lesser;
+    		}
+    		else if (poisoning < 50.0)
+    		{
+    		    if (roll < 0.20) chosen = Poison.Greater;
+    		    else if (roll < 0.60) chosen = Poison.Regular;
+    		    else chosen = Poison.Lesser;
+    		}
+    		else if (poisoning < 75.0)
+    		{
+    		    if (roll < 0.20) chosen = Poison.Deadly;
+    		    else if (roll < 0.40) chosen = Poison.Greater;
+    		    else chosen = Poison.Lesser;
+    		}
+    		else if (poisoning < 100.0)
+    		{
+    		    if (roll < 0.33) chosen = Poison.Deadly;
+    		    else if (roll < 0.77) chosen = Poison.Greater;
+    		    else chosen = Poison.Lesser;
+    		}
+    		else
+    		{
+    		    if (roll < 0.44) chosen = Poison.Deadly;
+    		    else chosen = Poison.Greater;
+    		}
+
+    		if (chosen != null)
+    		{
+    		    defender.ApplyPoison(attacker, chosen);
+
+    		    if (chosen == Poison.Lesser)
+    		        Misc.Titles.AwardKarma(attacker, -50, true);
+    		    else if (chosen == Poison.Regular)
+    		        Misc.Titles.AwardKarma(attacker, -60, true);
+    		    else if (chosen == Poison.Greater)
+    		        Misc.Titles.AwardKarma(attacker, -70, true);
+    		    else if (chosen == Poison.Deadly)
+    		        Misc.Titles.AwardKarma(attacker, -80, true);
+    		}
 		}
 
 		public Artifact_DaggerOfVenom( Serial serial ) : base( serial )

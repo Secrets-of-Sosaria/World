@@ -13,15 +13,13 @@ namespace Server.Items
 		{
 			Hue = 0xAC;
 			Name = "Windsong";
-			Attributes.WeaponDamage = 35;
 			ItemID = 0x2D2B;
-			WeaponAttributes.SelfRepair = 3;
+			Attributes.WeaponDamage = 19;
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
 			Attributes.AttackChance = 5;
 			Velocity = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_Windsong( Serial serial ) : base( serial )

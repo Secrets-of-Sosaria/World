@@ -10,12 +10,11 @@ namespace Server.Items
 		{
 			Name = "Cloak of the Rogue";
 			Hue = 0x967;
-			Attributes.BonusDex = 10;
 			SkillBonuses.SetValues( 0, SkillName.Stealing, 25 );
 			SkillBonuses.SetValues( 1, SkillName.Snooping, 25 );
-			SkillBonuses.SetValues( 2, SkillName.RemoveTrap, 80 );
+			SkillBonuses.SetValues( 2, SkillName.RemoveTrap, 50 );
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "Gray Mouser's Cloak " );
+			Server.Misc.Arty.ArtySetup( this, 10, "Gray Mouser's Cloak " );
 		}
 
 		public Artifact_GrayMouserCloak( Serial serial ) : base( serial )

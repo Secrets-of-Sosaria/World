@@ -14,14 +14,11 @@ namespace Server.Items
 			Hue = 0x835;
 			Name = "Blade of the Cimmerian";
 			ItemID = 0x56B7;
-			Attributes.BonusStr = 10;
-			SkillBonuses.SetValues( 0, SkillName.Swords, 20 );
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
-			Attributes.AttackChance = 10;
-            Slayer = SlayerName.Exorcism;
+			Attributes.BonusStr = 23;
+			SkillBonuses.SetValues( 0, SkillName.Swords, 15 );
+			Slayer = SlayerName.Exorcism;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "Conan's Lost Sword " );
+			Server.Misc.Arty.ArtySetup( this, 10, "Conan's Lost Sword " );
 		}
 
 		public Artifact_ConansSword( Serial serial ) : base( serial )

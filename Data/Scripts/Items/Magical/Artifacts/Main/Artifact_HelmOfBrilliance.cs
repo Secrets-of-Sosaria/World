@@ -20,6 +20,7 @@ namespace Server.Items
 			Hue = 0xB54;
 			Attributes.NightSight = 1;
 			FireBonus = 50;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "(Casts Fireballs) " );
 		}

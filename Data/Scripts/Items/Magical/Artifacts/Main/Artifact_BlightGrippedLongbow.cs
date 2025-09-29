@@ -11,14 +11,13 @@ namespace Server.Items
 			Name = "Blight Gripped Longbow";
 			Hue = 0x8A4;
 			ItemID = 0x2D1E;
-
+			SkillBonuses.SetValues( 0, SkillName.Poisoning, 15 );
 			WeaponAttributes.HitPoisonArea = 20;
-			Attributes.RegenStam = 3;
-			Attributes.NightSight = 1;
-			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 35;
+			Attributes.RegenStam = 5;
+			Attributes.WeaponSpeed = 10;
+			Attributes.WeaponDamage = 21;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BlightGrippedLongbow( Serial serial ) : base( serial )

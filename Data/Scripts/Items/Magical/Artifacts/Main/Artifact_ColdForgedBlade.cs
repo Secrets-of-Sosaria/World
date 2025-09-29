@@ -10,12 +10,11 @@ namespace Server.Items
 		public Artifact_ColdForgedBlade()
 		{
 			Name = "Cold Forged Blade";
-
 			WeaponAttributes.HitHarm = 40;
 			Attributes.SpellChanneling = 1;
 			Attributes.NightSight = 1;
-			Attributes.WeaponSpeed = 25;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponSpeed = 19;
+			Attributes.WeaponDamage = 9;
 
 			Hue = this.GetElementalDamageHue();
 			ArtifactLevel = 2;

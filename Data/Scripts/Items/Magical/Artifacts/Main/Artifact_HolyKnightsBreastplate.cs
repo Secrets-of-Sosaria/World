@@ -14,10 +14,14 @@ namespace Server.Items
 		{
 			Name = "Holy Knight's Breastplate";
 			Hue = 0x47E;
+			SkillBonuses.SetValues( 0, SkillName.Knightship, 10 );
+			SkillBonuses.SetValues( 1, SkillName.Tactics, 10 );
 			Attributes.BonusHits = 10;
-			Attributes.ReflectPhysical = 15;
+			Attributes.RegenHits = 10;
+			Attributes.ReflectPhysical = 25;
+			Attributes.DefendChance = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HolyKnightsBreastplate( Serial serial ) : base( serial )

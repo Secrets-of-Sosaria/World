@@ -10,11 +10,12 @@ namespace Server.Items
 		{
 			Name = "Bracelet of Health";
 			Hue = 0x21;
-			Attributes.BonusHits = 25;
+			Attributes.BonusHits = 30;
 			Attributes.RegenHits = 10;
+			Attributes.BonusStr = 10;
 			ItemID = 0x672D;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BraceletOfHealth( Serial serial ) : base( serial )

@@ -13,12 +13,11 @@ namespace Server.Items
 		{
 			Name = "Taskmaster";
 			Hue = 0x4F8;
-			WeaponAttributes.HitPoisonArea = 100;
+			WeaponAttributes.HitPoisonArea = 33;
 			Attributes.BonusDex = 5;
 			Attributes.AttackChance = 15;
-			Attributes.WeaponDamage = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

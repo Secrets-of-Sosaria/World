@@ -14,14 +14,15 @@ namespace Server.Items
 			Hue = 0xB1B;
 			Name = "Achille's Shield";
 			SkillBonuses.SetValues( 0, SkillName.Parry, 25 );
-			ArmorAttributes.DurabilityBonus = 30;
+			ArmorAttributes.SelfRepair = 5;
+			ArmorAttributes.DurabilityBonus = 31;
 			ArmorAttributes.LowerStatReq = 10;
-			Attributes.DefendChance = 10;
+			Attributes.DefendChance = 8;
 			Attributes.ReflectPhysical = 5;
-			PhysicalBonus = 25;
-			Attributes.NightSight = 1;
+			Attributes.WeaponDamage = 8;
+			PhysicalBonus = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_AchillesShield( Serial serial ) : base( serial )

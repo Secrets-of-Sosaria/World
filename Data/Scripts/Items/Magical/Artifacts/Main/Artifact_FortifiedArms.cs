@@ -14,22 +14,17 @@ namespace Server.Items
         {
 			Hue = 1165;
 			Name = "Fortified Arms";
-
-            Attributes.AttackChance = 5;
             Attributes.BonusDex = 5;
-            Attributes.DefendChance = 10;
-            Attributes.EnhancePotions = 20;
+            Attributes.EnhancePotions = 25;
             Attributes.NightSight = 1;
             ArmorAttributes.SelfRepair = 5;
-
             ColdBonus = 10;
-            EnergyBonus = 5;
+            EnergyBonus = 7;
             FireBonus = 8;
             PhysicalBonus = 9;
-            PoisonBonus = 5;
-            StrBonus = 10;
+            PoisonBonus = 8;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 14, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public Artifact_Fortifiedarms( Serial serial ) : base( serial )

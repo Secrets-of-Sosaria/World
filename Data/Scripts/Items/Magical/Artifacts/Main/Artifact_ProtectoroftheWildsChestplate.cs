@@ -20,15 +20,15 @@ namespace Server.Items
 			Name = "Chestplate of the wilds";
 			Hue = 0x21F;
 			ArtifactLevel = 2;
-			SkillBonuses.SetValues( 0, SkillName.Tactics, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Druidism, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 3, SkillName.Tracking, 5 + (Utility.RandomMinMax(0,2)*5) );
-			Attributes.DefendChance = 5 + (Utility.RandomMinMax(0,3)*5);
-			Attributes.WeaponSpeed = 5 + (Utility.RandomMinMax(0,3)*5);
-			Attributes.WeaponDamage = 5 + (Utility.RandomMinMax(0,3)*5);
+			SkillBonuses.SetValues( 0, SkillName.Tactics, 15);
+			SkillBonuses.SetValues( 1, SkillName.Taming, 15);
+			SkillBonuses.SetValues( 2, SkillName.Druidism, 10);
+			SkillBonuses.SetValues( 3, SkillName.Tracking, 10);
+			Attributes.DefendChance = 5;
+			Attributes.WeaponSpeed = 5;
+			Attributes.WeaponDamage = 5;
 			Attributes.BonusStr = 5;
-			Attributes.RegenHits = 2;
+			Attributes.RegenHits = 5;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 

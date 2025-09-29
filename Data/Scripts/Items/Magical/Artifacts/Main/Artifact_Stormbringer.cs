@@ -14,13 +14,12 @@ namespace Server.Items
 			Hue = 0x76B;
 			Name = "Stormbringer";
 			ItemID = 0x2D00;
-			WeaponAttributes.HitLeechHits = 10;
-			WeaponAttributes.HitLeechStam = 10;
+			WeaponAttributes.HitLeechHits = 13;
+			WeaponAttributes.HitLeechStam = 12;
 			Attributes.BonusStr = 10;
-			DamageLevel = WeaponDamageLevel.Vanq;
             Slayer = SlayerName.Repond;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "Elric's Lost Sword " );
+			Server.Misc.Arty.ArtySetup( this, 10, "Elric's Lost Sword " );
 		}
 
 		public Artifact_Stormbringer( Serial serial ) : base( serial )

@@ -14,16 +14,16 @@ namespace Server.Items
 			Name = "gloves of the pugilist";
 			Weight = 2.0;
 			Hue = 0x6D1;
-			SkillBonuses.SetValues( 0, SkillName.FistFighting, 10.0 );
-			Attributes.BonusDex = 8;
-			Attributes.WeaponDamage = 15;
+			SkillBonuses.SetValues( 0, SkillName.FistFighting, 15.0 );
+			Attributes.BonusDex = 10;
+			Attributes.WeaponDamage = 19;
 			WeaponAttributes.ResistPhysicalBonus = 18;
 			WeaponAttributes.ResistColdBonus = 3;
 			WeaponAttributes.ResistEnergyBonus = 3;
-			WeaponAttributes.ResistFireBonus = 4;
+			WeaponAttributes.ResistFireBonus = 3;
 			WeaponAttributes.ResistPoisonBonus = 3;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GlovesOfThePugilist( Serial serial ) : base( serial )

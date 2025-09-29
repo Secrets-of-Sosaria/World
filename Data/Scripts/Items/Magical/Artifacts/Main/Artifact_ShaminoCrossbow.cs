@@ -8,15 +8,14 @@ namespace Server.Items
 		[Constructable]
 		public Artifact_ShaMontorrossbow()
 		{
-			Name = "Shamino’s Crossbow";
+			Name = "Shamino's Crossbow";
 			Hue = 0x504;
 			ItemID = 0x26C3;
-			Attributes.AttackChance = 15;
+			Attributes.AttackChance = 8;
 			Attributes.WeaponDamage = 40;
 			WeaponAttributes.SelfRepair = 10;
-			WeaponAttributes.LowerStatReq = 100;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ShaMontorrossbow( Serial serial ) : base( serial )

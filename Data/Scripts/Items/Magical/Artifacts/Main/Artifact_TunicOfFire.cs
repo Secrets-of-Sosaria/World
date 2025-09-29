@@ -20,8 +20,9 @@ namespace Server.Items
 			ArmorAttributes.SelfRepair = 5;
 			Attributes.NightSight = 1;
 			Attributes.ReflectPhysical = 15;
+			Attributes.Luck = 100;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 3, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TunicOfFire( Serial serial ) : base( serial )

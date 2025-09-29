@@ -17,10 +17,10 @@ namespace Server.Items
 
 			Attributes.AttackChance = 15;
 			Attributes.DefendChance = 5;
-			Attributes.WeaponSpeed = 35;
-			Attributes.WeaponDamage = 40;
+			Attributes.WeaponSpeed = 10;
+			Attributes.WeaponDamage = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RighteousAnger( Serial serial ) : base( serial )

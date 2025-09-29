@@ -11,18 +11,16 @@ namespace Server.Items
 			ItemID = 0x0287;
 			Name = "Robe of the Mountain King";
 			Hue = 0x85D;
-			Resistances.Physical = 8;
-			Resistances.Poison = 16;
+			Resistances.Poison = 15;
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
 			Attributes.LowerManaCost = 20;
-			Attributes.LowerRegCost = 20;
-			Attributes.RegenStam = 4;
+			Attributes.LowerRegCost = 22;
 			SkillBonuses.SetValues(0, SkillName.Elementalism, 20);
 			SkillBonuses.SetValues(1, SkillName.Focus, 15);
 			SkillBonuses.SetValues(2, SkillName.Meditation, 15);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "Lithos' Mystical Robe" );
+			Server.Misc.Arty.ArtySetup( this, 10, "Lithos' Mystical Robe" );
 		}
 
 		public Artifact_RobeofLithos( Serial serial ) : base( serial )

@@ -17,8 +17,9 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 20.0 );
 			Attributes.SpellDamage = 10;
 			ArmorAttributes.MageArmor = 1;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_MidnightBracers( Serial serial ) : base( serial )

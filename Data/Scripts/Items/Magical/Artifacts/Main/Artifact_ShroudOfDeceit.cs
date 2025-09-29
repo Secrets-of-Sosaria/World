@@ -21,11 +21,11 @@ namespace Server.Items
 		{
 			Name = "Shroud of Deceit";
 			Hue = 0x38F;
-			Attributes.RegenHits = 3;
+			Attributes.RegenHits = 5;
 			ArmorAttributes.MageArmor = 1;
 			Attributes.BonusDex = 10;
 			SkillBonuses.SetValues( 0, SkillName.MagicResist, 10 );
-
+			Attributes.Luck = 40;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

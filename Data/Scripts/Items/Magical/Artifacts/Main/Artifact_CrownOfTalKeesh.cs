@@ -7,10 +7,6 @@ namespace Server.Items
 	{
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
-
-		public override int BasePhysicalResistance{ get{ return 0; } }
-		public override int BaseFireResistance{ get{ return 5; } }
-		public override int BaseColdResistance{ get{ return 9; } }
 		public override int BasePoisonResistance{ get{ return 20; } }
 		public override int BaseEnergyResistance{ get{ return 20; } }
 
@@ -26,7 +22,7 @@ namespace Server.Items
 			Attributes.RegenMana = 4;
 			Attributes.SpellDamage = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CrownOfTalKeesh( Serial serial ) : base( serial )

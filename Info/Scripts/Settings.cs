@@ -141,11 +141,18 @@ namespace Server
 
 		public static bool S_TravelRestrictions = true;
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-	// 003 - PLAYER OPTIONS ///////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	// The setting below controls if powerful Artifacts found in game have enchantment points that allows a player to customize them. 
+	// If set to true, endgame characters that can farm high end dungeons will have an easier time gearing up and filling slots in their stat sheet,
+	// if set to false, characters will be much more dependent on gear they find or craft. Some items given as quest rewards or from specific events
+	//  will still be enchantable. Default is false. Set it to true if you want a more casual experience. 
 
-	// If true, a player character cannot use macros to improve their skills quickly.
+		public static bool S_ArtifactEnchantment = false;
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+		// 003 - PLAYER OPTIONS ///////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////////////////////
+
+		// If true, a player character cannot use macros to improve their skills quickly.
 
 		public static bool S_NoMacroing = true;
 

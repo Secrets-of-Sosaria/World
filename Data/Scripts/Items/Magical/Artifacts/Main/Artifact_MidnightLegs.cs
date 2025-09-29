@@ -16,10 +16,14 @@ namespace Server.Items
 			Name = "Midnight Leggings";
 			Hue = 0x455;
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 10.0 );
+			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 10.0 );
 			Attributes.SpellDamage = 10;
 			ArmorAttributes.MageArmor = 1;
+			Attributes.BonusInt = 5;
+			ArmorAttributes.SelfRepair = 5;
+			Attributes.Luck = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_MidnightLegs( Serial serial ) : base( serial )

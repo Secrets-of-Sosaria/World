@@ -16,10 +16,10 @@ namespace Server.Items
 			Name = "Guardsman Halberd";
 			Hue = 1407;
 			ItemID = 0x143E;
-			WeaponAttributes.HitLightning = 100;
-			WeaponAttributes.HitLowerDefend = 40;
-			Attributes.WeaponDamage = 50;
-			Attributes.WeaponSpeed = 25;
+			WeaponAttributes.HitLightning = 33;
+			WeaponAttributes.HitLowerDefend = 10;
+			Attributes.WeaponDamage = 13;
+			Attributes.WeaponSpeed = 15;
 			Slayer = SlayerName.Repond ;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );

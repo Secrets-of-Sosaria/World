@@ -16,11 +16,11 @@ namespace Server.Items
 			ItemID = 0x13FD;
 			WeaponAttributes.HitLeechStam = 40;
 			Attributes.SpellChanneling = 1;
-			Attributes.WeaponSpeed = 30;
-			Attributes.WeaponDamage = 20;
+			Attributes.WeaponSpeed = 20;
+			Attributes.WeaponDamage = 6;
 			WeaponAttributes.ResistPoisonBonus = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

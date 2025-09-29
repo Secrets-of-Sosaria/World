@@ -8,8 +8,6 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BaseEnergyResistance{ get{ return 25; } }
-
 		[Constructable]
 		public Artifact_ArmorOfInsight()
 		{
@@ -17,11 +15,13 @@ namespace Server.Items
 			Hue = 0x554;
 			ItemID = 0x1415;
 			Attributes.BonusInt = 8;
-			Attributes.BonusMana = 15;
-			Attributes.RegenMana = 2;
+			Attributes.BonusMana = 11;
+			Attributes.RegenMana = 7;
 			Attributes.LowerManaCost = 8;
+			ArmorAttributes.MageArmor = 1;
+			EnergyBonus = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArmorOfInsight( Serial serial ) : base( serial )

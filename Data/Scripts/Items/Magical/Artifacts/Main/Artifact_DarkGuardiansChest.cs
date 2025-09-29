@@ -20,14 +20,13 @@ namespace Server.Items
 	 	 	Name = "Dark Guardian's Chest";
 	 	 	Hue = 1141;
 			ItemID = 0x1415;
-	 	 	Attributes.Luck = 150;
-	 	 	Attributes.WeaponDamage = 5;
+	 	 	Attributes.Luck = 75;
+			SkillBonuses.SetValues( 0, SkillName.Tactics, 10 );
 	 	 	ArmorAttributes.MageArmor = 1;
-			Attributes.RegenHits = 3;
+			Attributes.RegenHits = 2;
 			Attributes.ReflectPhysical = 15;
-	 	 	Attributes.NightSight = 1;
-			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 11, "" );
+	 	 	ArtifactLevel = 2;
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 	 	public Artifact_DarkGuardiansChest(Serial serial) : base( serial )

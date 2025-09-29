@@ -16,11 +16,11 @@ namespace Server.Items
 			Name = "Totem Gorget";
 			Hue = 0x455;
 			ItemID = 0x13C7;
-			Attributes.BonusStr = 10;
+			Attributes.BonusStr = 14;
 			Attributes.ReflectPhysical = 10;
-			Attributes.AttackChance = 10;
+			Attributes.AttackChance = 14;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TotemGorget( Serial serial ) : base( serial )

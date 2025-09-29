@@ -20,15 +20,13 @@ namespace Server.Items
 			Name = "Tunic of the Prowler";
 			Hue = 0x30A;
 			ArtifactLevel = 2;
-			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Druidism, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 3, SkillName.Stealth, 5 + (Utility.RandomMinMax(0,2)*5) );
-			Attributes.AttackChance = 5 + (Utility.RandomMinMax(0,3)*5);
-			Attributes.WeaponSpeed = 5 + (Utility.RandomMinMax(0,3)*5);
-			Attributes.WeaponDamage = 5 + (Utility.RandomMinMax(0,3)*5);
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 15);
+			SkillBonuses.SetValues( 1, SkillName.Taming, 15);
+			SkillBonuses.SetValues( 2, SkillName.Druidism, 15);
+			SkillBonuses.SetValues( 3, SkillName.Stealth, 15);
+			Attributes.AttackChance = 5;
+			Attributes.WeaponDamage = 2;
 			Attributes.BonusStr = 5;
-			Attributes.RegenHits = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 

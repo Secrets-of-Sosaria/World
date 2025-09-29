@@ -10,12 +10,12 @@ namespace Server.Items
 		{
 			Name = "Robe of the Wilds";
 			Hue = 0x3A;
-			Attributes.Luck = 100 + (Utility.RandomMinMax(0,3)*50);
+			Attributes.Luck = 110;
 			Resistances.Poison = 10;
-			SkillBonuses.SetValues(0, SkillName.Druidism,  5 + (Utility.RandomMinMax(0,3)*5));
-			SkillBonuses.SetValues(1, SkillName.Taming,  5 + (Utility.RandomMinMax(0,3)*5));
+			SkillBonuses.SetValues(0, SkillName.Druidism, 10);
+			SkillBonuses.SetValues(1, SkillName.Taming, 10);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RobeOfWilds( Serial serial ) : base( serial )

@@ -10,13 +10,13 @@ namespace Server.Items
 		{
 			Name = "Earrings of the Elements";
 			Hue = 0x4E9;
-			Attributes.Luck = 95;
-			Resistances.Fire = 14;
-			Resistances.Cold = 14;
-			Resistances.Poison = 14;
-			Resistances.Energy = 14;
+			Attributes.Luck = 90;
+			Resistances.Fire = 15;
+			Resistances.Cold = 15;
+			Resistances.Poison = 15;
+			Resistances.Energy = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_EarringsOfTheElements( Serial serial ) : base( serial )

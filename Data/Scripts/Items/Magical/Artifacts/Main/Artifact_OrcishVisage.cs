@@ -19,11 +19,13 @@ namespace Server.Items
 		{
 			Name = "Orcish Visage";
 			Hue = 0x592;
-			ArmorAttributes.SelfRepair = 3;
+			ArmorAttributes.SelfRepair = 5;
 			Attributes.BonusStr = 10;
-			Attributes.BonusStam = 5;
+			Attributes.BonusStam = 10;
+			Attributes.RegenStam = 10;
+			Attributes.Luck = 45;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_OrcishVisage( Serial serial ) : base( serial )

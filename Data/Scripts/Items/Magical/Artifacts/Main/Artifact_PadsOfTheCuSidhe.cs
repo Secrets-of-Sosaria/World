@@ -10,7 +10,8 @@ namespace Server.Items
 		{
 			Name = "Pads of the Cu Sidhe";
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 0, "" );
+			Attributes.Luck = 150;
+			Server.Misc.Arty.ArtySetup(this, 10, "");
 		}
 
 		public Artifact_PadsOfTheCuSidhe( Serial serial ) : base( serial )

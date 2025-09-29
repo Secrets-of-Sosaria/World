@@ -10,11 +10,11 @@ namespace Server.Items
 		{
 			Name = "Bracelet of the Elements";
 			Hue = 0x4E9;
-			Attributes.Luck = 125;
-			Resistances.Fire = 18;
-			Resistances.Cold = 18;
-			Resistances.Poison = 18;
-			Resistances.Energy = 18;
+			Attributes.Luck = 70;
+			Resistances.Fire = 20;
+			Resistances.Cold = 20;
+			Resistances.Poison = 20;
+			Resistances.Energy = 20;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

@@ -20,7 +20,10 @@ namespace Server.Items
 			ItemID = 0x13CC;
 			SkillBonuses.SetValues( 0, SkillName.Stealth, 10.0 );
 			SkillBonuses.SetValues( 1, SkillName.Stealing, 10.0 );
-			Attributes.BonusDex = 5;
+			Attributes.BonusDex = 6;
+			Attributes.BonusStam = 3;
+			Attributes.RegenStam = 3;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

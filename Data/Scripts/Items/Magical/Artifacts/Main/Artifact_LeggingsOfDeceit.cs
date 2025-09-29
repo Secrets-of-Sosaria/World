@@ -20,14 +20,14 @@ namespace Server.Items
 	 	 	Name = "Leggings Of Deceit";
 	 	 	Hue = 38;
 			ItemID = 0x13BE;
-	 	 	Attributes.AttackChance = 5;
-	 	 	Attributes.DefendChance = 10;
-	 	 	Attributes.LowerManaCost = 8;
+	 	 	Attributes.AttackChance = 7;
+	 	 	Attributes.DefendChance = 15;
+	 	 	Attributes.LowerManaCost = 10;
 	 	 	ArmorAttributes.MageArmor = 1;
 			Attributes.BonusStam = 5;
 	 	 	Attributes.NightSight = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 	 	public Artifact_LeggingsOfDeceit(Serial serial) : base( serial )

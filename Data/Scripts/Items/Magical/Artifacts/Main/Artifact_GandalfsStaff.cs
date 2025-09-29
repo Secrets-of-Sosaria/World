@@ -20,17 +20,15 @@ namespace Server.Items
 		{
 			Hue = 0xB85;
 			Name = "Merlin's Mystical Staff";
-			Attributes.LowerManaCost = 25;
-			Attributes.LowerRegCost = 25;
 			SkillBonuses.SetValues( 0, SkillName.Psychology, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Magery, 10 );
 			SkillBonuses.SetValues( 2, SkillName.MagicResist, 10 );
 			SkillBonuses.SetValues( 3, SkillName.Meditation, 10 );
-			Attributes.RegenMana = 10;
+			Attributes.RegenMana = 7;
 			Attributes.BonusInt = 10;
 			Attributes.SpellChanneling = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 15, "(Calls Dragons) " );
+			Server.Misc.Arty.ArtySetup( this, 10, "Calls Dragons " );
 		}
 
 		public override void OnDoubleClick( Mobile from )

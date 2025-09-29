@@ -15,12 +15,10 @@ namespace Server.Items
 			ItemID = 0x2D1E;
 			Name = "Ailric's Longbow";
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
 			Attributes.AttackChance = 10;
-			Attributes.Luck = 100;
+			Attributes.Luck = 85;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_AilricsLongbow( Serial serial ) : base( serial )

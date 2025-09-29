@@ -20,6 +20,8 @@ namespace Server.Items
 			ArmorAttributes.SelfRepair = 10;
 			ArmorAttributes.MageArmor = 1;
 			ArmorAttributes.LowerStatReq = 100;
+			Attributes.SpellDamage = 10;
+			Attributes.LowerRegCost = 5;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

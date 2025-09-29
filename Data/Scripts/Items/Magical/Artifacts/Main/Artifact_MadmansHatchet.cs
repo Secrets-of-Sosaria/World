@@ -14,13 +14,13 @@ namespace Server.Items
             Name = "Madman's Hatchet";
             Hue = 1157;
 			ItemID = 0xF43;
-            Attributes.WeaponDamage = 50;
-            WeaponAttributes.HitLeechHits = 35;
+            Attributes.WeaponDamage = 25;
+            WeaponAttributes.HitLeechHits = 30;
             WeaponAttributes.UseBestSkill = 1;
-            Attributes.WeaponSpeed = 10;
+            Attributes.WeaponSpeed = 5;
             WeaponAttributes.HitFireball = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

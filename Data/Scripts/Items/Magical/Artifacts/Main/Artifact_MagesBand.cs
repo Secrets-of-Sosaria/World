@@ -9,15 +9,16 @@ namespace Server.Items
         public Artifact_MagesBand()
         {
             Name = "Mage's Band";
-            Attributes.LowerRegCost = 15;
-            Attributes.LowerManaCost = 5;
             Hue = 1170;
 			ItemID = 0x6731;
-            Attributes.CastRecovery = 3;
+            Attributes.LowerRegCost = 15;
+            Attributes.LowerManaCost = 7;
+            Attributes.CastSpeed = 2;
+            Attributes.CastRecovery = 2;
             Attributes.BonusMana = 15;
-            Attributes.RegenMana = 5;
+            Attributes.RegenMana = 7;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public Artifact_MagesBand( Serial serial )

@@ -11,13 +11,14 @@ namespace Server.Items
 		{
 			Name = "Ring of Protection";
 			Hue = 0;
-			Resistances.Physical = Utility.RandomMinMax(5,10);
-			Resistances.Fire = Utility.RandomMinMax(5,10);
-			Resistances.Cold = Utility.RandomMinMax(5,10);
-			Resistances.Poison = Utility.RandomMinMax(5,10);
-			Resistances.Energy = Utility.RandomMinMax(5,10);
+			Resistances.Physical = 30;
+			Resistances.Fire = 11;
+			Resistances.Cold = 11;
+			Resistances.Poison = 11;
+			Resistances.Energy = 12;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RingOfProtection( Serial serial ) : base( serial )

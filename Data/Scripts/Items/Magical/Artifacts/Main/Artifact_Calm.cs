@@ -16,15 +16,14 @@ namespace Server.Items
 			Name = "Calm";
 			Hue = 0x2cb;
 			ItemID = 0x143E;
-
+			AccuracyLevel = WeaponAccuracyLevel.Supremely;
+			DamageLevel = WeaponDamageLevel.Vanq;
+			Attributes.WeaponSpeed = 22;
+			WeaponAttributes.HitLeechMana = 50;
 			Attributes.SpellChanneling = 1;
-			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 50;
-
-			WeaponAttributes.HitLeechMana = 100;
 			WeaponAttributes.UseBestSkill = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_Calm( Serial serial ) : base( serial )

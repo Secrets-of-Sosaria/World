@@ -15,11 +15,11 @@ namespace Server.Items
 		{
 			Name = "Leggings of the Harrower";
 			Hue = 0x4F6;
-			Attributes.RegenHits = 5;
-			Attributes.RegenStam = 5;
-			Attributes.WeaponDamage = 21;
+			Attributes.RegenHits = 9;
+			Attributes.RegenStam = 9;
+			Attributes.WeaponDamage = 30;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LegsOfTheHarrower( Serial serial ) : base( serial )

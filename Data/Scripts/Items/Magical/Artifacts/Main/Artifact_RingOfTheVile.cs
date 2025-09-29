@@ -16,7 +16,7 @@ namespace Server.Items
 			Attributes.AttackChance = 15;
 			Resistances.Poison = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RingOfTheVile( Serial serial ) : base( serial )

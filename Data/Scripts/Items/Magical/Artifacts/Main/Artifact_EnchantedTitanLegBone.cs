@@ -14,13 +14,13 @@ namespace Server.Items
 			Name = "Enchanted Pirate Rapier";
 			Hue = 0x8A5;
 			ItemID = 0x1403;
-			WeaponAttributes.HitLowerDefend = 40;
-			WeaponAttributes.HitLightning = 40;
-			Attributes.AttackChance = 10;
+			WeaponAttributes.HitLowerDefend = 30;
+			WeaponAttributes.HitLightning = 30;
+			Attributes.AttackChance = 5;
 			Attributes.WeaponDamage = 20;
-			WeaponAttributes.ResistPhysicalBonus = 10;
+			WeaponAttributes.ResistPhysicalBonus = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_EnchantedTitanLegBone( Serial serial ) : base( serial )

@@ -11,10 +11,10 @@ namespace Server.Items
 			Hue = 0x114;
 			Name = "Robin Hood's Feathered Hat";
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
-			Attributes.Luck = 20;
+			Attributes.Luck = 85;
 			Attributes.BonusDex = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RobinHoodsFeatheredHat( Serial serial ) : base( serial )

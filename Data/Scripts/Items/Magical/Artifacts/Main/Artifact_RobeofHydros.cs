@@ -11,18 +11,16 @@ namespace Server.Items
 			ItemID = 0x0289;
 			Name = "Robe of the Lurker";
 			Hue = 0x97F;
-			Resistances.Physical = 8;
-			Resistances.Cold = 16;
+			Resistances.Cold = 15;
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
 			Attributes.LowerManaCost = 20;
-			Attributes.LowerRegCost = 20;
-			Attributes.RegenStam = 4;
+			Attributes.LowerRegCost = 22;
 			SkillBonuses.SetValues(0, SkillName.Elementalism, 20);
 			SkillBonuses.SetValues(1, SkillName.Focus, 15);
 			SkillBonuses.SetValues(2, SkillName.Meditation, 15);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "Hydros' Enchanted Robe" );
+			Server.Misc.Arty.ArtySetup( this, 10, "Hydros' Enchanted Robe" );
 		}
 
 		public Artifact_RobeofHydros( Serial serial ) : base( serial )

@@ -20,15 +20,14 @@ namespace Server.Items
 			Name = "Mask of the Prowler";
 			Hue = 0x30A;
 			ArtifactLevel = 2;
-			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Druidism, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 3, SkillName.Tracking, 5 + (Utility.RandomMinMax(0,2)*5) );
-			Attributes.AttackChance = 5 + (Utility.RandomMinMax(0,3)*5);
-			Attributes.WeaponSpeed = 5 + (Utility.RandomMinMax(0,3)*5);
-			Attributes.WeaponDamage = 5 + (Utility.RandomMinMax(0,3)*5);
-			Attributes.BonusDex = 5;
-			Attributes.RegenStam = 2;
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10);
+			SkillBonuses.SetValues( 1, SkillName.Taming, 10);
+			SkillBonuses.SetValues( 2, SkillName.Druidism, 10);
+			SkillBonuses.SetValues( 3, SkillName.Stealth, 10);
+			Attributes.AttackChance = 5;
+			Attributes.WeaponSpeed = 5;
+			Attributes.WeaponDamage = 10;
+			Attributes.BonusStr = 5;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 

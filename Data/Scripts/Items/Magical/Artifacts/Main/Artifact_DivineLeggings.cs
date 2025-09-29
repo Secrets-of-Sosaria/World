@@ -7,10 +7,6 @@ namespace Server.Items
 	{
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
-
-		public override int BasePhysicalResistance{ get{ return 9; } }
-		public override int BaseFireResistance{ get{ return 7; } }
-		public override int BaseColdResistance{ get{ return 6; } }
 		public override int BaseEnergyResistance{ get{ return 22; } }
 
 		[Constructable]
@@ -21,10 +17,11 @@ namespace Server.Items
 			ItemID = 0x13cb;
 			Attributes.BonusInt = 9;
 			Attributes.RegenMana = 2;
-			Attributes.ReflectPhysical = 14;
-			Attributes.LowerManaCost = 8;
+			Attributes.ReflectPhysical = 15;
+			Attributes.LowerManaCost = 10;
+			Attributes.Luck = 45;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_DivineLeggings( Serial serial ) : base( serial )

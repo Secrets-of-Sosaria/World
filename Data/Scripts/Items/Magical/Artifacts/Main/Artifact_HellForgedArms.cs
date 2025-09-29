@@ -22,15 +22,14 @@ namespace Server.Items
 			Name = "Hell Forged Arms";
 			Hue = 1208;
 			ItemID = 0x1410;
-			ArmorAttributes.SelfRepair = 3;
+			ArmorAttributes.SelfRepair = 5;
 			Attributes.AttackChance = 5;
 			Attributes.DefendChance = 10;
 			Attributes.EnhancePotions = 15;
 			Attributes.LowerManaCost = 5;
-			Attributes.SpellDamage = 15;
-			Attributes.WeaponDamage = 10;
+			Attributes.SpellDamage = 9;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 11, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HellForgedArms( Serial serial ) : base( serial )

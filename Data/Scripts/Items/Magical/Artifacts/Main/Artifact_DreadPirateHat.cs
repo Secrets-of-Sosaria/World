@@ -8,9 +8,6 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BaseColdResistance{ get{ return 14; } }
-		public override int BasePoisonResistance{ get{ return 10; } }
-
 		[Constructable]
 		public Artifact_DreadPirateHat()
 		{
@@ -21,10 +18,9 @@ namespace Server.Items
 			SkillBonuses.SetValues( 2, SkillName.Swords, 10 );
 			SkillBonuses.SetValues( 3, SkillName.Tactics, 10 );
 			Attributes.BonusDex = 8;
-			Attributes.AttackChance = 10;
-			Attributes.NightSight = 1;
+			Attributes.AttackChance = 4;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_DreadPirateHat( Serial serial ) : base( serial )

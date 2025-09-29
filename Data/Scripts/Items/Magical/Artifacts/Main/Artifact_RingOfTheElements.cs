@@ -11,13 +11,13 @@ namespace Server.Items
 			Name = "Ring of the Elements";
 			Hue = 0x4E9;
 			ItemID = 0x6731;
-			Attributes.Luck = 100;
-			Resistances.Fire = 16;
-			Resistances.Cold = 16;
-			Resistances.Poison = 16;
-			Resistances.Energy = 16;
+			Attributes.Luck = 90;
+			Resistances.Fire = 15;
+			Resistances.Cold = 15;
+			Resistances.Poison = 15;
+			Resistances.Energy = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RingOfTheElements( Serial serial ) : base( serial )

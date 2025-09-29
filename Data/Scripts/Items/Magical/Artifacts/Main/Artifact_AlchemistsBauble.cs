@@ -13,8 +13,8 @@ namespace Server.Items
 			Hue = Utility.RandomColor(0);
 			SkillBonuses.SetValues( 0, SkillName.Alchemy, 25.0 );
 			SkillBonuses.SetValues( 1, SkillName.Cooking, 25.0 );
-			Attributes.EnhancePotions = 30;
-			Attributes.LowerRegCost = 20;
+			Attributes.EnhancePotions = 20;
+			Attributes.LowerRegCost = 18;
 			Resistances.Poison = 10;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );

@@ -19,9 +19,10 @@ namespace Server.Items
 			ItemID = 0x13C6;
 			Attributes.BonusStr = 5;
 			Attributes.RegenHits = 5;
-			Attributes.RegenStam = 2;
+			Attributes.RegenStam = 5;
+			Attributes.Luck = 90;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GlovesOfTheFallenKing( Serial serial ) : base( serial )

@@ -17,10 +17,11 @@ namespace Server.Items
 			Hue = 0x455;
 			ItemID = 0x13C6;
 			Attributes.BonusStr = 10;
-			Attributes.ReflectPhysical = 8;
+			Attributes.ReflectPhysical = 10;
 			Attributes.AttackChance = 10;
+			Attributes.Luck = 40;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TotemGloves( Serial serial ) : base( serial )

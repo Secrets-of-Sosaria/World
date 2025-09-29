@@ -10,14 +10,14 @@ namespace Server.Items
 		{
 			Name = "Detective Boots of the Royal Guard";
 			Hue = 0x455;
-			Attributes.BonusInt = 10;
-			SkillBonuses.SetValues( 0, SkillName.Searching, Utility.RandomMinMax(10,25) );
-			SkillBonuses.SetValues( 1, SkillName.Psychology, Utility.RandomMinMax(10,25) );
-			SkillBonuses.SetValues( 2, SkillName.RemoveTrap, Utility.RandomMinMax(10,25) );
-			SkillBonuses.SetValues( 3, SkillName.Lockpicking, Utility.RandomMinMax(10,25) );
-			SkillBonuses.SetValues( 4, SkillName.Snooping, Utility.RandomMinMax(10,25) );
+			Attributes.BonusInt = 15;
+			SkillBonuses.SetValues( 0, SkillName.Searching, 10 );
+			SkillBonuses.SetValues( 1, SkillName.Psychology, 10 );
+			SkillBonuses.SetValues( 2, SkillName.RemoveTrap, 10 );
+			SkillBonuses.SetValues( 3, SkillName.Lockpicking, 10 );
+			SkillBonuses.SetValues( 4, SkillName.Snooping, 10 );
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_DetectiveBoots( Serial serial ) : base( serial )

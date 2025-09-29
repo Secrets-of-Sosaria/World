@@ -15,11 +15,11 @@ namespace Server.Items
 		{
 			Name = "Tunic of the Harrower";
 			Hue = 0x4F6;
-			Attributes.RegenHits = 7;
-			Attributes.RegenStam = 7;
-			Attributes.WeaponDamage = 35;
+			Attributes.RegenHits = 10;
+			Attributes.RegenStam = 10;
+			Attributes.WeaponDamage = 32;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TunicOfTheHarrower( Serial serial ) : base( serial )

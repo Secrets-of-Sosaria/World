@@ -17,11 +17,11 @@ namespace Server.Items
 			Hue = 0x47E;
 			ItemID = 0x1412;
 			ArmorAttributes.SelfRepair = 5;
-			Attributes.ReflectPhysical = 14;
-			Attributes.DefendChance = 14;
+			Attributes.ReflectPhysical = 30;
+			Attributes.DefendChance = 15;
 			Attributes.LowerManaCost = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HelmOfAegis( Serial serial ) : base( serial )

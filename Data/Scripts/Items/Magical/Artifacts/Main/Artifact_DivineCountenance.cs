@@ -5,9 +5,6 @@ namespace Server.Items
 {
 	public class Artifact_DivineCountenance : GiftHornedTribalMask
 	{
-		public override int BasePhysicalResistance{ get{ return 8; } }
-		public override int BaseFireResistance{ get{ return 6; } }
-		public override int BaseColdResistance{ get{ return 9; } }
 		public override int BaseEnergyResistance{ get{ return 25; } }
 
 		[Constructable]
@@ -16,11 +13,12 @@ namespace Server.Items
 			Hue = 0x482;
 			Name = "Divine Countenance";
 			Attributes.BonusInt = 8;
-			Attributes.RegenMana = 2;
-			Attributes.ReflectPhysical = 15;
-			Attributes.LowerManaCost = 8;
+			Attributes.RegenMana = 5;
+			Attributes.BonusMana = 5;
+			Attributes.ReflectPhysical = 25;
+			Attributes.LowerManaCost = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_DivineCountenance( Serial serial ) : base( serial )

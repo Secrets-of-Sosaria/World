@@ -21,10 +21,10 @@ namespace Server.Items
 			Hue = 0x592;
 			Attributes.BonusDex = 8;
 			Attributes.WeaponSpeed = 25;
-			Attributes.RegenStam = 5;
-			Attributes.BonusStam = 25;
+			Attributes.RegenStam = 4;
+			Attributes.BonusStam = 4;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HelmOfSwiftness( Serial serial ) : base( serial )

@@ -11,8 +11,8 @@ namespace Server.Items
 			ItemID = 0x2B69;
 			Hue = 0x455;
 			Name = "Shroud of Shadows";
-			SkillBonuses.SetValues( 0, SkillName.Hiding, 80 );
-			SkillBonuses.SetValues( 1, SkillName.Stealth, 80 );
+			SkillBonuses.SetValues( 0, SkillName.Hiding, 50 );
+			SkillBonuses.SetValues( 1, SkillName.Stealth, 50 );
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

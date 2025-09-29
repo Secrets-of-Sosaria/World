@@ -14,11 +14,12 @@ namespace Server.Items
 		{
 			Name = "Ornate Crown of the Harrower";
 			Hue = 0x4F6;
-			Attributes.RegenHits = 2;
-			Attributes.RegenStam = 3;
+			Attributes.RegenHits = 5;
+			Attributes.RegenStam = 5;
 			Attributes.WeaponDamage = 25;
+			Attributes.Luck = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_OrnateCrownOfTheHarrower( Serial serial ) : base( serial )

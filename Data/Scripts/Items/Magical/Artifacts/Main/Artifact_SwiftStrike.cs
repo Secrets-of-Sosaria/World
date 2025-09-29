@@ -17,15 +17,10 @@ namespace Server.Items
 			Hue = 2111;
 			WeaponAttributes.HitLeechHits = 25;
 			WeaponAttributes.HitLeechStam = 25;
-			WeaponAttributes.HitLowerAttack = 15;
-			WeaponAttributes.HitLowerDefend = 15;
-			Attributes.BonusDex = 3;
-			Attributes.BonusStam = 15;
-			Attributes.RegenStam = 3;
-			Attributes.WeaponDamage = 30;
-			Attributes.WeaponSpeed = 15;
+			WeaponAttributes.HitLowerAttack = 25;
+			WeaponAttributes.HitLowerDefend = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_SwiftStrike( Serial serial ) : base( serial )

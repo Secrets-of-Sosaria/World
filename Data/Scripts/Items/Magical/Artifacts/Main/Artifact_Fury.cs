@@ -17,12 +17,11 @@ namespace Server.Items
             WeaponAttributes.HitLightning = 25;
             WeaponAttributes.SelfRepair = 5;
             Attributes.CastSpeed = 1;
-            Attributes.Luck = 200;
-            Attributes.ReflectPhysical = 5;
-            Attributes.WeaponSpeed = 20;
+            Attributes.ReflectPhysical = 7;
+            Attributes.WeaponSpeed = 16;
             Hue = 1357;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

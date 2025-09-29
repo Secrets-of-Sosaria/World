@@ -13,13 +13,8 @@ namespace Server.Items
         {
             Name = "Miner's Pickaxe";
 			Hue = 974;
-            Attributes.WeaponDamage = 25;
-            Attributes.AttackChance = 25;
-            Attributes.DefendChance = 25;
-            WeaponAttributes.HitLowerAttack = 35;
-            WeaponAttributes.SelfRepair = 3;
-            Attributes.Luck = 100;
-            Attributes.ReflectPhysical = 15;
+            Attributes.AttackChance = 10;
+            WeaponAttributes.HitLowerAttack = 28;
             Attributes.WeaponSpeed = 20;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );

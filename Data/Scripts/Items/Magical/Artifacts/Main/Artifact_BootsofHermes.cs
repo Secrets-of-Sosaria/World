@@ -14,8 +14,9 @@ namespace Server.Items
 			ItemID = 0x2FC4;
 			Name = "Boots of Hermes";
 			Attributes.BonusDex = 10;
+			Attributes.BonusStam = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 15, "Sprinting " );
+			Server.Misc.Arty.ArtySetup( this, 10, "Sprinting " );
 		}
 
 		public override bool OnEquip( Mobile from )

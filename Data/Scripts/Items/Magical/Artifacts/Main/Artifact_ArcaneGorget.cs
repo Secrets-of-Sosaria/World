@@ -14,14 +14,17 @@ namespace Server.Items
 			Name = "Arcane Gorget";
 			Hue = 0x556;
 			ItemID = 0x13C7;
-			Attributes.NightSight = 1;
 			Attributes.DefendChance = 8;
 			Attributes.CastSpeed = 1;
 			Attributes.LowerManaCost = 2;
-			Attributes.LowerRegCost = 2;
-			Attributes.SpellDamage = 2;
+			Attributes.LowerRegCost = 3;
+			Attributes.SpellDamage = 5;
+			Attributes.BonusInt = 5;
+			Attributes.Luck = 45;
+			ArmorAttributes.SelfRepair = 2;
+			Attributes.NightSight = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArcaneGorget( Serial serial ) : base( serial )

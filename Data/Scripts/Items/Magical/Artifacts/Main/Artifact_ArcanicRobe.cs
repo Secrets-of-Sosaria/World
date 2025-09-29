@@ -15,11 +15,11 @@ namespace Server.Items
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
 			Attributes.LowerRegCost = 10;
-		 	Attributes.LowerManaCost = 5;
-			Attributes.Luck = 95;
+		 	Attributes.LowerManaCost = 10;
+			Attributes.Luck = 60;
 			Attributes.SpellDamage = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArcanicRobe( Serial serial ) : base( serial )

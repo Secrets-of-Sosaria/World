@@ -11,18 +11,17 @@ namespace Server.Items
 			ItemID = 0x5C14;
 			Name = "Mantle of the Daemon King";
 			Hue = 0x981;
-			Resistances.Physical = 8;
-			Resistances.Fire = 16;
+			Resistances.Fire = 15;
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 15;
-			Attributes.LowerRegCost = 15;
-			Attributes.RegenStam = 2;
+			Attributes.LowerManaCost = 7;
+			Attributes.LowerRegCost = 7;
+			Attributes.RegenStam = 5;
 			SkillBonuses.SetValues(0, SkillName.Elementalism, 15);
 			SkillBonuses.SetValues(1, SkillName.Focus, 10);
 			SkillBonuses.SetValues(2, SkillName.Meditation, 10);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 11, "Pyros' Vile Hood" );
+			Server.Misc.Arty.ArtySetup( this, 10, "Pyros' Vile Hood" );
 		}
 
 		public Artifact_MantleofPyros( Serial serial ) : base( serial )

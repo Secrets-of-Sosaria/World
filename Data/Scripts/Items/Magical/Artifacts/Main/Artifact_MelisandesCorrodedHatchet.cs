@@ -12,15 +12,14 @@ namespace Server.Items
 			Hue = 0x494;
 			Name = "Melisande's Corroded Hatchet";
 			ItemID = 0xF43;
-			SkillBonuses.SetValues( 0, SkillName.Lumberjacking, 5.0 );
-
+			SkillBonuses.SetValues( 0, SkillName.Lumberjacking, 15.0 );
 			Attributes.SpellChanneling = 1;
-			Attributes.WeaponSpeed = 15;
+			Attributes.WeaponSpeed = 30;
 			Attributes.WeaponDamage = -50;
-
-			WeaponAttributes.SelfRepair = 4;
+			WeaponAttributes.SelfRepair = 5;
+			WeaponAttributes.HitPoisonArea = 40;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_MelisandesCorrodedHatchet( Serial serial ) : base( serial )

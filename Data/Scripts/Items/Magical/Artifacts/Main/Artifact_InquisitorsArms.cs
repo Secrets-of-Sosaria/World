@@ -17,12 +17,14 @@ namespace Server.Items
 			Name = "Inquisitor's Arms";
 			Hue = 0x4F2;
 			ItemID = 0x1410;
+			SkillBonuses.SetValues( 0, SkillName.MagicResist, 10 );
 			Attributes.CastRecovery = 1;
-			Attributes.LowerManaCost = 10;
-			Attributes.LowerRegCost = 10;
+			Attributes.LowerManaCost = 7;
+			Attributes.LowerRegCost = 7;
+			Attributes.Luck = 75;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_InquisitorsArms( Serial serial ) : base( serial )

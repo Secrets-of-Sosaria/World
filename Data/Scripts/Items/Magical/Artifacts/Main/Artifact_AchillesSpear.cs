@@ -15,11 +15,10 @@ namespace Server.Items
 			Name = "Achille's Spear";
 			ItemID = 0xF62;
 			SkillBonuses.SetValues( 0, SkillName.Fencing, 25 );
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
-			Attributes.AttackChance = 10;
+			Attributes.AttackChance = 15;
+			Attributes.WeaponDamage = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_AchillesSpear( Serial serial ) : base( serial )

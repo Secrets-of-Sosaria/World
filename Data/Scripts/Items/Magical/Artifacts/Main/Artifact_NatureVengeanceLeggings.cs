@@ -19,14 +19,14 @@ namespace Server.Items
 		{
 			Name = "Leggings of Natural Vengeance";
 			Hue = 0x592;
-			Attributes.BonusInt = 3;
-			Attributes.RegenMana = 2;
-			Attributes.LowerManaCost = 6;
+			Attributes.BonusInt = 5;
+			Attributes.RegenMana = 8;
+			Attributes.LowerManaCost = 8;
 			ArtifactLevel = 2;
-			Attributes.SpellDamage = 5 + (Utility.RandomMinMax(0,3) * 5);
-			SkillBonuses.SetValues( 0, SkillName.Elementalism, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Druidism, 5 + (Utility.RandomMinMax(0,2)*5) );
+			Attributes.SpellDamage = 16;
+			SkillBonuses.SetValues( 0, SkillName.Elementalism, 10);
+			SkillBonuses.SetValues( 1, SkillName.Taming, 10);
+			SkillBonuses.SetValues( 2, SkillName.Druidism, 10);
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 

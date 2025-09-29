@@ -12,14 +12,13 @@ namespace Server.Items
 			ItemID = 0x2D27;
 			Hue = 0x485;
 			Name = "Overseer Sundered Blade";
-			Attributes.RegenStam = 2;
 			Attributes.AttackChance = 10;
-			Attributes.WeaponSpeed = 35;
-			Attributes.WeaponDamage = 45;
+			Attributes.WeaponSpeed = 25;
+			Attributes.WeaponDamage = 10;
 
 			Hue = this.GetElementalDamageHue();
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

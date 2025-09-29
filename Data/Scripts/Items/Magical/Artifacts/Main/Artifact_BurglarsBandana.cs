@@ -5,12 +5,6 @@ namespace Server.Items
 {
 	public class Artifact_BurglarsBandana : GiftBandana
 	{
-		public override int BasePhysicalResistance{ get{ return 10; } }
-		public override int BaseFireResistance{ get{ return 5; } }
-		public override int BaseColdResistance{ get{ return 7; } }
-		public override int BasePoisonResistance{ get{ return 10; } }
-		public override int BaseEnergyResistance{ get{ return 10; } }
-
 		[Constructable]
 		public Artifact_BurglarsBandana()
 		{
@@ -19,10 +13,10 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Stealing, 10.0 );
 			SkillBonuses.SetValues( 1, SkillName.Stealth, 10.0 );
 			SkillBonuses.SetValues( 2, SkillName.Snooping, 10.0 );
-
 			Attributes.BonusDex = 5;
+			Attributes.Luck = 80;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BurglarsBandana( Serial serial ) : base( serial )
