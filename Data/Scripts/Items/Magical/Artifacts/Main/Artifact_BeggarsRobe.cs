@@ -11,10 +11,10 @@ namespace Server.Items
 			Name = "Beggar's Robe";
 			Hue = 0x978;
 			ItemID = 0x567D;
-			Attributes.Luck = 100;
+			Attributes.Luck = 110;
 			SkillBonuses.SetValues( 0, SkillName.Begging, 30 );
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BeggarsRobe( Serial serial ) : base( serial )

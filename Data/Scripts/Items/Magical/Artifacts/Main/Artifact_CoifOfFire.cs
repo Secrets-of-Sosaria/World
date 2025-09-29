@@ -20,8 +20,11 @@ namespace Server.Items
 			ArmorAttributes.SelfRepair = 5;
 			Attributes.NightSight = 1;
 			Attributes.ReflectPhysical = 15;
+			Attributes.Luck = 100;
+			PhysicalBonus = 12;
+			FireBonus = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CoifOfFire( Serial serial ) : base( serial )

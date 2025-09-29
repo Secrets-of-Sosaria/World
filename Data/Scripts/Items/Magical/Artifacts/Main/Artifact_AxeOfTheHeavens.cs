@@ -15,11 +15,10 @@ namespace Server.Items
 			Hue = 0x4D5;
 			ItemID = 0xF4B;
 			WeaponAttributes.HitLightning = 50;
-			Attributes.AttackChance = 15;
-			Attributes.DefendChance = 15;
-			Attributes.WeaponDamage = 50;
+			Attributes.AttackChance = 10;
+			Attributes.WeaponDamage = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_AxeOfTheHeavens( Serial serial ) : base( serial )

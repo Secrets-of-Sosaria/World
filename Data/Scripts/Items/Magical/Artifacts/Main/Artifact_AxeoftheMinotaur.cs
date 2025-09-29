@@ -15,11 +15,11 @@ namespace Server.Items
 			Name = "Axe of the Minotaur";
 			ItemID = 0x13FB;
 			SkillBonuses.SetValues( 0, SkillName.Swords, 25 );
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
 			Attributes.AttackChance = 10;
+			Attributes.WeaponDamage = 10;
+			WeaponAttributes.HitPhysicalArea = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_AxeoftheMinotaur( Serial serial ) : base( serial )

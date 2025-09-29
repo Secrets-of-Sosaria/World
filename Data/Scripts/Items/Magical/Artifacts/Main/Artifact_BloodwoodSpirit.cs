@@ -13,8 +13,10 @@ namespace Server.Items
 			Hue = 0x27;
 			SkillBonuses.SetValues( 0, SkillName.Spiritualism, 30.0 );
 			SkillBonuses.SetValues( 1, SkillName.Necromancy, 20.0 );
+			Attributes.LowerManaCost = 10;
+			Attributes.Luck = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BloodwoodSpirit( Serial serial ) :  base( serial )

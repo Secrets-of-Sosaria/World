@@ -14,15 +14,11 @@ namespace Server.Items
             Name = "Annihilation";
 			Hue = 1154;
 			ItemID = 0xF4D;
-            Attributes.WeaponDamage = 20;
-            Attributes.AttackChance = 15;
-            Attributes.DefendChance = 5;
-            WeaponAttributes.HitLeechHits = 35;
-            WeaponAttributes.HitLightning = 20;
-            WeaponAttributes.SelfRepair = 3;
-            Attributes.Luck = 50;
-            Attributes.SpellChanneling = 1;
-            Attributes.WeaponSpeed = 25;
+            Attributes.WeaponDamage = 10;
+            Attributes.AttackChance = 10;
+            WeaponAttributes.HitLeechHits = 20;
+            WeaponAttributes.HitLightning = 10;
+            Attributes.WeaponSpeed = 10;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

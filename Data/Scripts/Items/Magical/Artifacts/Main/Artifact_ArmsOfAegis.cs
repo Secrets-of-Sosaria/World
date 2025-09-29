@@ -8,8 +8,6 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BasePhysicalResistance{ get{ return 12; } }
-
 		[Constructable]
 		public Artifact_ArmsOfAegis()
 		{
@@ -17,11 +15,13 @@ namespace Server.Items
 			Hue = 0x47E;
 			ItemID = 0x1410;
 			ArmorAttributes.SelfRepair = 5;
-			Attributes.ReflectPhysical = 12;
-			Attributes.DefendChance = 12;
+			Attributes.ReflectPhysical = 15;
+			Attributes.DefendChance = 15;
 			Attributes.LowerManaCost = 6;
+			Attributes.Luck = 45;
+			PhysicalBonus = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArmsOfAegis( Serial serial ) : base( serial )

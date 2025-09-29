@@ -14,15 +14,13 @@ namespace Server.Items
 			Hue = 0x986;
 			Name = "Vampire Killer";
 			ItemID = 0x6453;
-			Attributes.BonusStr = 10;
-			SkillBonuses.SetValues( 0, SkillName.Bludgeoning, 20 );
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
+			Attributes.BonusStr = 9;
 			DamageLevel = WeaponDamageLevel.Vanq;
 			Attributes.AttackChance = 10;
             Slayer = SlayerName.Silver;
             Slayer2 = SlayerName.Exorcism;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "Simon Belmonts's Whip " );
+			Server.Misc.Arty.ArtySetup( this, 10, "Simon Belmonts's Whip " );
 		}
 
 		public Artifact_BelmontWhip( Serial serial ) : base( serial )

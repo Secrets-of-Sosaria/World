@@ -14,14 +14,17 @@ namespace Server.Items
 			Name = "Arcane Gloves";
 			Hue = 0x556;
 			ItemID = 0x13C6;
-			Attributes.NightSight = 1;
 			Attributes.DefendChance = 10;
 			Attributes.CastSpeed = 1;
 			Attributes.LowerManaCost = 3;
 			Attributes.LowerRegCost = 3;
-			Attributes.SpellDamage = 3;
+			Attributes.SpellDamage = 5;
+			Attributes.BonusMana = 8;
+			Attributes.Luck = 50;
+			ArmorAttributes.SelfRepair = 2;
+			Attributes.NightSight = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArcaneGloves( Serial serial ) : base( serial )

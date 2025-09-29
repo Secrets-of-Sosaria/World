@@ -15,13 +15,12 @@ namespace Server.Items
 			Name = "Bonesmasher";
 			Hue = 0x482;
 			ItemID = 0x2D24;
-
 			SkillBonuses.SetValues( 0, SkillName.Bludgeoning, 10.0 );
-
 			WeaponAttributes.HitLeechMana = 40;
-			WeaponAttributes.SelfRepair = 2;
+			WeaponAttributes.HitLeechStam = 40;
+			Attributes.BonusStr = 3;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_Bonesmasher( Serial serial ) : base( serial )

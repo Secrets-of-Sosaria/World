@@ -13,13 +13,11 @@ namespace Server.Items
 			ItemID = 0x2FC4;
 			Name = "Boots of the Mystic Voice";
 			Hue = 0xAFE;
-			Resistances.Physical = 8;
-			Resistances.Energy = 16;
+			Resistances.Energy = 15;
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 15;
-			Attributes.LowerRegCost = 15;
-			Attributes.RegenStam = 2;
+			Attributes.LowerManaCost = 12;
+			Attributes.LowerRegCost = 12;
 			SkillBonuses.SetValues(0, SkillName.Elementalism, 15);
 			SkillBonuses.SetValues(1, SkillName.Focus, 10);
 			SkillBonuses.SetValues(2, SkillName.Meditation, 10);

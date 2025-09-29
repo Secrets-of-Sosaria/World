@@ -14,13 +14,12 @@ namespace Server.Items
 			Hue = 0x21F;
 			Name = "Blade of the Wilds";
 			Slayer = SlayerName.Repond;
-			WeaponAttributes.HitLeechHits = 50;
-			WeaponAttributes.HitDispel = 40;
+			WeaponAttributes.HitLeechHits = 20;
+			WeaponAttributes.HitDispel = 20;
 			Attributes.BonusHits = 10;
-			Attributes.WeaponDamage = 50;
-            SkillBonuses.SetValues(0, SkillName.Tactics,  5 + (Utility.RandomMinMax(0,2)*5));
-			SkillBonuses.SetValues(1, SkillName.Swords,  5 + (Utility.RandomMinMax(0,2)*5));
-			SkillBonuses.SetValues(2, SkillName.Druidism,  5 + (Utility.RandomMinMax(0,2)*5));
+			Attributes.WeaponDamage = 12;
+            SkillBonuses.SetValues(0, SkillName.Tactics, 10);
+			SkillBonuses.SetValues(2, SkillName.Druidism, 5);
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

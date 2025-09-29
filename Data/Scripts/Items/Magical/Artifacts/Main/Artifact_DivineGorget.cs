@@ -8,9 +8,6 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BasePhysicalResistance{ get{ return 6; } }
-		public override int BaseFireResistance{ get{ return 5; } }
-		public override int BaseColdResistance{ get{ return 7; } }
 		public override int BaseEnergyResistance{ get{ return 20; } }
 
 		[Constructable]
@@ -20,11 +17,12 @@ namespace Server.Items
 			Hue = 0x482;
 			ItemID = 0x13C7;
 			Attributes.BonusInt = 6;
-			Attributes.RegenMana = 1;
-			Attributes.ReflectPhysical = 12;
+			Attributes.RegenMana = 2;
+			Attributes.ReflectPhysical = 15;
 			Attributes.LowerManaCost = 5;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_DivineGorget( Serial serial ) : base( serial )

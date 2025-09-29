@@ -8,9 +8,6 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BaseColdResistance{ get{ return 12; } }
-		public override int BaseEnergyResistance{ get{ return 12; } }
-
 		[Constructable]
 		public Artifact_CapOfTheFallenKing()
 		{
@@ -18,9 +15,16 @@ namespace Server.Items
 			Hue = 0x76D;
 			Attributes.BonusStr = 5;
 			Attributes.RegenHits = 5;
-			Attributes.RegenStam = 1;
+			Attributes.RegenStam = 5;
+			Attributes.DefendChance = 5;
+			Attributes.Luck = 40;
+			PhysicalBonus = 8;
+			FireBonus = 8;
+			PoisonBonus = 8;
+			ColdBonus = 8;
+			EnergyBonus = 8;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CapOfTheFallenKing( Serial serial ) : base( serial )

@@ -14,14 +14,16 @@ namespace Server.Items
 			Name = "Arcane Tunic";
 			Hue = 0x556;
 			ItemID = 0x13CC;
-			Attributes.NightSight = 1;
-			Attributes.DefendChance = 14;
-			Attributes.CastSpeed = 1;
+			Attributes.DefendChance = 15;
+			Attributes.CastSpeed = 2;
+			Attributes.CastRecovery = 2;
 			Attributes.LowerManaCost = 5;
 			Attributes.LowerRegCost = 5;
 			Attributes.SpellDamage = 5;
+			ArmorAttributes.SelfRepair = 7;
+			Attributes.NightSight = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArcaneTunic( Serial serial ) : base( serial )

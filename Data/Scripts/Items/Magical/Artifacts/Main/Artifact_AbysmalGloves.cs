@@ -18,15 +18,15 @@ namespace Server.Items
 			EnergyBonus = 9;
 			PhysicalBonus = 7;
 			PoisonBonus = 7;
-			FireBonus = 10;
+			FireBonus = 9;
 			ArmorAttributes.SelfRepair = 10;
 			Attributes.BonusInt = 5;
 			Attributes.LowerManaCost = 5;
 			Attributes.LowerRegCost = 10;
-			Attributes.SpellDamage = 35;
+			Attributes.SpellDamage = 15;
 			Attributes.RegenMana = 5;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 11, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_AbysmalGloves( Serial serial ) : base( serial )

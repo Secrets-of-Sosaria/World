@@ -9,12 +9,6 @@ namespace Server.Items
 	{
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
-
-		public override int BaseColdResistance{ get{ return 6; } } 
-		public override int BaseEnergyResistance{ get{ return 7; } } 
-		public override int BasePhysicalResistance{ get{ return 8; } } 
-		public override int BasePoisonResistance{ get{ return 14; } } 
-		public override int BaseFireResistance{ get{ return 9; } } 
       
 		[Constructable]
 		public Artifact_ArmsOfToxicity()
@@ -22,12 +16,19 @@ namespace Server.Items
 			Name = "Arms Of Toxicity";
 			Hue = 1272;
 			ItemID = 0x13cd;
-			ArmorAttributes.SelfRepair = 3;
+			ArmorAttributes.SelfRepair = 5;
+			Attributes.BonusStam = 5;
+			Attributes.BonusDex = 4;
 			Attributes.AttackChance = 5;
 			Attributes.DefendChance = 10;
 			Attributes.ReflectPhysical = 10;
+			PoisonBonus = 15;
+			PhysicalBonus = 2;
+			FireBonus = 2;
+			ColdBonus = 2;
+			EnergyBonus = 2;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 		public Artifact_ArmsOfToxicity( Serial serial ) : base( serial )
 		{

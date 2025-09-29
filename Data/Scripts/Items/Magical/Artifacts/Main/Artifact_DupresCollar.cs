@@ -9,8 +9,6 @@ namespace Server.Items
 		public override int InitMaxHits{ get{ return 160; } }
 
 		public override int BaseFireResistance{ get{ return 13; } }
-		public override int BaseColdResistance{ get{ return 11; } }
-		public override int BasePhysicalResistance{ get{ return 8; } }
 		public override int BaseEnergyResistance{ get{ return 12; } }
 
 		[Constructable]
@@ -20,10 +18,11 @@ namespace Server.Items
 			Hue = 794;
 			ItemID = 0x1413;
 			Attributes.BonusStr = 5;
-			Attributes.RegenHits = 2;
+			Attributes.RegenHits = 5;
+			Attributes.Luck = 60;
 			Attributes.DefendChance = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_DupresCollar( Serial serial ) : base( serial )

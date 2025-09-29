@@ -15,12 +15,9 @@ namespace Server.Items
 			ItemID = 0x2AB6;
 			Name = "Cold Blood";
 			Attributes.WeaponSpeed = 40;
-
 			Attributes.BonusHits = 6;
-			Attributes.BonusStam = 6;
-			Attributes.BonusMana = 6;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

@@ -14,12 +14,12 @@ namespace Server.Items
 			Name = "Blade of Insanity";
 			Hue = 0x76D;
 			ItemID = 0x13FF;
-			WeaponAttributes.HitLeechStam = 100;
+			WeaponAttributes.HitLeechStam = 50;
 			Attributes.RegenStam = 2;
-			Attributes.WeaponSpeed = 30;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponSpeed = 10;
+			Attributes.WeaponDamage = 16;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BladeOfInsanity( Serial serial ) : base( serial )

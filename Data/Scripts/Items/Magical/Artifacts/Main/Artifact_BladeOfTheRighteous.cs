@@ -14,14 +14,14 @@ namespace Server.Items
 			Hue = 0x47E;
 			ItemID = 0xF61;
 			Name = "Blade of the Righteous";
+			SkillBonuses.SetValues( 0, SkillName.Knightship, 10 );
 			Slayer = SlayerName.DaemonDismissal;
 			Slayer2 = SlayerName.Exorcism;
 			WeaponAttributes.HitLeechHits = 50;
 			WeaponAttributes.UseBestSkill = 1;
-			Attributes.BonusHits = 10;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponDamage = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BladeOfTheRighteous( Serial serial ) : base( serial )

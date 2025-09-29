@@ -9,11 +9,14 @@ namespace Server.Items
 		{
 			Hue = 0x485;
 			Name = "Crimson Cincture";
-			Attributes.BonusDex = 5;
+			Attributes.BonusDex = 10;
 			Attributes.BonusHits = 10;
-			Attributes.RegenHits = 2;
+			Attributes.RegenHits = 5;
+			Attributes.BonusStam = 10;
+			Attributes.RegenStam = 5;
+			Attributes.Luck = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CrimsonCincture( Serial serial ) : base( serial )

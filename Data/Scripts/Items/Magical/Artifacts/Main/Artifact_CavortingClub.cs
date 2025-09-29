@@ -16,7 +16,7 @@ namespace Server.Items
 			ItemID = 0x13B4;
 			WeaponAttributes.SelfRepair = 3;
 			Attributes.WeaponSpeed = 25;
-			Attributes.WeaponDamage = 35;
+			Attributes.WeaponDamage = 16;
 			WeaponAttributes.ResistFireBonus = 8;
 			WeaponAttributes.ResistColdBonus = 8;
 			WeaponAttributes.ResistPoisonBonus = 8;
