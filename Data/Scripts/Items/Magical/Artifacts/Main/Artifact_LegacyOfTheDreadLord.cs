@@ -17,9 +17,9 @@ namespace Server.Items
 			Attributes.SpellChanneling = 1;
 			Attributes.CastRecovery = 3;
 			Attributes.WeaponSpeed = 30;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponDamage = 9;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LegacyOfTheDreadLord( Serial serial ) : base( serial )

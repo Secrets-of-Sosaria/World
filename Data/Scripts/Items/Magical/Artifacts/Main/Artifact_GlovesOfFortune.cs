@@ -13,12 +13,11 @@ namespace Server.Items
 		{
 			Name = "Gloves of Fortune";
 			Hue = 0x501;
-			Attributes.Luck = 200;
-			Attributes.DefendChance = 15;
-			Attributes.LowerRegCost = 40;
+			Attributes.Luck = 125;
+			Attributes.LowerRegCost = 8;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GlovesOfFortune( Serial serial ) : base( serial )

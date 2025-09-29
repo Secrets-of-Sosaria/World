@@ -13,14 +13,16 @@ namespace Server.Items
 		{
 			Name = "Arcane Cap";
 			Hue = 0x556;
-			Attributes.NightSight = 1;
-			Attributes.DefendChance = 6;
+			Attributes.DefendChance = 10;
 			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 3;
-			Attributes.LowerRegCost = 3;
-			Attributes.SpellDamage = 3;
+			Attributes.LowerManaCost = 5;
+			Attributes.LowerRegCost = 5;
+			Attributes.SpellDamage = 10;
+			Attributes.Luck = 50;
+			ArmorAttributes.SelfRepair = 2;
+			Attributes.NightSight = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArcaneCap( Serial serial ) : base( serial )

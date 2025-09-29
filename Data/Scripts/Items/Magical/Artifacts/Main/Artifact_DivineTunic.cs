@@ -9,8 +9,6 @@ namespace Server.Items
 		public override int InitMaxHits{ get{ return 160; } }
 
 		public override int BasePhysicalResistance{ get{ return 10; } }
-		public override int BaseFireResistance{ get{ return 9; } }
-		public override int BaseColdResistance{ get{ return 8; } }
 		public override int BaseEnergyResistance{ get{ return 24; } }
 
 		[Constructable]
@@ -20,11 +18,12 @@ namespace Server.Items
 			Hue = 0x482;
 			ItemID = 0x13CC;
 			Attributes.BonusInt = 10;
-			Attributes.RegenMana = 3;
-			Attributes.ReflectPhysical = 18;
+			Attributes.RegenMana = 4;
+			Attributes.ReflectPhysical = 20;
 			Attributes.LowerManaCost = 10;
+			Attributes.Luck = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_DivineTunic( Serial serial ) : base( serial )

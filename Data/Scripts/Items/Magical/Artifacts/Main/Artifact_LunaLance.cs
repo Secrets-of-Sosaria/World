@@ -16,10 +16,10 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Knightship, 10.0 );
 			Attributes.BonusStr = 5;
 			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 35;
+			Attributes.WeaponDamage = 18;
 			WeaponAttributes.UseBestSkill = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LunaLance( Serial serial ) : base( serial )

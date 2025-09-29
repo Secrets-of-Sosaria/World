@@ -14,13 +14,11 @@ namespace Server.Items
             Name = "Nordic Dragon Blade";
             Hue = 741;
 			ItemID = 0x568F;
-            Attributes.WeaponDamage = 50;
-            Attributes.WeaponSpeed = 20;
+            Attributes.WeaponDamage = 25;
             WeaponAttributes.HitLightning = 50;
-            Attributes.BonusHits = 30;
             Slayer = SlayerName.DragonSlaying;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

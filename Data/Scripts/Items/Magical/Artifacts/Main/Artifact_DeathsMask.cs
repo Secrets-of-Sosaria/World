@@ -10,11 +10,10 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BaseColdResistance{ get{ return 11; } } 
-		public override int BaseEnergyResistance{ get{ return 3; } } 
+		public override int BaseColdResistance{ get{ return 6; } } 
 		public override int BasePhysicalResistance{ get{ return 15; } } 
-		public override int BasePoisonResistance{ get{ return 12; } } 
-		public override int BaseFireResistance{ get{ return 12; } } 
+		public override int BasePoisonResistance{ get{ return 3; } } 
+		public override int BaseFireResistance{ get{ return 3; } } 
       
       [Constructable]
 		public Artifact_DeathsMask()
@@ -28,7 +27,7 @@ namespace Server.Items
 			Attributes.NightSight = 1;
 			Attributes.SpellDamage = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 11, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_DeathsMask( Serial serial ) : base( serial )

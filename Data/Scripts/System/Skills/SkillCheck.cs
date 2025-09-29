@@ -177,12 +177,16 @@ namespace Server.Misc
 
 			if (from.Player && SkillGainSettings.ShowChance(from)) 
 			{
-				double gainToShow = gc*100.0;
-				if (gainToShow > 100.0)
-				{
-					gainToShow = 100.0;
-				}
-   				from.SendMessage("Skill gain chance for {0}: {1:0.00}%", skillName, gainToShow);
+				if (skill.Lock == SkillLock.Up && skill.Base < skill.Cap && from.Skills.Total < from.Skills.Cap)
+    			{
+    			    double gainToShow = gc * 100.0;
+    			    if (gainToShow > 100.0)
+    			    {
+    			        gainToShow = 100.0;
+    			    }
+
+    			    from.SendMessage("Skill gain chance for {0}: {1:0.00}%", skillName, gainToShow);
+    			}
 			}
 
 

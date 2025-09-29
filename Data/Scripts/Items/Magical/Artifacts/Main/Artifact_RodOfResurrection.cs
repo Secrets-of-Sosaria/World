@@ -15,8 +15,9 @@ namespace Server.Items
 		{
 			Name = "Rod Of Resurrection";
 			Hue = 0x4AC;
+			Attributes.Luck = 125;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 15, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void OnDoubleClick( Mobile from )

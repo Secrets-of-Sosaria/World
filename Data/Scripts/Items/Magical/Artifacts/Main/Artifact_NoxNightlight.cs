@@ -13,10 +13,10 @@ namespace Server.Items
             Attributes.AttackChance = 5;
             Attributes.DefendChance = 10;
 			Attributes.ReflectPhysical = 15;
-            Attributes.Luck = 150;
+            Attributes.Luck = 55;
 			Resistances.Poison = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_NoxNightlight( Serial serial ) : base( serial )

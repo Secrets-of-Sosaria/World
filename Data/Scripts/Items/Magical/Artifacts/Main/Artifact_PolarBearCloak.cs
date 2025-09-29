@@ -10,9 +10,10 @@ namespace Server.Items
 		{
 			Hue = 0x47E;
 			Name = "Polar Bear Cape";
-			Resistances.Cold = 30;
+			Resistances.Cold = 50;
+			Attributes.Luck = 100;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 1, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_PolarBearCape( Serial serial ) : base( serial )

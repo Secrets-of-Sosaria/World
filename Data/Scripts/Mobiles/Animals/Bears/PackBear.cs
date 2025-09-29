@@ -14,7 +14,7 @@ namespace Server.Mobiles
 		public PackBear() : base( AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4 )
 		{
 			Name = "a pack bear";
-			Body = Utility.RandomList( 177, 34, 179 );
+			Body = Utility.RandomList( 177, 179 );
 			BaseSoundID = 0xA3;
 
 			ControlSlots = 5;

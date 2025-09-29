@@ -17,11 +17,11 @@ namespace Server.Items
 			Hue = 0x47E;
 			ItemID = 0x1415;
 			ArmorAttributes.SelfRepair = 5;
-			Attributes.ReflectPhysical = 18;
-			Attributes.DefendChance = 18;
+			Attributes.ReflectPhysical = 20;
+			Attributes.DefendChance = 25;
 			Attributes.LowerManaCost = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TunicOfAegis( Serial serial ) : base( serial )

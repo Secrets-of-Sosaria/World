@@ -15,10 +15,10 @@ namespace Server.Items
 
 			Attributes.SpellChanneling = 1;
 			Attributes.AttackChance = 12;
-			Attributes.WeaponSpeed = 30;
-			Attributes.WeaponDamage = 35;
+			Attributes.WeaponSpeed = 10;
+			Attributes.WeaponDamage = 21;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

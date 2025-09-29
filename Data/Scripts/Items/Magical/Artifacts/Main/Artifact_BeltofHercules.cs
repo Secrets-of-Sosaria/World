@@ -11,8 +11,8 @@ namespace Server.Items
 			Hue = 0xB54;
 			ItemID = 0x2790;
 			Name = "Belt of Hercules";
-			Attributes.BonusStr = 30;
-			SkillBonuses.SetValues( 0, SkillName.FistFighting, 50 );
+			Attributes.BonusStr = 21;
+			SkillBonuses.SetValues( 0, SkillName.FistFighting, 30 );
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

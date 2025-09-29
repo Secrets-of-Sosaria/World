@@ -13,12 +13,12 @@ namespace Server.Items
 		{
 			Name = "Breath of the Dead";
 			Hue = 0x455;
-			WeaponAttributes.HitLeechHits = 100;
-			WeaponAttributes.HitHarm = 25;
+			WeaponAttributes.HitLeechHits = 75;
 			Attributes.SpellDamage = 5;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponDamage = 7;
+			Attributes.SpellChanneling = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BreathOfTheDead( Serial serial ) : base( serial )

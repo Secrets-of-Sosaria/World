@@ -16,13 +16,13 @@ namespace Server.Items
 		{
 			Hue = 0x592;
 			Name = "Coat of Natural Vengeance";
-			Attributes.DefendChance = 5 + (Utility.RandomMinMax(0,3)*5);
-			Attributes.LowerManaCost = 8;
+			Attributes.DefendChance = 5;
+			Attributes.LowerManaCost = 11;
 			ArtifactLevel = 2;
-			Attributes.SpellDamage = 5 + (Utility.RandomMinMax(0,3) * 5);
-			SkillBonuses.SetValues( 0, SkillName.Elementalism, 5 + (Utility.RandomMinMax(0,3)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 5 + (Utility.RandomMinMax(0,3)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Druidism, 5 + (Utility.RandomMinMax(0,2)*5) );
+			Attributes.SpellDamage = 11;
+			SkillBonuses.SetValues( 0, SkillName.Elementalism, 15);
+			SkillBonuses.SetValues( 1, SkillName.Taming, 15);
+			SkillBonuses.SetValues( 2, SkillName.Druidism, 15);
             Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 

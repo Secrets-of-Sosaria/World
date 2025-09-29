@@ -11,16 +11,16 @@ namespace Server.Items
 		{
 			Name = "Shirt of The Pied Paper";
 			Hue = 0x668;
-			SkillBonuses.SetValues( 0, SkillName.Musicianship,  10.0 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Peacemaking,  10.0 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Herding,  10.0 + (Utility.RandomMinMax(0,2)*5) );
-			Attributes.DefendChance = 5 + (Utility.RandomMinMax(0,2)*5);
-            Attributes.RegenStam = 2;
-            Attributes.BonusStam = 8;
+			SkillBonuses.SetValues( 0, SkillName.Musicianship,  10.0);
+			SkillBonuses.SetValues( 1, SkillName.Peacemaking,  15.0);
+			SkillBonuses.SetValues( 2, SkillName.Herding,  10.0);
+			Attributes.DefendChance = 10;
+            Attributes.RegenStam = 5;
+            Attributes.BonusStam = 10;
             Attributes.CastSpeed = 1;
             Attributes.CastRecovery = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ShirtOfThePiper( Serial serial ) : base( serial )

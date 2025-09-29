@@ -25,12 +25,12 @@ namespace Server.Items
 			ArmorAttributes.MageArmor = 1;
 			Attributes.LowerManaCost = 5;
 			Attributes.LowerRegCost = 15;
-			Attributes.Luck = 150;
+			Attributes.Luck = 25;
 			Attributes.RegenMana = 5;
 			Attributes.SpellDamage = 10;
 			Attributes.BonusMana = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_WizardsPants( Serial serial ) : base( serial )

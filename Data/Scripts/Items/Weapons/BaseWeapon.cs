@@ -245,11 +245,11 @@ namespace Server.Items
 
 		public virtual bool CanFortify{ get{ return true; } }
 
-		public override int PhysicalResistance{ get{ return (int)(GetResourceAttrs().ArmorPhysicalResist/3) + m_AosWeaponAttributes.ResistPhysicalBonus; } }
-		public override int FireResistance{ get{ return (int)(GetResourceAttrs().ArmorFireResist/2) + m_AosWeaponAttributes.ResistFireBonus; } }
-		public override int ColdResistance{ get{ return (int)(GetResourceAttrs().ArmorColdResist/2) + m_AosWeaponAttributes.ResistColdBonus; } }
-		public override int PoisonResistance{ get{ return (int)(GetResourceAttrs().ArmorPoisonResist/2) + m_AosWeaponAttributes.ResistPoisonBonus; } }
-		public override int EnergyResistance{ get{ return (int)(GetResourceAttrs().ArmorEnergyResist/2) + m_AosWeaponAttributes.ResistEnergyBonus; } }
+		public override int PhysicalResistance{ get{ return m_AosWeaponAttributes.ResistPhysicalBonus; } }
+		public override int FireResistance{ get{ return m_AosWeaponAttributes.ResistFireBonus; } }
+		public override int ColdResistance{ get{ return m_AosWeaponAttributes.ResistColdBonus; } }
+		public override int PoisonResistance{ get{ return m_AosWeaponAttributes.ResistPoisonBonus; } }
+		public override int EnergyResistance{ get{ return m_AosWeaponAttributes.ResistEnergyBonus; } }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override Density Density { get { return CraftResources.GetDensity( this ); } }
@@ -848,22 +848,24 @@ namespace Server.Items
 		{
 			SkillName sk;
 
-			if ( checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0 )
+			if (checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0)
 			{
 				double swrd = m.Skills[SkillName.Swords].Value;
 				double fenc = m.Skills[SkillName.Fencing].Value;
 				double mcng = m.Skills[SkillName.Bludgeoning].Value;
+				double fist = m.Skills[SkillName.FistFighting].Value;
 				double val;
 
 				sk = SkillName.Swords;
 				val = swrd;
 
-				if ( fenc > val ){ sk = SkillName.Fencing; val = fenc; }
-				if ( mcng > val ){ sk = SkillName.Bludgeoning; val = mcng; }
+				if ( fenc > val ) { sk = SkillName.Fencing; val = fenc; }
+				if ( mcng > val ) { sk = SkillName.Bludgeoning; val = mcng; }
+				if ( fist > val ) { sk = SkillName.FistFighting; val = fist; }
 			}
-			else if ( m_AosWeaponAttributes.MageWeapon != 0 )
+			else if (m_AosWeaponAttributes.MageWeapon != 0)
 			{
-				if ( m.Skills[SkillName.Magery].Value > m.Skills[Skill].Value )
+				if (m.Skills[SkillName.Magery].Value > m.Skills[Skill].Value)
 					sk = SkillName.Magery;
 				else
 					sk = Skill;
@@ -872,7 +874,7 @@ namespace Server.Items
 			{
 				sk = Skill;
 
-				if ( sk != SkillName.FistFighting && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.FistFighting].Value > m.Skills[sk].Value )
+				if (sk != SkillName.FistFighting && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.FistFighting].Value > m.Skills[sk].Value)
 					sk = SkillName.FistFighting;
 			}
 
@@ -2432,7 +2434,7 @@ namespace Server.Items
 				damageBonus = 100;
 			#endregion
 
-			double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + necroBonus + wizardBonus + bowyerBonus + bushidoBonus + ninjaBonus + armsLoreBonus + lumberBonus + miningBonus + fishingBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
+			double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + necroBonus + wizardBonus + bowyerBonus + bushidoBonus + ninjaBonus + armsLoreBonus + lumberBonus + miningBonus + fishingBonus + ellyBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
 
 			return damage + (int)(damage * totalBonus);
 		}

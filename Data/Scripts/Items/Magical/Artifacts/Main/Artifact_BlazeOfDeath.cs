@@ -14,12 +14,11 @@ namespace Server.Items
 			Name = "Blaze of Death";
 			Hue = 0x501;
 			ItemID = 0x143E;
-			WeaponAttributes.HitFireArea = 50;
-			WeaponAttributes.HitFireball = 50;
-			Attributes.WeaponSpeed = 25;
-			Attributes.WeaponDamage = 35;
+			WeaponAttributes.HitFireArea = 25;
+			WeaponAttributes.HitFireball = 25;
+			Attributes.WeaponSpeed = 15;
+			Attributes.WeaponDamage = 8;
 			WeaponAttributes.ResistFireBonus = 10;
-			WeaponAttributes.LowerStatReq = 100;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

@@ -16,8 +16,12 @@ namespace Server.Items
 		{
 			Name = "Acidic Robe";
 			Hue = 1167;
-			Resistances.Fire = 20;
-			Resistances.Poison = 20;
+			Resistances.Fire = 30;
+			Resistances.Poison = 30;
+			Attributes.RegenStam = 5;
+			Attributes.BonusDex = 5;
+			Attributes.Luck = 50;
+			Attributes.ReflectPhysical = 15;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "Acid Soaked " );
 		}

@@ -14,10 +14,11 @@ namespace Server.Items
 			Hue = 0xB33;
 			Name = "Hat of the Magi";
 			Attributes.BonusInt = 8;
-			Attributes.RegenMana = 4;
+			Attributes.RegenMana = 8;
 			Attributes.SpellDamage = 10;
+			Attributes.Luck = 40;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HatOfTheMagi( Serial serial ) : base( serial )

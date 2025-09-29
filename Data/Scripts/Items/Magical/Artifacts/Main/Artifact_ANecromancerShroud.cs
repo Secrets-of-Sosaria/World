@@ -15,7 +15,7 @@ namespace Server.Items
 		{
 			Name = "Necromancer Shroud";
 			Hue = 0x2FBA;
-			Attributes.BonusMana = 50;
+			Attributes.BonusMana = 30;
 			SkillBonuses.SetValues( 0, SkillName.Spiritualism, 25 );
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 25 );
 			ArtifactLevel = 2;

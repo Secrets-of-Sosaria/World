@@ -16,14 +16,12 @@ namespace Server.Items
 			Name = "Retort";
 			Hue = 910;
 			WeaponAttributes.HitLeechHits = 20;
-			WeaponAttributes.HitLeechStam = 35;
+			WeaponAttributes.HitLeechStam = 20;
 			WeaponAttributes.HitLowerDefend = 30;
-			WeaponAttributes.SelfRepair = 3;
 			Attributes.BonusDex = 5;
-			Attributes.WeaponDamage = 50;
-			Attributes.WeaponSpeed = 25;
+			Attributes.WeaponDamage = 8;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_Retort( Serial serial ) : base( serial )

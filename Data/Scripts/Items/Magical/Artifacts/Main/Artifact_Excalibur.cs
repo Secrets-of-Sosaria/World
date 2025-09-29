@@ -14,15 +14,13 @@ namespace Server.Items
 			Hue = 0x835;
 			Name = "Excalibur";
 			ItemID = 0x568F;
-			Attributes.BonusStr = 10;
+			Attributes.BonusStr = 9;
 			SkillBonuses.SetValues( 0, SkillName.Knightship, 20 );
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
 			Attributes.AttackChance = 10;
             Slayer = SlayerName.Silver;
             Slayer2 = SlayerName.Exorcism;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "King Arthur's Lost Sword " );
+			Server.Misc.Arty.ArtySetup( this, 10, "King Arthur's Lost Sword" );
 		}
 
 		public Artifact_Excalibur( Serial serial ) : base( serial )

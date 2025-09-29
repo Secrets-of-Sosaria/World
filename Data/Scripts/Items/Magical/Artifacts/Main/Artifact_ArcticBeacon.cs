@@ -13,10 +13,10 @@ namespace Server.Items
             Attributes.AttackChance = 5;
             Attributes.DefendChance = 10;
 			Attributes.ReflectPhysical = 15;
-            Attributes.Luck = 150;
-			Resistances.Cold = 15;
+            Attributes.Luck = 100;
+			Resistances.Cold = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArcticBeacon( Serial serial ) : base( serial )

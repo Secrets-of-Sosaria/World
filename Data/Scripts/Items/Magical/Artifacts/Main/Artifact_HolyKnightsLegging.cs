@@ -15,10 +15,14 @@ namespace Server.Items
 		{
 			Name = "Holy Knight's Legging";
 			Hue = 0x47E;
+			SkillBonuses.SetValues( 0, SkillName.Knightship, 10 );
+			SkillBonuses.SetValues( 1, SkillName.Tactics, 10 );
 			Attributes.BonusHits = 10;
+			Attributes.BonusStam = 10;
+			Attributes.Luck = 45;
 			Attributes.ReflectPhysical = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HolyKnightsLegging( Serial serial ) : base( serial )

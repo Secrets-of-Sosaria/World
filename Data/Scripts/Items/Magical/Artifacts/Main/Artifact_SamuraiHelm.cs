@@ -19,10 +19,11 @@ namespace Server.Items
 		{
 			Name = "Ancient Samurai Helm";
 			Weight = 5.0;
-			Attributes.DefendChance = 15;
+			Attributes.DefendChance = 10;
 			ArmorAttributes.SelfRepair = 10;
-			ArmorAttributes.LowerStatReq = 100;
 			ArmorAttributes.MageArmor = 1;
+			Attributes.AttackChance = 10;
+			Attributes.Luck = 45;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

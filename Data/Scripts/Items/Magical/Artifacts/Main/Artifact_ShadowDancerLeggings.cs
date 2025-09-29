@@ -20,8 +20,11 @@ namespace Server.Items
 			Hue = 0x455;
 			SkillBonuses.SetValues( 0, SkillName.Stealth, 20.0 );
 			SkillBonuses.SetValues( 1, SkillName.Stealing, 20.0 );
+			Attributes.BonusStam = 5;
+			Attributes.RegenStam = 5;
+			Attributes.Luck = 65;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ShadowDancerLeggings( Serial serial ) : base( serial )

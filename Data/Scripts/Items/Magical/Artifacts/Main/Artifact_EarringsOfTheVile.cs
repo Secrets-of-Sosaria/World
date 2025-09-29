@@ -10,12 +10,12 @@ namespace Server.Items
 		{
 			Name = "Earrings of the Vile";
 			Hue = 0x4F7;
-			Attributes.BonusDex = 6;
-			Attributes.RegenStam = 4;
+			Attributes.BonusDex = 9;
+			Attributes.RegenStam = 10;
 			Attributes.AttackChance = 12;
 			Resistances.Poison = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_EarringsOfTheVile( Serial serial ) : base( serial )

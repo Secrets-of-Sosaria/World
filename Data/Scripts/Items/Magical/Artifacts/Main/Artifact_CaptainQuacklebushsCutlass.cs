@@ -17,10 +17,10 @@ namespace Server.Items
 			Attributes.BonusDex = 5;
 			Attributes.AttackChance = 10;
 			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponDamage = 16;
 			WeaponAttributes.UseBestSkill = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CaptainQuacklebushsCutlass( Serial serial ) : base( serial )

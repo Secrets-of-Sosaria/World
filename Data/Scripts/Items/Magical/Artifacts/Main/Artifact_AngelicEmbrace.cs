@@ -22,17 +22,17 @@ namespace Server.Items
             Name = "Angelic Embrace";
             Hue = 1150;
 			ItemID = 0x1410;
+            ArmorAttributes.MageArmor = 1;
             Attributes.NightSight = 1;
             Attributes.DefendChance = 10;
             Attributes.WeaponDamage = 15;
             Attributes.WeaponSpeed = 5;
-            Attributes.Luck = 150;
+            Attributes.Luck = 20;
             Attributes.SpellDamage = 10;
-            ArmorAttributes.MageArmor = 1;
             ArmorAttributes.SelfRepair = 3;
-            Attributes.LowerManaCost = 5;
+            Attributes.LowerManaCost = 4;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public Artifact_AngelicEmbrace(Serial serial) : base( serial )

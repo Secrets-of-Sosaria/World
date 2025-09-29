@@ -19,7 +19,7 @@ namespace Server.Items
 			Attributes.SpellChanneling = 1;
 			Attributes.CastSpeed = 1;
 			WeaponAttributes.SelfRepair = 5;
-			Attributes.Luck = 200;
+			Attributes.Luck = 45;
 			Attributes.RegenMana = 5;
 			Attributes.SpellDamage = 15;
 			ArtifactLevel = 2;

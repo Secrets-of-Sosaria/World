@@ -35,7 +35,7 @@ namespace Server.Mobiles
 			Body = 322;
 			BaseSoundID = 268;
 			Hue = 2966;
-			Resource = CraftResource.CaddelliteBlock;
+			Resource = CraftResource.Xormite;
 
 			SetStr( 256, 385 );
 			SetDex( 196, 215 );

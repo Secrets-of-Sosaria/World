@@ -25,8 +25,8 @@ namespace Server.Items
 			ArmorAttributes.MageArmor = 1;
 			Attributes.AttackChance = 5;
 			Attributes.DefendChance = 5;
-			Attributes.SpellDamage = 10;
-			Attributes.WeaponDamage = 15;
+			Attributes.SpellDamage = 20;
+			Attributes.WeaponDamage = 20;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

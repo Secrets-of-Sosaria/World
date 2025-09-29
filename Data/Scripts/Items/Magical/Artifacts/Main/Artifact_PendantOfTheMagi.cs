@@ -10,12 +10,12 @@ namespace Server.Items
 			Name = "Pendant of the Magi";
 			Hue = 0x48D;
 			Attributes.BonusInt = 10;
-			Attributes.RegenMana = 3;
+			Attributes.RegenMana = 5;
 			Attributes.SpellDamage = 5;
 			Attributes.LowerManaCost = 10;
-			Attributes.LowerRegCost = 30;
+			Attributes.LowerRegCost = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_PendantOfTheMagi( Serial serial ) : base( serial )

@@ -18,13 +18,11 @@ namespace Server.Items
 
 			Attributes.SpellChanneling = 1;
 			Attributes.AttackChance = 10;
-			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 50;
-
-			WeaponAttributes.HitLeechMana = 100;
+			Attributes.WeaponSpeed = 23;
+			WeaponAttributes.HitLeechMana = 33;
 			WeaponAttributes.UseBestSkill = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_Pacify( Serial serial ) : base( serial )

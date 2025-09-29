@@ -16,14 +16,14 @@ namespace Server.Items
 			ItemID = 0x26CE;
 			Weight = 5.0;
 			Hue = 91;
-			WeaponAttributes.HitDispel = 25;
+			WeaponAttributes.HitDispel = 15;
 			Attributes.WeaponSpeed = 30;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponDamage = 10;
 			WeaponAttributes.ResistFireBonus = 15;
 			MinDamage = 15;
 			MaxDamage = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "Glass Sword " );
+			Server.Misc.Arty.ArtySetup( this, 10, "Glass Sword " );
 		}
 
 		public Artifact_GlassSword( Serial serial ) : base( serial )

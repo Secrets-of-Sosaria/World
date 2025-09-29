@@ -14,12 +14,11 @@ namespace Server.Items
 			Name = "Slayer of Dragons";
 			Hue = 0x530;
 			Slayer = SlayerName.DragonSlaying;
-			Attributes.Luck = 110;
-			Attributes.WeaponDamage = 50;
+			Attributes.Luck = 70;
+			Attributes.WeaponDamage = 20;
 			WeaponAttributes.ResistFireBonus = 20;
-			WeaponAttributes.UseBestSkill = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

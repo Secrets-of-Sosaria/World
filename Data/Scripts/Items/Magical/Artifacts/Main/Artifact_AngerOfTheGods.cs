@@ -13,17 +13,14 @@ namespace Server.Items
         {
             Name = "Anger of the Gods";
 			ItemID = 0xF5E;
-            Attributes.WeaponDamage = 35;
-            Attributes.AttackChance = 10;
-            Attributes.DefendChance = 15;
-            WeaponAttributes.HitHarm = 50;
+            Attributes.AttackChance = 11;
+            Attributes.DefendChance = 5;
+            WeaponAttributes.HitHarm = 20;
             WeaponAttributes.HitLeechMana = 15;
-            WeaponAttributes.HitLowerAttack = 25;
-            Attributes.CastSpeed = 1;
-            Attributes.WeaponSpeed = 20;
+            WeaponAttributes.HitLowerAttack = 15;
             Hue = 1265;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

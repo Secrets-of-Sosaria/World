@@ -15,11 +15,11 @@ namespace Server.Items
 			Attributes.BonusInt = 5;
 			Attributes.BonusMana = 10;
 			Attributes.LowerManaCost = 5;
-			Attributes.LowerRegCost = 10;
+			Attributes.LowerRegCost = 17;
 			Attributes.SpellDamage = 15;
 			Attributes.BonusMana = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_FurCapeOfTheSorceress( Serial serial ) : base( serial )

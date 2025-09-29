@@ -23,15 +23,15 @@ namespace Server.Items
 			Hue = 0x2a3;
 
 			Attributes.Luck = 100;
-			Attributes.RegenHits = 3;
+			Attributes.RegenHits = 5;
 
 			if( Utility.RandomBool() )
-				Attributes.BonusHits = 30;
+				Attributes.BonusHits = 28;
 			else
-				Attributes.AttackChance = 30;
+				Attributes.AttackChance = 14;
 
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 3, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_OrcChieftainHelm( Serial serial ) : base( serial )

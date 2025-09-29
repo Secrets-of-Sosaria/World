@@ -14,10 +14,9 @@ namespace Server.Items
 			Name = "Titan's Hammer";
 			Hue = 0x482;
 			ItemID = 0x267C;
-			WeaponAttributes.HitEnergyArea = 100;
+			WeaponAttributes.HitEnergyArea = 33;
 			Attributes.BonusStr = 15;
-			Attributes.AttackChance = 15;
-			Attributes.WeaponDamage = 50;
+			Attributes.AttackChance = 5;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

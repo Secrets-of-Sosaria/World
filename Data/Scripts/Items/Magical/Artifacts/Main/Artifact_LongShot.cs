@@ -14,14 +14,12 @@ namespace Server.Items
             Name = "Long Shot";
             Hue = 1195;
 			ItemID = 0x13B2;
-            Attributes.WeaponDamage = 30;
-            Attributes.AttackChance = 35;
-            WeaponAttributes.HitLightning = 45;
-            WeaponAttributes.SelfRepair = 3;
-            Attributes.RegenHits = 4;
+            Attributes.WeaponDamage = 20;
+            Attributes.AttackChance = 10;
+            WeaponAttributes.HitLightning = 25;
             Attributes.SpellChanneling = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

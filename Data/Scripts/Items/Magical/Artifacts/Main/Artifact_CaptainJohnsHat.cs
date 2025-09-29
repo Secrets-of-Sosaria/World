@@ -5,10 +5,6 @@ namespace Server.Items
 {
 	public class Artifact_CaptainJohnsHat : GiftTricorneHat
 	{
-		public override int BasePhysicalResistance{ get{ return 2; } }
-		public override int BaseFireResistance{ get{ return 6; } }
-		public override int BaseColdResistance{ get{ return 9; } }
-		public override int BasePoisonResistance{ get{ return 7; } }
 		public override int BaseEnergyResistance{ get{ return 23; } }
 
 		public override int InitMinHits{ get{ return 150; } }
@@ -24,11 +20,10 @@ namespace Server.Items
 			Attributes.BonusDex = 8;
 			Attributes.NightSight = 1;
 			Attributes.AttackChance = 15;
-
 			SkillBonuses.Skill_1_Name = SkillName.Swords;
-			SkillBonuses.Skill_1_Value = 20;
+			SkillBonuses.Skill_1_Value = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CaptainJohnsHat( Serial serial ) : base( serial )

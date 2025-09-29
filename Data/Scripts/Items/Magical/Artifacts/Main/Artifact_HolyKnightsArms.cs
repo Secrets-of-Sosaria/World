@@ -15,10 +15,13 @@ namespace Server.Items
 		{
 			Name = "Holy Knight's Arm Plates";
 			Hue = 0x47E;
+			SkillBonuses.SetValues( 0, SkillName.Knightship, 10 );
+			SkillBonuses.SetValues( 1, SkillName.Tactics, 10 );
 			Attributes.BonusHits = 10;
 			Attributes.ReflectPhysical = 15;
+			Attributes.Luck = 70;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HolyKnightsArmPlates( Serial serial ) : base( serial )

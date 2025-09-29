@@ -16,9 +16,9 @@ namespace Server.Items
 			Hue = 0x60C;
 			WeaponAttributes.HitLowerDefend = 50;
 			Attributes.BonusStr = 10;
-			Attributes.WeaponDamage = 75;
+			Attributes.WeaponDamage = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 		public Artifact_BoneCrusher( Serial serial ) : base( serial )
 		{

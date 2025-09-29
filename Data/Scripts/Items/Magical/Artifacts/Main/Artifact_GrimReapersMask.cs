@@ -19,8 +19,9 @@ namespace Server.Items
 			Resistances.Energy = 10;
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 10 );
+			Attributes.Luck = 65;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GrimReapersMask( Serial serial ) : base( serial )

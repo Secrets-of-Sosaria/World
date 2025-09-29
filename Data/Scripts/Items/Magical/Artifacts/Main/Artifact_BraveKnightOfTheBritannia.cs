@@ -16,14 +16,12 @@ namespace Server.Items
 			Hue = 0x47e;
 			ItemID = 0x13FF;
 			Name = "Brave Knight of Sosaria";
-			Attributes.WeaponSpeed = 30;
-			Attributes.WeaponDamage = 35;
-
-			WeaponAttributes.HitLeechStam = 48;
-			WeaponAttributes.HitHarm = 26;
-			WeaponAttributes.HitLeechHits = 22;
+			Attributes.WeaponSpeed = 20;
+			WeaponAttributes.HitLeechStam = 20;
+			WeaponAttributes.HitHarm = 10;
+			WeaponAttributes.HitLeechHits = 30;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

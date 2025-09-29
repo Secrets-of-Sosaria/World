@@ -11,12 +11,9 @@ namespace Server.Items
 			Hue = 0x48D;
 			Name = "Candle of Cold Light";
 			Resistances.Cold = 50;
-			Attributes.BonusHits = 20;
-			Attributes.BonusStam = 20;
-			Attributes.BonusMana = 20;
-			Attributes.Luck = 400;
+			Attributes.Luck = 100;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 13, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CandleCold( Serial serial ) : base( serial )
@@ -45,12 +42,9 @@ namespace Server.Items
 			Hue = 0x48E;
 			Name = "Candle of Fire Light";
 			Resistances.Fire = 50;
-			Attributes.BonusHits = 20;
-			Attributes.BonusStam = 20;
-			Attributes.BonusMana = 20;
-			Attributes.Luck = 400;
+			Attributes.Luck = 100;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 13, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CandleFire( Serial serial ) : base( serial )
@@ -79,12 +73,9 @@ namespace Server.Items
 			Hue = 0x48F;
 			Name = "Candle of Poisonous Light";
 			Resistances.Poison = 50;
-			Attributes.BonusHits = 20;
-			Attributes.BonusStam = 20;
-			Attributes.BonusMana = 20;
-			Attributes.Luck = 400;
+			Attributes.Luck = 100;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 13, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CandlePoison( Serial serial ) : base( serial )
@@ -113,12 +104,9 @@ namespace Server.Items
 			Hue = 0x490;
 			Name = "Candle of Energized Light";
 			Resistances.Energy = 50;
-			Attributes.BonusHits = 20;
-			Attributes.BonusStam = 20;
-			Attributes.BonusMana = 20;
-			Attributes.Luck = 400;
+			Attributes.Luck = 100;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 13, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CandleEnergy( Serial serial ) : base( serial )
@@ -151,10 +139,10 @@ namespace Server.Items
 			SkillBonuses.SetValues( 2, SkillName.Psychology, 10 );
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 25;
-			Attributes.LowerRegCost = 25;
+			Attributes.LowerManaCost = 17;
+			Attributes.LowerRegCost = 17;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CandleWizard( Serial serial ) : base( serial )
@@ -187,10 +175,10 @@ namespace Server.Items
 			SkillBonuses.SetValues( 2, SkillName.Spiritualism, 10 );
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 25;
-			Attributes.LowerRegCost = 25;
+			Attributes.LowerManaCost = 17;
+			Attributes.LowerRegCost = 17;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_CandleNecromancer( Serial serial ) : base( serial )

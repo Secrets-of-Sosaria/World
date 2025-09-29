@@ -617,7 +617,7 @@ namespace Server
 		{
 			if ( item != null )
 			{
-				int props = Utility.RandomMinMax( (int)(enchant/100), (int)(enchant/30) );
+				int props = Utility.RandomMinMax( (int)(enchant/100), (int)(enchant/60) );
 					if ( props < 1 )
 						return item;
 

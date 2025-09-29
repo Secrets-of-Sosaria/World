@@ -15,10 +15,11 @@ namespace Server.Items
 			Attributes.CastRecovery = 1;
 			Attributes.CastSpeed = 1;
 			Attributes.SpellDamage = 10;
+			Attributes.Luck = 75;
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 10 );
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GrimReapersLantern( Serial serial ) : base( serial )

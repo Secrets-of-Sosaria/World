@@ -19,14 +19,12 @@ namespace Server.Items
 			Attributes.SpellChanneling = 1;
 			Attributes.AttackChance = 5;
 			Attributes.DefendChance = 5;
-			Attributes.WeaponDamage = 35;
-
 			SkillBonuses.SetValues( 0, SkillName.Poisoning, 20 );
-
 			WeaponAttributes.HitPoisonArea = 20;
 			WeaponAttributes.ResistPoisonBonus = 15;
+			WeaponAttributes.HitLeechHits = 14;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_FangOfRactus( Serial serial ) : base( serial )

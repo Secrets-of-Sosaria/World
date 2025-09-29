@@ -11,12 +11,13 @@ namespace Server.Items
 			Name = "Ring of Health";
 			Hue = 0x21;
 			ItemID = 0x6731;
-			Attributes.BonusHits = 4;
-			Attributes.RegenHits = 7;
+			Attributes.BonusHits = 5;
+			Attributes.RegenHits = 5;
+			Attributes.Luck = 50;
 			SkillBonuses.SetValues( 0, SkillName.Healing, 25 );
-			SkillBonuses.SetValues( 1, SkillName.Veterinary, 25 );
+			SkillBonuses.SetValues( 1, SkillName.Anatomy, 25 );
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RingOfHealth( Serial serial ) : base( serial )

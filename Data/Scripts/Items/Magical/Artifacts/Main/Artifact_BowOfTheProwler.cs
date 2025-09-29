@@ -14,15 +14,14 @@ namespace Server.Items
 			Name = "Bow of the Prowler";
 			Hue = 0x30A;
 			Slayer = SlayerName.Repond;
-			Attributes.AttackChance = 15;
-			Attributes.WeaponDamage = 40;
-			WeaponAttributes.HitLeechStam = 40;
-			WeaponAttributes.HitLeechHits = 40;
-			SkillBonuses.SetValues(0, SkillName.Marksmanship,  5 + (Utility.RandomMinMax(0,2)*5));
-			SkillBonuses.SetValues(1, SkillName.Hiding,  5 + (Utility.RandomMinMax(0,2)*5));
-			SkillBonuses.SetValues(2, SkillName.Stealth,  5 + (Utility.RandomMinMax(0,2)*5));
+			Attributes.AttackChance = 10;
+			Attributes.WeaponDamage = 10;
+			WeaponAttributes.HitLeechStam = 20;
+			WeaponAttributes.HitLeechHits = 20;
+			SkillBonuses.SetValues(0, SkillName.Marksmanship, 5);
+			SkillBonuses.SetValues(1, SkillName.Hiding, 5);
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BowOfTheProwler( Serial serial ) : base( serial )

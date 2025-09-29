@@ -12,10 +12,10 @@ namespace Server.Items
 			Hue = 0x4F7;
 			Attributes.BonusDex = 10;
 			Attributes.RegenStam = 8;
-			Attributes.AttackChance = 18;
+			Attributes.AttackChance = 12;
 			Resistances.Poison = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BraceletOfTheVile( Serial serial ) : base( serial )

@@ -14,13 +14,14 @@ namespace Server.Items
 		{
 			Name = "Boomstick";
 			Hue = 0x25;
-			
 			Attributes.SpellChanneling = 1;
 			Attributes.RegenMana = 3;
-			Attributes.CastSpeed = 1;
+			Attributes.CastSpeed = 2;
+			Attributes.CastRecovery = 2;
 			Attributes.LowerRegCost = 20;
+			Attributes.SpellDamage = 8;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

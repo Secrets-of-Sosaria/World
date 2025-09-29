@@ -13,10 +13,10 @@ namespace Server.Items
 		{
 			Name = "Berserker's Maul";
 			Hue = 0x21;
-			Attributes.WeaponSpeed = 75;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponSpeed = 25;
+			Attributes.WeaponDamage = 30;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TheBeserkersMaul( Serial serial ) : base( serial )

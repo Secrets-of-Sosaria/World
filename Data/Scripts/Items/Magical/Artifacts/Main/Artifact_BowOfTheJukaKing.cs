@@ -17,9 +17,9 @@ namespace Server.Items
 			WeaponAttributes.HitMagicArrow = 25;
 			Slayer = SlayerName.ReptilianDeath;
 			Attributes.AttackChance = 15;
-			Attributes.WeaponDamage = 40;
+			Attributes.WeaponDamage = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BowOfTheJukaKing( Serial serial ) : base( serial )

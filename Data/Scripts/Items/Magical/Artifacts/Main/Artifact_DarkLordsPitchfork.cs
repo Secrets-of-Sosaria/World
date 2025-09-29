@@ -13,13 +13,13 @@ namespace Server.Items
         {
             Name = "Dark Lord's PitchFork";
             Hue = 1157;
-            Attributes.WeaponDamage = 40;
-            WeaponAttributes.HitFireArea = 50;
-            WeaponAttributes.HitFireball = 50;
+            Attributes.WeaponDamage = 25;
+            WeaponAttributes.HitFireArea = 25;
+            WeaponAttributes.HitFireball = 25;
             WeaponAttributes.ResistFireBonus = 5;
             Attributes.SpellChanneling = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

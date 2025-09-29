@@ -14,11 +14,10 @@ namespace Server.Items
 			Name = "Serpent's Fang";
 			ItemID = 0x1400;
 			Hue = 0x488;
-			WeaponAttributes.HitPoisonArea = 100;
-			WeaponAttributes.ResistPoisonBonus = 20;
-			Attributes.AttackChance = 15;
-			Attributes.WeaponDamage = 50;
 			SkillBonuses.SetValues(0, SkillName.Poisoning, 10);
+			WeaponAttributes.HitPoisonArea = 33;
+			WeaponAttributes.ResistPoisonBonus = 20;
+			Attributes.AttackChance = 14;
 			AosElementDamages.Physical = 50;
 			AosElementDamages.Poison = 50;
 			ArtifactLevel = 2;

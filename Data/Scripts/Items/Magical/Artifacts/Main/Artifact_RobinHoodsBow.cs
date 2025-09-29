@@ -14,12 +14,11 @@ namespace Server.Items
 			Hue = 0x483;
 			Name = "Robin Hood's Bow";
 			ItemID = 0x13B2;
-			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 20 );
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 25 );
 			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			Attributes.AttackChance = 5;
-			Attributes.Luck = 20;
+			Attributes.AttackChance = 6;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RobinHoodsBow( Serial serial ) : base( serial )

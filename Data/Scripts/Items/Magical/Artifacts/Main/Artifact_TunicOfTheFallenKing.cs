@@ -17,11 +17,11 @@ namespace Server.Items
 			Name = "Tunic of the Fallen King";
 			Hue = 0x76D;
 			ItemID = 0x13CC;
-			Attributes.BonusStr = 8;
+			Attributes.BonusStr = 10;
 			Attributes.RegenHits = 15;
-			Attributes.RegenStam = 5;
+			Attributes.RegenStam = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 13, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TunicOfTheFallenKing( Serial serial ) : base( serial )

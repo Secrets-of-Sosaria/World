@@ -14,15 +14,13 @@ namespace Server.Items
 		public Artifact_RoyalGuardSurvivalKnife()
 		{
 			Name = "Royal Guard Survival Knife";
+			ItemID = 0x2674;
 			Attributes.SpellChanneling = 1;
+			WeaponAttributes.UseBestSkill = 1;
 			Attributes.Luck = 140;
 			Attributes.EnhancePotions = 25;
-			ItemID = 0x2674;
-
-			WeaponAttributes.UseBestSkill = 1;
-			WeaponAttributes.LowerStatReq = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RoyalGuardSurvivalKnife( Serial serial ) : base( serial )

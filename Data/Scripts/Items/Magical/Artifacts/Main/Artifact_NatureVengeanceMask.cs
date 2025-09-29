@@ -20,11 +20,11 @@ namespace Server.Items
 			Hue = 0x592;
 			Name = "Mask of Natural Vengeance";
 			ArtifactLevel = 2;
-			Attributes.BonusInt = 5;
-			Attributes.SpellDamage = 5 + (Utility.RandomMinMax(0,4) * 5);
-			SkillBonuses.SetValues( 0, SkillName.Elementalism, 5 + (Utility.RandomMinMax(0,3)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Druidism, 5 + (Utility.RandomMinMax(0,2)*5) );
+			Attributes.BonusInt = 10;
+			Attributes.SpellDamage = 10;
+			SkillBonuses.SetValues( 0, SkillName.Elementalism, 15);
+			SkillBonuses.SetValues( 1, SkillName.Taming, 15);
+			SkillBonuses.SetValues( 2, SkillName.Druidism, 15);
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 

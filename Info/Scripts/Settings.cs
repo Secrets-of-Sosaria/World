@@ -141,11 +141,18 @@ namespace Server
 
 		public static bool S_TravelRestrictions = true;
 
-	///////////////////////////////////////////////////////////////////////////////////////////////
-	// 003 - PLAYER OPTIONS ///////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////////////////////
+	// The setting below controls if powerful Artifacts found in game have enchantment points that allows a player to customize them. 
+	// If set to true, endgame characters that can farm high end dungeons will have an easier time gearing up and filling slots in their stat sheet,
+	// if set to false, characters will be much more dependent on gear they find or craft. Some items given as quest rewards or from specific events
+	//  will still be enchantable. Default is false. Set it to true if you want a more casual experience. 
 
-	// If true, a player character cannot use macros to improve their skills quickly.
+		public static bool S_ArtifactEnchantment = false;
+
+	///////////////////////////////////////////////////////////////////////////////////////////////
+		// 003 - PLAYER OPTIONS ///////////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////////////////////
+
+		// If true, a player character cannot use macros to improve their skills quickly.
 
 		public static bool S_NoMacroing = true;
 
@@ -254,10 +261,6 @@ namespace Server
 
 		public static int S_MinGold = 100;
 		public static int S_MaxGold = 150;
-
-	// this changes how the poisoning skill works. If set to true, then character skill will be taken into account instead of poison
-    // level to determine the maximum amount of poison charges a weapon can have, as well as how many charges are applied with each dose. 
-        public static bool poisoningCharges = true;
 
 	// If true, player footstep sounds will change based on terrain (grass, stone, wood, etc.). 
 	// Must also uncheck the 'Play footstep sounds' option in ClassicUO settings

@@ -19,12 +19,14 @@ namespace Server.Items
 		{
 			Name = "Gloves of Natural Vengeance";
 			Hue = 0x592;
-            SkillBonuses.SetValues( 0, SkillName.Elementalism, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Druidism, 5 + (Utility.RandomMinMax(0,2)*5) );
-			Attributes.SpellDamage = 10 + (Utility.RandomMinMax(0,3) * 5);
+            SkillBonuses.SetValues( 0, SkillName.Elementalism, 10);
+			SkillBonuses.SetValues( 1, SkillName.Taming, 10);
+			SkillBonuses.SetValues( 2, SkillName.Druidism, 10);
+			Attributes.SpellDamage = 10;
 			Attributes.BonusInt = 6;
-			Attributes.LowerManaCost = 4;
+			Attributes.LowerManaCost = 6;
+			Attributes.CastRecovery	= 2;
+			Attributes.CastSpeed = 2;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

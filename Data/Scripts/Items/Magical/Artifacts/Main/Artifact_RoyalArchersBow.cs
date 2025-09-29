@@ -14,15 +14,11 @@ namespace Server.Items
             Name = "Royal Archer's Bow";
             Hue = 2101;
 			ItemID = 0x13B2;
-            WeaponAttributes.HitDispel = 25;
-            WeaponAttributes.HitLightning = 35;
-            WeaponAttributes.HitLowerAttack = 25;
-            WeaponAttributes.SelfRepair = 10;
-            Attributes.BonusHits = 15;
-            Attributes.ReflectPhysical = 25;
+            WeaponAttributes.HitDispel = 23;
+            WeaponAttributes.HitLowerAttack = 23;
             Attributes.SpellChanneling = 1;
-            Attributes.WeaponSpeed = 20;
-            Attributes.WeaponDamage = 30;
+            Attributes.WeaponSpeed = 10;
+            Attributes.WeaponDamage = 20;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

@@ -17,12 +17,13 @@ namespace Server.Items
 			ItemID = 0x140E;
 			Hue = 0xB61;
 			Name = "Ironwood Crown";
-			ArmorAttributes.SelfRepair = 3;
+			ArmorAttributes.SelfRepair = 5;
 			Attributes.BonusStr = 5;
 			Attributes.BonusDex = 5;
 			Attributes.BonusInt = 5;
+			Attributes.Luck = 45;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_IronwoodCrown( Serial serial ) : base( serial )

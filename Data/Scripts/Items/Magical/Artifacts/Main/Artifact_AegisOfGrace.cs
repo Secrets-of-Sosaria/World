@@ -9,12 +9,6 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BasePhysicalResistance{ get{ return 10; } }
-		public override int BaseFireResistance{ get{ return 9; } }
-		public override int BaseColdResistance{ get{ return 7; } }
-		public override int BasePoisonResistance{ get{ return 7; } }
-		public override int BaseEnergyResistance{ get{ return 15; } }
-
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Scaled; } }
 		public override CraftResource DefaultResource{ get{ return CraftResource.Iron; } }
 
@@ -22,11 +16,18 @@ namespace Server.Items
 		public Artifact_AegisOfGrace()
 		{
 			Name = "Aegis of Grace";
-			SkillBonuses.SetValues( 0, SkillName.MagicResist, 10.0 );
+			SkillBonuses.SetValues( 0, SkillName.MagicResist, 15.0 );
 			Attributes.DefendChance = 20;
-			ArmorAttributes.SelfRepair = 2;
+			ArmorAttributes.SelfRepair = 10;
+			Attributes.RegenStam = 5;
+			Attributes.BonusStam = 4;
+			PhysicalBonus = 8;
+			FireBonus = 8;
+			PoisonBonus = 8;
+			ColdBonus = 8;
+			EnergyBonus = 8;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_AegisOfGrace( Serial serial ) : base( serial )

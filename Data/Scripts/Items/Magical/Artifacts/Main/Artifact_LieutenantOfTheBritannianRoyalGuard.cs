@@ -12,10 +12,11 @@ namespace Server.Items
 			Hue = 0xe8;
 
 			Attributes.BonusInt = 5;
-			Attributes.RegenMana = 2;
+			Attributes.RegenMana = 10;
 			Attributes.LowerRegCost = 10;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 3, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LieutenantOfTheBritannianRoyalGuard( Serial serial ) : base( serial )

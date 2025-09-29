@@ -10,9 +10,9 @@ namespace Server.Items
 		{
 			Name = "Lucky Necklace";
 			Hue = 0xAFF;
-			base.Attributes.Luck = 300;
+			base.Attributes.Luck = 150;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 3, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LuckyNecklace( Serial serial ) : base( serial )

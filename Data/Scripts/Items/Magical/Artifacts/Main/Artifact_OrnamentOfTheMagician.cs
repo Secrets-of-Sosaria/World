@@ -12,12 +12,12 @@ namespace Server.Items
 			Hue = 0x554;
 			ItemID = 0x672D;
 			Attributes.CastRecovery = 3;
-			Attributes.CastSpeed = 2;
+			Attributes.CastSpeed = 3;
 			Attributes.LowerManaCost = 10;
 			Attributes.LowerRegCost = 20;
 			Resistances.Energy = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_OrnamentOfTheMagician( Serial serial ) : base( serial )

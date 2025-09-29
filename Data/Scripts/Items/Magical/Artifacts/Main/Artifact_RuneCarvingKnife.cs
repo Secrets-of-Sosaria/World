@@ -14,12 +14,12 @@ namespace Server.Items
 			ItemID = 0x2677;
 
 			WeaponAttributes.HitLeechMana = 40;
-			Attributes.RegenStam = 2;
+			Attributes.RegenStam = 5;
 			Attributes.LowerManaCost = 10;
-			Attributes.WeaponSpeed = 35;
-			Attributes.WeaponDamage = 30;
+			Attributes.WeaponSpeed = 10;
+			Attributes.WeaponDamage = 11;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RuneCarvingKnife( Serial serial ) : base( serial )

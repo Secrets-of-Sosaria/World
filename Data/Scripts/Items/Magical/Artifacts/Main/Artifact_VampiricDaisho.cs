@@ -15,15 +15,13 @@ namespace Server.Items
 		{
 			Name = "Vampiric Daisho";
 			Hue = 1153;
-			WeaponAttributes.HitHarm = 50;
-			WeaponAttributes.HitLeechHits = 45;
-			WeaponAttributes.HitLeechStam = 20;
-			Attributes.LowerManaCost = 5;
-			Attributes.NightSight = 1;
+			WeaponAttributes.HitHarm = 40;
+			WeaponAttributes.HitLeechHits = 40;
+			WeaponAttributes.HitLeechStam = 40;
 			Attributes.SpellChanneling = 1;
 			Slayer = SlayerName.BloodDrinking ;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_VampiricDaisho( Serial serial ) : base( serial )

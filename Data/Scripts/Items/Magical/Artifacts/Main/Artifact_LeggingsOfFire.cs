@@ -8,7 +8,7 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BasePhysicalResistance{ get{ return 27; } }
+		public override int BasePhysicalResistance{ get{ return 30; } }
 		public override int BaseFireResistance{ get{ return 34; } }
 
 		[Constructable]
@@ -17,11 +17,12 @@ namespace Server.Items
 			Name = "Leggings of Fire";
 			Hue = 0x54F;
 			ItemID = 0x13BE;
+			Attributes.Luck = 100;
 			ArmorAttributes.SelfRepair = 5;
 			Attributes.NightSight = 1;
 			Attributes.ReflectPhysical = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LeggingsOfFire( Serial serial ) : base( serial )

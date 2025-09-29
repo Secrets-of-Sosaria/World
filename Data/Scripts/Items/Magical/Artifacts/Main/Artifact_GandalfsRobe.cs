@@ -11,8 +11,7 @@ namespace Server.Items
 			Hue = 0xB89;
 			ItemID = 0x26AE;
 			Name = "Merlin's Mystical Robe";
-			Attributes.LowerManaCost = 25;
-			Attributes.LowerRegCost = 25;
+			Attributes.LowerManaCost = 18;
 			SkillBonuses.SetValues( 0, SkillName.Psychology, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Magery, 10 );
 			SkillBonuses.SetValues( 2, SkillName.MagicResist, 10 );
@@ -20,7 +19,7 @@ namespace Server.Items
 			Attributes.RegenMana = 10;
 			Attributes.BonusInt = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 12, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GandalfsRobe( Serial serial ) : base( serial )

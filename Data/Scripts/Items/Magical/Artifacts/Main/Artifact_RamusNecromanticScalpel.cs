@@ -16,12 +16,11 @@ namespace Server.Items
 			Name = "Ramus' Necromantic Scalpel";
 			Hue = 1372;
 			ItemID = 0x2677;
-			WeaponAttributes.HitLeechHits = 60;
-			Attributes.WeaponDamage = 50;
-			Attributes.WeaponSpeed = 20;
+			WeaponAttributes.HitLeechHits = 73;
+			Attributes.WeaponSpeed = 10;
 			Slayer = SlayerName.Repond ;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RamusNecromanticScalpel( Serial serial ) : base( serial )

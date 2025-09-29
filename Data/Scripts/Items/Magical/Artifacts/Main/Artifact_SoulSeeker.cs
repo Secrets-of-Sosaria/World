@@ -15,10 +15,10 @@ namespace Server.Items
 			Name = "Soul Seeker";
 			Hue = 0x38C;
 
-			WeaponAttributes.HitLeechStam = 40;
-			WeaponAttributes.HitLeechMana = 40;
-			WeaponAttributes.HitLeechHits = 40;
-			Attributes.WeaponSpeed = 60;
+			WeaponAttributes.HitLeechStam = 24;
+			WeaponAttributes.HitLeechMana = 24;
+			WeaponAttributes.HitLeechHits = 24;
+			Attributes.WeaponSpeed = 10;
 			Slayer = SlayerName.Repond;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );

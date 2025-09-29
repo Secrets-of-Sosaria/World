@@ -15,12 +15,12 @@ namespace Server.Items
 			Hue = 0xB3E;
 			ItemID = 0x1407;
 			WeaponAttributes.HitHarm = 33;
-			WeaponAttributes.HitLowerAttack = 40;
+			WeaponAttributes.HitLowerAttack = 20;
 			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 40;
+			Attributes.WeaponDamage = 12;
 			WeaponAttributes.ResistColdBonus = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

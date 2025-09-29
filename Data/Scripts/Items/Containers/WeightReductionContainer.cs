@@ -158,7 +158,7 @@ namespace Server.Items
         public virtual double ContainerWeight { get { return 3.0; } }
         public virtual LootType ContainerLootType { get { return LootType.Regular; } }
         public virtual int ContainerHue { get { return Utility.RandomMetalHue(); } }
-        public virtual TimeSpan AccessDelay { get { return TimeSpan.FromMinutes(5.0); } }
+        public virtual TimeSpan AccessDelay { get { return TimeSpan.FromMinutes(1.0); } }
         public virtual string AccessDelayMessage { get { return "You cannot use that item yet"; } }
         public virtual string AddAccessMessage { get { return ""; } }
         public virtual string RemoveAccessMessage { get { return ""; } }
@@ -193,8 +193,8 @@ namespace Server.Items
                 if (AccessDelayMessage != "")
                     from.SendMessage(Utility.RandomNeutralHue(), AccessDelayMessage);
 
-                from.SendMessage(String.Format("You will need to wait approximately {0} more minutes before you can try again",
-                    NextAccessTime.Subtract(DateTime.Now).Minutes));
+                from.SendMessage(String.Format("You will need to wait approximately {0} more seconds before you can try again",
+                    NextAccessTime.Subtract(DateTime.Now).Seconds));
 
                 return false;
             }
@@ -217,8 +217,8 @@ namespace Server.Items
                 if (AccessDelayMessage != "")
                     from.SendMessage(Utility.RandomNeutralHue(), AccessDelayMessage);
 
-                from.SendMessage(String.Format("You will need to wait approximately {0} more minutes before you can try again",
-                    NextAccessTime.Subtract(DateTime.Now).Minutes));
+                from.SendMessage(String.Format("You will need to wait approximately {0} more seconds before you can try again",
+                    NextAccessTime.Subtract(DateTime.Now).Seconds));
 
                 return false;
             }

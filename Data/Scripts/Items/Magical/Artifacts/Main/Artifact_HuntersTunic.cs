@@ -19,9 +19,9 @@ namespace Server.Items
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
 			Attributes.BonusDex = 8;
 			Attributes.NightSight = 1;
-			Attributes.AttackChance = 18;
+			Attributes.AttackChance = 14;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HuntersTunic( Serial serial ) : base( serial )

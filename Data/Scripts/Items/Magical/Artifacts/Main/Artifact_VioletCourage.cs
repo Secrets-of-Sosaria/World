@@ -19,12 +19,11 @@ namespace Server.Items
 		{
 			Name = "Violet Courage";
 			Hue = 0x486;
-			Attributes.Luck = 95;
-			Attributes.DefendChance = 15;
-			ArmorAttributes.LowerStatReq = 100;
+			Attributes.Luck = 100;
+			Attributes.DefendChance = 10;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_VioletCourage( Serial serial ) : base( serial )

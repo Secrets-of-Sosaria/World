@@ -1802,6 +1802,7 @@ namespace Server.Mobiles
 		public static bool AlwaysInvulnerable( Mobile m )
 		{
 			if ( m is PackBear ){ return true; }
+			else if ( m is PackLobster ){ return true; }
 			else if ( m is PackMule ){ return true; }
 			else if ( m is PackStegosaurus ){ return true; }
 			else if ( m is PackTurtle ){ return true; }
@@ -3997,6 +3998,13 @@ namespace Server.Mobiles
 
 			if ( willKill && from is PlayerMobile )
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
+
+			if (from != null)
+			{
+				double bonus = HunterMarkSystem.GetDamageBonus(from, this);
+				amount = (int)(amount * bonus);
+			}
+
 
 			base.OnDamage( amount, from, willKill );
 			
@@ -9593,6 +9601,8 @@ namespace Server.Mobiles
 				if ( m is BaseCreature )
 				{
 					BaseCreature c = (BaseCreature)m;
+					Mobile master = c.ControlMaster;
+					if ( master != null && master.Map == Map.Internal ) continue;
 
 					if ( c.IsDeadPet )
 					{

@@ -16,11 +16,10 @@ namespace Server.Items
 			Name = "Song Woven Mantle";
 			ItemID = 0x13cd;
 			SkillBonuses.SetValues( 0, SkillName.Musicianship, 25.0 );
-
 			Attributes.Luck = 100;
-			Attributes.DefendChance = 5;
+			Attributes.DefendChance = 2;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_SongWovenMantle( Serial serial ) : base( serial )

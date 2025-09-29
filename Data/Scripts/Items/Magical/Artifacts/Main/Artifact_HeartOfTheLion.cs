@@ -20,9 +20,8 @@ namespace Server.Items
 			Name = "Heart of the Lion";
 			Hue = 0x501;
 			ItemID = 0x1415;
-			Attributes.Luck = 95;
-			Attributes.DefendChance = 15;
-			ArmorAttributes.LowerStatReq = 100;
+			Attributes.Luck = 70;
+			Attributes.DefendChance = 10;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );

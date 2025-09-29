@@ -14,14 +14,13 @@ namespace Server.Items
 		{
 			Name = "Blade Dance";
 			Hue = 0x66C;
-
 			Attributes.BonusMana = 8;
 			Attributes.SpellChanneling = 1;
-			Attributes.WeaponDamage = 30;
+			Attributes.WeaponDamage = 35;
 			WeaponAttributes.HitLeechMana = 20;
 			WeaponAttributes.UseBestSkill = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 		public Artifact_BladeDance( Serial serial ) : base( serial )
 		{

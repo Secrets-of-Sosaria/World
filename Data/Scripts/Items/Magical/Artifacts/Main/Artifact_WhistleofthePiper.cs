@@ -14,13 +14,11 @@ namespace Server.Items
 		{
 			Name = "Whistle of the Pied Piper";
 			Hue = 0x668;
-			SkillBonuses.SetValues( 0, SkillName.Taming,  10.0 + (Utility.RandomMinMax(0,3)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Herding,  10.0 + (Utility.RandomMinMax(0,3)*5) );
+			SkillBonuses.SetValues( 0, SkillName.Taming,  10.0);
+			SkillBonuses.SetValues( 1, SkillName.Herding,  10.0);
 			WeaponAttributes.HitLeechStam = 30;
 			WeaponAttributes.HitLeechHits = 30;
-            AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
-			Attributes.WeaponSpeed = 30;
+            Attributes.WeaponSpeed = 10;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

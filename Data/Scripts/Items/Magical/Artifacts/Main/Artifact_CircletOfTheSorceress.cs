@@ -9,12 +9,6 @@ namespace Server.Items
 	{
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
-
-		public override int BaseColdResistance{ get{ return 11; } } 
-		public override int BaseEnergyResistance{ get{ return 12; } } 
-		public override int BasePhysicalResistance{ get{ return 2; } } 
-		public override int BasePoisonResistance{ get{ return 8; } } 
-		public override int BaseFireResistance{ get{ return 12; } } 
       
       [Constructable]
 		public Artifact_CircletOfTheSorceress()
@@ -26,8 +20,13 @@ namespace Server.Items
 			ArmorAttributes.MageArmor = 1;
 			ArmorAttributes.SelfRepair = 3;
 			Attributes.BonusMana = 15;
-			Attributes.LowerManaCost = 6;
-			Attributes.LowerRegCost = 10;
+			Attributes.LowerManaCost = 10;
+			Attributes.LowerRegCost = 11;
+			Attributes.BonusInt = 5;
+			FireBonus = 8;
+			PoisonBonus = 4;
+			ColdBonus = 7;
+			EnergyBonus = 8;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

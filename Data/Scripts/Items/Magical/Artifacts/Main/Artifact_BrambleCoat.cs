@@ -5,25 +5,23 @@ namespace Server.Items
 {
 	public class Artifact_BrambleCoat : GiftLeatherChest
 	{
-		public override int BasePhysicalResistance{ get{ return 10; } }
-		public override int BaseFireResistance{ get{ return 8; } }
-		public override int BaseColdResistance{ get{ return 7; } }
-		public override int BasePoisonResistance{ get{ return 8; } }
-		public override int BaseEnergyResistance{ get{ return 7; } }
-
 		[Constructable]
 		public Artifact_BrambleCoat()
 		{
 			Hue = 0x1;
 			Name = "Bramble Coat";
 			ItemID = 0x13CC;
-			ArmorAttributes.SelfRepair = 3;
-			Attributes.BonusHits = 4;
-			Attributes.Luck = 150;
+			ArmorAttributes.SelfRepair = 5;
+			Attributes.BonusHits = 6;
+			Attributes.Luck = 75;
 			Attributes.ReflectPhysical = 25;
-			Attributes.DefendChance = 15;
+			PhysicalBonus = 10;
+			FireBonus = 5;
+			PoisonBonus = 5;
+			ColdBonus = 5;
+			EnergyBonus = 5;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_BrambleCoat( Serial serial ) : base( serial )

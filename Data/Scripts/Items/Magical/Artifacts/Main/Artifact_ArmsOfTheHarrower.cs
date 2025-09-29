@@ -8,18 +8,18 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BasePoisonResistance{ get{ return 15; } }
-
 		[Constructable]
 		public Artifact_ArmsOfTheHarrower()
 		{
 			Name = "Arms of the Harrower";
 			Hue = 0x4F6;
-			Attributes.RegenHits = 3;
-			Attributes.RegenStam = 2;
-			Attributes.WeaponDamage = 15;
+			Attributes.BonusDex = 10;
+			Attributes.RegenHits = 6;
+			Attributes.RegenStam = 6;
+			Attributes.WeaponDamage = 16;
+			PoisonBonus = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArmsOfTheHarrower( Serial serial ) : base( serial )

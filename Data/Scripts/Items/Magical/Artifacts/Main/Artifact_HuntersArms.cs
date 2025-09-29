@@ -16,12 +16,13 @@ namespace Server.Items
 			Name = "Hunter's Arms";
 			Hue = 0x594;
 			ItemID = 0x13cd;
-			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 5 );
+			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 10 );
 			Attributes.BonusDex = 4;
 			Attributes.NightSight = 1;
-			Attributes.AttackChance = 10;
+			Attributes.AttackChance = 12;
+			Attributes.WeaponSpeed = 15;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HuntersArms( Serial serial ) : base( serial )

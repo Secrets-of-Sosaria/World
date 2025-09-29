@@ -8,19 +8,16 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 80; } }
 		public override int InitMaxHits{ get{ return 160; } }
 
-		public override int BasePhysicalResistance{ get{ return 20; } }
-		public override int BasePoisonResistance{ get{ return 22; } }
-
 		[Constructable]
 		public Artifact_ArmsOfNobility()
 		{
 			Name = "Arms of Nobility";
 			Hue = 0x4FE;
 			Attributes.BonusStr = 8;
-			Attributes.Luck = 100;
-			Attributes.WeaponDamage = 20;
+			Attributes.Luck = 80;
+			Attributes.WeaponDamage = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ArmsOfNobility( Serial serial ) : base( serial )

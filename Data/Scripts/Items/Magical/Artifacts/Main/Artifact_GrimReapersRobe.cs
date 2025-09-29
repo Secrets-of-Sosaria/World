@@ -15,8 +15,11 @@ namespace Server.Items
 			Attributes.ReflectPhysical = 25;
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 10 );
 			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 10 );
+			Attributes.LowerRegCost = 10;
+			Attributes.DefendChance = 5;
+			Attributes.Luck = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GrimReapersRobe( Serial serial ) : base( serial )

@@ -10,10 +10,11 @@ namespace Server.Items
 		{
 			Name = "Earrings of Health";
 			Hue = 0x21;
-			Attributes.BonusHits = 3;
-			Attributes.RegenHits = 5;
+			Attributes.BonusHits = 20;
+			Attributes.RegenHits = 10;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_EarringsOfHealth( Serial serial ) : base( serial )

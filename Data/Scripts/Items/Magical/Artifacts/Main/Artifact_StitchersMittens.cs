@@ -16,9 +16,8 @@ namespace Server.Items
 			Name = "Stitcher's Mittens";
 			SkillBonuses.SetValues( 0, SkillName.Healing, 25.0 );
 			SkillBonuses.SetValues( 0, SkillName.Veterinary, 25.0 );
-
 			Attributes.BonusDex = 5;
-			Attributes.LowerRegCost = 30;
+			Attributes.LowerRegCost = 20;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

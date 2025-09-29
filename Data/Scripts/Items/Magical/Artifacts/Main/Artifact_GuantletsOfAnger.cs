@@ -5,11 +5,11 @@ namespace Server.Items
 {
 	public class Artifact_GuantletsOfAnger : GiftPlateGloves
 	{
-		public override int BasePhysicalResistance{ get{ return 4; } }
-		public override int BaseFireResistance{ get{ return 4; } }
-		public override int BaseColdResistance{ get{ return 5; } }
-		public override int BasePoisonResistance{ get{ return 6; } }
-		public override int BaseEnergyResistance{ get{ return 5; } }
+		public override int BasePhysicalResistance{ get{ return 14; } }
+		public override int BaseFireResistance{ get{ return 9; } }
+		public override int BaseColdResistance{ get{ return 10; } }
+		public override int BasePoisonResistance{ get{ return 11; } }
+		public override int BaseEnergyResistance{ get{ return 10; } }
 
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }
@@ -22,12 +22,12 @@ namespace Server.Items
 			Name = "Gauntlets of Anger";
 			Hue = 0x29b;
 			ItemID = 0x1414;
-
+			Attributes.BonusStr = 10;
 			Attributes.BonusHits = 8;
-			Attributes.RegenHits = 2;
+			Attributes.RegenHits = 8;
 			Attributes.DefendChance = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GuantletsOfAnger( Serial serial ) : base( serial )

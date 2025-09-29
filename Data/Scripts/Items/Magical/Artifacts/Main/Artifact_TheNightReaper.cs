@@ -17,11 +17,10 @@ namespace Server.Items
 			Hue = 0x41C;
 
 			Slayer = SlayerName.Exorcism;
-			Attributes.NightSight = 1;
 			Attributes.WeaponSpeed = 25;
-			Attributes.WeaponDamage = 55;
+			Attributes.WeaponDamage = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_TheNightReaper( Serial serial ) : base( serial )
