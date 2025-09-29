@@ -3998,6 +3998,13 @@ namespace Server.Mobiles
 			if ( willKill && from is PlayerMobile )
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
 
+			if (from != null)
+			{
+				double bonus = HunterMarkSystem.GetDamageBonus(from, this);
+				amount = (int)(amount * bonus);
+			}
+
+
 			base.OnDamage( amount, from, willKill );
 			
 			#region KoperPets
