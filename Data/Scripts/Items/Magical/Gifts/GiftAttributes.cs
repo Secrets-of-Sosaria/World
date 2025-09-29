@@ -78,7 +78,7 @@ namespace Server.Items
 		//Armor specific attributes
         public static ArmorGiftAttributeInfo[] m_ArmorAttributes = new ArmorGiftAttributeInfo[]
 		{
-            new ArmorGiftAttributeInfo( AosArmorAttribute.LowerStatReq, "Lower Stat Requirement", GiftAttributeCategory.Stats, 1, 100 ),
+            new ArmorGiftAttributeInfo( AosArmorAttribute.LowerStatReq, "Lower Stat Requirement", GiftAttributeCategory.Stats, 2, 100 ),
             new ArmorGiftAttributeInfo( AosArmorAttribute.SelfRepair, "Self Repair", GiftAttributeCategory.Misc, 2, 5 ),
             new ArmorGiftAttributeInfo( AosArmorAttribute.MageArmor, "Mage Armor", GiftAttributeCategory.Magic, 5, 1 ),
             new ArmorGiftAttributeInfo( AosArmorAttribute.DurabilityBonus, "Durability Bonus", GiftAttributeCategory.Misc, 1, 255 )
