@@ -795,17 +795,22 @@ namespace Server.Items
 							{
 								foreach ( Item enchant in m.GetItemsInRange( 10 ) )
 								{
-									if ( !enchant.NotModAble && run && enchant.ArtifactLevel == 0 && ( enchant is BaseArmor || enchant is BaseWeapon || enchant is BaseClothing ) && enchant.X>=5203 && enchant.Y>=1301 && enchant.X<=5205 && enchant.Y<=1305 && enchant.Resource != CraftResource.None )
+									if (enchant.Resource == CraftResource.GildedSpec)
 									{
-										ResourceMods.SetResource( enchant, CraftResource.GildedSpec );
-										Item mod = (Item)enchant;
-										mod = Server.LootPackEntry.Enchant( m, 350, mod );
-										enchant.InfoText1 = "Golden Rangers";
-										Effects.SendLocationParticles( EffectItem.Create( enchant.Location, enchant.Map, EffectItem.DefaultDuration ), 0x376A, 9, 32, 5008 );
-										Effects.PlaySound( enchant.Location, enchant.Map, 0x1ED );
-										RidOf = 1;
-										run = false;
+										m.SendMessage( "This item has already been blessed!" );
 									}
+									else if (!enchant.NotModAble && run && enchant.ArtifactLevel == 0 && (enchant is BaseArmor || enchant is BaseWeapon || enchant is BaseClothing) && enchant.X >= 5203 && enchant.Y >= 1301 && enchant.X <= 5205 && enchant.Y <= 1305 && enchant.Resource != CraftResource.None)
+										{
+											ResourceMods.SetResource(enchant, CraftResource.GildedSpec);
+											Item mod = (Item)enchant;
+											// setting an item as gilded and applying this giant enchant was creating gear that was way too powerful
+											//mod = Server.LootPackEntry.Enchant( m, 350, mod );
+											enchant.InfoText1 = "Golden Rangers";
+											Effects.SendLocationParticles(EffectItem.Create(enchant.Location, enchant.Map, EffectItem.DefaultDuration), 0x376A, 9, 32, 5008);
+											Effects.PlaySound(enchant.Location, enchant.Map, 0x1ED);
+											RidOf = 1;
+											run = false;
+										}
 								}
 
 								if ( RidOf > 0 ){ feath.Delete(); }
