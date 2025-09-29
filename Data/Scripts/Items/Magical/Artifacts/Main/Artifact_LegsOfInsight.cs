@@ -21,7 +21,7 @@ namespace Server.Items
 			Attributes.RegenMana = 2;
 			Attributes.LowerManaCost = 8;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LegsOfInsight( Serial serial ) : base( serial )

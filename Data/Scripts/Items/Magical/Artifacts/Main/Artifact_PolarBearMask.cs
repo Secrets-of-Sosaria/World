@@ -13,11 +13,12 @@ namespace Server.Items
 		{
 			Name = "Spirit of the Polar Bear";
 			Hue = 0x481;
-			ClothingAttributes.SelfRepair = 3;
-			Attributes.RegenHits = 2;
+			ClothingAttributes.SelfRepair = 5;
+			Attributes.RegenHits = 5;
 			Attributes.NightSight = 1;
+			Attributes.Luck = 100;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 3, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_PolarBearMask( Serial serial ) : base( serial )

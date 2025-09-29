@@ -18,9 +18,10 @@ namespace Server.Items
 			Hue = 0x6D1;
 			ItemID = 0x1414;
 			Attributes.BonusDex = 15;
-			Attributes.RegenHits = 2;
+			Attributes.RegenHits = 4;
+			Attributes.Luck = 50;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_JackalsGloves( Serial serial ) : base( serial )

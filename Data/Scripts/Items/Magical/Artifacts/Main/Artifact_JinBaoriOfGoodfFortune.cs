@@ -15,10 +15,9 @@ namespace Server.Items
 		{
 			Name = "Jin-Baori Of Good Fortune";
 			Hue = 2125;
-			Attributes.SpellDamage = 5;
 			Attributes.Luck = 150;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_JinBaoriOfGoodFortune( Serial serial ) : base( serial )

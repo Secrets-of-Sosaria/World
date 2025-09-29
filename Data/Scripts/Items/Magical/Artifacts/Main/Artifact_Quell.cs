@@ -18,14 +18,12 @@ namespace Server.Items
 			ItemID = 0xF4D;
 
 			Attributes.SpellChanneling = 1;
-			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponSpeed = 10;
 			Attributes.AttackChance = 10;
-
-			WeaponAttributes.HitLeechMana = 100;
+			WeaponAttributes.HitLeechMana = 36;
 			WeaponAttributes.UseBestSkill = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_Quell( Serial serial ) : base( serial )

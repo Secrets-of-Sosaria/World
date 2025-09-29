@@ -18,8 +18,9 @@ namespace Server.Items
 			ItemID = 0x1413;
 			Attributes.BonusDex = 15;
 			Attributes.RegenHits = 2;
+			Attributes.Luck = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_JackalsCollar( Serial serial ) : base( serial )

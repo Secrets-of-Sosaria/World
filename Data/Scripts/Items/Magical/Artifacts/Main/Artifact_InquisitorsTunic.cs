@@ -17,12 +17,14 @@ namespace Server.Items
 			Name = "Inquisitor's Tunic";
 			Hue = 0x4F2;
 			ItemID = 0x1415;
+			SkillBonuses.SetValues( 0, SkillName.MagicResist, 10 );
 			Attributes.CastRecovery = 1;
 			Attributes.LowerManaCost = 10;
 			Attributes.LowerRegCost = 10;
 			ArmorAttributes.MageArmor = 1;
+			Attributes.Luck = 40;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_InquisitorsTunic( Serial serial ) : base( serial )

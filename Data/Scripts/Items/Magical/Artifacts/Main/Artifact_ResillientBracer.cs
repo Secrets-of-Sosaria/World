@@ -12,12 +12,12 @@ namespace Server.Items
 			Hue = 0x488;
 			Name = "Resillient Bracer";
 			SkillBonuses.SetValues( 0, SkillName.MagicResist, 15.0 );
-
-			Attributes.BonusHits = 5;
-			Attributes.RegenHits = 2;
-			Attributes.DefendChance = 10;
+			Attributes.BonusHits = 8;
+			Attributes.RegenHits = 8;
+			Attributes.DefendChance = 15;
+			Resistances.Physical = 30;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_ResilientBracer( Serial serial ) : base( serial )

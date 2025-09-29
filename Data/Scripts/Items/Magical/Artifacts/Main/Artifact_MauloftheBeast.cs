@@ -13,15 +13,14 @@ namespace Server.Items
         {
             Name = "Maul of the Beast";
             Hue = 1779;
-            Attributes.WeaponDamage = 60;
-            WeaponAttributes.HitLeechHits = 35;
-            WeaponAttributes.HitLeechMana = 35;
-            WeaponAttributes.HitLeechStam = 35;
-            WeaponAttributes.SelfRepair = 2;
+            Attributes.WeaponDamage = 33;
+            WeaponAttributes.HitLeechHits = 40;
+            WeaponAttributes.HitLeechMana = 40;
+            WeaponAttributes.HitLeechStam = 40;
             Attributes.SpellChanneling = 1;
             Attributes.WeaponSpeed = -30;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

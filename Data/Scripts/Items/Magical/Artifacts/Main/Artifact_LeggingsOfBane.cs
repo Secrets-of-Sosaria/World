@@ -16,11 +16,11 @@ namespace Server.Items
 			Name = "Leggings of Bane";
 			Hue = 0x4F5;
 			ItemID = 0x13BE;
-			ArmorAttributes.DurabilityBonus = 100;
-			Attributes.BonusStam = 8;
+			ArmorAttributes.DurabilityBonus = 25;
+			Attributes.BonusStam = 10;
 			Attributes.AttackChance = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LeggingsOfBane( Serial serial ) : base( serial )

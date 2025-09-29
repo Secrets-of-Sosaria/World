@@ -15,14 +15,12 @@ namespace Server.Items
 		{
 			Name = "Maul of the Titans";
 			Hue = 0xB89;
-			DamageLevel = WeaponDamageLevel.Vanq;
-			AccuracyLevel = WeaponAccuracyLevel.Supremely;
 			SkillBonuses.SetValues(1, SkillName.Bludgeoning, 20);
 			MinDamage = MinDamage + 5;
 			MaxDamage = MaxDamage + 10;
-			Attributes.BonusStr = 10;
+			Attributes.BonusStr = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_MaulOfTheTitans( Serial serial ) : base( serial )

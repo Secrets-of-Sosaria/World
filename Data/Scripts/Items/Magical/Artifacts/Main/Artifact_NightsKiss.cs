@@ -16,8 +16,8 @@ namespace Server.Items
 			Hue = 0x455;
 			WeaponAttributes.HitLeechHits = 40;
 			Slayer = SlayerName.Repond;
-			Attributes.WeaponSpeed = 30;
-			Attributes.WeaponDamage = 35;
+			Attributes.WeaponSpeed = 10;
+			Attributes.WeaponDamage = 11;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 5, "" );
 		}

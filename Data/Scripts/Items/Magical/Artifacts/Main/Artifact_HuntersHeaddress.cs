@@ -16,9 +16,9 @@ namespace Server.Items
 
 			Attributes.BonusDex = 8;
 			Attributes.NightSight = 1;
-			Attributes.AttackChance = 15;
+			Attributes.AttackChance = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 9, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_HuntersHeaddress( Serial serial ) : base( serial )

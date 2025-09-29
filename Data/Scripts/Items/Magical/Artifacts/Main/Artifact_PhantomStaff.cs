@@ -11,12 +11,12 @@ namespace Server.Items
 		{
 			Hue = 0x1;
 			Name = "Phantom Staff";
-			Attributes.RegenHits = 2;
+			Attributes.RegenHits = 5;
 			Attributes.NightSight = 1;
-			Attributes.WeaponSpeed = 20;
-			Attributes.WeaponDamage = 60;
+			Attributes.WeaponSpeed = 25;
+			Attributes.WeaponDamage = 24;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

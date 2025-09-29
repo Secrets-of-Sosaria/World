@@ -19,13 +19,14 @@ namespace Server.Items
 		{
 			Name = "Arms of Natural Vengeance";
 			Hue = 0x592;
-			SkillBonuses.SetValues( 0, SkillName.Elementalism, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 1, SkillName.Taming, 5 + (Utility.RandomMinMax(0,2)*5) );
-			SkillBonuses.SetValues( 2, SkillName.Druidism, 5 + (Utility.RandomMinMax(0,2)*5) );
-			Attributes.SpellDamage = 5 + (Utility.RandomMinMax(0,3) * 5);
-			Attributes.BonusInt = 2;
-			Attributes.RegenMana = 1;
-			Attributes.LowerManaCost = 4;
+			SkillBonuses.SetValues( 0, SkillName.Elementalism, 5);
+			SkillBonuses.SetValues( 1, SkillName.Taming, 5);
+			SkillBonuses.SetValues( 2, SkillName.Druidism, 5);
+			Attributes.SpellDamage = 10;
+			Attributes.BonusInt = 5;
+			Attributes.RegenMana = 3;
+			Attributes.LowerManaCost = 10;
+			Attributes.Luck = 50;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

@@ -19,8 +19,9 @@ namespace Server.Items
 			ItemID = 0x1415;
 			Attributes.BonusDex = 15;
 			Attributes.RegenHits = 2;
+			Attributes.Luck = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_JackalsTunic( Serial serial ) : base( serial )

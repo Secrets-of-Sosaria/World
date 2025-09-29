@@ -11,13 +11,14 @@ namespace Server.Items
 			Name = "Ring of the Magician";
 			Hue = 0x554;
 			ItemID = 0x6731;
-			Attributes.CastRecovery = 3;
-			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 10;
-			Attributes.LowerRegCost = 10;
-			Resistances.Energy = 15;
+			Attributes.CastRecovery = 2;
+			Attributes.CastSpeed = 2;
+			Attributes.LowerManaCost = 11;
+			Attributes.LowerRegCost = 12;
+			Attributes.SpellDamage = 11;
+			Resistances.Energy = 25;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_RingOfTheMagician( Serial serial ) : base( serial )

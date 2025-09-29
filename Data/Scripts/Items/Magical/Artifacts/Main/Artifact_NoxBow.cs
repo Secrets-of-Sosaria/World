@@ -12,23 +12,19 @@ namespace Server.Items
         public Artifact_NoxBow()
         {
             Name = "Nox Ranger's Light Crossbow";
-            Attributes.WeaponDamage = 45;
             Hue = 267;
 			ItemID = 0x13FD;
-            WeaponAttributes.HitLeechHits = 20;
-            WeaponAttributes.HitLeechMana = 20;
-            WeaponAttributes.HitLeechStam = 20;
+            WeaponAttributes.HitLeechHits = 23;
+            WeaponAttributes.HitLeechMana = 22;
+            WeaponAttributes.HitLeechStam = 22;
             WeaponAttributes.HitLightning = 5;
             WeaponAttributes.HitLowerAttack = 5;
             WeaponAttributes.HitPhysicalArea = 5;
-            WeaponAttributes.LowerStatReq = 5;
-            WeaponAttributes.SelfRepair = 2;
-            Attributes.ReflectPhysical = 5;
             Attributes.SpellChanneling = 1;
             Attributes.SpellDamage = 10;
-            Attributes.WeaponSpeed = 40;
+            Attributes.WeaponSpeed = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 14, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

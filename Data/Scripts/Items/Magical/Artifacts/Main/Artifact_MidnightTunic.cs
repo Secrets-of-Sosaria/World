@@ -16,10 +16,13 @@ namespace Server.Items
 			Name = "Midnight Tunic";
 			Hue = 0x455;
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 15.0 );
+			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 15.0 );
 			Attributes.SpellDamage = 10;
 			ArmorAttributes.MageArmor = 1;
+			Attributes.LowerManaCost = 12;
+			Attributes.LowerManaCost = 12;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_MidnightTunic( Serial serial ) : base( serial )

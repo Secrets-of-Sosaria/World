@@ -17,10 +17,10 @@ namespace Server.Items
 			Name = "Legs of Nobility";
 			Hue = 0x4FE;
 			Attributes.BonusStr = 8;
-			Attributes.Luck = 100;
+			Attributes.Luck = 50;
 			Attributes.WeaponDamage = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 3, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_LegsOfNobility( Serial serial ) : base( serial )

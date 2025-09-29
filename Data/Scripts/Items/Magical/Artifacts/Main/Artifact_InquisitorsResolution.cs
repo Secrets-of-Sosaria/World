@@ -17,7 +17,9 @@ namespace Server.Items
 			Name = "Inquisitor's Resolution";
 			Hue = 0x4F2;
 			ItemID = 0x1414;
+			SkillBonuses.SetValues( 0, SkillName.MagicResist, 10 );
 			Attributes.CastRecovery = 1;
+			Attributes.Luck = 30;
 			Attributes.LowerManaCost = 10;
 			Attributes.LowerRegCost = 10;
 			ArmorAttributes.MageArmor = 1;

@@ -19,7 +19,9 @@ namespace Server.Items
 			ItemID = 0x13cb;
 			Attributes.BonusStr = 6;
 			Attributes.RegenHits = 10;
-			Attributes.RegenStam = 3;
+			Attributes.RegenStam = 6;
+			Attributes.RegenStam = 10;
+			Attributes.Luck = 45;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

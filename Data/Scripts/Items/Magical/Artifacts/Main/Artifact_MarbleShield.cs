@@ -20,17 +20,15 @@ namespace Server.Items
             Name = "Gargoyle Shield";
             Hue = 2961;
             StrRequirement = 105;
-            Attributes.BonusDex = 10;
+            Attributes.BonusDex = 5;
             Attributes.RegenHits = 10;
-            Attributes.AttackChance = 20;
-            Attributes.DefendChance = 20;
-            Attributes.Luck = 300;
-            ArmorAttributes.SelfRepair = 8;
+            Attributes.DefendChance = 15;
+            ArmorAttributes.SelfRepair = 5;
             Attributes.CastSpeed = 1;
             Attributes.CastRecovery = 1;
             Attributes.SpellChanneling = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 11, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
         public Artifact_MarbleShield(Serial serial) : base( serial )

@@ -18,7 +18,7 @@ namespace Server.Items
 			Attributes.BonusStam = 20;
 			Attributes.AttackChance = 20;
 			Attributes.DefendChance = -20;
-			Attributes.WeaponDamage = 40;
+			Attributes.WeaponDamage = 32;
 
 			WeaponAttributes.HitLeechStam = 50;
 			ArtifactLevel = 2;

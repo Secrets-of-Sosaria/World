@@ -12,8 +12,9 @@ namespace Server.Items
 			Name = "Kodiak Bear Mask";
 			Resistances.Physical = 25;
 			Attributes.BonusStr = 10;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_KodiakBearMask( Serial serial ) : base( serial )

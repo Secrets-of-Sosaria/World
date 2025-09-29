@@ -13,16 +13,14 @@ namespace Server.Items
 		{
 			Name = "Pixie Swatter";
 			Hue = 0x8A;
-			WeaponAttributes.HitPoisonArea = 75;
-			Attributes.WeaponSpeed = 30;
-            
+			WeaponAttributes.HitPoisonArea = 55;
+			Attributes.WeaponSpeed = 10;
 			WeaponAttributes.UseBestSkill = 1;
-			WeaponAttributes.ResistFireBonus = 12;
-			WeaponAttributes.ResistEnergyBonus = 12;
-
+			WeaponAttributes.ResistFireBonus = 10;
+			WeaponAttributes.ResistEnergyBonus = 10;
 			Slayer = SlayerName.Fey;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

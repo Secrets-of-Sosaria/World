@@ -16,10 +16,14 @@ namespace Server.Items
 			Name = "Midnight Gloves";
 			Hue = 0x455;
 			SkillBonuses.SetValues( 0, SkillName.Necromancy, 5.0 );
+			SkillBonuses.SetValues( 1, SkillName.Spiritualism, 5.0 );
 			Attributes.SpellDamage = 10;
 			ArmorAttributes.MageArmor = 1;
+			Attributes.CastRecovery = 1;
+			Attributes.CastSpeed = 1;
+			Attributes.Luck = 75;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 4, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_MidnightGloves( Serial serial ) : base( serial )

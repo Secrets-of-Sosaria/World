@@ -16,13 +16,12 @@ namespace Server.Items
 			ItemID = 0x26BF;
             WeaponAttributes.HitLightning = 15;
             WeaponAttributes.HitLowerAttack = 15;
-            WeaponAttributes.HitMagicArrow = 5;
-            WeaponAttributes.SelfRepair = 2;
+            WeaponAttributes.SelfRepair = 5;
             SkillBonuses.SetValues( 0, SkillName.Magery, 5.0 );
-            Attributes.BonusMana = 30;
+            Attributes.BonusMana = 10;
             Attributes.ReflectPhysical = 15;
             Attributes.SpellChanneling = 1;
-            Attributes.SpellDamage = 25;
+            Attributes.SpellDamage = 15;
             IntRequirement = 100;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
