@@ -848,7 +848,7 @@ namespace Server
 					if ( CurrentMonth != "10" && iCategory(val) == ItemSalesInfo.Category.Halloween )
 						set = false;
 
-					if ( v_Market == ItemSalesInfo.Market.Sage && v_Category == ItemSalesInfo.Category.Artifact && iCategory(val) == ItemSalesInfo.Category.Artifact )
+					if ( v_Market == ItemSalesInfo.Market.Sage && v_Category == ItemSalesInfo.Category.Artifact && iMarket(val) != ItemSalesInfo.Market.Thief && iCategory(val) == ItemSalesInfo.Category.Artifact )
 					{
 						// This section is just for the sage to display artifacts that cannot be bought.
 						oItem = (Item)Activator.CreateInstance( itemType );
