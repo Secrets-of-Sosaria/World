@@ -142,12 +142,7 @@ namespace Server.SkillHandlers
 								((BaseBeverage)m_Target).Poison = m_Poison;
 								((BaseBeverage)m_Target).Poisoner = m_From;
 							}
-							else if ( m_Target is BaseWeapon && !MySettings.poisoningCharges)
-							{
-								((BaseWeapon)m_Target).Poison = m_Poison;
-								((BaseWeapon)m_Target).PoisonCharges = 18 - (m_Poison.Level * 2);
-							}
-							else if ( m_Target is BaseWeapon && MySettings.poisoningCharges)
+							else if ( m_Target is BaseWeapon)
 							{
 								// at 125 skill, a weapon can hold 41 poison charges. 
 								int maximumPoisonCharges =  (int)(m_From.Skills[SkillName.Poisoning].Value)/3;
