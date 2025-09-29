@@ -18,13 +18,14 @@ namespace Server.Items
 		{
 			Hue = 0x430;
 			Weight = 10.0;
-			ItemID = 0x267E;			Name = "Hammer of Thor";
+			ItemID = 0x267E;
+			Name = "Hammer of Thor";
 			AosElementDamages.Energy = 50;
 			AosElementDamages.Physical = 50;
-			WeaponAttributes.HitLightning = 50;
+			WeaponAttributes.HitLightning = 25;
 			DamageLevel = WeaponDamageLevel.Vanq;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "(Casts Lightning) " );
+			Server.Misc.Arty.ArtySetup( this, 10, "(Casts Lightning) " );
 		}
 
 		public override void OnDoubleClick( Mobile from )

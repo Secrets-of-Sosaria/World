@@ -14,13 +14,11 @@ namespace Server.Items
 			Hue = 0x497;
 			ItemID = 0x13B4;
 			Name = "Giant Blackjack";
-			Attributes.BonusStr = 10;
-			SkillBonuses.SetValues( 0, SkillName.Bludgeoning, 20 );
+			Attributes.BonusStr = 5;
+			SkillBonuses.SetValues( 0, SkillName.Bludgeoning, 25 );
 			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
-			Attributes.AttackChance = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GiantBlackjack( Serial serial ) : base( serial )

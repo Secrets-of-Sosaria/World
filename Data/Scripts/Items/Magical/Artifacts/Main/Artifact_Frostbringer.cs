@@ -1,5 +1,8 @@
 using System;
 using Server;
+using Server.Mobiles;
+using Server.Network;
+using Server.Engines.PartySystem;
 
 namespace Server.Items
 {
@@ -14,12 +17,12 @@ namespace Server.Items
 			Name = "Frostbringer";
 			Hue = 0x4F2;
 			ItemID = 0x13B2;
-			WeaponAttributes.HitDispel = 50;
+			WeaponAttributes.HitColdArea = 50;
 			SkillBonuses.SetValues( 0, SkillName.Marksmanship, 15 );
 			Attributes.RegenStam = 10;
-			Attributes.WeaponDamage = 50;
+			Attributes.WeaponDamage = 11;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

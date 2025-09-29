@@ -17,10 +17,10 @@ namespace Server.Items
 			ItemID = 0x1412;
 			Attributes.BonusInt = 8;
 			Attributes.BonusMana = 15;
-			Attributes.RegenMana = 2;
+			Attributes.RegenMana = 7;
 			Attributes.LowerManaCost = 8;
 			Attributes.CastSpeed = 1;
-			Attributes.CastRecovery = 2;
+			Attributes.CastRecovery = 1;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );

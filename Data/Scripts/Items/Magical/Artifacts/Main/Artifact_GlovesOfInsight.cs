@@ -16,12 +16,12 @@ namespace Server.Items
 			Name = "Gloves of Insight";
 			Hue = 0x554;
 			ItemID = 0x1414;
-			Attributes.BonusInt = 8;
+			Attributes.BonusInt = 12;
 			Attributes.BonusMana = 15;
-			Attributes.RegenMana = 2;
+			Attributes.RegenMana = 5;
 			Attributes.LowerManaCost = 8;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GlovesOfInsight( Serial serial ) : base( serial )

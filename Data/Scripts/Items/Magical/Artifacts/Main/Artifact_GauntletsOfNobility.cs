@@ -16,11 +16,10 @@ namespace Server.Items
 		{
 			Name = "Gauntlets of Nobility";
 			Hue = 0x4FE;
-			Attributes.BonusStr = 8;
+			Attributes.BonusStr = 7;
 			Attributes.Luck = 100;
-			Attributes.WeaponDamage = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GauntletsOfNobility( Serial serial ) : base( serial )

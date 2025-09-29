@@ -15,17 +15,14 @@ namespace Server.Items
 			Name = "Flesh Ripper";
 			Hue = 0x341;
 			ItemID = 0x2D21;
-
 			SkillBonuses.SetValues( 0, SkillName.Anatomy, 10.0 );
-
 			Attributes.BonusStr = 5;
 			Attributes.AttackChance = 15;
-			Attributes.WeaponSpeed = 40;
-
+			Attributes.WeaponSpeed = 7;
 			WeaponAttributes.UseBestSkill = 1;
 			Slayer = SlayerName.Repond;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_FleshRipper( Serial serial ) : base( serial )

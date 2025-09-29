@@ -19,9 +19,10 @@ namespace Server.Items
 			ArmorAttributes.SelfRepair = 5;
 			Attributes.ReflectPhysical = 10;
 			Attributes.DefendChance = 10;
-			Attributes.LowerManaCost = 4;
+			Attributes.LowerManaCost = 10;
+			Attributes.Luck = 70;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GlovesOfAegis( Serial serial ) : base( serial )

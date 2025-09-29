@@ -14,12 +14,12 @@ namespace Server.Items
         {
             Hue = 1272;
             Name = "Festering Wound";
-            Attributes.AttackChance = 30;
-            Attributes.SpellChanneling = 1;
-            Attributes.WeaponSpeed = 30;
-            Attributes.WeaponDamage = 25;
+            Attributes.AttackChance = 10;
+            Attributes.WeaponSpeed = 7;
+            Attributes.WeaponDamage = 15;
             WeaponAttributes.UseBestSkill = 1;
             WeaponAttributes.HitMagicArrow = 20;
+            Attributes.SpellChanneling = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 8, "" );
 		}

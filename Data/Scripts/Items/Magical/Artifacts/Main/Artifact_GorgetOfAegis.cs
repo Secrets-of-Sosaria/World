@@ -16,12 +16,13 @@ namespace Server.Items
 			Name = "Gorget of Aegis";
 			Hue = 0x47E;
 			ItemID = 0x1413;
+			Attributes.Luck = 55;
 			ArmorAttributes.SelfRepair = 5;
 			Attributes.ReflectPhysical = 12;
-			Attributes.DefendChance = 12;
-			Attributes.LowerManaCost = 6;
+			Attributes.DefendChance = 13;
+			Attributes.LowerManaCost = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GorgetOfAegis( Serial serial ) : base( serial )

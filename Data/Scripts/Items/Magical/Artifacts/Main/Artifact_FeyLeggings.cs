@@ -22,10 +22,10 @@ namespace Server.Items
 			ItemID = 0x13BE;
 			Name = "Fey Leggings";
 			Attributes.BonusHits = 6;
-			Attributes.DefendChance = 20;
+			Attributes.DefendChance = 24;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 8, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_FeyLeggings( Serial serial ) : base( serial )

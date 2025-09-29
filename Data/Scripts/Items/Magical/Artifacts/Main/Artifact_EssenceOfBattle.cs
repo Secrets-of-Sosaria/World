@@ -12,9 +12,9 @@ namespace Server.Items
 			ItemID = 0x6731;
 			Attributes.BonusDex = 7;
 			Attributes.BonusStr = 7;
-			Attributes.WeaponDamage = 30;
+			Attributes.WeaponDamage = 32;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_EssenceOfBattle( Serial serial ) : base( serial )

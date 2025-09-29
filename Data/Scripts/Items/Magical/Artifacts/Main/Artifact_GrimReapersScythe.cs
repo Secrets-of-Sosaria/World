@@ -16,13 +16,10 @@ namespace Server.Items
 			Hue = 0x47E;
 			Name = "Grim Reaper's Scythe";
 			ItemID = 0x2690;
-			WeaponAttributes.LowerStatReq = 50;
-			WeaponAttributes.HitLeechHits = 20;
-			WeaponAttributes.HitDispel = 25;
+			WeaponAttributes.HitLeechHits = 30;
 			WeaponAttributes.UseBestSkill = 1;
 			AccuracyLevel = WeaponAccuracyLevel.Supremely;
-			DamageLevel = WeaponDamageLevel.Vanq;
-            Slayer = SlayerName.Repond;
+ 	 	    Slayer = SlayerName.Repond;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

@@ -13,12 +13,11 @@ namespace Server.Items
 		{
 			Name = "Gorget of Fortune";
 			Hue = 0x501;
-			Attributes.Luck = 200;
-			Attributes.DefendChance = 15;
-			Attributes.LowerRegCost = 40;
+			Attributes.Luck = 100;
+			Attributes.LowerRegCost = 17;
 			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GorgetOfFortune( Serial serial ) : base( serial )

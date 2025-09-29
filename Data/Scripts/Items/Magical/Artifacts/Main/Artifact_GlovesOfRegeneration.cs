@@ -12,7 +12,7 @@ namespace Server.Items
 
 		public override int BaseColdResistance{ get{ return 8; } } 
 		public override int BaseEnergyResistance{ get{ return 10; } } 
-		public override int BasePhysicalResistance{ get{ return 5; } } 
+		public override int BasePhysicalResistance{ get{ return 15; } } 
 		public override int BasePoisonResistance{ get{ return 15; } } 
 		public override int BaseFireResistance{ get{ return 10; } }
 
@@ -22,9 +22,11 @@ namespace Server.Items
 			Name = "Gloves Of Regeneration";
 			Hue = 1284;
 			ItemID = 0x13C6;
-			Attributes.RegenHits = 5;
-			Attributes.RegenMana = 5;
-			Attributes.RegenStam = 5;
+			Attributes.RegenHits = 15;
+			Attributes.RegenMana = 15;
+			Attributes.RegenStam = 15;
+			ArmorAttributes.SelfRepair = 5;
+			ArmorAttributes.DurabilityBonus = 25;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

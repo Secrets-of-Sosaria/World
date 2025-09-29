@@ -11,12 +11,13 @@ namespace Server.Items
 			Name = "Earrings of the Magician";
 			Hue = 0x554;
 			Attributes.CastRecovery = 2;
-			Attributes.CastSpeed = 1;
-			Attributes.LowerManaCost = 5;
-			Attributes.LowerRegCost = 10;
-			Resistances.Energy = 15;
+			Attributes.CastSpeed = 2;
+			Attributes.LowerManaCost = 14;
+			Attributes.LowerRegCost = 14;
+			Attributes.BonusMana = 20;
+			Resistances.Energy = 20;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 5, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_EarringsOfTheMagician( Serial serial ) : base( serial )

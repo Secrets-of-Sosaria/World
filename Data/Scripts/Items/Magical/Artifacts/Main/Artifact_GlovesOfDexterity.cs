@@ -14,10 +14,10 @@ namespace Server.Items
 			Name = "Gloves of Dexterity";
 			Hue = 0x594;
 			ItemID = 0x13C6;
-			Attributes.BonusDex = 20;
+			Attributes.BonusDex = 25;
 			Attributes.RegenStam = 10;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 6, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GlovesOfDexterity( Serial serial ) : base( serial )

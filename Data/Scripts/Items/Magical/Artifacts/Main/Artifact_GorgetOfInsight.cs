@@ -18,10 +18,10 @@ namespace Server.Items
 			ItemID = 0x1413;
 			Attributes.BonusInt = 8;
 			Attributes.BonusMana = 15;
-			Attributes.RegenMana = 2;
+			Attributes.RegenMana = 7;
 			Attributes.LowerManaCost = 8;
 			ArtifactLevel = 2;
-			Server.Misc.Arty.ArtySetup( this, 7, "" );
+			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
 
 		public Artifact_GorgetOfInsight( Serial serial ) : base( serial )
