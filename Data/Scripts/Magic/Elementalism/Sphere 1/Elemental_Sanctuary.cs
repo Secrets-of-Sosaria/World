@@ -29,47 +29,51 @@ namespace Server.Spells.Elementalism
 
 			bool CanCast = false;
 
-			if ( Server.Misc.WeightOverloading.IsOverloaded( Caster ) )
+			if (Server.Misc.WeightOverloading.IsOverloaded(Caster))
 			{
-				Caster.SendLocalizedMessage( 502359, "", 0x22 ); // Thou art too encumbered to move.
+				Caster.SendLocalizedMessage(502359, "", 0x22); // Thou art too encumbered to move.
 			}
-			else if ( Caster.Region.IsPartOf( typeof( PublicRegion ) ) )
+			else if (Caster.Region.IsPartOf(typeof(PublicRegion)))
 			{
-				Caster.SendMessage( "You cannot cast this here." ); 
+				Caster.SendMessage("You cannot cast this here.");
 			}
-			else if ( Server.Misc.Worlds.IsOnBoat( Caster ) )
+			else if (Server.Misc.Worlds.IsOnBoat(Caster))
 			{
-				Caster.SendMessage( "You cannot cast this near a boat." );
+				Caster.SendMessage("You cannot cast this near a boat.");
 			}
-			else if ( Server.Misc.Worlds.IsOnSpaceship( Caster.Location, Caster.Map ) )
+			else if (Server.Misc.Worlds.IsOnSpaceship(Caster.Location, Caster.Map))
 			{
-				Caster.SendMessage( "The metal walls of this place seems to be blocking this spell." );
+				Caster.SendMessage("The metal walls of this place seems to be blocking this spell.");
 			}
-			else if ( inCombat )
+			else if (inCombat)
 			{
-				Caster.SendMessage( "You cannot cast this while in combat." );
+				Caster.SendMessage("You cannot cast this while in combat.");
 			}
-			else if ( ( Caster.Region.IsPartOf( typeof( BardDungeonRegion ) ) || Caster.Region.IsPartOf( typeof( DungeonRegion ) ) ) && Caster.Skills[SkillName.Elementalism].Value >= 90 )
+			else if (Caster.Region.IsPartOf(typeof(DungeonHomeRegion)))
 			{
 				CanCast = true;
 			}
-			else if (	Caster.Skills[SkillName.Elementalism].Value < 90 && 
-						!Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( Caster.Map, Caster.Location ) ) && 
-						!Caster.Region.IsPartOf( typeof( OutDoorRegion ) ) && 
-						!Caster.Region.IsPartOf( typeof( OutDoorBadRegion ) ) && 
-						!Caster.Region.IsPartOf( typeof( VillageRegion ) ) )
+			else if ((Caster.Region.IsPartOf(typeof(BardDungeonRegion)) || Caster.Region.IsPartOf(typeof(DungeonRegion))) && Caster.Skills[SkillName.Elementalism].Value >= 90)
 			{
-				Caster.SendMessage( "You are only skilled enough to cast this spell outdoors." ); 
+				CanCast = true;
 			}
-			else if (	Caster.Skills[SkillName.Elementalism].Value >= 90 && 
-						!Caster.Region.IsPartOf( typeof( DungeonRegion ) ) && 
-						!Caster.Region.IsPartOf( typeof( BardDungeonRegion ) ) && 
-						!Server.Misc.Worlds.IsMainRegion( Server.Misc.Worlds.GetRegionName( Caster.Map, Caster.Location ) ) && 
-						!Caster.Region.IsPartOf( typeof( OutDoorRegion ) ) && 
-						!Caster.Region.IsPartOf( typeof( OutDoorBadRegion ) ) && 
-						!Caster.Region.IsPartOf( typeof( VillageRegion ) ) )
+			else if (Caster.Skills[SkillName.Elementalism].Value < 90 &&
+						!Server.Misc.Worlds.IsMainRegion(Server.Misc.Worlds.GetRegionName(Caster.Map, Caster.Location)) &&
+						!Caster.Region.IsPartOf(typeof(OutDoorRegion)) &&
+						!Caster.Region.IsPartOf(typeof(OutDoorBadRegion)) &&
+						!Caster.Region.IsPartOf(typeof(VillageRegion)))
 			{
-				Caster.SendMessage( "You can only cast this spell outdoors or in dungeons." ); 
+				Caster.SendMessage("You are only skilled enough to cast this spell outdoors.");
+			}
+			else if (Caster.Skills[SkillName.Elementalism].Value >= 90 &&
+						!Caster.Region.IsPartOf(typeof(DungeonRegion)) &&
+						!Caster.Region.IsPartOf(typeof(BardDungeonRegion)) &&
+						!Server.Misc.Worlds.IsMainRegion(Server.Misc.Worlds.GetRegionName(Caster.Map, Caster.Location)) &&
+						!Caster.Region.IsPartOf(typeof(OutDoorRegion)) &&
+						!Caster.Region.IsPartOf(typeof(OutDoorBadRegion)) &&
+						!Caster.Region.IsPartOf(typeof(VillageRegion)))
+			{
+				Caster.SendMessage("You can only cast this spell outdoors or in dungeons.");
 			}
 			else
 			{
