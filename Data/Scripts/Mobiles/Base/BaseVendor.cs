@@ -331,7 +331,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				return TimeSpan.FromHours( 2 );
+				return TimeSpan.FromHours( 1 );
 			}
 		}
 
