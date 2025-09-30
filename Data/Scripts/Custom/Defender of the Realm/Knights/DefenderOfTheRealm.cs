@@ -1,4 +1,5 @@
 using System;
+using Server.ContextMenus;
 using System.Collections.Generic;
 using Server;
 using Server.Items;
@@ -14,6 +15,7 @@ namespace Server.Custom.DefenderOfTheRealm.Knight
 {
     public class DefenderOfRealm : BaseCreature
     {
+        private DateTime m_NextSpeechTime;
         [Constructable]
         public DefenderOfRealm() : base(AIType.AI_Thief, FightMode.None, 10, 1, 0.4, 1.6)
         {
@@ -49,33 +51,65 @@ namespace Server.Custom.DefenderOfTheRealm.Knight
         }
 
         public override void OnMovement( Mobile m, Point3D oldLocation )
-		{
-			if ( InRange( m, 4 ) && !InRange( oldLocation, 4 ) )
-			{
-				if ( m is PlayerMobile && !m.Hidden ) 
-				{
-					switch (Utility.Random(16))
-					{
-							case 0: Say("The Defenders of the Realm are in need of reinforcements!"); break;
-							case 1: Say("Slay many a foul beast and make our land safer!"); break;
-							case 2: Say("By decree of the king, we shall rid this land of evil!"); break;
-							case 3: Say("Stand tall, mighty warriors of the realm! Our loved ones count on thy courage!"); break;
-							case 4: Say("Steel your heart, for restless darkness roams these lands!"); break;
-							case 5: Say("Prove thy valor in the name of our king!"); break;
+        {
+            if ( InRange( m, 6 ) && !InRange( oldLocation, 2 ) )
+            {
+                if ( m is PlayerMobile && !m.Hidden ) 
+                {
+                    if ( DateTime.UtcNow >= m_NextSpeechTime )
+                    {
+                        switch (Utility.Random(11))
+                        {
+                            case 0: Say("The Defenders of the Realm are in need of reinforcements!"); break;
+						    case 1: Say("Slay many a foul beast and make our land safer!"); break;
+						    case 2: Say("By decree of the king, we shall rid this land of evil!"); break;
+						    case 3: Say("Stand tall, mighty warriors of the realm! Our loved ones count on thy courage!"); break;
+						    case 4: Say("Steel your heart, for restless darkness roams these lands!"); break;
+						    case 5: Say("Prove thy valor in the name of our king!"); break;
                             case 6: Say("Honor is it's own reward for the worthy!");break;
                             case 7: Say("Raise thy blade in the name of virtue!");break;
                             case 8: Say("Beware! Many dangers lie ahead!");break;
                             case 9: Say("The foul hordes shall be made headless by the culling of their generals!");break;
                             case 10: Say("Many have we lost in our struggle against darkness, but we shall not give it rest!");break;
-					}
-				}
-			}
-		}
+                        }
+                        m_NextSpeechTime = DateTime.UtcNow + TimeSpan.FromSeconds(10);
+                    }
+                }
+            }
+        }
+
+        public override void OnSpeech(SpeechEventArgs e)
+        {
+            base.OnSpeech(e);
+
+            Mobile from = e.Mobile;
+
+            if (from == null || !(from is PlayerMobile))
+                return;
+
+            if (!from.InRange(this.Location, 3))
+                return;
+
+            string speech = e.Speech.ToLower();
+
+            if (speech.IndexOf("reward") >= 0 && from.Karma > 0)
+            {
+                from.SendGump(new Server.Custom.DefenderOfTheRealm.RewardGump(from, true, 0));
+                Say("These are the rewards I can offer thee.");
+            }
+            else if (speech.IndexOf("reward") >= 0 && from.Karma < 0)
+            {
+                Say("I shall not offer my services to servants of evil! Redeem thyself!");
+            }
+        }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
         {
             base.GetContextMenuEntries(from, list);
-            list.Add(new GiveVowEntry(from, this));
+            if (from is PlayerMobile)
+            {
+                list.Add(new GiveVowEntry(from, this));
+            }
         }
 
         private class GiveVowEntry : ContextMenuEntry

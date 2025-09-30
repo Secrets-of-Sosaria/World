@@ -25,12 +25,17 @@ namespace Server.Custom.ScourgeOfTheRealm.VowGump
 
             AddLabel(20, 50, 1152, "Vow for: " + m_Vow.Required + " trophies");
             AddLabel(20, 70, 1152, "Quantity collected: " + m_Vow.Current + "/" + m_Vow.Required);
-            AddLabel(20, 90, 1152, "Reward: " + m_Vow.Reward + " Gold");
+            AddLabel(20, 90, 1152, "Reward: " + m_Vow.Reward + " Marks of the Scourge");
 
             if (m_Vow.Current < m_Vow.Required)
             {
                 AddButton(100, 130, 4005, 4007, 1, GumpButtonType.Reply, 0);
                 AddLabel(135, 130, 1152, "Add Trophy");
+            }
+            else
+            {
+                AddLabel(20, 130, 1152, "Return to the Defender of the Scourge");
+                AddLabel(20, 150, 1152, "for your reward");
             }
         }
 

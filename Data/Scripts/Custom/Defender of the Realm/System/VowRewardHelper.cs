@@ -1,67 +1,19 @@
 using System;
 using Server;
 using Server.Items;
-using Server.Misc;
 using Server.Mobiles;
-using Server.Targeting;
-using Server.Network;
-using Server.Custom.DefenderOfTheRealm.Scourge;
-using Server.Custom.ScourgeOfTheRealm.VowGump;
 
-namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
+namespace Server.Custom.DefenderOfTheRealm.Vow
 {
-    public class VowOfTheScourge : Item
+    public enum VowType
     {
-        private string m_OwnerName;
-        private int m_Level;
-        private int m_Required;
-        private int m_Current;
-        private int m_Reward;
+        Honor,
+        Scourge
+    }
 
-        public string OwnerName { get { return m_OwnerName; } set { m_OwnerName = value; InvalidateProperties(); } }
-        public int Level { get { return m_Level; } set { m_Level = value; InvalidateProperties(); } }
-        public int Required { get { return m_Required; } set { m_Required = value; InvalidateProperties(); } }
-        public int Current { get { return m_Current; } set { m_Current = value; InvalidateProperties(); } }
-        public int Reward { get { return m_Reward; } set { m_Reward = value; InvalidateProperties(); } }
-
-        [Constructable]
-        public VowOfTheScourge(Mobile from) : base(5360)
-        {
-            Hue = 0x25;
-            LootType = LootType.Blessed;
-            Name = from.Name+"'s Vow of the Scourge";
-            m_OwnerName = from.Name;
-            m_Level = IntelligentAction.GetCreatureLevel(from);
-            m_Required = GetRequiredAmount(m_Level);
-            m_Current = 0;
-            m_Reward = 0;
-        }
-
-        public override void OnDoubleClick(Mobile from)
-        {
-            if (from == null || from.Deleted)
-                return;
-
-            if (from.Backpack == null || !IsChildOf(from.Backpack))
-            {
-                from.SendMessage("The Vow must be in your backpack to use.");
-                return;
-            }
-
-            from.SendGump(new VowOfTheScourgeGump(from, this));
-        }
-
-        public override void GetProperties(ObjectPropertyList list)
-        {
-            base.GetProperties(list);
-
-            list.Add("Belongs to {0}", m_OwnerName);
-            list.Add("A vow to aqquire {0} trophies", m_Required);
-            list.Add("Progress: {0}/{1}", m_Current, m_Required);
-            list.Add("Reward so far: {0} Gold", m_Reward);
-        }
-
-        private int GetRequiredAmount(int level)
+    public static class VowRewardHelper
+    {
+        public static int GetRequiredAmount(int level)
         {
             Random rand = new Random();
 
@@ -86,97 +38,15 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
             return rand.Next(15, 36);
         }
 
-        public void AddTrophy(Mobile from)
+        public static void GenerateRewards(Mobile from, int rewardWorth, Container rewardBag, VowType type)
         {
-            if (m_Current >= m_Required)
-                return;
-
-            int luck = from.Luck;
-            if (luck > 2000) luck = 2000;
-
-            int gold = 50 + (luck * (335 - 50) / 2000);//at 2k luck, base reward is always 335 at 2k luck and 50 at 0 luck
-            m_Current++;
-            m_Reward += Utility.RandomMinMax((int)(gold * 0.8), (int)(gold * 1.2));//adds a 20% variance to the base reward
-            InvalidateProperties();
-
-            from.SendMessage("You add a trophy to your Vow of the Scourge.");
-
-            if (m_Current >= m_Required)
-            {
-                from.SendMessage("Your vow is complete!");
-            }
-        }
-
-        public VowOfTheScourge(Serial serial) : base(serial)
-        {
-        }
-
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
-            writer.Write((int)0);
-            writer.Write(m_OwnerName);
-            writer.Write(m_Level);
-            writer.Write(m_Required);
-            writer.Write(m_Current);
-            writer.Write(m_Reward);
-        }
-
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
-            int version = reader.ReadInt();
-            m_OwnerName = reader.ReadString();
-            m_Level = reader.ReadInt();
-            m_Required = reader.ReadInt();
-            m_Current = reader.ReadInt();
-            m_Reward = reader.ReadInt();
-        }
-        public override bool OnDroppedToMobile(Mobile from, Mobile target)
-        {
-            if (target == null || !(target is ScourgeOfRealm))
-            {
-                from.SendMessage("You can only complete your Vow with a Scourge of the Realm.");
-                return false;
-            }
-            if (from.Name != m_OwnerName)
-            {
-                from.SendMessage("This Vow does not belong to you!");
-                return false;
-            }
-            if (m_Current < m_Required)
-            {
-                from.SendMessage("Your vow is not yet complete. You need {0} more trophies.", m_Required - m_Current);
-                return false;
-            }
-            if (from.Backpack == null || from.Backpack.Items.Count >= from.Backpack.MaxItems)
-            {
-                from.SendMessage("You do not have enough space in your backpack to receive the rewards.");
-                return false;
-            }
-            Bag rewardBag = new Bag();
-            rewardBag.Name = "Spoils of War";
-            rewardBag.Hue = 0x25;
-            GenerateRewards(from, m_Reward, rewardBag);
-            rewardBag.DropItem(new Gold(m_Reward));
-            from.AddToBackpack(rewardBag);
-            from.SendMessage("You have completed your Vow of the Scourge and received a bag containing {0} gold and additional rewards!", m_Reward);
-            Effects.PlaySound(from.Location, from.Map, 0x243);
-            this.Delete();
-            return true;
-        }
-
-        private void GenerateRewards(Mobile from, int rewardWorth, Container rewardBag)
-        {
-            CheckForDefenderArtifact(rewardWorth, rewardBag);
-
-            if (rewardWorth < 500)
+            if (rewardWorth < 5)
             {
                 GenerateEnchantedItem(from, 75, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(1));
                 rewardBag.DropItem(Loot.RandomPotion(4, false));
             }
-            else if (rewardWorth < 1000)
+            else if (rewardWorth < 10)
             {
                 GenerateEnchantedItem(from, 150, rewardBag);
                 rewardBag.DropItem(Loot.RandomGem());
@@ -184,7 +54,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                 rewardBag.DropItem(Loot.RandomPotion(4, false));
                 rewardBag.DropItem(Loot.RandomScroll(3));
             }
-            else if (rewardWorth < 2000)
+            else if (rewardWorth < 20)
             {
                 GenerateEnchantedItem(from, 200, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(4));
@@ -195,7 +65,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 10));
                 }
             }
-            else if (rewardWorth < 4000)
+            else if (rewardWorth < 40)
             {
                 GenerateEnchantedItem(from, 250, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(5));
@@ -206,7 +76,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
                 }
             }
-            else if (rewardWorth < 6000)
+            else if (rewardWorth < 60)
             {
                 GenerateEnchantedItem(from, 300, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(6));
@@ -220,7 +90,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
                 }
             }
-            else if (rewardWorth < 8000)
+            else if (rewardWorth < 80)
             {
                 GenerateEnchantedItem(from, 350, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(8));
@@ -235,7 +105,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
                 }
             }
-            else if (rewardWorth < 9000)
+            else if (rewardWorth < 90)
             {
                 GenerateEnchantedItem(from, 400, rewardBag);
                 if (Utility.RandomDouble() < 0.05)
@@ -251,7 +121,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
                 }
             }
-            else if (rewardWorth < 10000)
+            else if (rewardWorth < 100)
             {
                 GenerateEnchantedItem(from, 450, rewardBag);
                 rewardBag.DropItem(Loot.RandomRare(Utility.RandomMinMax(6, 12), from));
@@ -273,7 +143,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 25));
                 }
             }
-            else if (rewardWorth < 12000)
+            else if (rewardWorth < 120)
             {
                 rewardBag.DropItem(Loot.RandomRelic(from));
                 GenerateEnchantedItem(from, 500, rewardBag);
@@ -292,7 +162,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 25));
                 }
             }
-            else if (rewardWorth < 14000)
+            else if (rewardWorth < 140)
             {
                 rewardBag.DropItem(Loot.RandomSArty(Server.LootPackEntry.playOrient(from), from));
                 if (Utility.RandomDouble() < 0.40)
@@ -339,49 +209,56 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                     rewardBag.DropItem(new EternalPowerScroll());
                 }
             }
+            // Chance for artifacts
+            if (CheckForArtifact(rewardWorth, from))
+            {
+                Item arty = CreateRandomArtifact(from, type);
+                if (arty != null)
+                    rewardBag.DropItem(arty);
+            }
         }
 
-        private void CheckForDefenderArtifact(int rewardWorth, Container rewardBag)
+        public static bool CheckForArtifact(int rewardWorth, Mobile from)
         {
             double chance = 0.0;
 
-            if (rewardWorth < 500)
+            if (rewardWorth < 5)
             {
                 chance = 0.01; // 1% chance
             }
-            else if (rewardWorth < 1000)
+            else if (rewardWorth < 10)
             {
                 chance = 0.02; // 2% chance
             }
-            else if (rewardWorth < 2000)
+            else if (rewardWorth < 20)
             {
                 chance = 0.02; // 2% chance
             }
-            else if (rewardWorth < 4000)
+            else if (rewardWorth < 40)
             {
                 chance = 0.03; // 3% chance
             }
-            else if (rewardWorth < 6000)
+            else if (rewardWorth < 60)
             {
                 chance = 0.03; // 3% chance
             }
-            else if (rewardWorth < 8000)
+            else if (rewardWorth < 800)
             {
                 chance = 0.03; // 3% chance
             }
-            else if (rewardWorth < 9000)
+            else if (rewardWorth < 90)
             {
                 chance = 0.04; // 4% chance
             }
-            else if (rewardWorth < 10000)
+            else if (rewardWorth < 100)
             {
                 chance = 0.04; // 4% chance
             }
-            else if (rewardWorth < 12000)
+            else if (rewardWorth < 120)
             {
                 chance = 0.05; // 5% chance
             }
-            else if (rewardWorth < 14000)
+            else if (rewardWorth < 140)
             {
                 chance = 0.06; // 6% chance
             }
@@ -389,39 +266,59 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
             {
                 chance = 0.25; // 25% chance
             }
+            
+            return Utility.RandomDouble() < chance;
+        }
 
-            if (Utility.RandomDouble() < chance)
+        public static Item CreateRandomArtifact(Mobile from, VowType type)
+        {
+            Item item = null;
+
+            if (type == VowType.Honor)
             {
-                Item artifact = CreateRandomScourgeArtifact();
-                if (artifact != null)
+               switch (Utility.Random(6))
                 {
-                    rewardBag.DropItem(artifact);
+                    case 0: 
+                        return new Artifact_DefenderOfTheRealmArms();
+                    case 1: 
+                        return new Artifact_DefenderOfTheRealmChestpiece();
+                    case 2: 
+                        return new Artifact_DefenderOfTheRealmGloves();
+                    case 3: 
+                        return new Artifact_DefenderOfTheRealmGorget();
+                    case 4: 
+                        return new Artifact_DefenderOfTheRealmHelmet();
+                    case 5: 
+                        return new Artifact_DefenderOfTheRealmLeggings();
+                    default: //hacky, need to think of a better implementation
+                        return new Artifact_DefenderOfTheRealmArms();
                 }
             }
-        }
-
-        private Item CreateRandomScourgeArtifact()
-        {
-            switch (Utility.Random(6))
+            else
             {
-                case 0: 
-                    return new Artifact_ScourgeOfTheRealmArms();
-                case 1: 
-                    return new Artifact_ScourgeOfTheRealmChestpiece();
-                case 2: 
-                    return new Artifact_ScourgeOfTheRealmGloves();
-                case 3: 
-                    return new Artifact_ScourgeOfTheRealmGorget();
-                case 4: 
-                    return new Artifact_ScourgeOfTheRealmHelmet();
-                case 5: 
-                    return new Artifact_ScourgeOfTheRealmLeggings();
-                default: //hacky, need to think of a better implementation
-                    return new Artifact_ScourgeOfTheRealmArms();
+                switch (Utility.Random(6))
+                {
+                    case 0: 
+                        return new Artifact_ScourgeOfTheRealmArms();
+                    case 1: 
+                        return new Artifact_ScourgeOfTheRealmChestpiece();
+                    case 2: 
+                        return new Artifact_ScourgeOfTheRealmGloves();
+                    case 3: 
+                        return new Artifact_ScourgeOfTheRealmGorget();
+                    case 4: 
+                        return new Artifact_ScourgeOfTheRealmHelmet();
+                    case 5: 
+                        return new Artifact_ScourgeOfTheRealmLeggings();
+                    default: //hacky, need to think of a better implementation
+                        return new Artifact_ScourgeOfTheRealmArms();
+                }
             }
-        }
 
-        private void GenerateEnchantedItem(Mobile from, int enchantLevel, Container rewardBag)
+            if (item != null)
+                return item;
+        }
+        public static void GenerateEnchantedItem(Mobile from, int enchantLevel, Container rewardBag)
         {
             Item item = Loot.RandomMagicalItem(Server.LootPackEntry.playOrient(from));
             if (item != null)
@@ -429,53 +326,6 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
                 item = LootPackEntry.Enchant(from, enchantLevel, item);
                 rewardBag.DropItem(item);
             }
-        }
-    }
-
-    public class VowTrophyTarget : Target
-    {
-        private VowOfTheScourge m_Vow;
-        private Mobile m_From;
-
-        public VowTrophyTarget(Mobile from, VowOfTheScourge vow) : base(1, false, TargetFlags.None)
-        {
-            m_From = from;
-            m_Vow = vow;
-        }
-
-        protected override void OnTarget(Mobile from, object targeted)
-        {
-            if (m_Vow == null || m_Vow.Deleted)
-                return;
-            Item item = targeted as Item;
-            if (item == null)
-            {
-                from.SendMessage("That is not a valid trophy. Only items acquired from fearsome foes in deep dungeons can be added to it.");
-                return;
-            }
-            if (from.Name != m_Vow.OwnerName)
-            {
-                from.SendMessage("This vow does not belong to you!");
-                return;
-            }
-            if (!(item is SummonItems))
-            {
-                from.SendMessage("That item cannot be added to your Vow. Only items acquired from fearsome foes in deep dungeons can be added to it.");
-                return;
-            }
-            SummonItems summonItem = (SummonItems)item;
-            if (summonItem.Owner == null)
-            {
-                from.SendMessage("This trophy has no owner and cannot be added to your vow.");
-                return;
-            }
-            if (summonItem.Owner.Name != m_Vow.OwnerName)
-            {
-                from.SendMessage("This trophy was not seized by you!");
-                return;
-            }
-            item.Delete();
-            m_Vow.AddTrophy(from);
         }
     }
 }
