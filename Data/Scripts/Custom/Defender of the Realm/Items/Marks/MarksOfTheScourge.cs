@@ -17,7 +17,7 @@ namespace Server.Items
             Weight = 0.1;
             Hue = 0x25;
             Amount = amount;
-            Name = "Mark of Honor";
+            Name = "Mark of the Scourge";
         }
 
         public MarksOfTheScourge(Serial serial) : base(serial)
