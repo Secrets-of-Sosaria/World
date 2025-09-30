@@ -16465,7 +16465,14 @@ namespace Server.Scripts.Commands
 			if ( DungeonHomesDecorated == 0 ){ Server.Commands.Monopoly.Monopoly_OnCommand( e ); }
 
 			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Spawn Dungeons..." ); }
-			Server.SpawnGenerator.Parse( e.Mobile, "dangers.map" );
+			if(MySettings.S_harderDungeons)
+			{
+				Server.SpawnGenerator.Parse( e.Mobile, "dangers-harder.map" );
+			}
+			else 
+			{
+				Server.SpawnGenerator.Parse( e.Mobile, "dangers.map" );
+			}
 			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Spawn Land..." ); }
 			Server.SpawnGenerator.Parse( e.Mobile, "land.map" );
 			if ( MySettings.ConsoleLog ){ Console.WriteLine( "Spawn Animals..." ); }

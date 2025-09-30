@@ -148,6 +148,10 @@ namespace Server
 
 		public static bool S_ArtifactEnchantment = false;
 
+	// The setting below controls the 'hard mode' for dungeons. If set to true, then dungeons will spawn many more monsters, often close together. 
+	// enable it if you are confortable with the game and wish for a harder challenge. Default is false. 
+		public static bool S_harderDungeons = true;
+
 	///////////////////////////////////////////////////////////////////////////////////////////////
 		// 003 - PLAYER OPTIONS ///////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////////////////////////
