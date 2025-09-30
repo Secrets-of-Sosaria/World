@@ -14,6 +14,7 @@ namespace Server.Custom.DefenderOfTheRealm.Scourge
 {
     public class ScourgeOfRealm : BaseCreature
     {
+        private DateTime m_NextSpeechTime;
         [Constructable]
         public ScourgeOfRealm() : base(AIType.AI_Thief, FightMode.None, 10, 1, 0.4, 1.6)
         {
@@ -49,28 +50,33 @@ namespace Server.Custom.DefenderOfTheRealm.Scourge
         }
 
         public override void OnMovement( Mobile m, Point3D oldLocation )
-		{
-			if ( InRange( m, 6 ) && !InRange( oldLocation, 2 ) )
-			{
-				if ( m is PlayerMobile && !m.Hidden ) 
-				{
-					switch (Utility.Random(16))
-					{
-							case 0: Say("The Weak shall fall before us!"); break;
-							case 1: Say("Blood and fire will cleanse this land!"); break;
-							case 2: Say("The King's virtue is but a frail lie!"); break;
-							case 3: Say("Those that do not kneel shall be broken!"); break;
-							case 4: Say("Steel your heart, for we are heirs of endless darkness!"); break;
-							case 5: Say("All glory belongs to us!"); break;
-                            case 6: Say("Sosaria shall burn!");break;
-                            case 7: Say("Raise thy blade in the name of vengeance!");break;
-                            case 8: Say("We shall make covenant with the ghosts of this land!");break;
-                            case 9: Say("We shall remove the rot of this realm!");break;
-                            case 10: Say("Hail the scourge, bane of virtue!");break;
-					}
-				}
-			}
-		}
+        {
+            if ( InRange( m, 6 ) && !InRange( oldLocation, 2 ) )
+            {
+                if ( m is PlayerMobile && !m.Hidden ) 
+                {
+                    if ( DateTime.UtcNow >= m_NextSpeechTime )
+                    {
+                        switch (Utility.Random(11))
+                        {
+                            case 0: Say("The Weak shall fall before us!"); break;
+                            case 1: Say("Blood and fire will cleanse this land!"); break;
+                            case 2: Say("The King's virtue is but a frail lie!"); break;
+                            case 3: Say("Those that do not kneel shall be broken!"); break;
+                            case 4: Say("Steel your heart, for we are heirs of endless darkness!"); break;
+                            case 5: Say("All glory belongs to us!"); break;
+                            case 6: Say("Sosaria shall burn!"); break;
+                            case 7: Say("Raise thy blade in the name of vengeance!"); break;
+                            case 8: Say("We shall make covenant with the ghosts of this land!"); break;
+                            case 9: Say("We shall remove the rot of this realm!"); break;
+                            case 10: Say("Hail the scourge, bane of virtue!"); break;
+                        }
+
+                        m_NextSpeechTime = DateTime.UtcNow + TimeSpan.FromSeconds(10);
+                    }
+                }
+            }
+        }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
         {
@@ -166,6 +172,31 @@ namespace Server.Custom.DefenderOfTheRealm.Scourge
 					}
 				}
 			}
+        }
+
+        public override void OnSpeech(SpeechEventArgs e)
+        {
+            base.OnSpeech(e);
+
+            Mobile from = e.Mobile;
+
+            if (from == null || !(from is PlayerMobile))
+                return;
+
+            if (!from.InRange(this.Location, 3))
+                return;
+
+            string speech = e.Speech.ToLower();
+
+            if (speech.IndexOf("reward") >= 0 && from.Karma < 0)
+            {
+                from.SendGump(new Server.Custom.DefenderOfTheRealm.RewardGump(from, false, 0));
+                Say("These are the rewards I can offer thee.");
+            } 
+            else if (speech.IndexOf("reward") >= 0 && from.Karma > 0)
+            {
+                Say("I shall not dabble with the slaves of virtue!");
+            }
         }
 
         public ScourgeOfRealm(Serial serial) : base(serial) { }

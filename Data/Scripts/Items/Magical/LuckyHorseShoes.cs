@@ -4,6 +4,7 @@ using Server.Prompts;
 using Server.Items;
 using Server.Targeting;
 using Server;
+using Server.Misc;
 
 namespace Server.Items
 {
@@ -29,14 +30,14 @@ namespace Server.Items
 				else
 				{
 					int luck = item.Attributes.Luck;
-					if ( luck >= 1000 )
+					if ( luck >= 500 )
 					{
 						from.SendMessage( "There is already enough luck on this item." );
 					}
 					else
 					{
-						item.Attributes.Luck = luck + 100;
-							if ( item.Attributes.Luck > 1000 ){ item.Attributes.Luck = 1000; }
+						item.Attributes.Luck = luck + Utility.RandomMinMax(25,125);
+							if ( item.Attributes.Luck > 500 ){ item.Attributes.Luck = 500; }
 						from.SendMessage( "You add some extra luck to the item." );
 						m_Deed.Delete();
 					}
@@ -53,14 +54,14 @@ namespace Server.Items
 				else
 				{
 					int luck = item.Attributes.Luck;
-					if ( luck >= 1000 )
+					if ( luck >= 500 )
 					{
 						from.SendMessage( "There is already enough luck on this item." );
 					}
 					else
 					{
-						item.Attributes.Luck = luck + 100;
-							if ( item.Attributes.Luck > 1000 ){ item.Attributes.Luck = 1000; }
+						item.Attributes.Luck = luck + Utility.RandomMinMax(25,125);
+							if ( item.Attributes.Luck > 500 ){ item.Attributes.Luck = 500; }
 						from.SendMessage( "You add some extra luck to the item." );
 						m_Deed.Delete();
 					}
@@ -77,14 +78,14 @@ namespace Server.Items
 				else
 				{
 					int luck = item.Attributes.Luck;
-					if ( luck >= 1000 )
+					if ( luck >= 500 )
 					{
 						from.SendMessage( "There is already enough luck on this item." );
 					}
 					else
 					{
-						item.Attributes.Luck = luck + 100;
-							if ( item.Attributes.Luck > 1000 ){ item.Attributes.Luck = 1000; }
+						item.Attributes.Luck = luck + Utility.RandomMinMax(25,125);
+							if ( item.Attributes.Luck > 500 ){ item.Attributes.Luck = 500; }
 						from.SendMessage( "You add some extra luck to the item." );
 						m_Deed.Delete();
 					}
@@ -101,14 +102,14 @@ namespace Server.Items
 				else
 				{
 					int luck = item.Attributes.Luck;
-					if ( luck >= 1000 )
+					if ( luck >= 500 )
 					{
 						from.SendMessage( "There is already enough luck on this item." );
 					}
 					else
 					{
-						item.Attributes.Luck = luck + 100;
-							if ( item.Attributes.Luck > 1000 ){ item.Attributes.Luck = 1000; }
+						item.Attributes.Luck = luck + Utility.RandomMinMax(25,125);
+							if ( item.Attributes.Luck > 500 ){ item.Attributes.Luck = 500; }
 						from.SendMessage( "You add some extra luck to the item." );
 						m_Deed.Delete();
 					}
@@ -125,14 +126,14 @@ namespace Server.Items
 				else
 				{
 					int luck = item.Attributes.Luck;
-					if ( luck >= 1000 )
+					if ( luck >= 500 )
 					{
 						from.SendMessage( "There is already enough luck on this item." );
 					}
 					else
 					{
-						item.Attributes.Luck = luck + 100;
-							if ( item.Attributes.Luck > 1000 ){ item.Attributes.Luck = 1000; }
+						item.Attributes.Luck = luck + Utility.RandomMinMax(25,125);
+							if ( item.Attributes.Luck > 500 ){ item.Attributes.Luck = 500; }
 						from.SendMessage( "You add some extra luck to the item." );
 						m_Deed.Delete();
 					}
@@ -157,7 +158,7 @@ namespace Server.Items
         public override void AddNameProperties(ObjectPropertyList list)
 		{
             base.AddNameProperties(list);
-			list.Add( 1070722, "Adds 100 Luck To An Item" );
+			list.Add( 1070722, "Adds Luck To An Item" );
         }
 
 		public LuckyHorseShoes(Serial serial) : base(serial)
