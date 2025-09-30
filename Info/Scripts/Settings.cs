@@ -150,7 +150,7 @@ namespace Server
 
 	// The setting below controls the 'hard mode' for dungeons. If set to true, then dungeons will spawn many more monsters, often close together. 
 	// enable it if you are confortable with the game and wish for a harder challenge. Default is false. 
-		public static bool S_harderDungeons = true;
+		public static bool S_harderDungeons = false;
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
 		// 003 - PLAYER OPTIONS ///////////////////////////////////////////////////////////////////////
