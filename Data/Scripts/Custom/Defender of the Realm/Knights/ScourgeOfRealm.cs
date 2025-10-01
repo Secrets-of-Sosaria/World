@@ -173,30 +173,41 @@ namespace Server.Custom.DefenderOfTheRealm.Scourge
 				}
 			}
         }
+        
+        public override bool HandlesOnSpeech( Mobile from ) 
+		{ 
+			return true; 
+		} 
 
         public override void OnSpeech(SpeechEventArgs e)
         {
-            base.OnSpeech(e);
-
             Mobile from = e.Mobile;
 
             if (from == null || !(from is PlayerMobile))
                 return;
-
-            if (!from.InRange(this.Location, 3))
-                return;
-
-            string speech = e.Speech.ToLower();
-
-            if (speech.IndexOf("reward") >= 0 && from.Karma < 0)
-            {
-                from.SendGump(new Server.Custom.DefenderOfTheRealm.RewardGump(from, false, 0));
-                Say("These are the rewards I can offer thee.");
-            } 
-            else if (speech.IndexOf("reward") >= 0 && from.Karma > 0)
-            {
-                Say("I shall not dabble with the slaves of virtue!");
-            }
+          
+            if( e.Mobile.InRange( this, 4 ))
+			{
+			    if ( ( e.Speech.ToLower() == "reward" ) )
+			    {
+			        if (e.Speech.IndexOf("reward") >= 0)
+                    {
+                        if (from.Karma < 0)
+                        {
+                            from.SendGump(new Server.Custom.DefenderOfTheRealm.RewardGump(from, false, 0));
+                            Say("These are the rewards I can offer thee.");
+                        }
+                        else
+                        {
+                            Say("I shall not offer my services to slaves of Virtue!");
+                        }
+                    }
+			    }
+			    else 
+			    { 
+			        base.OnSpeech( e ); 
+			    }
+			}
         }
 
         public ScourgeOfRealm(Serial serial) : base(serial) { }
