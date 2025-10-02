@@ -18,24 +18,24 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
             Random rand = new Random();
 
             if (level <= 15)
-                return rand.Next(2, 6);
+                return rand.Next(4, 7);
             if (level <= 25)
-                return rand.Next(3, 7);
+                return rand.Next(5, 8);
             if (level <= 45)
-                return rand.Next(4, 9);
+                return rand.Next(6, 9);
             if (level <= 76)
-                return rand.Next(5, 10);
+                return rand.Next(7, 10);
             if (level <= 99)
-                return rand.Next(6, 12);
+                return rand.Next(8, 11);
             if (level <= 105)
-                return rand.Next(7, 15);
+                return rand.Next(9, 13);
             if (level <= 111)
-                return rand.Next(8, 18);
+                return rand.Next(10, 15);
             if (level <= 120)
-                return rand.Next(9, 23);
+                return rand.Next(11, 20);
             if (level <= 124)
-                return rand.Next(10, 29);
-            return rand.Next(15, 36);
+                return rand.Next(15, 29);
+            return rand.Next(20, 36);
         }
 
         public static void GenerateRewards(Mobile from, int rewardWorth, Container rewardBag, VowType type)
@@ -54,7 +54,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
                 rewardBag.DropItem(Loot.RandomPotion(4, false));
                 rewardBag.DropItem(Loot.RandomScroll(3));
             }
-            else if (rewardWorth < 20)
+            else if (rewardWorth < 15)
             {
                 GenerateEnchantedItem(from, 200, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(4));
@@ -65,7 +65,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 10));
                 }
             }
-            else if (rewardWorth < 40)
+            else if (rewardWorth < 20)
             {
                 GenerateEnchantedItem(from, 250, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(5));
@@ -76,7 +76,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
                 }
             }
-            else if (rewardWorth < 60)
+            else if (rewardWorth < 25)
             {
                 GenerateEnchantedItem(from, 300, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(6));
@@ -90,7 +90,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
                 }
             }
-            else if (rewardWorth < 80)
+            else if (rewardWorth < 30)
             {
                 GenerateEnchantedItem(from, 350, rewardBag);
                 rewardBag.DropItem(Loot.RandomScroll(8));
@@ -105,7 +105,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
                 }
             }
-            else if (rewardWorth < 90)
+            else if (rewardWorth < 35)
             {
                 GenerateEnchantedItem(from, 400, rewardBag);
                 if (Utility.RandomDouble() < 0.05)
@@ -121,7 +121,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 15));
                 }
             }
-            else if (rewardWorth < 100)
+            else if (rewardWorth < 40)
             {
                 GenerateEnchantedItem(from, 450, rewardBag);
                 rewardBag.DropItem(Loot.RandomRare(Utility.RandomMinMax(6, 12), from));
@@ -143,7 +143,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 25));
                 }
             }
-            else if (rewardWorth < 120)
+            else if (rewardWorth < 45)
             {
                 rewardBag.DropItem(Loot.RandomRelic(from));
                 GenerateEnchantedItem(from, 500, rewardBag);
@@ -162,7 +162,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
                     rewardBag.DropItem(ScrollofTranscendence.CreateRandom(5, 25));
                 }
             }
-            else if (rewardWorth < 140)
+            else if (rewardWorth < 50)
             {
                 rewardBag.DropItem(Loot.RandomSArty(Server.LootPackEntry.playOrient(from), from));
                 if (Utility.RandomDouble() < 0.40)
@@ -230,35 +230,35 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
             {
                 chance = 0.02; // 2% chance
             }
-            else if (rewardWorth < 20)
+            else if (rewardWorth < 15)
             {
                 chance = 0.02; // 2% chance
             }
+            else if (rewardWorth < 20)
+            {
+                chance = 0.03; // 3% chance
+            }
+            else if (rewardWorth < 25)
+            {
+                chance = 0.03; // 3% chance
+            }
+            else if (rewardWorth < 30)
+            {
+                chance = 0.03; // 3% chance
+            }
+            else if (rewardWorth < 35)
+            {
+                chance = 0.04; // 4% chance
+            }
             else if (rewardWorth < 40)
             {
-                chance = 0.03; // 3% chance
-            }
-            else if (rewardWorth < 60)
-            {
-                chance = 0.03; // 3% chance
-            }
-            else if (rewardWorth < 800)
-            {
-                chance = 0.03; // 3% chance
-            }
-            else if (rewardWorth < 90)
-            {
                 chance = 0.04; // 4% chance
             }
-            else if (rewardWorth < 100)
-            {
-                chance = 0.04; // 4% chance
-            }
-            else if (rewardWorth < 120)
+            else if (rewardWorth < 45)
             {
                 chance = 0.05; // 5% chance
             }
-            else if (rewardWorth < 140)
+            else if (rewardWorth < 50)
             {
                 chance = 0.06; // 6% chance
             }
