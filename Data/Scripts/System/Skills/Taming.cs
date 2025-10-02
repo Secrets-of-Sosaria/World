@@ -167,27 +167,32 @@ namespace Server.SkillHandlers
 							{
 								creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502802, from.NetState ); // Someone else is already taming this.
 							}
-							else if ( creature.CanAngerOnTame && 0.95 >= Utility.RandomDouble() )
-							{
-								creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502805, from.NetState ); // You seem to anger the beast!
-								creature.PlaySound( creature.GetAngerSound() );
-								creature.Direction = creature.GetDirectionTo( from );
+							else if ( creature.CanAngerOnTame )
+							{	
+								double herding = from.Skills[SkillName.Herding].Value;
+								double angerChance = 0.95 - (herding / 125.0) * 0.70;
+								if( Utility.RandomDouble() < angerChance )
+								{
+									creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502805, from.NetState ); // You seem to anger the beast!
+									creature.PlaySound( creature.GetAngerSound() );
+									creature.Direction = creature.GetDirectionTo( from );
 
-								if( creature.BardPacified && Utility.RandomDouble() > .24)
-								{
-									Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerStateCallback( ResetPacify ), creature );
-								}
-								else
-								{
-									creature.BardEndTime = DateTime.Now;
-								}
+									if( creature.BardPacified && Utility.RandomDouble() > .24)
+									{
+										Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerStateCallback( ResetPacify ), creature );
+									}
+									else
+									{
+										creature.BardEndTime = DateTime.Now;
+									}
 		
-								creature.BardPacified = false;
+									creature.BardPacified = false;
 
-								creature.Move( creature.Direction );
+									creature.Move( creature.Direction );
 
-								if ( from is PlayerMobile )
-									creature.Combatant = from;
+									if ( from is PlayerMobile )
+										creature.Combatant = from;
+								}
 							}
 							else
 							{
