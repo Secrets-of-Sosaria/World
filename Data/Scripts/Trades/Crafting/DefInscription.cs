@@ -222,56 +222,56 @@ namespace Server.Engines.Craft
 		public override void InitCraftList()
 		{
 			m_Circle = 0;
-			m_Mana = 5;
+			m_Mana = 2;
 			AddElementalSpell( typeof( Elemental_Armor_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Bolt_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Mend_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Sanctuary_Scroll ) );
 			m_Circle = 1;
-			m_Mana = 7;
+			m_Mana = 3;
 			AddElementalSpell( typeof( Elemental_Pain_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Protection_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Purge_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Steed_Scroll ) );
 			m_Circle = 2;
-			m_Mana = 10;
+			m_Mana = 4;
 			AddElementalSpell( typeof( Elemental_Call_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Force_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Wall_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Warp_Scroll ) );
 			m_Circle = 3;
-			m_Mana = 14;
+			m_Mana = 5;
 			AddElementalSpell( typeof( Elemental_Field_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Restoration_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Strike_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Void_Scroll ) );
 			m_Circle = 4;
-			m_Mana = 19;
+			m_Mana = 7;
 			AddElementalSpell( typeof( Elemental_Blast_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Echo_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Fiend_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Hold_Scroll ) );
 			m_Circle = 5;
-			m_Mana = 24;
+			m_Mana = 8;
 			AddElementalSpell( typeof( Elemental_Barrage_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Rune_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Storm_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Summon_Scroll ) );
 			m_Circle = 6;
-			m_Mana = 40;
+			m_Mana = 14;
 			AddElementalSpell( typeof( Elemental_Devastation_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Fall_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Gate_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Havoc_Scroll ) );
 			m_Circle = 7;
-			m_Mana = 50;
+			m_Mana = 17;
 			AddElementalSpell( typeof( Elemental_Apocalypse_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Lord_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Soul_Scroll ) );
 			AddElementalSpell( typeof( Elemental_Spirit_Scroll ) );
 
 			m_Circle = 0;
-			m_Mana = 4;
+			m_Mana = 2;
 
 			AddSpell(typeof(ReactiveArmorScroll), Reg.Garlic, Reg.SpidersSilk, Reg.SulfurousAsh);
 			AddSpell(typeof(ClumsyScroll), Reg.Bloodmoss, Reg.Nightshade);
@@ -283,7 +283,7 @@ namespace Server.Engines.Craft
 			AddSpell(typeof(WeakenScroll), Reg.Garlic, Reg.Nightshade);
 
 			m_Circle = 1;
-			m_Mana = 6;
+			m_Mana = 2;
 
 			AddSpell(typeof(AgilityScroll), Reg.Bloodmoss, Reg.MandrakeRoot);
 			AddSpell(typeof(CunningScroll), Reg.Nightshade, Reg.MandrakeRoot);
@@ -295,7 +295,7 @@ namespace Server.Engines.Craft
 			AddSpell(typeof(StrengthScroll), Reg.Nightshade, Reg.MandrakeRoot);
 
 			m_Circle = 2;
-			m_Mana = 9;
+			m_Mana = 3;
 
 			AddSpell(typeof(BlessScroll), Reg.Garlic, Reg.MandrakeRoot);
 			AddSpell(typeof(FireballScroll), Reg.BlackPearl);
@@ -307,7 +307,7 @@ namespace Server.Engines.Craft
 			AddSpell(typeof(WallOfStoneScroll), Reg.Bloodmoss, Reg.Garlic);
 
 			m_Circle = 3;
-			m_Mana = 11;
+			m_Mana = 4;
 
 			AddSpell(typeof(ArchCureScroll), Reg.Garlic, Reg.Ginseng, Reg.MandrakeRoot);
 			AddSpell(typeof(ArchProtectionScroll), Reg.Garlic, Reg.Ginseng, Reg.MandrakeRoot, Reg.SulfurousAsh);
@@ -319,7 +319,7 @@ namespace Server.Engines.Craft
 			AddSpell(typeof(RecallScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot);
 
 			m_Circle = 4;
-			m_Mana = 14;
+			m_Mana = 5;
 
 			AddSpell(typeof(BladeSpiritsScroll), Reg.BlackPearl, Reg.Nightshade, Reg.MandrakeRoot);
 			AddSpell(typeof(DispelFieldScroll), Reg.BlackPearl, Reg.Garlic, Reg.SpidersSilk, Reg.SulfurousAsh);
@@ -331,7 +331,7 @@ namespace Server.Engines.Craft
 			AddSpell(typeof(SummonCreatureScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
 
 			m_Circle = 5;
-			m_Mana = 20;
+			m_Mana = 7;
 
 			AddSpell(typeof(DispelScroll), Reg.Garlic, Reg.MandrakeRoot, Reg.SulfurousAsh);
 			AddSpell(typeof(EnergyBoltScroll), Reg.BlackPearl, Reg.Nightshade);
@@ -343,7 +343,7 @@ namespace Server.Engines.Craft
 			AddSpell(typeof(RevealScroll), Reg.Bloodmoss, Reg.SulfurousAsh);
 
 			m_Circle = 6;
-			m_Mana = 40;
+			m_Mana = 14;
 
 			AddSpell(typeof(ChainLightningScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SulfurousAsh);
 			AddSpell(typeof(EnergyFieldScroll), Reg.BlackPearl, Reg.MandrakeRoot, Reg.SpidersSilk, Reg.SulfurousAsh);
@@ -355,7 +355,7 @@ namespace Server.Engines.Craft
 			AddSpell(typeof(PolymorphScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
 
 			m_Circle = 7;
-			m_Mana = 50;
+			m_Mana = 17;
 
 			AddSpell(typeof(EarthquakeScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.Ginseng, Reg.SulfurousAsh);
 			AddSpell(typeof(EnergyVortexScroll), Reg.BlackPearl, Reg.Bloodmoss, Reg.MandrakeRoot, Reg.Nightshade);
@@ -366,23 +366,23 @@ namespace Server.Engines.Craft
 			AddSpell(typeof(SummonFireElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk, Reg.SulfurousAsh);
 			AddSpell(typeof(SummonWaterElementalScroll), Reg.Bloodmoss, Reg.MandrakeRoot, Reg.SpidersSilk);
 
-			AddNecroSpell(0, 23, 39.6, typeof(AnimateDeadScroll), Reagent.GraveDust, Reagent.DaemonBlood);
-			AddNecroSpell(1, 13, 19.6, typeof(BloodOathScroll), Reagent.DaemonBlood);
-			AddNecroSpell(2, 11, 19.6, typeof(CorpseSkinScroll), Reagent.BatWing, Reagent.GraveDust);
-			AddNecroSpell(3, 7, 19.6, typeof(CurseWeaponScroll), Reagent.PigIron);
-			AddNecroSpell(4, 11, 19.6, typeof(EvilOmenScroll), Reagent.BatWing, Reagent.NoxCrystal);
-			AddNecroSpell(5, 11, 39.6, typeof(HorrificBeastScroll), Reagent.BatWing, Reagent.DaemonBlood);
-			AddNecroSpell(6, 23, 69.6, typeof(LichFormScroll), Reagent.GraveDust, Reagent.DaemonBlood, Reagent.NoxCrystal);
-			AddNecroSpell(7, 17, 29.6, typeof(MindRotScroll), Reagent.BatWing, Reagent.DaemonBlood, Reagent.PigIron);
-			AddNecroSpell(8, 5, 19.6, typeof(PainSpikeScroll), Reagent.GraveDust, Reagent.PigIron);
-			AddNecroSpell(9, 17, 49.6, typeof(PoisonStrikeScroll), Reagent.NoxCrystal);
-			AddNecroSpell(10, 29, 64.6, typeof(StrangleScroll), Reagent.DaemonBlood, Reagent.NoxCrystal);
-			AddNecroSpell(11, 17, 29.6, typeof(SummonFamiliarScroll), Reagent.BatWing, Reagent.GraveDust, Reagent.DaemonBlood);
-			AddNecroSpell(12, 23, 98.6, typeof(VampiricEmbraceScroll), Reagent.BatWing, Reagent.NoxCrystal, Reagent.PigIron);
-			AddNecroSpell(13, 41, 79.6, typeof(VengefulSpiritScroll), Reagent.BatWing, Reagent.GraveDust, Reagent.PigIron);
-			AddNecroSpell(14, 23, 59.6, typeof(WitherScroll), Reagent.GraveDust, Reagent.NoxCrystal, Reagent.PigIron);
-			AddNecroSpell(15, 17, 79.6, typeof(WraithFormScroll), Reagent.NoxCrystal, Reagent.PigIron);
-			AddNecroSpell(16, 40, 79.6, typeof(ExorcismScroll), Reagent.NoxCrystal, Reagent.GraveDust);
+			AddNecroSpell(0, 8, 39.6, typeof(AnimateDeadScroll), Reagent.GraveDust, Reagent.DaemonBlood);
+			AddNecroSpell(1, 4, 19.6, typeof(BloodOathScroll), Reagent.DaemonBlood);
+			AddNecroSpell(2, 4, 19.6, typeof(CorpseSkinScroll), Reagent.BatWing, Reagent.GraveDust);
+			AddNecroSpell(3, 3, 19.6, typeof(CurseWeaponScroll), Reagent.PigIron);
+			AddNecroSpell(4, 4, 19.6, typeof(EvilOmenScroll), Reagent.BatWing, Reagent.NoxCrystal);
+			AddNecroSpell(5, 4, 39.6, typeof(HorrificBeastScroll), Reagent.BatWing, Reagent.DaemonBlood);
+			AddNecroSpell(6, 8, 69.6, typeof(LichFormScroll), Reagent.GraveDust, Reagent.DaemonBlood, Reagent.NoxCrystal);
+			AddNecroSpell(7, 6, 29.6, typeof(MindRotScroll), Reagent.BatWing, Reagent.DaemonBlood, Reagent.PigIron);
+			AddNecroSpell(8, 2, 19.6, typeof(PainSpikeScroll), Reagent.GraveDust, Reagent.PigIron);
+			AddNecroSpell(9, 6, 49.6, typeof(PoisonStrikeScroll), Reagent.NoxCrystal);
+			AddNecroSpell(10, 10, 64.6, typeof(StrangleScroll), Reagent.DaemonBlood, Reagent.NoxCrystal);
+			AddNecroSpell(11, 16, 29.6, typeof(SummonFamiliarScroll), Reagent.BatWing, Reagent.GraveDust, Reagent.DaemonBlood);
+			AddNecroSpell(12, 8, 98.6, typeof(VampiricEmbraceScroll), Reagent.BatWing, Reagent.NoxCrystal, Reagent.PigIron);
+			AddNecroSpell(13, 14, 79.6, typeof(VengefulSpiritScroll), Reagent.BatWing, Reagent.GraveDust, Reagent.PigIron);
+			AddNecroSpell(14, 8, 59.6, typeof(WitherScroll), Reagent.GraveDust, Reagent.NoxCrystal, Reagent.PigIron);
+			AddNecroSpell(15, 6, 79.6, typeof(WraithFormScroll), Reagent.NoxCrystal, Reagent.PigIron);
+			AddNecroSpell(16, 14, 79.6, typeof(ExorcismScroll), Reagent.NoxCrystal, Reagent.GraveDust);
 
 			int index;
 
