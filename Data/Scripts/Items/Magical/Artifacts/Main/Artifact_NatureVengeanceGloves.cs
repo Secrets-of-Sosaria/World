@@ -23,6 +23,7 @@ namespace Server.Items
 			SkillBonuses.SetValues( 1, SkillName.Taming, 10);
 			SkillBonuses.SetValues( 2, SkillName.Druidism, 10);
 			Attributes.SpellDamage = 10;
+			ArmorAttributes.MageArmor = 1;
 			Attributes.BonusInt = 6;
 			Attributes.LowerManaCost = 6;
 			Attributes.CastRecovery	= 2;

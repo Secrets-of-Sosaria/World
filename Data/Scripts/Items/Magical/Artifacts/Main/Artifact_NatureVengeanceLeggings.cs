@@ -24,6 +24,7 @@ namespace Server.Items
 			Attributes.LowerManaCost = 8;
 			ArtifactLevel = 2;
 			Attributes.SpellDamage = 16;
+			ArmorAttributes.MageArmor = 1;
 			SkillBonuses.SetValues( 0, SkillName.Elementalism, 10);
 			SkillBonuses.SetValues( 1, SkillName.Taming, 10);
 			SkillBonuses.SetValues( 2, SkillName.Druidism, 10);
