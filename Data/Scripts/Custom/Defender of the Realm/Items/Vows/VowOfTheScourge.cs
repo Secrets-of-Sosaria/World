@@ -60,7 +60,7 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
             list.Add("Belongs to {0}", m_OwnerName);
             list.Add("A vow to aqquire {0} trophies", m_Required);
             list.Add("Progress: {0}/{1}", m_Current, m_Required);
-            list.Add("Reward so far: {0} Gold", m_Reward);
+            list.Add("Reward so far: {0} Marks", m_Reward);
         }
 
         public void AddTrophy(Mobile from)
@@ -71,9 +71,9 @@ namespace Server.Custom.DefenderOfTheRealm.Vow.VowOfTheScourge
             int luck = from.Luck;
             if (luck > 2000) luck = 2000;
 
-            int marks = 1 + (luck * (4) / 2000);//1-5 marks added based on player's luck
+            int marks = 2 + (luck * (8) / 2000);//2-10 marks added based on player's luck
             m_Current++;
-            m_Reward += Utility.RandomMinMax((int)(marks * 0.4), marks) < 1 ? 1 : Utility.RandomMinMax((int)(marks * 0.4), marks);
+            m_Reward += Utility.RandomMinMax((int)(marks * 0.6), (int)(marks * 1.2)) < 1 ? 1 : Utility.RandomMinMax((int)(marks * 0.6), (int)(marks * 1.2));
             InvalidateProperties();
             from.SendMessage("You add a trophy to your vow of the Scourge.");
             if (m_Current >= m_Required)

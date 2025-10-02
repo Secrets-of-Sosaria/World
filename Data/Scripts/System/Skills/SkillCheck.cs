@@ -177,7 +177,7 @@ namespace Server.Misc
 
 			if (from.Player && SkillGainSettings.ShowChance(from)) 
 			{
-				if (skill.Lock == SkillLock.Up && skill.Base < skill.Cap && from.Skills.Total < from.Skills.Cap)
+				if (skill.Lock == SkillLock.Up && skill.Value < skill.Cap)
     			{
     			    double gainToShow = gc * 100.0;
     			    if (gainToShow > 100.0)

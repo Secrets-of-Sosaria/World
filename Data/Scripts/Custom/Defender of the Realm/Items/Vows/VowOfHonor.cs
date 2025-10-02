@@ -71,9 +71,9 @@ namespace Server.Custom.DefenderOfTheRealm.Vow
             int luck = from.Luck;
             if (luck > 2000) luck = 2000;
 
-            int marks = 1 + (luck * (4) / 2000);//1-5 marks added based on player's luck
+            int marks = 2 + (luck * (8) / 2000);//2-10 marks added based on player's luck
             m_Current++;
-            m_Reward += Utility.RandomMinMax((int)(marks * 0.4), marks) < 1 ? 1 : Utility.RandomMinMax((int)(marks * 0.4), marks);
+            m_Reward += Utility.RandomMinMax((int)(marks * 0.6), (int)(marks * 1.2)) < 1 ? 1 : Utility.RandomMinMax((int)(marks * 0.6), (int)(marks * 1.2));
             InvalidateProperties();
             from.SendMessage("You add a trophy to your Vow of Honor.");
             if (m_Current >= m_Required)

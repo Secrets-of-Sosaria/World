@@ -8413,7 +8413,10 @@ namespace Server.Mobiles
 			}
 
 			Server.Misc.DropRelic.DropSpecialItem( this, killer, c ); // SOME DROP RARE ITEMS
-
+			//powerful creatures can drop marks of the scourge / honor
+			if (killer != null)
+        		Server.Custom.DefenderOfTheRealm.MarkLootHelper.CheckForMarks(this, c, killer);
+			
 			if ( IsBonded )
 			{
 				int sound = this.GetDeathSound();
