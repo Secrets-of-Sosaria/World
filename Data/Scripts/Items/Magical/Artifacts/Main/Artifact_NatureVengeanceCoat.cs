@@ -16,9 +16,10 @@ namespace Server.Items
 		{
 			Hue = 0x592;
 			Name = "Coat of Natural Vengeance";
+			ArtifactLevel = 2;
 			Attributes.DefendChance = 5;
 			Attributes.LowerManaCost = 11;
-			ArtifactLevel = 2;
+			ArmorAttributes.MageArmor = 1;
 			Attributes.SpellDamage = 11;
 			SkillBonuses.SetValues( 0, SkillName.Elementalism, 15);
 			SkillBonuses.SetValues( 1, SkillName.Taming, 15);
