@@ -109,44 +109,56 @@ namespace Server.Items
 
 		public override bool OnDragDrop( Mobile from, Item dropped )
 		{
-			if (owner == null || owner != from)
-			{
-			    from.SendMessage("You must read this scroll before you can drop that on it.");
-			    return false;
-			}
+		    if (owner == null || owner != from)
+		    {
+		        from.SendMessage("You must read this scroll before you can drop that on it.");
+		        return false;
+		    }		
 
-			string win = "";
-			if (dropped is SummonItems && ((SummonItems)dropped).Owner == from)
-			{
-				if (CheetahPaws < 1 && (dropped.Name == ShinobiInfo(290, "prize1") || dropped.Name == ShinobiInfo(290, "prize2"))) { win = ShinobiInfo(290, "name"); CheetahPaws = 1; }
-				else if (Deception < 1 && (dropped.Name == ShinobiInfo(291, "prize1") || dropped.Name == ShinobiInfo(291, "prize2"))) { win = ShinobiInfo(291, "name"); Deception = 1; }
-				else if (EagleEye < 1 && (dropped.Name == ShinobiInfo(292, "prize1") || dropped.Name == ShinobiInfo(292, "prize2"))) { win = ShinobiInfo(292, "name"); EagleEye = 1; }
-				else if (Espionage < 1 && (dropped.Name == ShinobiInfo(293, "prize1") || dropped.Name == ShinobiInfo(293, "prize2"))) { win = ShinobiInfo(293, "name"); Espionage = 1; }
-				else if (FerretFlee < 1 && (dropped.Name == ShinobiInfo(294, "prize1") || dropped.Name == ShinobiInfo(294, "prize2"))) { win = ShinobiInfo(294, "name"); FerretFlee = 1; }
-				else if (MonkeyLeap < 1 && (dropped.Name == ShinobiInfo(295, "prize1") || dropped.Name == ShinobiInfo(295, "prize2"))) { win = ShinobiInfo(295, "name"); MonkeyLeap = 1; }
-				else if (MysticShuriken < 1 && (dropped.Name == ShinobiInfo(296, "prize1") || dropped.Name == ShinobiInfo(296, "prize2"))) { win = ShinobiInfo(296, "name"); MysticShuriken = 1; }
-				else if (TigerStrength < 1 && (dropped.Name == ShinobiInfo(297, "prize1") || dropped.Name == ShinobiInfo(297, "prize2"))) { win = ShinobiInfo(297, "name"); TigerStrength = 1; }
+		    if (dropped is SummonItems)
+		    {
+		        SummonItems summon = (SummonItems)dropped;		
 
-				if (win != "")
-				{
-					from.CloseGump(typeof(ShinobiScrollGump));
-					from.SendMessage("You learned the " + win + " ability!");
-					from.PlaySound(0x4D5);
-					dropped.Delete();
-					InvalidateProperties();
-				}
-			}
-			else if (((SummonItems)dropped).Owner != from)
-			{
-				from.SendMessage("That was not claimed by you.");
-			}
-			else
-			{
-				from.SendMessage("That item does not belong here.");
-			}
+		        if (summon.Owner != from)
+		        {
+		            from.SendMessage("That was not claimed by you.");
+		        }
+		        else
+		        {
+		            string win = "";		
 
-			return false;
+		            if (CheetahPaws < 1 && (dropped.Name == ShinobiInfo(290, "prize1") || dropped.Name == ShinobiInfo(290, "prize2"))) { win = ShinobiInfo(290, "name"); CheetahPaws = 1; }
+		            else if (Deception < 1 && (dropped.Name == ShinobiInfo(291, "prize1") || dropped.Name == ShinobiInfo(291, "prize2"))) { win = ShinobiInfo(291, "name"); Deception = 1; }
+		            else if (EagleEye < 1 && (dropped.Name == ShinobiInfo(292, "prize1") || dropped.Name == ShinobiInfo(292, "prize2"))) { win = ShinobiInfo(292, "name"); EagleEye = 1; }
+		            else if (Espionage < 1 && (dropped.Name == ShinobiInfo(293, "prize1") || dropped.Name == ShinobiInfo(293, "prize2"))) { win = ShinobiInfo(293, "name"); Espionage = 1; }
+		            else if (FerretFlee < 1 && (dropped.Name == ShinobiInfo(294, "prize1") || dropped.Name == ShinobiInfo(294, "prize2"))) { win = ShinobiInfo(294, "name"); FerretFlee = 1; }
+		            else if (MonkeyLeap < 1 && (dropped.Name == ShinobiInfo(295, "prize1") || dropped.Name == ShinobiInfo(295, "prize2"))) { win = ShinobiInfo(295, "name"); MonkeyLeap = 1; }
+		            else if (MysticShuriken < 1 && (dropped.Name == ShinobiInfo(296, "prize1") || dropped.Name == ShinobiInfo(296, "prize2"))) { win = ShinobiInfo(296, "name"); MysticShuriken = 1; }
+		            else if (TigerStrength < 1 && (dropped.Name == ShinobiInfo(297, "prize1") || dropped.Name == ShinobiInfo(297, "prize2"))) { win = ShinobiInfo(297, "name"); TigerStrength = 1; }		
+
+		            if (win != "")
+		            {
+		                from.CloseGump(typeof(ShinobiScrollGump));
+		                from.SendMessage("You learned the " + win + " ability!");
+		                from.PlaySound(0x4D5);
+		                dropped.Delete();
+		                InvalidateProperties();
+		            }
+		            else
+		            {
+		                from.SendMessage("That item does not belong here.");
+		            }
+		        }
+		    }
+		    else
+		    {
+		        from.SendMessage("That item does not belong here.");
+		    }		
+
+		    return false;
 		}
+
+
 
         public override void AddNameProperties(ObjectPropertyList list)
 		{
