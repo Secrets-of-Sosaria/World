@@ -75,7 +75,7 @@ namespace Server.Items
                 dex = 150.0;
 
             double t = 1.0 - ((dex - 10.0) / 140.0);
-            TimeSpan cooldown = TimeSpan.FromSeconds(4.5 + (4.5 * t));
+            TimeSpan cooldown = TimeSpan.FromSeconds(2.5 + (2.5 * t));
 
             if (DateTime.UtcNow < last + cooldown)
             {
