@@ -21,6 +21,7 @@ namespace Server.Items
 			Attributes.LowerRegCost = 5;
 			Attributes.SpellDamage = 5;
 			ArmorAttributes.SelfRepair = 7;
+			ArmorAttributes.MageArmor = 1;
 			Attributes.NightSight = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );

@@ -28,6 +28,7 @@ namespace Server.Items
 			Attributes.LowerManaCost = 6;
 			Attributes.CastRecovery	= 2;
 			Attributes.CastSpeed = 2;
+			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

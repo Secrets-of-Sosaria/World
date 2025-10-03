@@ -23,6 +23,7 @@ namespace Server.Items
 			Attributes.SpellDamage = 10;
 			Attributes.LowerManaCost = 10;
 			Attributes.LowerRegCost = 10;
+			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

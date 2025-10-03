@@ -11,14 +11,16 @@ namespace Server.Custom.DefenderOfTheRealm
         public int ItemID;
         public string Name;
         public bool Hueable;
+        public int Hue;
 
-        public RewardInfo(Type type, int cost, int itemID, string name, bool hueable)
+        public RewardInfo(Type type, int cost, int itemID, string name, bool hueable, int hue)
         {
             ItemType = type;
             Cost = cost;
             ItemID = itemID;
             Name = name;
             Hueable = hueable;
+            Hue = hue;
         }
 
         public Item CreateItem(bool isDefender)
