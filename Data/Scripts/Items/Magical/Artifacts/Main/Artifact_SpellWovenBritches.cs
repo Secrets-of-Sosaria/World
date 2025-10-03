@@ -18,6 +18,7 @@ namespace Server.Items
 			Attributes.BonusInt = 11;
 			Attributes.SpellDamage = 12;
 			Attributes.LowerManaCost = 11;
+			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

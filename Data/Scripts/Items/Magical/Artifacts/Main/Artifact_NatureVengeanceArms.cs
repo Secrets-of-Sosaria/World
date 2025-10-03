@@ -27,6 +27,7 @@ namespace Server.Items
 			Attributes.RegenMana = 3;
 			Attributes.LowerManaCost = 10;
 			Attributes.Luck = 50;
+			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

@@ -20,6 +20,7 @@ namespace Server.Items
 			Attributes.BonusMana = 15;
 			Attributes.RegenMana = 5;
 			Attributes.LowerManaCost = 8;
+			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}

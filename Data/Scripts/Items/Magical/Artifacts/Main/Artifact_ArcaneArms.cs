@@ -22,6 +22,7 @@ namespace Server.Items
 			Attributes.Luck = 40;
 			ArmorAttributes.SelfRepair = 2;
 			Attributes.NightSight = 1;
+			ArmorAttributes.MageArmor = 1;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
