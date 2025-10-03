@@ -42,11 +42,19 @@ namespace Server.Custom.DefenderOfTheRealm
                 RewardInfo info = m_Rewards[i];
                 int buttonID = 1000 + i;
                 int hue = 0;
-                if (info.Hueable)
+                string currencyType = m_IsDefender ? "Marks of Honor" : "Marks of the Scourge";
+                if (info.Hue > 0)
+                {
+                    hue = info.Hue;
+                }
+                else if (info.Hueable)
+                {
                     hue = m_IsDefender ? 0x35 : 0x25;
+                }
+
                 AddItem(x, y, info.ItemID,hue);
                 AddLabel(x + 50, y, 1152, info.Name);
-                AddLabel(x + 50, y + 20, 1153, "Cost: " + info.Cost);
+                AddLabel(x + 50, y + 20, 1153, "Cost: " + info.Cost+ " " + currencyType);
                 AddButton(x + 300, y, 4005, 4007, buttonID, GumpButtonType.Reply, 0);
 
                 y += 50;
