@@ -145,7 +145,7 @@ namespace Server.Mobiles
 						if ( loot != null )
 						{
 							ResourceMods.SetResource( loot, CraftResource.DreadSpec );
-							loot = Server.LootPackEntry.Enchant( killer, 500, loot );
+							loot = Server.LootPackEntry.Enchant( killer, 300, loot );
 							loot.InfoText1 = "The Black Knight";
 							c.DropItem( loot ); 
 						}

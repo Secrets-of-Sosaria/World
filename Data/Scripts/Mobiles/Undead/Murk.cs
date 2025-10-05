@@ -106,7 +106,7 @@ namespace Server.Mobiles
 						if ( loot != null )
 						{
 							ResourceMods.SetResource( loot, CraftResource.SpectralSpec );
-							loot = Server.LootPackEntry.Enchant( killer, 500, loot );
+							loot = Server.LootPackEntry.Enchant( killer, 300, loot );
 							loot.InfoText1 = "Murk the Slayer of the Coast";
 							c.DropItem( loot ); 
 						}

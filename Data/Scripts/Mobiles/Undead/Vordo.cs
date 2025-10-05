@@ -152,7 +152,7 @@ namespace Server.Mobiles
 						if ( loot != null )
 						{
 							ResourceMods.SetResource( loot, CraftResource.BloodlessSpec );
-							loot = Server.LootPackEntry.Enchant( killer, 500, loot );
+							loot = Server.LootPackEntry.Enchant( killer, 300, loot );
 							loot.InfoText1 = "Vordo of the Darkest Magic";
 							c.DropItem( loot ); 
 						}

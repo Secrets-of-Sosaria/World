@@ -211,7 +211,7 @@ namespace Server.Misc
 								BaseArmor drop = Loot.RandomArmorOrShield();
 								Item itm = (Item)drop;
 								ResourceMods.SetResource( itm, CraftResource.WintrySpec );
-								itm = Server.LootPackEntry.Enchant( killer, 500, itm );
+								itm = Server.LootPackEntry.Enchant( killer, 300, itm );
 								c.DropItem( itm );
 							}
 							else
@@ -219,7 +219,7 @@ namespace Server.Misc
 								BaseWeapon drop = Loot.RandomWeapon();
 								Item itm = (Item)drop;
 								ResourceMods.SetResource( itm, CraftResource.WintrySpec );
-								itm = Server.LootPackEntry.Enchant( killer, 500, itm );
+								itm = Server.LootPackEntry.Enchant( killer, 300, itm );
 								c.DropItem( itm );
 							}
 						}

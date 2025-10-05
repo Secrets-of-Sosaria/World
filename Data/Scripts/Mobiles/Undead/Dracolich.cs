@@ -105,7 +105,7 @@ namespace Server.Mobiles
 						if ( loot != null )
 						{
 							ResourceMods.SetResource( loot, CraftResource.DemilichSpec );
-							loot = Server.LootPackEntry.Enchant( killer, 500, loot );
+							loot = Server.LootPackEntry.Enchant( killer, 300, loot );
 							loot.InfoText1 = "" + Name + " " + Title + "";
 							c.DropItem( loot ); 
 						}
