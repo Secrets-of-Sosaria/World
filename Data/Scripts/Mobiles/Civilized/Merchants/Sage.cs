@@ -101,13 +101,7 @@ namespace Server.Mobiles
 						from.AddToBackpack ( dropped );
 					}
 				}
-				else if ( 	Coins == 10000 || 
-							Coins == 9000 || 
-							Coins == 8000 || 
-							Coins == 7000 || 
-							Coins == 6000 || 
-							Coins == 5000 
-					)
+				else if ( 	Coins == 10000 )
 				{
 					int nAllowedForAnotherQuest = SearchPage.ArtifactQuestTimeNew( from );
 					int nServerQuestTimeAllowed = MyServerSettings.GetTimeBetweenArtifactQuests();

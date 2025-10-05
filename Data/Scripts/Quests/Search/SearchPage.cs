@@ -79,7 +79,7 @@ namespace Server.Items
 			}
 
 			/// CHECK TO SEE IF THE NOTE IS FALSE OR TRUE
-			LegendLore = ( LegendLore * 10 ) + 10;
+			LegendLore = ( LegendLore * 10 ) + 15;
 			LegendReal = 0;
 			if ( LegendLore >= Utility.RandomMinMax( 1, 100 ) ){ LegendReal = 1; }
 			LegendPercent = LegendLore;
