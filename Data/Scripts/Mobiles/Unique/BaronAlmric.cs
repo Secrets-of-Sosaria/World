@@ -102,7 +102,7 @@ namespace Server.Mobiles
 						if ( item != null && item is BaseArmor )
 						{
 							BaseArmor armor = (BaseArmor)item;
-							item = Server.LootPackEntry.Enchant( killer, 500, item );
+							item = Server.LootPackEntry.Enchant( killer, 300, item );
 							c.DropItem( item ); 
 						}
 					}
