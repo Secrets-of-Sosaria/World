@@ -62,9 +62,10 @@ namespace Server.Items
 					case 13: Name = make + " of Mages";				break;
 					case 14: Name = make + " of the Mages";			break;
 				}
-
-				Attributes.LowerManaCost = Utility.RandomMinMax( 1, MyServerSettings.LowerMana()/2 );
-				Attributes.LowerRegCost = Utility.RandomMinMax( 1, MyServerSettings.LowReg() );
+				int maxLowReagentCost = MyServerSettings.LowerReg() > 50 ? 25 : MyServerSettings.LowerReg() / 2;
+				int maxLowMana = MyServerSettings.LowerMana() > 40 ? 20 : MyServerSettings.LowerMana() / 2;
+				Attributes.LowerManaCost = Utility.RandomMinMax( 1, maxLowMana );
+				Attributes.LowerRegCost = Utility.RandomMinMax( 1, maxLowReagentCost );
 				Attributes.RegenMana = Utility.RandomMinMax(3,5);	
 			}
 		}
