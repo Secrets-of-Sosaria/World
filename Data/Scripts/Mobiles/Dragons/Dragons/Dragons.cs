@@ -32,7 +32,7 @@ namespace Server.Mobiles
 			if ( rBody == 59 )
 			{
 				AddLoot( LootPack.FilthyRich, 2 );
-				AddLoot( LootPack.Gems, 8 );
+				AddLoot( LootPack.Gems, 4);
 			}
 			else
 			{
