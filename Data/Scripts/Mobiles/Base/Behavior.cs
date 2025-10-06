@@ -4064,11 +4064,11 @@ namespace Server.Misc
 									NecromancerRobe robe = new NecromancerRobe(); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.VileFabric; }
 										robe.Name = gear + " robe";
 										robe.Hue = MagicHue;
-										robe.Attributes.CastRecovery = Magic;
-										robe.Attributes.CastSpeed = Magic;
-										robe.Attributes.LowerManaCost = 4 + Magic;
-										robe.Attributes.LowerRegCost = 4 + Magic;
-										robe.Attributes.SpellDamage = 2 + Magic;
+										robe.Attributes.CastRecovery = Magic > 3 ? 3 : Magic;
+										robe.Attributes.CastSpeed = Magic > 3 ? 3 : Magic;
+										robe.Attributes.LowerManaCost = 4 + Magic > 8 ? 8 : 4 + Magic;
+										robe.Attributes.LowerRegCost = 4 + Magic > 8 ? 8 : 4 + Magic;
+										robe.Attributes.SpellDamage = 2 + Magic > 6 ? 6 : 2 + Magic;
 										from.AddItem( robe );
 									break;
 								case 1: 
@@ -4170,22 +4170,22 @@ namespace Server.Misc
 							Robe robe = new Robe( ); if ( Utility.RandomBool() ){ robe.Resource = CraftResource.MysteriousFabric; }
 								robe.Hue = 0xA2A;
 								robe.Name = "robe of the mad archmage";
-								robe.Attributes.SpellDamage = 35;
+								robe.Attributes.SpellDamage = 30;
 								robe.Attributes.CastRecovery = 1;
 								robe.Attributes.CastSpeed = 1;
-								robe.Attributes.LowerManaCost = 30;
-								robe.Attributes.LowerRegCost = 30;
+								robe.Attributes.LowerManaCost = 25;
+								robe.Attributes.LowerRegCost = 25;
 								from.AddItem( robe );
 							break;
 						case 1: 
 							WizardsHat hat = new WizardsHat( ); if ( Utility.RandomBool() ){ hat.Resource = CraftResource.MysteriousFabric; }
 								hat.Hue = 0xA2A;
 								hat.Name = "hat of the mad archmage";
-								hat.Attributes.SpellDamage = 25;
+								hat.Attributes.SpellDamage = 20;
 								hat.Attributes.CastRecovery = 1;
 								hat.Attributes.CastSpeed = 1;
-								hat.Attributes.LowerManaCost = 20;
-								hat.Attributes.LowerRegCost = 20;
+								hat.Attributes.LowerManaCost = 15;
+								hat.Attributes.LowerRegCost = 15;
 								from.AddItem( hat );
 							break;
 					}
@@ -4203,7 +4203,7 @@ namespace Server.Misc
 								robe.Name = "ice queen robe";
 								robe.Attributes.RegenMana = 5;
 								robe.Attributes.ReflectPhysical = 20;
-								robe.Attributes.SpellDamage = 35;
+								robe.Attributes.SpellDamage = 25;
 								from.AddItem( robe );
 							break;
 						case 1: 
@@ -4211,8 +4211,8 @@ namespace Server.Misc
 								hat.Hue = 0x482;
 								hat.Name = "ice queen hat";
 								hat.Attributes.RegenMana = 3;
-								hat.Attributes.ReflectPhysical = 10;
-								hat.Attributes.SpellDamage = 15;
+								hat.Attributes.ReflectPhysical = 15;
+								hat.Attributes.SpellDamage = 10;
 								from.AddItem( hat );
 							break;
 					}
