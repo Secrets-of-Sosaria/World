@@ -167,14 +167,18 @@ namespace Server.Engines.Craft
 			AddSubRes( typeof( PetrifiedBoard ),	CraftResources.GetClilocCraftName( CraftResource.PetrifiedTree ), CraftResources.GetSkill( CraftResource.PetrifiedTree ), CraftResources.GetClilocMaterialName( CraftResource.PetrifiedTree ), cannot );
 			AddSubRes( typeof( DriftwoodBoard ),	CraftResources.GetClilocCraftName( CraftResource.DriftwoodTree ), CraftResources.GetSkill( CraftResource.DriftwoodTree ), CraftResources.GetClilocMaterialName( CraftResource.DriftwoodTree ), cannot );
 			AddSubRes( typeof( ElvenBoard ),		CraftResources.GetClilocCraftName( CraftResource.ElvenTree ), CraftResources.GetSkill( CraftResource.ElvenTree ), CraftResources.GetClilocMaterialName( CraftResource.ElvenTree ), cannot );
-			AddSubRes( typeof( BorlBoard ),			CraftResources.GetClilocCraftName( CraftResource.BorlTree ), CraftResources.GetSkill( CraftResource.BorlTree ), CraftResources.GetClilocMaterialName( CraftResource.BorlTree ), cannot );
-			AddSubRes( typeof( CosianBoard ),		CraftResources.GetClilocCraftName( CraftResource.CosianTree ), CraftResources.GetSkill( CraftResource.CosianTree ), CraftResources.GetClilocMaterialName( CraftResource.CosianTree ), cannot );
-			AddSubRes( typeof( GreelBoard ),		CraftResources.GetClilocCraftName( CraftResource.GreelTree ), CraftResources.GetSkill( CraftResource.GreelTree ), CraftResources.GetClilocMaterialName( CraftResource.GreelTree ), cannot );
-			AddSubRes( typeof( JaporBoard ),		CraftResources.GetClilocCraftName( CraftResource.JaporTree ), CraftResources.GetSkill( CraftResource.JaporTree ), CraftResources.GetClilocMaterialName( CraftResource.JaporTree ), cannot );
-			AddSubRes( typeof( KyshyyykBoard ),		CraftResources.GetClilocCraftName( CraftResource.KyshyyykTree ), CraftResources.GetSkill( CraftResource.KyshyyykTree ), CraftResources.GetClilocMaterialName( CraftResource.KyshyyykTree ), cannot );
-			AddSubRes( typeof( LaroonBoard ),		CraftResources.GetClilocCraftName( CraftResource.LaroonTree ), CraftResources.GetSkill( CraftResource.LaroonTree ), CraftResources.GetClilocMaterialName( CraftResource.LaroonTree ), cannot );
-			AddSubRes( typeof( TeejBoard ),			CraftResources.GetClilocCraftName( CraftResource.TeejTree ), CraftResources.GetSkill( CraftResource.TeejTree ), CraftResources.GetClilocMaterialName( CraftResource.TeejTree ), cannot );
-			AddSubRes( typeof( VeshokBoard ),		CraftResources.GetClilocCraftName( CraftResource.VeshokTree ), CraftResources.GetSkill( CraftResource.VeshokTree ), CraftResources.GetClilocMaterialName( CraftResource.VeshokTree ), cannot );
+			// unbalanced alien materials
+			if (MySettings.S_AllowAlienCrafting)
+			{
+				AddSubRes( typeof( BorlBoard ),			CraftResources.GetClilocCraftName( CraftResource.BorlTree ), CraftResources.GetSkill( CraftResource.BorlTree ), CraftResources.GetClilocMaterialName( CraftResource.BorlTree ), cannot );
+				AddSubRes( typeof( CosianBoard ),		CraftResources.GetClilocCraftName( CraftResource.CosianTree ), CraftResources.GetSkill( CraftResource.CosianTree ), CraftResources.GetClilocMaterialName( CraftResource.CosianTree ), cannot );
+				AddSubRes( typeof( GreelBoard ),		CraftResources.GetClilocCraftName( CraftResource.GreelTree ), CraftResources.GetSkill( CraftResource.GreelTree ), CraftResources.GetClilocMaterialName( CraftResource.GreelTree ), cannot );
+				AddSubRes( typeof( JaporBoard ),		CraftResources.GetClilocCraftName( CraftResource.JaporTree ), CraftResources.GetSkill( CraftResource.JaporTree ), CraftResources.GetClilocMaterialName( CraftResource.JaporTree ), cannot );
+				AddSubRes( typeof( KyshyyykBoard ),		CraftResources.GetClilocCraftName( CraftResource.KyshyyykTree ), CraftResources.GetSkill( CraftResource.KyshyyykTree ), CraftResources.GetClilocMaterialName( CraftResource.KyshyyykTree ), cannot );
+				AddSubRes( typeof( LaroonBoard ),		CraftResources.GetClilocCraftName( CraftResource.LaroonTree ), CraftResources.GetSkill( CraftResource.LaroonTree ), CraftResources.GetClilocMaterialName( CraftResource.LaroonTree ), cannot );
+				AddSubRes( typeof( TeejBoard ),			CraftResources.GetClilocCraftName( CraftResource.TeejTree ), CraftResources.GetSkill( CraftResource.TeejTree ), CraftResources.GetClilocMaterialName( CraftResource.TeejTree ), cannot );
+				AddSubRes( typeof( VeshokBoard ),		CraftResources.GetClilocCraftName( CraftResource.VeshokTree ), CraftResources.GetSkill( CraftResource.VeshokTree ), CraftResources.GetClilocMaterialName( CraftResource.VeshokTree ), cannot );
+			}
 		}
 	}
 }
