@@ -258,7 +258,7 @@ namespace Server.Misc
 				"Wondrous", "Glorious", "Lost", "Fabled", "Legendary", "Mythical", "Missing",
 				"Ancestral", "Ornate", "Wonderful", "Sacred", "Unspeakable", "Unknown", "Forgotten",
 				"Ancient", "Enchanted", "Primordial", "Celestial", "Divine","Elusive", "Hidden", "Hallowed", 
-				"Forbidden", "Otherwordly""Timeless", "Ageless", "Fated","Venerable","Revered","Shrouded", 
+				"Forbidden", "Otherworldly", "Timeless", "Ageless", "Fated","Venerable","Revered","Shrouded", 
 				"Veiled", "Primeval", "Immemorial", "Bygone"
 			};
 			string adj = adjectives[Utility.RandomMinMax(0, adjectives.Length - 1)] + " ";
