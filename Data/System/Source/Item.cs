@@ -5288,83 +5288,89 @@ namespace Server
 				m_DeltaQueue.Remove( this );
 			}
 		}
-
+		private bool m_NoMoveHS;
+		public bool NoMoveHS
+		{
+			get { return m_NoMoveHS; }
+			set { m_NoMoveHS = value; }
+		}
+		
 		public void ProcessDelta()
 		{
 			ItemDelta flags = m_DeltaFlags;
 
-			SetFlag( ImplFlag.InQueue, false );
+			SetFlag(ImplFlag.InQueue, false);
 			m_DeltaFlags = ItemDelta.None;
 
 			Map map = m_Map;
 
-			if ( map != null && !Deleted )
+			if (map != null && !Deleted)
 			{
 				bool sendOPLUpdate = ObjectPropertyList.Enabled && (flags & ItemDelta.Properties) != 0;
 
 				Container contParent = m_Parent as Container;
 
-				if ( contParent != null && !contParent.IsPublicContainer )
+				if (contParent != null && !contParent.IsPublicContainer)
 				{
-					if ( (flags & ItemDelta.Update) != 0 )
+					if ((flags & ItemDelta.Update) != 0)
 					{
 						Point3D worldLoc = GetWorldLocation();
 
 						Mobile rootParent = contParent.RootParent as Mobile;
 						Mobile tradeRecip = null;
 
-						if ( rootParent != null )
+						if (rootParent != null)
 						{
 							NetState ns = rootParent.NetState;
 
-							if ( ns != null )
+							if (ns != null)
 							{
-								if ( rootParent.CanSee( this ) && rootParent.InRange( worldLoc, GetUpdateRange( rootParent ) ) )
+								if (rootParent.CanSee(this) && rootParent.InRange(worldLoc, GetUpdateRange(rootParent)))
 								{
-									if ( ns.ContainerGridLines )
-										ns.Send( new ContainerContentUpdate6017( this ) );
+									if (ns.ContainerGridLines)
+										ns.Send(new ContainerContentUpdate6017(this));
 									else
-										ns.Send( new ContainerContentUpdate( this ) );
+										ns.Send(new ContainerContentUpdate(this));
 
-									if ( ObjectPropertyList.Enabled )
-										ns.Send( OPLPacket );
+									if (ObjectPropertyList.Enabled)
+										ns.Send(OPLPacket);
 								}
 							}
 						}
 
 						SecureTradeContainer stc = this.GetSecureTradeCont();
 
-						if ( stc != null )
+						if (stc != null)
 						{
 							SecureTrade st = stc.Trade;
 
-							if ( st != null )
+							if (st != null)
 							{
 								Mobile test = st.From.Mobile;
 
-								if ( test != null && test != rootParent )
+								if (test != null && test != rootParent)
 									tradeRecip = test;
 
 								test = st.To.Mobile;
 
-								if ( test != null && test != rootParent )
+								if (test != null && test != rootParent)
 									tradeRecip = test;
 
-								if ( tradeRecip != null )
+								if (tradeRecip != null)
 								{
 									NetState ns = tradeRecip.NetState;
 
-									if ( ns != null )
+									if (ns != null)
 									{
-										if ( tradeRecip.CanSee( this ) && tradeRecip.InRange( worldLoc, GetUpdateRange( tradeRecip ) ) )
+										if (tradeRecip.CanSee(this) && tradeRecip.InRange(worldLoc, GetUpdateRange(tradeRecip)))
 										{
-											if ( ns.ContainerGridLines )
-												ns.Send( new ContainerContentUpdate6017( this ) );
+											if (ns.ContainerGridLines)
+												ns.Send(new ContainerContentUpdate6017(this));
 											else
-												ns.Send( new ContainerContentUpdate( this ) );
+												ns.Send(new ContainerContentUpdate(this));
 
-											if ( ObjectPropertyList.Enabled )
-												ns.Send( OPLPacket );
+											if (ObjectPropertyList.Enabled)
+												ns.Send(OPLPacket);
 										}
 									}
 								}
@@ -5373,136 +5379,148 @@ namespace Server
 
 						List<Mobile> openers = contParent.Openers;
 
-						if ( openers != null )
+						if (openers != null)
 						{
-							for ( int i = 0; i < openers.Count; ++i )
+							for (int i = 0; i < openers.Count; ++i)
 							{
 								Mobile mob = openers[i];
 
-								int range = GetUpdateRange( mob );
+								int range = GetUpdateRange(mob);
 
-								if ( mob.Map != map || !mob.InRange( worldLoc, range ) )
+								if (mob.Map != map || !mob.InRange(worldLoc, range))
 								{
-									openers.RemoveAt( i-- );
+									openers.RemoveAt(i--);
 								}
 								else
 								{
-									if ( mob == rootParent || mob == tradeRecip )
+									if (mob == rootParent || mob == tradeRecip)
 										continue;
 
 									NetState ns = mob.NetState;
 
-									if ( ns != null )
+									if (ns != null)
 									{
-										if ( mob.CanSee( this ) )
+										if (mob.CanSee(this))
 										{
-											if ( ns.ContainerGridLines )
-												ns.Send( new ContainerContentUpdate6017( this ) );
+											if (ns.ContainerGridLines)
+												ns.Send(new ContainerContentUpdate6017(this));
 											else
-												ns.Send( new ContainerContentUpdate( this ) );
+												ns.Send(new ContainerContentUpdate(this));
 
-											if ( ObjectPropertyList.Enabled )
-												ns.Send( OPLPacket );
+											if (ObjectPropertyList.Enabled)
+												ns.Send(OPLPacket);
 										}
 									}
 								}
 							}
 
-							if ( openers.Count == 0 )
+							if (openers.Count == 0)
 								contParent.Openers = null;
 						}
 						return;
 					}
 				}
 
-				if ( (flags & ItemDelta.Update) != 0 )
+				if ((flags & ItemDelta.Update) != 0)
 				{
 					Packet p = null;
 					Point3D worldLoc = GetWorldLocation();
 
-					IPooledEnumerable eable = map.GetClientsInRange( worldLoc, GetMaxUpdateRange() );
+					IPooledEnumerable eable = map.GetClientsInRange(worldLoc, GetMaxUpdateRange());
 
-					foreach ( NetState state in eable ) {
+					foreach (NetState state in eable)
+					{
 						Mobile m = state.Mobile;
 
-						if ( m.CanSee( this ) && m.InRange( worldLoc, GetUpdateRange( m ) ) ) {
-							if ( m_Parent == null ) {
-								SendInfoTo( state, ObjectPropertyList.Enabled );
-							} else {
-								if ( p == null ) {
-									if ( m_Parent is Item ) {
-										if ( state.ContainerGridLines )
-											state.Send( new ContainerContentUpdate6017( this ) );
+						if (m.CanSee(this) && m.InRange(worldLoc, GetUpdateRange(m)))
+						{
+							if (m_Parent == null)
+							{
+								SendInfoTo(state, ObjectPropertyList.Enabled);
+							}
+							else
+							{
+								if (p == null)
+								{
+									if (m_Parent is Item)
+									{
+										if (state.ContainerGridLines)
+											state.Send(new ContainerContentUpdate6017(this));
 										else
-											state.Send( new ContainerContentUpdate( this ) );
-									} else if ( m_Parent is Mobile ) {
-										p = new EquipUpdate( this );
-										p.Acquire();
-										state.Send( p );
+											state.Send(new ContainerContentUpdate(this));
 									}
-								} else {
-									state.Send( p );
+									else if (m_Parent is Mobile)
+									{
+										p = new EquipUpdate(this);
+										p.Acquire();
+										state.Send(p);
+									}
+								}
+								else
+								{
+									state.Send(p);
 								}
 
-								if ( ObjectPropertyList.Enabled ) {
-									state.Send( OPLPacket );
+								if (ObjectPropertyList.Enabled)
+								{
+									state.Send(OPLPacket);
 								}
 							}
 						}
 					}
 
-					if ( p != null )
-						Packet.Release( p );
+					if (p != null)
+						Packet.Release(p);
 
 					eable.Free();
 					sendOPLUpdate = false;
 				}
-				else if ( (flags & ItemDelta.EquipOnly ) != 0 )
+				else if ((flags & ItemDelta.EquipOnly) != 0)
 				{
-					if ( m_Parent is Mobile )
+					if (m_Parent is Mobile)
 					{
 						Packet p = null;
 						Point3D worldLoc = GetWorldLocation();
 
-						IPooledEnumerable eable = map.GetClientsInRange( worldLoc, GetMaxUpdateRange() );
+						IPooledEnumerable eable = map.GetClientsInRange(worldLoc, GetMaxUpdateRange());
 
-						foreach ( NetState state in eable )
+						foreach (NetState state in eable)
 						{
 							Mobile m = state.Mobile;
 
-							if ( m.CanSee( this ) && m.InRange( worldLoc, GetUpdateRange( m ) ) )
+							if (m.CanSee(this) && m.InRange(worldLoc, GetUpdateRange(m)))
 							{
 								//if ( sendOPLUpdate )
 								//	state.Send( RemovePacket );
 
-								if ( p == null )
-									p = Packet.Acquire( new EquipUpdate( this ) );
+								if (p == null)
+									p = Packet.Acquire(new EquipUpdate(this));
 
-								state.Send( p );
+								state.Send(p);
 
-								if ( ObjectPropertyList.Enabled )
-									state.Send( OPLPacket );
+								if (ObjectPropertyList.Enabled)
+									state.Send(OPLPacket);
 							}
 						}
 
-						Packet.Release( p );
+						Packet.Release(p);
 
 						eable.Free();
 						sendOPLUpdate = false;
 					}
 				}
 
-				if ( sendOPLUpdate )
+				if (sendOPLUpdate)
 				{
 					Point3D worldLoc = GetWorldLocation();
-					IPooledEnumerable eable = map.GetClientsInRange( worldLoc, GetMaxUpdateRange() );
+					IPooledEnumerable eable = map.GetClientsInRange(worldLoc, GetMaxUpdateRange());
 
-					foreach ( NetState state in eable )
+					foreach (NetState state in eable)
 					{
 						Mobile m = state.Mobile;
 
-						if ( m.CanSee( this ) && m.InRange( worldLoc, GetUpdateRange( m ) ) )
-							state.Send( OPLPacket );
+						if (m.CanSee(this) && m.InRange(worldLoc, GetUpdateRange(m)))
+							state.Send(OPLPacket);
 					}
 
 					eable.Free();
@@ -5822,7 +5840,7 @@ namespace Server
 
 								eable.Free();
 							}
-
+							Point3D oldLoc = m_Location;
 							m_Location = value;
 							ReleaseWorldPackets();
 
@@ -5834,7 +5852,8 @@ namespace Server
 							{
 								Mobile m = state.Mobile;
 
-								if ( m.CanSee( this ) && m.InRange( m_Location, GetUpdateRange( m ) ) )
+								if ( m.CanSee( this ) && m.InRange( m_Location, GetUpdateRange( m ) )  &&
+									(!state.HighSeas || !m_NoMoveHS || (m_DeltaFlags & ItemDelta.Update) != 0 || !m.InRange(oldLoc, GetUpdateRange(m))) )
 									SendInfoTo( state );
 							}
 
