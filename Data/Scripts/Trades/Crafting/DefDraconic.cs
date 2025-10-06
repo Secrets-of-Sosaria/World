@@ -278,11 +278,14 @@ namespace Server.Engines.Craft
 			AddSubRes( typeof( VioletScales ),		CraftResources.GetClilocCraftName( CraftResource.VioletScales ), CraftResources.GetSkill( CraftResource.VioletScales ), CraftResources.GetClilocMaterialName( CraftResource.VioletScales ), cannot );
 			AddSubRes( typeof( PlatinumScales ),	CraftResources.GetClilocCraftName( CraftResource.PlatinumScales ), CraftResources.GetSkill( CraftResource.PlatinumScales ), CraftResources.GetClilocMaterialName( CraftResource.PlatinumScales ), cannot );
 			AddSubRes( typeof( CadalyteScales ),	CraftResources.GetClilocCraftName( CraftResource.CadalyteScales ), CraftResources.GetSkill( CraftResource.CadalyteScales ), CraftResources.GetClilocMaterialName( CraftResource.CadalyteScales ), cannot );
-			AddSubRes( typeof( GornScales ),		CraftResources.GetClilocCraftName( CraftResource.GornScales ), CraftResources.GetSkill( CraftResource.GornScales ), CraftResources.GetClilocMaterialName( CraftResource.GornScales ), cannot );
-			AddSubRes( typeof( TrandoshanScales ),	CraftResources.GetClilocCraftName( CraftResource.TrandoshanScales ), CraftResources.GetSkill( CraftResource.TrandoshanScales ), CraftResources.GetClilocMaterialName( CraftResource.TrandoshanScales ), cannot );
-			AddSubRes( typeof( SilurianScales ),	CraftResources.GetClilocCraftName( CraftResource.SilurianScales ), CraftResources.GetSkill( CraftResource.SilurianScales ), CraftResources.GetClilocMaterialName( CraftResource.SilurianScales ), cannot );
-			AddSubRes( typeof( KraytScales ),		CraftResources.GetClilocCraftName( CraftResource.KraytScales ), CraftResources.GetSkill( CraftResource.KraytScales ), CraftResources.GetClilocMaterialName( CraftResource.KraytScales ), cannot );
-
+			//unbalanced alien materials
+			if (MySettings.S_AllowAlienCrafting)
+			{
+				AddSubRes( typeof( GornScales ),		CraftResources.GetClilocCraftName( CraftResource.GornScales ), CraftResources.GetSkill( CraftResource.GornScales ), CraftResources.GetClilocMaterialName( CraftResource.GornScales ), cannot );
+				AddSubRes( typeof( TrandoshanScales ),	CraftResources.GetClilocCraftName( CraftResource.TrandoshanScales ), CraftResources.GetSkill( CraftResource.TrandoshanScales ), CraftResources.GetClilocMaterialName( CraftResource.TrandoshanScales ), cannot );
+				AddSubRes( typeof( SilurianScales ),	CraftResources.GetClilocCraftName( CraftResource.SilurianScales ), CraftResources.GetSkill( CraftResource.SilurianScales ), CraftResources.GetClilocMaterialName( CraftResource.SilurianScales ), cannot );
+				AddSubRes( typeof( KraytScales ),		CraftResources.GetClilocCraftName( CraftResource.KraytScales ), CraftResources.GetSkill( CraftResource.KraytScales ), CraftResources.GetClilocMaterialName( CraftResource.KraytScales ), cannot );
+			}
 			BreakDown = true;
 			Repair = true;
 			CanEnhance = true;

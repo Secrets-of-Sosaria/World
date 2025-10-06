@@ -420,23 +420,26 @@ namespace Server.Engines.Craft
 			AddSubRes( typeof( MithrilIngot ),		CraftResources.GetClilocCraftName( CraftResource.Mithril ), CraftResources.GetSkill( CraftResource.Mithril ), CraftResources.GetClilocMaterialName( CraftResource.Mithril ), cannot );
 			AddSubRes( typeof( XormiteIngot ),		CraftResources.GetClilocCraftName( CraftResource.Xormite ), CraftResources.GetSkill( CraftResource.Xormite ), CraftResources.GetClilocMaterialName( CraftResource.Xormite ), cannot );
 			AddSubRes( typeof( DwarvenIngot ),		CraftResources.GetClilocCraftName( CraftResource.Dwarven ), CraftResources.GetSkill( CraftResource.Dwarven ), CraftResources.GetClilocMaterialName( CraftResource.Dwarven ), cannot );
-			AddSubRes( typeof( AgriniumIngot ),		CraftResources.GetClilocCraftName( CraftResource.Agrinium ), CraftResources.GetSkill( CraftResource.Agrinium ), CraftResources.GetClilocMaterialName( CraftResource.Agrinium ), cannot );
-			AddSubRes( typeof( BeskarIngot ),		CraftResources.GetClilocCraftName( CraftResource.Beskar ), CraftResources.GetSkill( CraftResource.Beskar ), CraftResources.GetClilocMaterialName( CraftResource.Beskar ), cannot );
-			AddSubRes( typeof( CarboniteIngot ),	CraftResources.GetClilocCraftName( CraftResource.Carbonite ), CraftResources.GetSkill( CraftResource.Carbonite ), CraftResources.GetClilocMaterialName( CraftResource.Carbonite ), cannot );
-			AddSubRes( typeof( CortosisIngot ),		CraftResources.GetClilocCraftName( CraftResource.Cortosis ), CraftResources.GetSkill( CraftResource.Cortosis ), CraftResources.GetClilocMaterialName( CraftResource.Cortosis ), cannot );
-			AddSubRes( typeof( DurasteelIngot ),	CraftResources.GetClilocCraftName( CraftResource.Durasteel ), CraftResources.GetSkill( CraftResource.Durasteel ), CraftResources.GetClilocMaterialName( CraftResource.Durasteel ), cannot );
-			AddSubRes( typeof( DuriteIngot ),		CraftResources.GetClilocCraftName( CraftResource.Durite ), CraftResources.GetSkill( CraftResource.Durite ), CraftResources.GetClilocMaterialName( CraftResource.Durite ), cannot );
-			AddSubRes( typeof( FariumIngot ),		CraftResources.GetClilocCraftName( CraftResource.Farium ), CraftResources.GetSkill( CraftResource.Farium ), CraftResources.GetClilocMaterialName( CraftResource.Farium ), cannot );
-			AddSubRes( typeof( LaminasteelIngot ),	CraftResources.GetClilocCraftName( CraftResource.Laminasteel ), CraftResources.GetSkill( CraftResource.Laminasteel ), CraftResources.GetClilocMaterialName( CraftResource.Laminasteel ), cannot );
-			AddSubRes( typeof( NeuraniumIngot ),	CraftResources.GetClilocCraftName( CraftResource.Neuranium ), CraftResources.GetSkill( CraftResource.Neuranium ), CraftResources.GetClilocMaterialName( CraftResource.Neuranium ), cannot );
-			AddSubRes( typeof( PhrikIngot ),		CraftResources.GetClilocCraftName( CraftResource.Phrik ), CraftResources.GetSkill( CraftResource.Phrik ), CraftResources.GetClilocMaterialName( CraftResource.Phrik ), cannot );
-			AddSubRes( typeof( PromethiumIngot ),	CraftResources.GetClilocCraftName( CraftResource.Promethium ), CraftResources.GetSkill( CraftResource.Promethium ), CraftResources.GetClilocMaterialName( CraftResource.Promethium ), cannot );
-			AddSubRes( typeof( QuadraniumIngot ),	CraftResources.GetClilocCraftName( CraftResource.Quadranium ), CraftResources.GetSkill( CraftResource.Quadranium ), CraftResources.GetClilocMaterialName( CraftResource.Quadranium ), cannot );
-			AddSubRes( typeof( SongsteelIngot ),	CraftResources.GetClilocCraftName( CraftResource.Songsteel ), CraftResources.GetSkill( CraftResource.Songsteel ), CraftResources.GetClilocMaterialName( CraftResource.Songsteel ), cannot );
-			AddSubRes( typeof( TitaniumIngot ),		CraftResources.GetClilocCraftName( CraftResource.Titanium ), CraftResources.GetSkill( CraftResource.Titanium ), CraftResources.GetClilocMaterialName( CraftResource.Titanium ), cannot );
-			AddSubRes( typeof( TrimantiumIngot ),	CraftResources.GetClilocCraftName( CraftResource.Trimantium ), CraftResources.GetSkill( CraftResource.Trimantium ), CraftResources.GetClilocMaterialName( CraftResource.Trimantium ), cannot );
-			AddSubRes( typeof( XonoliteIngot ),		CraftResources.GetClilocCraftName( CraftResource.Xonolite ), CraftResources.GetSkill( CraftResource.Xonolite ), CraftResources.GetClilocMaterialName( CraftResource.Xonolite ), cannot );
-
+			// unbalanced alien materials
+			if (MySettings.S_AllowAlienCrafting)
+			{
+				AddSubRes(typeof(AgriniumIngot), CraftResources.GetClilocCraftName(CraftResource.Agrinium), CraftResources.GetSkill(CraftResource.Agrinium), CraftResources.GetClilocMaterialName(CraftResource.Agrinium), cannot);
+				AddSubRes(typeof(BeskarIngot), CraftResources.GetClilocCraftName(CraftResource.Beskar), CraftResources.GetSkill(CraftResource.Beskar), CraftResources.GetClilocMaterialName(CraftResource.Beskar), cannot);
+				AddSubRes(typeof(CarboniteIngot), CraftResources.GetClilocCraftName(CraftResource.Carbonite), CraftResources.GetSkill(CraftResource.Carbonite), CraftResources.GetClilocMaterialName(CraftResource.Carbonite), cannot);
+				AddSubRes(typeof(CortosisIngot), CraftResources.GetClilocCraftName(CraftResource.Cortosis), CraftResources.GetSkill(CraftResource.Cortosis), CraftResources.GetClilocMaterialName(CraftResource.Cortosis), cannot);
+				AddSubRes(typeof(DurasteelIngot), CraftResources.GetClilocCraftName(CraftResource.Durasteel), CraftResources.GetSkill(CraftResource.Durasteel), CraftResources.GetClilocMaterialName(CraftResource.Durasteel), cannot);
+				AddSubRes(typeof(DuriteIngot), CraftResources.GetClilocCraftName(CraftResource.Durite), CraftResources.GetSkill(CraftResource.Durite), CraftResources.GetClilocMaterialName(CraftResource.Durite), cannot);
+				AddSubRes(typeof(FariumIngot), CraftResources.GetClilocCraftName(CraftResource.Farium), CraftResources.GetSkill(CraftResource.Farium), CraftResources.GetClilocMaterialName(CraftResource.Farium), cannot);
+				AddSubRes(typeof(LaminasteelIngot), CraftResources.GetClilocCraftName(CraftResource.Laminasteel), CraftResources.GetSkill(CraftResource.Laminasteel), CraftResources.GetClilocMaterialName(CraftResource.Laminasteel), cannot);
+				AddSubRes(typeof(NeuraniumIngot), CraftResources.GetClilocCraftName(CraftResource.Neuranium), CraftResources.GetSkill(CraftResource.Neuranium), CraftResources.GetClilocMaterialName(CraftResource.Neuranium), cannot);
+				AddSubRes(typeof(PhrikIngot), CraftResources.GetClilocCraftName(CraftResource.Phrik), CraftResources.GetSkill(CraftResource.Phrik), CraftResources.GetClilocMaterialName(CraftResource.Phrik), cannot);
+				AddSubRes(typeof(PromethiumIngot), CraftResources.GetClilocCraftName(CraftResource.Promethium), CraftResources.GetSkill(CraftResource.Promethium), CraftResources.GetClilocMaterialName(CraftResource.Promethium), cannot);
+				AddSubRes(typeof(QuadraniumIngot), CraftResources.GetClilocCraftName(CraftResource.Quadranium), CraftResources.GetSkill(CraftResource.Quadranium), CraftResources.GetClilocMaterialName(CraftResource.Quadranium), cannot);
+				AddSubRes(typeof(SongsteelIngot), CraftResources.GetClilocCraftName(CraftResource.Songsteel), CraftResources.GetSkill(CraftResource.Songsteel), CraftResources.GetClilocMaterialName(CraftResource.Songsteel), cannot);
+				AddSubRes(typeof(TitaniumIngot), CraftResources.GetClilocCraftName(CraftResource.Titanium), CraftResources.GetSkill(CraftResource.Titanium), CraftResources.GetClilocMaterialName(CraftResource.Titanium), cannot);
+				AddSubRes(typeof(TrimantiumIngot), CraftResources.GetClilocCraftName(CraftResource.Trimantium), CraftResources.GetSkill(CraftResource.Trimantium), CraftResources.GetClilocMaterialName(CraftResource.Trimantium), cannot);
+				AddSubRes(typeof(XonoliteIngot), CraftResources.GetClilocCraftName(CraftResource.Xonolite), CraftResources.GetSkill(CraftResource.Xonolite), CraftResources.GetClilocMaterialName(CraftResource.Xonolite), cannot);
+			}
 			BreakDown = true;
 			Repair = true;
 			CanEnhance = true;

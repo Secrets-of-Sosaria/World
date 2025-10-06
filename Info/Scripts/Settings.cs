@@ -415,13 +415,16 @@ namespace Server
 
 		public static bool S_AllowBackpackHarvestTool = false;
 
+	// If false, players will not be able to use 'alien' crafting materials found in sci-fi dungeons. 
+	// keep it false if you want a more medieval fantasy based server. Default is false. 
+		public static bool S_AllowAlienCrafting = false;
 
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	// 007 - MONSTERS & CREATURES /////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////////////////////
+		// 007 - MONSTERS & CREATURES /////////////////////////////////////////////////////////////////
+		///////////////////////////////////////////////////////////////////////////////////////////////
 
-	// If true, all creatures will have an ability to detect hidden characters based on their difficulty level.
+		// If true, all creatures will have an ability to detect hidden characters based on their difficulty level.
 
 		public static bool S_CreaturesSearching = true;
 

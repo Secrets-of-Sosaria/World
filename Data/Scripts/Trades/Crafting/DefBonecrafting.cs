@@ -142,16 +142,19 @@ namespace Server.Engines.Craft
 			AddSubRes( typeof( SphinxSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.SphinxSkeletal ), CraftResources.GetSkill( CraftResource.SphinxSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.SphinxSkeletal ), cannot );
 			AddSubRes( typeof( DevilSkeletal ),		CraftResources.GetClilocCraftName( CraftResource.DevilSkeletal ), CraftResources.GetSkill( CraftResource.DevilSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.DevilSkeletal ), cannot );
 			AddSubRes( typeof( DracoSkeletal ),		CraftResources.GetClilocCraftName( CraftResource.DracoSkeletal ), CraftResources.GetSkill( CraftResource.DracoSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.DracoSkeletal ), cannot );
-			AddSubRes( typeof( XenoSkeletal ),		CraftResources.GetClilocCraftName( CraftResource.XenoSkeletal ), CraftResources.GetSkill( CraftResource.XenoSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.XenoSkeletal ), cannot );
-			AddSubRes( typeof( AndorianSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.AndorianSkeletal ), CraftResources.GetSkill( CraftResource.AndorianSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.AndorianSkeletal ), cannot );
-			AddSubRes( typeof( CardassianSkeletal ),CraftResources.GetClilocCraftName( CraftResource.CardassianSkeletal ), CraftResources.GetSkill( CraftResource.CardassianSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.CardassianSkeletal ), cannot );
-			AddSubRes( typeof( MartianSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.MartianSkeletal ), CraftResources.GetSkill( CraftResource.MartianSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.MartianSkeletal ), cannot );
-			AddSubRes( typeof( RodianSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.RodianSkeletal ), CraftResources.GetSkill( CraftResource.RodianSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.RodianSkeletal ), cannot );
-			AddSubRes( typeof( TuskenSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.TuskenSkeletal ), CraftResources.GetSkill( CraftResource.TuskenSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.TuskenSkeletal ), cannot );
-			AddSubRes( typeof( TwilekSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.TwilekSkeletal ), CraftResources.GetSkill( CraftResource.TwilekSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.TwilekSkeletal ), cannot );
-			AddSubRes( typeof( XindiSkeletal ),		CraftResources.GetClilocCraftName( CraftResource.XindiSkeletal ), CraftResources.GetSkill( CraftResource.XindiSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.XindiSkeletal ), cannot );
-			AddSubRes( typeof( ZabrakSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.ZabrakSkeletal ), CraftResources.GetSkill( CraftResource.ZabrakSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.ZabrakSkeletal ), cannot );
-
+			//unbalanced alien materials
+			if (MySettings.S_AllowAlienCrafting)
+			{
+				AddSubRes( typeof( XenoSkeletal ),		CraftResources.GetClilocCraftName( CraftResource.XenoSkeletal ), CraftResources.GetSkill( CraftResource.XenoSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.XenoSkeletal ), cannot );
+				AddSubRes( typeof( AndorianSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.AndorianSkeletal ), CraftResources.GetSkill( CraftResource.AndorianSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.AndorianSkeletal ), cannot );
+				AddSubRes( typeof( CardassianSkeletal ),CraftResources.GetClilocCraftName( CraftResource.CardassianSkeletal ), CraftResources.GetSkill( CraftResource.CardassianSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.CardassianSkeletal ), cannot );
+				AddSubRes( typeof( MartianSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.MartianSkeletal ), CraftResources.GetSkill( CraftResource.MartianSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.MartianSkeletal ), cannot );
+				AddSubRes( typeof( RodianSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.RodianSkeletal ), CraftResources.GetSkill( CraftResource.RodianSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.RodianSkeletal ), cannot );
+				AddSubRes( typeof( TuskenSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.TuskenSkeletal ), CraftResources.GetSkill( CraftResource.TuskenSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.TuskenSkeletal ), cannot );
+				AddSubRes( typeof( TwilekSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.TwilekSkeletal ), CraftResources.GetSkill( CraftResource.TwilekSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.TwilekSkeletal ), cannot );
+				AddSubRes( typeof( XindiSkeletal ),		CraftResources.GetClilocCraftName( CraftResource.XindiSkeletal ), CraftResources.GetSkill( CraftResource.XindiSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.XindiSkeletal ), cannot );
+				AddSubRes( typeof( ZabrakSkeletal ),	CraftResources.GetClilocCraftName( CraftResource.ZabrakSkeletal ), CraftResources.GetSkill( CraftResource.ZabrakSkeletal ), CraftResources.GetClilocMaterialName( CraftResource.ZabrakSkeletal ), cannot );
+			}
 			BreakDown = true;
 			Repair = true;
 			CanEnhance = true;

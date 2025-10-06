@@ -245,19 +245,22 @@ namespace Server.Engines.Craft
 			AddSubRes( typeof( DraconicLeather ),		CraftResources.GetClilocCraftName( CraftResource.DraconicLeather ), CraftResources.GetSkill( CraftResource.DraconicLeather ), CraftResources.GetClilocMaterialName( CraftResource.DraconicLeather ), cannot );
 			AddSubRes( typeof( HellishLeather ),		CraftResources.GetClilocCraftName( CraftResource.HellishLeather ), CraftResources.GetSkill( CraftResource.HellishLeather ), CraftResources.GetClilocMaterialName( CraftResource.HellishLeather ), cannot );
 			AddSubRes( typeof( DinosaurLeather ),		CraftResources.GetClilocCraftName( CraftResource.DinosaurLeather ), CraftResources.GetSkill( CraftResource.DinosaurLeather ), CraftResources.GetClilocMaterialName( CraftResource.DinosaurLeather ), cannot );
-			AddSubRes( typeof( AlienLeather ),			CraftResources.GetClilocCraftName( CraftResource.AlienLeather ), CraftResources.GetSkill( CraftResource.AlienLeather ), CraftResources.GetClilocMaterialName( CraftResource.AlienLeather ), cannot );
-			AddSubRes( typeof( AdesoteLeather ),		CraftResources.GetClilocCraftName( CraftResource.Adesote ), CraftResources.GetSkill( CraftResource.Adesote ), CraftResources.GetClilocMaterialName( CraftResource.Adesote ), cannot );
-			AddSubRes( typeof( BiomeshLeather ),		CraftResources.GetClilocCraftName( CraftResource.Biomesh ), CraftResources.GetSkill( CraftResource.Biomesh ), CraftResources.GetClilocMaterialName( CraftResource.Biomesh ), cannot );
-			AddSubRes( typeof( CerlinLeather ),			CraftResources.GetClilocCraftName( CraftResource.Cerlin ), CraftResources.GetSkill( CraftResource.Cerlin ), CraftResources.GetClilocMaterialName( CraftResource.Cerlin ), cannot );
-			AddSubRes( typeof( DurafiberLeather ),		CraftResources.GetClilocCraftName( CraftResource.Durafiber ), CraftResources.GetSkill( CraftResource.Durafiber ), CraftResources.GetClilocMaterialName( CraftResource.Durafiber ), cannot );
-			AddSubRes( typeof( FlexicrisLeather ),		CraftResources.GetClilocCraftName( CraftResource.Flexicris ), CraftResources.GetSkill( CraftResource.Flexicris ), CraftResources.GetClilocMaterialName( CraftResource.Flexicris ), cannot );
-			AddSubRes( typeof( HyperclothLeather ),		CraftResources.GetClilocCraftName( CraftResource.Hypercloth ), CraftResources.GetSkill( CraftResource.Hypercloth ), CraftResources.GetClilocMaterialName( CraftResource.Hypercloth ), cannot );
-			AddSubRes( typeof( NylarLeather ),			CraftResources.GetClilocCraftName( CraftResource.Nylar ), CraftResources.GetSkill( CraftResource.Nylar ), CraftResources.GetClilocMaterialName( CraftResource.Nylar ), cannot );
-			AddSubRes( typeof( NyloniteLeather ),		CraftResources.GetClilocCraftName( CraftResource.Nylonite ), CraftResources.GetSkill( CraftResource.Nylonite ), CraftResources.GetClilocMaterialName( CraftResource.Nylonite ), cannot );
-			AddSubRes( typeof( PolyfiberLeather ),		CraftResources.GetClilocCraftName( CraftResource.Polyfiber ), CraftResources.GetSkill( CraftResource.Polyfiber ), CraftResources.GetClilocMaterialName( CraftResource.Polyfiber ), cannot );
-			AddSubRes( typeof( SynclothLeather ),		CraftResources.GetClilocCraftName( CraftResource.Syncloth ), CraftResources.GetSkill( CraftResource.Syncloth ), CraftResources.GetClilocMaterialName( CraftResource.Syncloth ), cannot );
-			AddSubRes( typeof( ThermoweaveLeather ),	CraftResources.GetClilocCraftName( CraftResource.Thermoweave ), CraftResources.GetSkill( CraftResource.Thermoweave ), CraftResources.GetClilocMaterialName( CraftResource.Thermoweave ), cannot );
-
+			//unbalanced alien materials
+			if (MySettings.S_AllowAlienCrafting)
+			{
+				AddSubRes( typeof( AlienLeather ),			CraftResources.GetClilocCraftName( CraftResource.AlienLeather ), CraftResources.GetSkill( CraftResource.AlienLeather ), CraftResources.GetClilocMaterialName( CraftResource.AlienLeather ), cannot );
+				AddSubRes( typeof( AdesoteLeather ),		CraftResources.GetClilocCraftName( CraftResource.Adesote ), CraftResources.GetSkill( CraftResource.Adesote ), CraftResources.GetClilocMaterialName( CraftResource.Adesote ), cannot );
+				AddSubRes( typeof( BiomeshLeather ),		CraftResources.GetClilocCraftName( CraftResource.Biomesh ), CraftResources.GetSkill( CraftResource.Biomesh ), CraftResources.GetClilocMaterialName( CraftResource.Biomesh ), cannot );
+				AddSubRes( typeof( CerlinLeather ),			CraftResources.GetClilocCraftName( CraftResource.Cerlin ), CraftResources.GetSkill( CraftResource.Cerlin ), CraftResources.GetClilocMaterialName( CraftResource.Cerlin ), cannot );
+				AddSubRes( typeof( DurafiberLeather ),		CraftResources.GetClilocCraftName( CraftResource.Durafiber ), CraftResources.GetSkill( CraftResource.Durafiber ), CraftResources.GetClilocMaterialName( CraftResource.Durafiber ), cannot );
+				AddSubRes( typeof( FlexicrisLeather ),		CraftResources.GetClilocCraftName( CraftResource.Flexicris ), CraftResources.GetSkill( CraftResource.Flexicris ), CraftResources.GetClilocMaterialName( CraftResource.Flexicris ), cannot );
+				AddSubRes( typeof( HyperclothLeather ),		CraftResources.GetClilocCraftName( CraftResource.Hypercloth ), CraftResources.GetSkill( CraftResource.Hypercloth ), CraftResources.GetClilocMaterialName( CraftResource.Hypercloth ), cannot );
+				AddSubRes( typeof( NylarLeather ),			CraftResources.GetClilocCraftName( CraftResource.Nylar ), CraftResources.GetSkill( CraftResource.Nylar ), CraftResources.GetClilocMaterialName( CraftResource.Nylar ), cannot );
+				AddSubRes( typeof( NyloniteLeather ),		CraftResources.GetClilocCraftName( CraftResource.Nylonite ), CraftResources.GetSkill( CraftResource.Nylonite ), CraftResources.GetClilocMaterialName( CraftResource.Nylonite ), cannot );
+				AddSubRes( typeof( PolyfiberLeather ),		CraftResources.GetClilocCraftName( CraftResource.Polyfiber ), CraftResources.GetSkill( CraftResource.Polyfiber ), CraftResources.GetClilocMaterialName( CraftResource.Polyfiber ), cannot );
+				AddSubRes( typeof( SynclothLeather ),		CraftResources.GetClilocCraftName( CraftResource.Syncloth ), CraftResources.GetSkill( CraftResource.Syncloth ), CraftResources.GetClilocMaterialName( CraftResource.Syncloth ), cannot );
+				AddSubRes( typeof( ThermoweaveLeather ),	CraftResources.GetClilocCraftName( CraftResource.Thermoweave ), CraftResources.GetSkill( CraftResource.Thermoweave ), CraftResources.GetClilocMaterialName( CraftResource.Thermoweave ), cannot );
+			}
 			BreakDown = true;
 			Repair = true;
 			CanEnhance = true;
