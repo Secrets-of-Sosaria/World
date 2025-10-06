@@ -18,8 +18,11 @@ namespace Server.Multis
 		Single
 	}
 
+	// Smooth sailing - https://github.com/runuo/runuo/commit/110bd99e565441c2df33bacb3696bdffb9d70675
 	public abstract class BaseBoat : BaseMulti
 	{
+		const string CLEAR_THE_DECK = "clear the deck";
+
 		// THE LAST TWO INTEGERS ARE THE SEA WIDTH AND HEIGHT //
 		private static Rectangle2D[] m_FelWrap = new Rectangle2D[]{ new Rectangle2D( 16, 16, 5120-32, 4096-32 ) };
 		private static Rectangle2D[] m_TramWrap = new Rectangle2D[]{ new Rectangle2D( 16, 16, 5120-32, 3127-32 ) };
@@ -55,6 +58,7 @@ namespace Server.Multis
 
 		private Direction m_Moving;
 		private int m_Speed;
+		private int m_ClientSpeed;
 
 		private bool m_Anchored;
 		private string m_ShipName;
@@ -506,14 +510,8 @@ namespace Server.Multis
 			int level = ((int)(Server.Misc.IntelligentAction.GetCreatureLevel( from )/25)+1);
 			if ( killer != null )
 			{
-				if ( killer is BaseCreature )
-					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile )
-				{
-					int mod = (int)( killer.Skills[SkillName.Seafaring].Value / 25 );
-					if ( mod > 0 ){ level = level + mod; }
-				}
+				int mod = (int)( killer.Skills[SkillName.Seafaring].Value / 25 );
+				if ( mod > 0 ){ level = level + mod; }
 			}
 
 			SunkenShip ShipWreck = new SunkenShip( level );
@@ -545,12 +543,6 @@ namespace Server.Multis
 					if ( from.Karma < 0 ){ cargo.CargoKarma = (int)(cargo.CargoValue/5); }
 				ShipWreck.DropItem( cargo );
 			}
-			while ( relics > 0 )
-			{
-				relics--;
-				Item relic = Loot.RandomRelic( killer );
-				ShipWreck.DropItem( relic );
-			}
 
 			if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ Item i1 = new RawFishSteak( Utility.RandomMinMax( 1, 8 ) ); 	ShipWreck.DropItem( i1 ); }
 			if ( Utility.RandomMinMax( 1, 4 ) == 1 ){ Item i2 = new Fish( Utility.RandomMinMax( 1, 8 ) ); 			ShipWreck.DropItem( i2 ); }
@@ -563,7 +555,8 @@ namespace Server.Multis
 				goods.CoinPrice = goods.CoinPrice + (int)(from.RawStatTotal/3);
 				ShipWreck.DropItem(goods);
 			}
-			if ( killer is PlayerMobile )
+
+			if (killer != null )
 			{
 				if ( GetPlayerInfo.LuckyKiller( killer.Luck ) && Utility.RandomMinMax( 1, 4 ) == 1 )
 				{
@@ -886,14 +879,36 @@ namespace Server.Multis
 			return false;
 		}
 
-		private static TimeSpan SlowInterval = TimeSpan.FromSeconds( 0.75 );
-		private static TimeSpan FastInterval = TimeSpan.FromSeconds( 0.75 );
+		/*
+		 * Intervals:
+		 *       drift forward
+		 * fast | 0.25|   0.25
+		 * slow | 0.50|   0.50
+		 *
+		 * Speed:
+		 *       drift forward
+		 * fast |  0x4|    0x4
+		 * slow |  0x3|    0x3
+		 *
+		 * Tiles (per interval):
+		 *       drift forward
+		 * fast |    1|      1
+		 * slow |    1|      1
+		 *
+		 * 'walking' in piloting mode has a 1s interval, speed 0x2
+		 */
+
+		// Legacy clients will continue to see the old-style movement, but speeds are adjusted
+		private static bool NewBoatMovement = true;
+
+		private static TimeSpan SlowInterval = TimeSpan.FromSeconds( NewBoatMovement ? 0.50 : 0.75 );
+		private static TimeSpan FastInterval = TimeSpan.FromSeconds( NewBoatMovement ? 0.25 : 0.75 );
 
 		private static int SlowSpeed = 1;
-		private static int FastSpeed = 3;
+		private static int FastSpeed = NewBoatMovement ? 1 : 3;
 
-		private static TimeSpan SlowDriftInterval = TimeSpan.FromSeconds( 1.50 );
-		private static TimeSpan FastDriftInterval = TimeSpan.FromSeconds( 0.75 );
+		private static TimeSpan SlowDriftInterval = TimeSpan.FromSeconds( NewBoatMovement ? 0.50 : 1.50 );
+		private static TimeSpan FastDriftInterval = TimeSpan.FromSeconds( NewBoatMovement ? 0.25 : 0.75 );
 
 		private static int SlowDriftSpeed = 1;
 		private static int FastDriftSpeed = 1;
@@ -1019,8 +1034,9 @@ namespace Server.Multis
 			bool drift = ( dir != Forward && dir != ForwardLeft && dir != ForwardRight );
 			TimeSpan interval = (fast ? (drift ? FastDriftInterval : FastInterval) : (drift ? SlowDriftInterval : SlowInterval));
 			int speed = (fast ? (drift ? FastDriftSpeed : FastSpeed) : (drift ? SlowDriftSpeed : SlowSpeed));
+			int clientSpeed = fast ? 0x4 : 0x3;
 
-			if ( StartMove( dir, speed, interval, false, true ) )
+			if ( StartMove( dir, speed, clientSpeed, interval, false, true ) )
 			{
 				if ( m_TillerMan != null )
 					m_TillerMan.Say( "Aye aye captain." ); // Aye aye sir.
@@ -1040,7 +1056,7 @@ namespace Server.Multis
 			TimeSpan interval = drift ? FastDriftInterval : FastInterval;
 			int speed = drift ? FastDriftSpeed : FastSpeed;
 
-			if ( StartMove( dir, speed, interval, true, true ) )
+			if ( StartMove( dir, speed, 0x1, interval, true, true ) )
 			{
 				if ( m_TillerMan != null )
 					m_TillerMan.Say( "Aye aye captain." ); // Aye aye sir.
@@ -1124,28 +1140,11 @@ namespace Server.Multis
 			if ( map == null || map == Map.Internal )
 				return DryDockResult.Items;
 
-			MultiComponentList mcl = Components;
+			List<IEntity> ents = GetMovingEntities();
 
-			IPooledEnumerable eable = map.GetObjectsInBounds( new Rectangle2D( X + mcl.Min.X, Y + mcl.Min.Y, mcl.Width, mcl.Height ) );
+			if ( ents.Count >= 1 )
+				return ( ents[0] is Mobile ) ? DryDockResult.Mobiles : DryDockResult.Items;
 
-			foreach ( object o in eable )
-			{
-				if ( o == this || o == m_Hold || o == m_SPlank || o == m_PPlank || o == m_TillerMan || o == m_BoatDoor )
-					continue;
-
-				if ( o is Item && Contains( (Item)o ) )
-				{
-					eable.Free();
-					return DryDockResult.Items;
-				}
-				else if ( o is Mobile && Contains( (Mobile)o ) )
-				{
-					eable.Free();
-					return DryDockResult.Mobiles;
-				}
-			}
-
-			eable.Free();
 			return DryDockResult.Valid;
 		}
 
@@ -1203,32 +1202,36 @@ namespace Server.Multis
 			if ( boat == null )
 				return;
 
-			foreach ( Mobile stow in World.Mobiles.Values )
-			if ( stow is PlayerMobile && stow.Region.Name == "the Ship's Lower Deck" )
+			// Magic carpets don't have a Lower Deck
+			if ( !BaseBoat.isCarpet( this ) )
 			{
-				string sCabinDoor = ((PlayerMobile)from).CharacterBoatDoor;
-
-				string sWorld = "";
-				string sSerial = "";
-				string sCode = "";
-
-				if ( sCabinDoor != null )
+				foreach ( Mobile stow in World.Mobiles.Values )
+				if ( stow is PlayerMobile && stow.Region.Name == "the Ship's Lower Deck" )
 				{
-					string[] doors = sCabinDoor.Split('#');
-					int nEntry = 1;
-					foreach (string doorz in doors)
+					string sCabinDoor = ((PlayerMobile)from).CharacterBoatDoor;
+
+					string sWorld = "";
+					string sSerial = "";
+					string sCode = "";
+
+					if ( sCabinDoor != null )
 					{
-						if ( nEntry == 1 ){ sSerial = doorz; }
-						else if ( nEntry == 2 ){ sCode = doorz; }
-						else if ( nEntry == 3 ){ sWorld = doorz; }
+						string[] doors = sCabinDoor.Split('#');
+						int nEntry = 1;
+						foreach (string doorz in doors)
+						{
+							if ( nEntry == 1 ){ sSerial = doorz; }
+							else if ( nEntry == 2 ){ sCode = doorz; }
+							else if ( nEntry == 3 ){ sWorld = doorz; }
 
-						nEntry++;
+							nEntry++;
+						}
 					}
-				}
 
-				if ( this.m_BoatDoor.Serial.ToString() == sSerial && this.m_BoatDoor.BoatCode == sCode )
-				{
-					DeckDoor.CabinDoor( stow, from.Location, from.Map );
+					if ( m_BoatDoor.Serial.ToString() == sSerial && m_BoatDoor.BoatCode == sCode )
+					{
+						DeckDoor.CabinDoor( stow, from.Location, from.Map );
+					}
 				}
 			}
 
@@ -1484,6 +1487,7 @@ namespace Server.Multis
 
 			Mobile from = e.Mobile;
 
+			bool handled = false;
 			if ( CanCommand( from ) && Contains( from ) )
 			{
 				for ( int i = 0; i < e.Keywords.Length; ++i )
@@ -1536,9 +1540,49 @@ namespace Server.Multis
 							case 0x64: StartCourse( e.Speech, true, true ); break; // single*
 						}
 
+						handled = true;
 						break;
 					}
 				}
+
+				if (!handled && Insensitive.Contains(e.Speech, CLEAR_THE_DECK))
+				{
+					bool foundItem = false;
+					foreach(var entity in GetMovingEntities())
+					{
+						if (entity is Mobile)
+						{
+							var mobile = (Mobile)entity;
+							if (mobile.Hidden) mobile.Hidden = false;
+						}
+
+						if (entity is Item)
+						{
+							if (entity is Corpse)
+							{
+								entity.Delete();
+							}
+							else
+							{
+								foundItem = true;
+							}
+						}
+					}
+
+					if (foundItem)
+					{
+						m_TillerMan.Say("That item might be precious captain!");
+					}
+
+					handled = true;
+				}
+			}
+
+			if (handled) return;
+
+			if (from is PlayerMobile && Utility.Random( 4 ) == 1 && Contains(e.Mobile))
+			{
+				m_TillerMan.Say(string.Format("I can always '{0}' captain!", CLEAR_THE_DECK));
 			}
 		}
 
@@ -1626,7 +1670,7 @@ namespace Server.Multis
 			}
 		}
 
-		public bool StartMove( Direction dir, int speed, TimeSpan interval, bool single, bool message )
+		public bool StartMove( Direction dir, int speed, int clientSpeed, TimeSpan interval, bool single, bool message )
 		{
 			if ( CheckDecay() )
 				return false;
@@ -1641,6 +1685,7 @@ namespace Server.Multis
 
 			m_Moving = dir;
 			m_Speed = speed;
+			m_ClientSpeed = clientSpeed;
 			m_Order = BoatOrder.Move;
 
 			if ( m_MoveTimer != null )
@@ -1667,6 +1712,7 @@ namespace Server.Multis
 
 			m_Moving = Direction.North;
 			m_Speed = 0;
+			m_ClientSpeed = 0;
 			m_MoveTimer.Stop();
 			m_MoveTimer = null;
 
@@ -1834,12 +1880,13 @@ namespace Server.Multis
 		public bool DoMovement( bool message )
 		{
 			Direction dir;
-			int speed;
+			int speed = 0, clientSpeed = 0;
 
 			if ( this.Order == BoatOrder.Move )
 			{
-				dir = this.Moving;
-				speed = this.Speed;
+				dir = m_Moving;
+				speed = m_Speed;
+				clientSpeed = m_ClientSpeed;
 			}
 			else if ( MapItem == null || MapItem.Deleted )
 			{
@@ -1910,10 +1957,10 @@ namespace Server.Multis
 				speed = Math.Min( this.Speed, maxSpeed );
 			}
 
-			return Move( dir, speed, true );
+			return Move( dir, speed, clientSpeed, true );
 		}
 
-		public bool Move( Direction dir, int speed, bool message )
+		public bool Move( Direction dir, int speed, int clientSpeed, bool message )
 		{
 			Map map = Map;
 
@@ -1929,7 +1976,8 @@ namespace Server.Multis
 			}
 
 			int rx = 0, ry = 0;
-			Movement.Movement.Offset( (Direction)(((int)m_Facing + (int)dir) & 0x7), ref rx, ref ry );
+			Direction d = (Direction)(((int)m_Facing + (int)dir) & 0x7);
+			Movement.Movement.Offset( d, ref rx, ref ry );
 
 			for ( int i = 1; i <= speed; ++i )
 			{
@@ -1988,48 +2036,129 @@ namespace Server.Multis
 				}
 			}
 
-			Teleport( xOffset, yOffset, 0 );
+			if ( !NewBoatMovement || Math.Abs( xOffset ) > 1 || Math.Abs( yOffset ) > 1 )
+			{
+				Teleport( xOffset, yOffset, 0 );
+			}
+			else
+			{
+				List<IEntity> toMove = GetMovingEntities();
+
+				SafeAdd( m_TillerMan, toMove );
+				SafeAdd( m_Hold, toMove );
+				SafeAdd( m_PPlank, toMove );
+				SafeAdd( m_SPlank, toMove );
+
+				// Packet must be sent before actual locations are changed
+				foreach ( NetState ns in Map.GetClientsInRange( Location, GetMaxUpdateRange() ) )
+				{
+					Mobile m = ns.Mobile;
+
+					if ( ns.HighSeas && m.CanSee( this ) && m.InRange( Location, GetUpdateRange( m ) ) )
+						ns.Send( new MoveBoatHS( m, this, d, clientSpeed, toMove, xOffset, yOffset ) );
+				}
+
+				foreach ( IEntity e in toMove )
+				{
+					if ( e is Item )
+					{
+						Item item = (Item)e;
+
+						item.NoMoveHS = true;
+
+						if ( !( item is TillerMan || item is Hold || item is Plank ) )
+							item.Location = new Point3D( item.X + xOffset, item.Y + yOffset, item.Z );
+					}
+					else if ( e is Mobile )
+					{
+						Mobile m = (Mobile)e;
+
+						m.NoMoveHS = true;
+						m.Location = new Point3D( m.X + xOffset, m.Y + yOffset, m.Z );
+					}
+				}
+
+				NoMoveHS = true;
+				Location = new Point3D( X + xOffset, Y + yOffset, Z );
+
+				foreach ( IEntity e in toMove )
+				{
+					if ( e is Item )
+						((Item)e).NoMoveHS = false;
+					else if ( e is Mobile )
+						((Mobile)e).NoMoveHS = false;
+				}
+
+				NoMoveHS = false;
+			}
 
 			return true;
 		}
 
+		private static void SafeAdd( Item item, List<IEntity> toMove )
+		{
+			if ( item != null )
+				toMove.Add( item );
+		}
+
 		public void Teleport( int xOffset, int yOffset, int zOffset )
 		{
-			MultiComponentList mcl = Components;
-
-			ArrayList toMove = new ArrayList();
-
-			IPooledEnumerable eable = this.Map.GetObjectsInBounds( new Rectangle2D( X + mcl.Min.X, Y + mcl.Min.Y, mcl.Width, mcl.Height ) );
-
-			foreach ( object o in eable )
-			{
-				if ( o != this && !(o is TillerMan || o is Hold || o is Plank || o is BoatDoor ) )
-					toMove.Add( o );
-			}
-
-			eable.Free();
+			List<IEntity> toMove = GetMovingEntities();
 
 			for ( int i = 0; i < toMove.Count; ++i )
 			{
-				object o = toMove[i];
+				IEntity e = toMove[i];
+
+				if ( e is Item )
+				{
+					Item item = (Item)e;
+
+					item.Location = new Point3D( item.X + xOffset, item.Y + yOffset, item.Z + zOffset );
+				}
+				else if ( e is Mobile )
+				{
+					Mobile m = (Mobile)e;
+
+					m.Location = new Point3D( m.X + xOffset, m.Y + yOffset, m.Z + zOffset );
+				}
+			}
+
+			Location = new Point3D( X + xOffset, Y + yOffset, Z + zOffset );
+		}
+
+		public List<IEntity> GetMovingEntities()
+		{
+			List<IEntity> list = new List<IEntity>();
+
+			Map map = Map;
+
+			if ( map == null || map == Map.Internal )
+				return list;
+
+			MultiComponentList mcl = Components;
+
+			foreach ( object o in map.GetObjectsInBounds( new Rectangle2D( X + mcl.Min.X, Y + mcl.Min.Y, mcl.Width, mcl.Height ) ) )
+			{
+				if ( o == this || o is TillerMan || o is Hold || o is Plank || o is BoatDoor)
+					continue;
 
 				if ( o is Item )
 				{
 					Item item = (Item)o;
 
 					if ( Contains( item ) && item.Visible && item.Z >= Z )
-						item.Location = new Point3D( item.X + xOffset, item.Y + yOffset, item.Z + zOffset );
+						list.Add( item );
 				}
 				else if ( o is Mobile )
 				{
 					Mobile m = (Mobile)o;
 
 					if ( Contains( m ) )
-						m.Location = new Point3D( m.X + xOffset, m.Y + yOffset, m.Z + zOffset );
+						list.Add( m );
 				}
 			}
 
-			Location = new Point3D( X + xOffset, Y + yOffset, Z + zOffset );
+			return list;
 		}
 
 		public bool SetFacing( Direction facing )
@@ -2051,8 +2180,6 @@ namespace Server.Multis
 				}
 			}
 
-			this.Map.OnLeave( this );
-
 			Direction old = m_Facing;
 
 			m_Facing = facing;
@@ -2072,33 +2199,10 @@ namespace Server.Multis
 			if ( m_SPlank != null )
 				m_SPlank.SetFacing( facing );
 
-			MultiComponentList mcl = Components;
-
-			ArrayList toMove = new ArrayList();
+			List<IEntity> toMove = GetMovingEntities();
 
 			toMove.Add( m_PPlank );
 			toMove.Add( m_SPlank );
-
-			IPooledEnumerable eable = Map.GetObjectsInBounds( new Rectangle2D( X + mcl.Min.X, Y + mcl.Min.Y, mcl.Width, mcl.Height ) );
-
-			foreach ( object o in eable )
-			{
-				if ( o is Item )
-				{
-					Item item = (Item)o;
-
-					if ( item != this && Contains( item ) && item.Visible && item.Z >= Z && !(item is TillerMan || item is Hold || item is Plank || item is BoatDoor ) )
-						toMove.Add( item );
-				}
-				else if ( o is Mobile && Contains( (Mobile)o ) )
-				{
-					toMove.Add( o );
-
-					((Mobile)o).Direction = (Direction)((int)((Mobile)o).Direction - (int)old + (int)facing);
-				}
-			}
-
-			eable.Free();
 
 			int xOffset = 0, yOffset = 0;
 			Movement.Movement.Offset( facing, ref xOffset, ref yOffset );
@@ -2117,12 +2221,21 @@ namespace Server.Multis
 
 			for ( int i = 0; i < toMove.Count; ++i )
 			{
-				object o = toMove[i];
+				IEntity e = toMove[i];
 
-				if ( o is Item )
-					((Item)o).Location = Rotate( ((Item)o).Location, count );
-				else if ( o is Mobile )
-					((Mobile)o).Location = Rotate( ((Mobile)o).Location, count );
+				if ( e is Item )
+				{
+					Item item = (Item)e;
+
+					item.Location = Rotate( item.Location, count );
+				}
+				else if ( e is Mobile )
+				{
+					Mobile m = (Mobile)e;
+
+					m.Direction = ( m.Direction - old + facing ) & Direction.Mask;
+					m.Location = Rotate( m.Location, count );
+				}
 			}
 
 			switch ( facing )
@@ -2132,8 +2245,6 @@ namespace Server.Multis
 				case Direction.South: ItemID = SouthID; break;
 				case Direction.West:  ItemID =  WestID; break;
 			}
-
-			this.Map.OnEnter( this );
 
 			return true;
 		}
@@ -2183,5 +2294,160 @@ namespace Server.Multis
 				UpdateAllComponents();
 			}
 		}
+
+		#region High Seas
+
+		/*
+		 * OSI sends the 0xF7 packet instead, holding 0xF3 packets
+		 * for every entity on the boat. Though, the regular 0xF3
+		 * packets are still being sent as well as entities come
+		 * into sight. Do we really need it?
+		 */
+		/*
+		protected override Packet GetWorldPacketFor( NetState state )
+		{
+			if ( NewBoatMovement && state.HighSeas )
+				return new DisplayBoatHS( state.Mobile, this );
+			else
+				return base.GetWorldPacketFor( state );
+		}
+		*/
+
+		public sealed class MoveBoatHS : Packet
+		{
+			public MoveBoatHS( Mobile beholder, BaseBoat boat, Direction d, int speed, List<IEntity> ents, int xOffset, int yOffset )
+				: base( 0xF6 )
+			{
+				EnsureCapacity( 3 + 15 + ents.Count * 10 );
+
+				m_Stream.Write( (int) boat.Serial );
+				m_Stream.Write( (byte) speed );
+				m_Stream.Write( (byte) d );
+				m_Stream.Write( (byte) boat.Facing );
+				m_Stream.Write( (short) ( boat.X + xOffset ) );
+				m_Stream.Write( (short) ( boat.Y + yOffset ) );
+				m_Stream.Write( (short) boat.Z );
+				m_Stream.Write( (short) 0 ); // count placeholder
+
+				int count = 0;
+
+				foreach ( IEntity ent in ents )
+				{
+					if ( !beholder.CanSee( ent ) )
+						continue;
+
+					m_Stream.Write( (int) ent.Serial );
+					m_Stream.Write( (short) ( ent.X + xOffset ) );
+					m_Stream.Write( (short) ( ent.Y + yOffset ) );
+					m_Stream.Write( (short) ent.Z );
+					++count;
+				}
+
+				m_Stream.Seek( 16, System.IO.SeekOrigin.Begin );
+				m_Stream.Write( (short) count );
+			}
+		}
+
+		public sealed class DisplayBoatHS : Packet
+		{
+			public DisplayBoatHS( Mobile beholder, BaseBoat boat )
+				: base( 0xF7 )
+			{
+				List<IEntity> ents = boat.GetMovingEntities();
+
+				SafeAdd( boat.TillerMan, ents );
+				SafeAdd( boat.Hold, ents );
+				SafeAdd( boat.PPlank, ents );
+				SafeAdd( boat.SPlank, ents );
+
+				ents.Add( boat );
+
+				EnsureCapacity( 3 + 2 + ents.Count * 26 );
+
+				m_Stream.Write( (short) 0 ); // count placeholder
+
+				int count = 0;
+
+				foreach ( IEntity ent in ents )
+				{
+					if ( !beholder.CanSee( ent ) )
+						continue;
+
+					// Embedded WorldItemHS packets
+					m_Stream.Write( (byte) 0xF3 );
+					m_Stream.Write( (short) 0x1 );
+
+					if ( ent is BaseMulti )
+					{
+						BaseMulti bm = (BaseMulti)ent;
+
+						m_Stream.Write( (byte) 0x02 );
+						m_Stream.Write( (int) bm.Serial );
+						// TODO: Mask no longer needed, merge with Item case?
+						m_Stream.Write( (ushort) ( bm.ItemID & 0x3FFF ) );
+						m_Stream.Write( (byte) 0 );
+
+						m_Stream.Write( (short) bm.Amount );
+						m_Stream.Write( (short) bm.Amount );
+
+						m_Stream.Write( (short) ( bm.X & 0x7FFF ) );
+						m_Stream.Write( (short) ( bm.Y & 0x3FFF ) );
+						m_Stream.Write( (sbyte) bm.Z );
+
+						m_Stream.Write( (byte) bm.Light );
+						m_Stream.Write( (short) bm.Hue );
+						m_Stream.Write( (byte) bm.GetPacketFlags() );
+					}
+					else if ( ent is Mobile )
+					{
+						Mobile m = (Mobile)ent;
+
+						m_Stream.Write( (byte) 0x01 );
+						m_Stream.Write( (int) m.Serial );
+						m_Stream.Write( (short) m.Body );
+						m_Stream.Write( (byte) 0 );
+
+						m_Stream.Write( (short) 1 );
+						m_Stream.Write( (short) 1 );
+
+						m_Stream.Write( (short) ( m.X & 0x7FFF ) );
+						m_Stream.Write( (short) ( m.Y & 0x3FFF ) );
+						m_Stream.Write( (sbyte) m.Z );
+
+						m_Stream.Write( (byte) m.Direction );
+						m_Stream.Write( (short) m.Hue );
+						m_Stream.Write( (byte) m.GetPacketFlags() );
+					}
+					else if ( ent is Item )
+					{
+						Item item = (Item)ent;
+
+						m_Stream.Write( (byte) 0x00 );
+						m_Stream.Write( (int) item.Serial );
+						m_Stream.Write( (ushort) ( item.ItemID & 0xFFFF ) );
+						m_Stream.Write( (byte) 0 );
+
+						m_Stream.Write( (short) item.Amount );
+						m_Stream.Write( (short) item.Amount );
+
+						m_Stream.Write( (short) ( item.X & 0x7FFF ) );
+						m_Stream.Write( (short) ( item.Y & 0x3FFF ) );
+						m_Stream.Write( (sbyte) item.Z );
+
+						m_Stream.Write( (byte) item.Light );
+						m_Stream.Write( (short) item.Hue );
+						m_Stream.Write( (byte) item.GetPacketFlags() );
+					}
+
+					m_Stream.Write( (short) 0x00 );
+					++count;
+				}
+
+				m_Stream.Seek( 3, System.IO.SeekOrigin.Begin );
+				m_Stream.Write( (short) count );
+			}
+		}
+
+		#endregion
 	}
 }

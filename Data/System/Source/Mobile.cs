@@ -9747,7 +9747,7 @@ namespace Server
 				if( m_Map != null )
 					m_Map.OnMove( oldLocation, this );
 
-				if( isTeleport && m_NetState != null )
+				if( isTeleport && m_NetState != null && ( !m_NetState.HighSeas || !m_NoMoveHS ) )
 				{
 					m_NetState.Sequence = 0;
 
@@ -9810,7 +9810,7 @@ namespace Server
 
 								bool inOldRange = Utility.InUpdateRange( oldLocation, m.m_Location );
 
-								if( (isTeleport || !inOldRange) && m.m_NetState != null && m.CanSee( this ) )
+								if( m.m_NetState != null && ( ( isTeleport && ( !m.m_NetState.HighSeas || !m_NoMoveHS ) ) || !inOldRange ) && m.CanSee( this ) )
 								{
 									if ( m.m_NetState.StygianAbyss ) {
 										m.m_NetState.Send( new MobileIncoming( m, this ) );
@@ -9873,7 +9873,7 @@ namespace Server
 						// We're not attached to a client, so simply send an Incoming
 						foreach( NetState ns in eable )
 						{
-							if( (isTeleport || !Utility.InUpdateRange( oldLocation, ns.Mobile.Location )) && ns.Mobile.CanSee( this ) )
+							if( ( ( isTeleport && ( !ns.HighSeas || !m_NoMoveHS ) ) || !Utility.InUpdateRange( oldLocation, ns.Mobile.Location )) && ns.Mobile.CanSee( this ) )
 							{
 								if ( ns.StygianAbyss ) {
 									ns.Send( new MobileIncoming( ns.Mobile, this ) );
@@ -10747,10 +10747,16 @@ namespace Server
 
 			Core.Set();
 		}
+		private bool m_NoMoveHS;
+		public bool NoMoveHS
+		{
+			get { return m_NoMoveHS; }
+			set { m_NoMoveHS = value; }
+		}
 
 		#region GetDirectionTo[..]
 
-		public Direction GetDirectionTo( int x, int y )
+		public Direction GetDirectionTo(int x, int y)
 		{
 			int dx = m_Location.m_X - x;
 			int dy = m_Location.m_Y - y;
@@ -10758,20 +10764,20 @@ namespace Server
 			int rx = (dx - dy) * 44;
 			int ry = (dx + dy) * 44;
 
-			int ax = Math.Abs( rx );
-			int ay = Math.Abs( ry );
+			int ax = Math.Abs(rx);
+			int ay = Math.Abs(ry);
 
 			Direction ret;
 
-			if( ((ay >> 1) - ax) >= 0 )
+			if (((ay >> 1) - ax) >= 0)
 				ret = (ry > 0) ? Direction.Up : Direction.Down;
-			else if( ((ax >> 1) - ay) >= 0 )
+			else if (((ax >> 1) - ay) >= 0)
 				ret = (rx > 0) ? Direction.Left : Direction.Right;
-			else if( rx >= 0 && ry >= 0 )
+			else if (rx >= 0 && ry >= 0)
 				ret = Direction.West;
-			else if( rx >= 0 && ry < 0 )
+			else if (rx >= 0 && ry < 0)
 				ret = Direction.South;
-			else if( rx < 0 && ry < 0 )
+			else if (rx < 0 && ry < 0)
 				ret = Direction.East;
 			else
 				ret = Direction.North;
