@@ -89,7 +89,7 @@ namespace Server.Misc
         + "        • 5th ability changed to Armor Ignore (was Infectious Strike).<br>"
         + "<br>"
         + "* Gameplay:<br>"
-        + "    - Trap Survival: Adventurers can now survive traps based on Remove Trap skill.<br>"
+        + "    - Trap Survival: Adventurers can now survive deadly traps based on Remove Trap skill.<br>"
         + "    - Pack Animals: Carrying capacity reduced from 65,000 stones (!) to 6,500.<br>"
         + "    - Smarter Spellcasters: Enemies use stronger spells more often and won’t break invisibility immediately.<br>"
         + "    - Sage Quests: Cheap scam contracts removed. Standard quest now costs 10k gold and has 75% accuracy (up from 70%).<br>"
@@ -378,7 +378,7 @@ namespace Server.Misc
 				+ sepLine()
 
 				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        /*
 				+ "Samurai - 25 September 2024<br>"
 
 				+ "<br>"
@@ -1183,7 +1183,7 @@ namespace Server.Misc
 				+ sepLine()
 
 				+ "Dawn - ???? 2012?<br>"
-
+        */
 
 			+ "";
 
