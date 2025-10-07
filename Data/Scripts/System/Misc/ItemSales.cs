@@ -1937,8 +1937,11 @@ namespace Server
 			new ItemSalesInfo( typeof(	Artifact_BowOfTheProwler	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	Artifact_BladeOfTheWilds	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	Artifact_WhistleofthePiper	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	Artifact_TalismanOfTheAlbatroz	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	Artifact_CoatOfTheDreadPirate	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	Artifact_TyrantOfTheReefs	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),
+			new ItemSalesInfo( typeof(	Artifact_ReachOfTheDepths	),	5000	,	0	,	0	,	false	,	false	,	World.None	,	Category.Artifact	,	Material.None	,	Market.None	),			// contraband boxes
 
-			// contraband boxes
 			new ItemSalesInfo( typeof(	CommonContrabandBox	),	50	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	UncommonContrabandBox	),	150	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),
 			new ItemSalesInfo( typeof(	RareContrabandBox	),	350	,	0	,	0	,	false	,	false	,	World.None	,	Category.None	,	Material.None	,	Market.None	),

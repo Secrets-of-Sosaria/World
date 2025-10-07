@@ -23,9 +23,9 @@ namespace Server.Items
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
-		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.MovingShot; } }
+		public override WeaponAbility ThirdAbility{ get{ return WeaponAbility.ZapDexStrike; } }
 		public override WeaponAbility FourthAbility{ get{ return WeaponAbility.DoubleShot; } }
-		public override WeaponAbility FifthAbility{ get{ return WeaponAbility.InfectiousStrike; } }
+		public override WeaponAbility FifthAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 
 		public override int AosStrengthReq{ get{ return 20; } }
 		public override int AosMinDamage{ get{ return Core.ML ? (int)(15 * GetDamageScaling()) : (int)(16 * GetDamageScaling()); } }

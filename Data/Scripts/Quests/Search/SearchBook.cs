@@ -644,6 +644,10 @@ namespace Server.Items
 			if ( artifact == arty) { name="Artifact_StaffoftheWoodlands"; item="Staff of the Woodlands";} arty++;
 			if ( artifact == arty) { name="Artifact_BowOfTheProwler"; item="Bow of the Prowler";} arty++;
 			if ( artifact == arty) { name="Artifact_BladeOfTheWilds"; item="Blade of the Wilds";} arty++;
+			if ( artifact == arty) { name="Artifact_ReachOfTheDepths";item="Reach of the Depths";} arty++;
+			if ( artifact == arty) { name="Artifact_TyrantOfTheReefs";item="Tyrant of the Reefs";} arty++;
+			if ( artifact == arty) { name="Artifact_CoatOfTheDreadPirate";item="Coat of the Dread Pirate";} arty++;
+			if ( artifact == arty) { name="Artifact_TalismanOfTheAlbatroz";item="Talisman of the Albatroz";} arty++;
 			if ( part == 2 ){ item = name; }
 
 			return item;

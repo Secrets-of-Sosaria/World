@@ -14,11 +14,12 @@ namespace Server.Items
 			Hue = 0x497;
 			Name = "Dread Pirate Hat";
 			SkillBonuses.SetValues( 0, SkillName.Seafaring, 20 );
-			SkillBonuses.SetValues( 1, SkillName.Cartography, 20 );
-			SkillBonuses.SetValues( 2, SkillName.Swords, 10 );
+			SkillBonuses.SetValues( 1, SkillName.Cartography, 10 );
 			SkillBonuses.SetValues( 3, SkillName.Tactics, 10 );
 			Attributes.BonusDex = 8;
-			Attributes.AttackChance = 4;
+			Attributes.AttackChance = 5;
+			Attributes.RegenStam = 8;
+			Resistances.Cold = 5;
 			ArtifactLevel = 2;
 			Server.Misc.Arty.ArtySetup( this, 10, "" );
 		}
