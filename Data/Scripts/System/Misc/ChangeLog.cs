@@ -21,14 +21,112 @@ namespace Server.Misc
     {
 		public static string Version()
 		{
-			return "Version: Spirituality (20 July 2025)";
+			return "Version: Sacrifice (7 October 2025)";
 		}
 
 		public static string Versions()
         {
 			string versionTEXT = ""
 
-				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        + "Sacrifice - 7 October 2025<br>"
+
+        + "<br>"
+
+        + "New Features & Quality of Life<br>"
+        + "* Defenders of the Realm & The Scourge Rise!<br>"
+        + "    - Two new questlines have appeared in Sosaria:<br>"
+        + "        • The Defenders of the Realm call upon heroes of Virtue to bring tribute from powerful foes.<br>"
+        + "        • The Scourge of the Realm seeks champions of darkness to do the same — but for more sinister ends.<br>"
+        + "    - Positive karma adventurers will find their patron in Britain, while darker souls will find theirs at Stonewall Inn.<br>"
+        + "    - Completing a Vow and returning it to your patron earns new rewards — including new currencies:<br>"
+        + "        • Marks of Honor (for heroes) or Marks of the Scourge (for villains).<br>"
+        + "    - Say “rewards” near your patron to view all available prizes — dyes, mounts, artifacts, and more.<br>"
+        + "    - 12 new artifacts have been added exclusively for this system.<br>"
+        + "    - Marks can also rarely drop from powerful enemies.<br>"
+        + "* Hard Mode Dungeons:<br>"
+        + "    - Server owners can now enable 'Hard Mode,' dramatically increasing dungeon spawn rates. Not for the faint of heart.<br>"
+        + "* Quiver Autoloading:<br>"
+        + "    - Quivers now have a context menu option to automatically refill from your pack.<br>"
+        + "* Boating & the Seas:<br>"
+        + "    - Added smooth sailing: boats are faster and smoother to pilot.<br>"
+        + "    - 4 new pirate-themed artifacts have been added to the global drop pool.<br>"
+        + "* Tracking Buff:<br>"
+        + "    - Hunters now deal up to +15% bonus damage (at 125 skill) to their tracked prey.<br>"
+        + "* Fugitives can now join the Necromancer’s Guild.<br>"
+        + "* New Setting: S_ArtifactEnchantment — controls whether artifacts have enchantment points (default: false).<br>"
+        + "* Bags of Holding can now be used more frequently.<br>"
+        + "* Potions of Rebirth and Soul Orbs now resurrect players much faster.<br>"
+        + "* Herding Buffs:<br>"
+        + "    - After feeding your pet once, you now have a chance to bond it through Herding skill when gaining skill.<br>"
+        + "    - Higher Herding = better bonding odds.<br>"
+        + "    - Also reduces the chance of your future pet becoming violent while taming.<br>"
+        + "* Dagger of Venom: Now properly scales with Poisoning skill when applying poison on hit.<br>"
+        + "* Carsomyr, the Holy Sword: Formerly “Holy Sword.” Now renamed and empowered to *Smite Evil* for virtuous knights.<br>"
+        + "* Contraband Rewards Update: Thieves Guildmaster now rewards contraband turn-ins with enchanted items instead of junk.<br>"
+        + "<br>"
+
+        + "Balance Changes<br>"
+        + "* Items:<br>"
+        + "    - Artifact Normalization: All artifacts now grant around 300 enchantment points. Expect smoother progression.<br>"
+        + "    - Golden Feather Blessings: No longer enchant items (per Harpy Union requests).<br>"
+        + "    - Lucky Horseshoes: Max effectiveness reduced to 500 (from 1000). Luck bonus now varies 25–125 instead of a flat 100.<br>"
+        + "    - Crafting Material Rebalance:<br>"
+        + "        • Removed random low-value junk properties in favor of focused, thematic bonuses.<br>"
+        + "        • Easier to find materials that complement enhancements.<br>"
+        + "        • Damage bonuses reduced — Dwarven weapons remain strong, but no longer dominate all crafted gear.<br>"
+        + "        • Quest altar crafts significantly buffed.<br>"
+        + "    - Treasure Hoards: More diverse loot, no more useless random gems.<br>"
+        + "    - Item Drops: Reduced the number of random properties to improve clarity when sorting loot.<br>"
+        + "    - Alien Raw Materials: Price reduced across the board.<br>"
+        + "    - Weapon Crafting: Weapons no longer provide resistances from crafting material.<br>"
+        + "    - Magic Wands: Now roll with less extreme properties for better balance.<br>"
+        + "    - Alchemists and Herbalists now sell jars.<br>"
+        + "    - Harpoon:<br>"
+        + "        • 3rd ability changed to Dexterity Drain (was Moving Shot).<br>"
+        + "        • 5th ability changed to Armor Ignore (was Infectious Strike).<br>"
+        + "<br>"
+        + "* Gameplay:<br>"
+        + "    - Trap Survival: Adventurers can now survive traps based on Remove Trap skill.<br>"
+        + "    - Pack Animals: Carrying capacity reduced from 65,000 stones (!) to 6,500.<br>"
+        + "    - Smarter Spellcasters: Enemies use stronger spells more often and won’t break invisibility immediately.<br>"
+        + "    - Sage Quests: Cheap scam contracts removed. Standard quest now costs 10k gold and has 75% accuracy (up from 70%).<br>"
+        + "    - Vendors: Restock every hour (was every 2 hours).<br>"
+        + "    - Veterinary Supplies: Cooldown reduced by 2 seconds.<br>"
+        + "    - Boss Drops: Adjusted enchantment intensity — very high-end enchants reduced from 500 → 300.<br>"
+        + "    - Gem Drops: Regular dragons drop fewer gems (8 → 4). High-end dragons drop more (5 → 8).<br>"
+        + "<br>"
+        + "* Skills:<br>"
+        + "    - Mercantile: Reduced effectiveness — less of a money printer.<br>"
+        + "    - Hiding: Added 5-second cooldown to prevent abuse.<br>"
+        + "    - Inscription: Crafting scrolls for Mages, Necromancers, and Elementalists now costs 1/3 the previous mana.<br>"
+        + "<br>"
+
+        + "Bug Fixes<br>"
+        + "* Sanctuary can now be cast from within dungeon dwellings.<br>"
+        + "* Owned creatures no longer lose loyalty when their masters log out.<br>"
+        + "* 'Pack lobsters' are now a distinct item rather than a pack bear variant.<br>"
+        + "* Merchant crates correctly detect crafted items and reject raw resources.<br>"
+        + "* Fixed a bug that allowed buying dungeon stealables from the Sage.<br>"
+        + "* Artifact enchantment window now only lists Spell Channeling for weapons.<br>"
+        + "* Players can no longer drop unbound items on Shinobi Scrolls or crash the server doing so.<br>"
+        + "* Assassin Guildmaster now removes murder counts for non-guild members.<br>"
+        + "* Fixed broken image reference on Vendor Management screen.<br>"
+        + "* Fixed spawn points for Serpents of Order/Chaos quests.<br>"
+        + "* Grandmaster Mage/Necromancer ethereal mount is now more visible.<br>"
+        + "* Xormite Elementals are now properly composed of Xormite instead of Caddlellite.<br>"
+        + "* Fishing SoS no longer drops multiple artifacts at once.<br>"
+        + "* Fist Fighting correctly counts for 'Use Best Skill' weapons.<br>"
+        + "* [loot command no longer bypasses traps to loot inside chests.<br>"
+        + "* Crafting multiple items now respects stat gain delay settings.<br>"
+        + "* [showskillgainchance no longer displays gain chances for locked or capped skills.<br>"
+        + "<br>"
+
+        + sepLine()
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 				+ "Spirituality - 20 July 2025<br>"
 
