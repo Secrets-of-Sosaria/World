@@ -163,45 +163,42 @@ namespace Server.SkillHandlers
 						}
 						else if ( CheckMastery( from, creature ) || from.Skills[SkillName.Taming].Value >= creature.MinTameSkill )
 						{
-							if ( m_BeingTamed.Contains( targeted ) )
+							double herding = from.Skills[SkillName.Herding].Value;
+							double angerChance = 0.95 - (herding / 125.0) * 0.70;
+
+							if (m_BeingTamed.Contains(targeted))
 							{
-								creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502802, from.NetState ); // Someone else is already taming this.
+								creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 502802, from.NetState); // Someone else is already taming this.
 							}
-							else if ( creature.CanAngerOnTame )
-							{	
-								double herding = from.Skills[SkillName.Herding].Value;
-								double angerChance = 0.95 - (herding / 125.0) * 0.70;
-								if( Utility.RandomDouble() < angerChance )
+							else if (creature.CanAngerOnTame && Utility.RandomDouble() < angerChance)
+							{
+								creature.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 502805, from.NetState); // You seem to anger the beast!
+								creature.PlaySound(creature.GetAngerSound());
+								creature.Direction = creature.GetDirectionTo(from);
+
+								if (creature.BardPacified && Utility.RandomDouble() > .24)
 								{
-									creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502805, from.NetState ); // You seem to anger the beast!
-									creature.PlaySound( creature.GetAngerSound() );
-									creature.Direction = creature.GetDirectionTo( from );
-
-									if( creature.BardPacified && Utility.RandomDouble() > .24)
-									{
-										Timer.DelayCall( TimeSpan.FromSeconds( 2.0 ), new TimerStateCallback( ResetPacify ), creature );
-									}
-									else
-									{
-										creature.BardEndTime = DateTime.Now;
-									}
-		
-									creature.BardPacified = false;
-
-									creature.Move( creature.Direction );
-
-									if ( from is PlayerMobile )
-										creature.Combatant = from;
+									Timer.DelayCall(TimeSpan.FromSeconds(2.0), new TimerStateCallback(ResetPacify), creature);
 								}
+								else
+								{
+									creature.BardEndTime = DateTime.Now;
+								}
+								creature.BardPacified = false;
+
+								creature.Move(creature.Direction);
+
+								if (from is PlayerMobile)
+									creature.Combatant = from;								
 							}
 							else
 							{
 								m_BeingTamed[targeted] = from;
 
-								from.LocalOverheadMessage( MessageType.Emote, 0x59, 1010597 ); // You start to tame the creature.
-								from.NonlocalOverheadMessage( MessageType.Emote, 0x59, 1010598 ); // *begins taming a creature.*
+								from.LocalOverheadMessage(MessageType.Emote, 0x59, 1010597); // You start to tame the creature.
+								from.NonlocalOverheadMessage(MessageType.Emote, 0x59, 1010598); // *begins taming a creature.*
 
-								new InternalTimer( from, creature, Utility.Random( 3, 2 ) ).Start();
+								new InternalTimer(from, creature, Utility.Random(3, 2)).Start();
 
 								m_SetSkillTime = false;
 							}
