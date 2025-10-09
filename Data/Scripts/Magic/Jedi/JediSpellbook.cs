@@ -130,8 +130,40 @@ namespace Server.Items
 				}
 				else if ( dropped.Layer == Layer.OuterTorso )
 				{
-					if ( dropped.ItemID == 0x1F03 ){ dropped.ItemID = 0x567D; dropped.Name = "Jedi robe"; }
-					else if ( dropped.ItemID == 0x567D ){ dropped.ItemID = 0x2B6A; dropped.Name = "Jedi robe"; }
+					if (dropped.ItemID == 0x1F03) { dropped.ItemID = 0x567D; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x567D) { dropped.ItemID = 0x2B6A; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2B6A) { dropped.ItemID = 0x0287; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0287) { dropped.ItemID = 0x2b69; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2b69) { dropped.ItemID = 0x201f; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x201f) { dropped.ItemID = 0x0289; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0289) { dropped.ItemID = 0x201b; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x201b) { dropped.ItemID = 0x0285; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0285) { dropped.ItemID = 0x0283; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0283) { dropped.ItemID = 0x4c17; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x4c17) { dropped.ItemID = 0x0286; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0286) { dropped.ItemID = 0x2b6c; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2b6c) { dropped.ItemID = 0x028a; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x028a) { dropped.ItemID = 0x0301; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0301) { dropped.ItemID = 0x4c16; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x4c16) { dropped.ItemID = 0x1f9f; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x1f9f) { dropped.ItemID = 0x2b6b; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2b6b) { dropped.ItemID = 0x2b70; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2b70) { dropped.ItemID = 0x2fba; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2fba) { dropped.ItemID = 0x2b6e; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2b6e) { dropped.ItemID = 0x567e; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x567e) { dropped.ItemID = 0x0288; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0288) { dropped.ItemID = 0x0284; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0284) { dropped.ItemID = 0x2b73; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2b73) { dropped.ItemID = 0x0302; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x0302) { dropped.ItemID = 0x2652; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2652) { dropped.ItemID = 0x3175; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x3175) { dropped.ItemID = 0x2fc6; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2fc6) { dropped.ItemID = 0x201d; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x201d) { dropped.ItemID = 0x279c; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x279c) { dropped.ItemID = 0x2799; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2799) { dropped.ItemID = 0x2782; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2782) { dropped.ItemID = 0x2783; dropped.Name = "Jedi robe"; }
+					else if (dropped.ItemID == 0x2783) { dropped.ItemID = 0x2B6A; dropped.Name = "Jedi robe"; }
 					else { dropped.ItemID = 0x1F03; dropped.Name = "Jedi robe"; }
 
 					doJediEffect = true;
