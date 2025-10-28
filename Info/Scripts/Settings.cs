@@ -75,7 +75,7 @@ namespace Server
 
 	// Here you can enter the name of your server/world
 
-		public static string S_ServerName = "Secrets of Sosaria";
+		public static string S_ServerName = "Ecos de Sosaria";
 
 	// If true, your public IP address will be auto detected to help with external connections.
 
