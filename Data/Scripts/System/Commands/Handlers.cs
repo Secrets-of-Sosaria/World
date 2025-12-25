@@ -79,6 +79,9 @@ namespace Server.Commands
 			Register( "ReplaceBankers", AccessLevel.Administrator, new CommandEventHandler( ReplaceBankers_OnCommand ) );
 
 			Register( "SpeedBoost", AccessLevel.Counselor, new CommandEventHandler( SpeedBoost_OnCommand ) );
+
+			Register( "ListVendorBuys", AccessLevel.Counselor, new CommandEventHandler( ListVendorBuys_OnCommand ) );
+			Register( "ListBuys", AccessLevel.Counselor, new CommandEventHandler( ListVendorBuys_OnCommand ) );
 		}
 
 		public static void Register( string command, AccessLevel access, CommandEventHandler handler )
@@ -1077,6 +1080,109 @@ namespace Server.Commands
 			e.Mobile.SendMessage( "Open Connections: {0}", Network.NetState.Instances.Count );
 			e.Mobile.SendMessage( "Mobiles: {0}", World.Mobiles.Count );
 			e.Mobile.SendMessage( "Items: {0}", World.Items.Count );
+		}
+
+		[Usage( "ListVendorBuys" )]
+		[Aliases( "ListBuys" )]
+		[Description( "Lists all items that a targeted vendor NPC will buy from players." )]
+		public static void ListVendorBuys_OnCommand( CommandEventArgs e )
+		{
+			e.Mobile.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ListVendorBuys_OnTarget ) );
+			e.Mobile.SendMessage( "Target a vendor NPC to see what items they will buy." );
+		}
+
+		public static void ListVendorBuys_OnTarget( Mobile from, object obj )
+		{
+			if ( obj is BaseVendor )
+			{
+				BaseVendor vendor = (BaseVendor)obj;
+				
+				if ( !vendor.IsActiveBuyer )
+				{
+					from.SendMessage( "{0} is not an active buyer.", vendor.Name );
+					return;
+				}
+
+				IShopSellInfo[] sellInfoList = vendor.GetSellInfo();
+
+				if ( sellInfoList == null || sellInfoList.Length == 0 )
+				{
+					from.SendMessage( "{0} has no items in their buy list.", vendor.Name );
+					return;
+				}
+
+				int totalItems = 0;
+				from.SendMessage( "--- {0}'s Buy List ({1} list{2}) ---", vendor.Name, sellInfoList.Length, sellInfoList.Length != 1 ? "s" : "" );
+
+				for ( int i = 0; i < sellInfoList.Length; i++ )
+				{
+					IShopSellInfo sellInfo = sellInfoList[i];
+					
+					if ( sellInfo is GenericSellInfo )
+					{
+						GenericSellInfo genericSell = (GenericSellInfo)sellInfo;
+						Type[] types = genericSell.Types;
+						
+						if ( types != null && types.Length > 0 )
+						{
+							from.SendMessage( "" );
+							from.SendMessage( "List #{0}: {1} item{2}", i + 1, types.Length, types.Length != 1 ? "s" : "" );
+							
+							// Get the internal table to access prices
+							System.Reflection.FieldInfo tableField = typeof( GenericSellInfo ).GetField( "m_Table", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance );
+							
+							if ( tableField != null )
+							{
+								System.Collections.Generic.Dictionary<Type, int> table = (System.Collections.Generic.Dictionary<Type, int>)tableField.GetValue( genericSell );
+								
+								// Sort items by name for better readability
+								List<Type> sortedTypes = new List<Type>( types );
+								sortedTypes.Sort( delegate( Type a, Type b ) { return a.Name.CompareTo( b.Name ); } );
+								
+								foreach ( Type itemType in sortedTypes )
+								{
+									int basePrice = 0;
+									table.TryGetValue( itemType, out basePrice );
+									
+									// Calculate approximate max price at 100 mercantile
+									// Base price / 2 * 2.0 = base price (for items without attributes)
+									int minBuyPrice = (int)(basePrice / 2); // 0 mercantile
+									int maxBuyPrice = basePrice; // 100 mercantile
+									
+									from.SendMessage( "  {0,-40} Base: {1,6} | Buy: {2,6}-{3,6}", itemType.Name, basePrice, minBuyPrice, maxBuyPrice );
+								}
+								
+								totalItems += types.Length;
+							}
+							else
+							{
+								// Fallback if reflection fails - just list types
+								foreach ( Type itemType in types )
+								{
+									from.SendMessage( "  {0}", itemType.Name );
+									totalItems++;
+								}
+							}
+						}
+					}
+					else
+					{
+						// Handle other IShopSellInfo implementations
+						from.SendMessage( "" );
+						from.SendMessage( "List #{0}: Unknown sell info type ({1})", i + 1, sellInfo.GetType().Name );
+					}
+				}
+
+				from.SendMessage( "" );
+				from.SendMessage( "Total items: {0}", totalItems );
+				
+				CommandLogging.WriteLine( from, "{0} {1} listing buy items for {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( vendor ) );
+			}
+			else
+			{
+				from.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ListVendorBuys_OnTarget ) );
+				from.SendMessage( "That is not a vendor NPC. Try again." );
+			}
 		}
 	}
 }
