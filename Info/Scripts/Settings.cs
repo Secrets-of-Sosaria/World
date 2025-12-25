@@ -63,7 +63,7 @@ namespace Server
 
 	// The port you want your server to listen on.
 
-		public static int S_Port = 2593;
+		public static int S_Port = 2777;
 
 	// If you want to enter your IP for external connections, you can enter it here. Otherwise, the autodetect function
 	// below can likely do it for you automatically.
@@ -795,7 +795,7 @@ namespace Server
 	// game. Any settings here, that interfere with your enjoyment of the game, are under your
 	// control and you can change these settings at any time if you wish to.
 
-		public static bool S_Reviewed = false;
+		public static bool S_Reviewed = true;
 
 
 	}

@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<accounts count="1">
+<accounts count="2">
 	<account>
 		<username>Admin</username>
 		<newCryptPassword>E5-DA-45-BF-74-F6-A7-6E-10-58-50-68-B5-1C-D2-81-60-BD-A0-92</newCryptPassword>
 		<accessLevel>Owner</accessLevel>
 		<flags>2</flags>
-		<created>2012-09-03T12:33:27.63475-04:00</created>
-		<lastLogin>2018-05-31T16:35:09.970277-04:00</lastLogin>
-		<totalGameTime>P53DT14H58M47.9586932S</totalGameTime>
+		<created>2012-09-04T02:33:27.63475+10:00</created>
+		<lastLogin>2018-06-01T06:35:09.970277+10:00</lastLogin>
+		<totalGameTime>P53DT21H45M37.4958932S</totalGameTime>
 		<chars>
 			<char index="0">1</char>
 		</chars>
 		<addressList count="1">
 			<ip>192.168.2.4</ip>
+		</addressList>
+	</account>
+	<account>
+		<username>birdinforest</username>
+		<newCryptPassword>CA-BB-90-92-E5-50-15-AB-AB-11-C5-53-C3-23-3B-BC-84-6D-A7-60</newCryptPassword>
+		<created>2025-12-25T21:23:10.725494+11:00</created>
+		<lastLogin>2025-12-25T21:23:10.725494+11:00</lastLogin>
+		<totalGameTime>PT3H2M35.535591S</totalGameTime>
+		<chars>
+			<char index="0">130728</char>
+		</chars>
+		<addressList count="1">
+			<ip>127.0.0.1</ip>
 		</addressList>
 	</account>
 </accounts>
