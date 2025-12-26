@@ -26,7 +26,6 @@ namespace Server.Mobiles
 
 			price = ItemInformation.AddUpBenefits( item, price, false, false );
 
-			price = (int)(price / 2);
 				if ( barter > 0 )
 				{
 					if ( barter > 100 ){ barter = 100; }
