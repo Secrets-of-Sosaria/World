@@ -53,6 +53,15 @@ Only 3 files needed changes (System.Web ×2, Reflection.Emit save-to-disk).
 - Server maintains and displays independent build number on startup
 - Server truthfully reports .NET environment during startup (Main.cs), Crash Logging (CrashGuard.cs), Sending Server Info Wire Packet (Remote.cs) and inside the [Admin dialog (AdminGump.cs).
 
+### So which files actually changed?
+
+Fine, here you go.
+
+Modified source (9): World.cs, Main.cs, ScriptCompiler.cs, Source.csproj (engine) · AdminGump.cs, CrashGuard.cs, Reporting.cs, Errors.cs, Emitter.cs (scripts)
+New source (3): ShardVersion.cs, HtmlTextWriterCompat.cs, build.ps1
+Runnable binaries — new (5): World.dll, World.deps.json, World.runtimeconfig.json, Microsoft.CodeAnalysis.dll, Microsoft.CodeAnalysis.CSharp.dll
+Runnable binary — updated (1): World.exe (829,440 → 278,528 bytes; months-old net4.0 → net10 apphost)
+
 ### On Warnings
 
 "But I receive 30ish warnings right now, what gives?"
