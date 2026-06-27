@@ -1,63 +1,25 @@
-# Secrets of Sosaria
+# Secrets of DotNet10
 
-## NOTICE: Feature Completion - The Culmination of the Virtues
+## NOTICE: Technical Fork
 
-A message from the custodians:
+This fork is a technical fork of https://github.com/Secrets-of-Sosaria/World
+Release: Humility, Dec 20, 2025, which was latest as of 6/27/2026.
 
-> The vision of the land of Sosaria has stabilized since the shattering of the Gem of Immortality. Adventurers both new and returning should consider this world to offer all it was meant to offer and enjoy the journeys and secrets awaiting them within.
-> However, other shards of the Gem of Immortality exist elsewhere, and those willing may wish to explore the alternate worlds they contain.
+The purpose of this fork is to establish a clean foundation on the .NET 10 framework. For your convenience, a migration HowTo-document has been added.
 
-Alternate worlds based on Secrets of Sosaria:
- - [Efellen](https://github.com/EstelMatiazi/Efellen) - A shard similar to Secrets of Sosaria, but with a greater focus on a fantasy endgame rather than a sci-fantasy endgame, as well as increased difficulty.
- - _Know of more?_ Make a pull request with a link to the world.
-
-----------------------------------------------
-
-## Instructions for the game
-
-See the [manual](Docs/Manual.md).
-
-### What is Secrets of Sosaria?
-
-Secrets of Sosaria is an enhanced fork of the Ruins & Riches (later continued
-as Adventurers of Akalabeth) project. The aim has been to continue the tradition of this
-project while also introducing improvements and additional content where the custodians
-felt it would enhance the experience. The main goals has been:
-
-
-- Preservation and continuation of the core Ruins & Riches/Adventurers of
-  Akalabeth experience. The "core experience" includes basic gameplay, game
-  world setting, and lore.
-- Fixing long-standing bugs.
-- Fixing inconsistencies with how parts of the game function, especially when
-  that affects player experience.
-- Improvements to game systems, especially where we can increase the appeal of
-  interacting with ones that weren't fully fleshed out, or which were made to
-  feel redundant by other aspects of the game.
-- Identifying and reworking instances of "hostile design" that only provide
-  tedium to the player instead of a sense of accomplishment.
-- The introduction of new content that fits the aesthetic and themes of the
-  game world to add some new flavor to the game.
-
-The custodians have seeked to honor the legacy of the original makers and caretakers of this
-game while also making it a more engaging, cohesive, and most importantly fun
-experience for all. While this is one fork among many of this project, we
-wish to provide the best possible user experience through utilizing the methods
-outlined in our goals.
+Other than noted below, only modifications strictly related to .NET 10 conversion were made.
 
 ### Target Audience
 
-The target audience is new players who are interested in an experience that
-takes its inspiration from tabletop roleplaying games as well as classic
-computer RPGs of the 1980s and 1990s. Additionally, it is intended for former
-players of Ruins & Riches and any of its previous forks who would like to play
-something further refined as a more streamlined, player-friendly, bugfixed and,
-eventually, more content-rich version of the game that they've come to love.
+Implementers. Please excuse not making a proper pull request; I'm not super familiar with github, and I want this port to stand on its own.
+As this is a technical fork, I have not altered any project files, most prominently the original server name "Secrets of Sosaria", as I wanted to change only the minimum of files. If
+you download/fork this repo, please honor the condition mentioned in the manual to give your project a different name than the parent project. If you are a SoS maintainer: I'm trying to save you some work. Should you be unhappy regardless, let me know how specifically to make you less unhappy. Your civility and consideration will be appreciated and reciprocated.
 
-### Contributions
+### Other Additions
 
-As per 2026, the custodians consider Secrets of Sosaria a complete game. 
-If you encounter bugs please do report an issue or even better, make a pull request with a fix.
-New features will no longer be integrated.
+- World Load: mobiles causing exceptions are logged and discarded, instead of terminating the app. We rely on the world spawn to re-populate mobiles, but if no load errors occur, the modification should be transparent.
+- Server maintains and displays independent build number on startup
+
+
 
 
