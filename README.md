@@ -1,9 +1,14 @@
 # Secrets of DotNet10
 
+## Keywords
+uo server, uoserver, dotnet10, .net10, R&R-server, uodyssey, sosaria
+
 ## NOTICE: Technical Fork
 
 This fork is a technical fork of https://github.com/Secrets-of-Sosaria/World
 Release: Humility, Dec 20, 2025, which was latest as of 6/27/2026.
+
+This is NOT a stand-alone server (for that, you'd have to re-brand it).
 
 The purpose of this fork is to establish a clean foundation on the .NET 10 framework. 
 Status: runs on **.NET 10.0.x**; all 5,076 runtime scripts compile; existing 4.x world saves load unchanged. HW-tested on Windows 11.
