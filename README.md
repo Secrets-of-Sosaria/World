@@ -5,9 +5,8 @@
 This fork is a technical fork of https://github.com/Secrets-of-Sosaria/World
 Release: Humility, Dec 20, 2025, which was latest as of 6/27/2026.
 
-The purpose of this fork is to establish a clean foundation on the .NET 10 framework. For your convenience, a migration HowTo-document has been added.
-
-Other than noted below, only modifications strictly related to .NET 10 conversion were made.
+The purpose of this fork is to establish a clean foundation on the .NET 10 framework. 
+Status: runs on **.NET 10.0.x**; all 5,076 runtime scripts compile; existing 4.x world saves load unchanged. HW-tested on Windows 11.
 
 ### Target Audience
 
@@ -15,9 +14,38 @@ Implementers. Please excuse not making a proper pull request; I'm not super fami
 As this is a technical fork, I have not altered any project files, most prominently the original server name "Secrets of Sosaria", as I wanted to change only the minimum of files. If
 you download/fork this repo, please honor the condition mentioned in the manual to give your project a different name than the parent project. If you are a SoS maintainer: I'm trying to save you some work. Should you be unhappy regardless, let me know how specifically to make you less unhappy. Your civility and consideration will be appreciated and reciprocated.
 
-### Testing
+### Requirements
+- Windows (x64) with the **.NET 10 SDK** and the **Windows Desktop** runtime installed.
+- A UO client to connect (e.g. TazUO). Client files are **not** part of this repo.
 
-Server has been tested under Windows 11. If you run this under any other environments, or want to share your experience running this project on your machine, please leave a comment.
+## Build & run
+The engine (`World.exe`) is built from `Data/System/Source`; the game scripts under `Data/Scripts` are compiled **at runtime** by the server (no separate build step).
+
+
+### Building
+
+```powershell
+# from Data\System\Source — compile-verify only (safe while the server runs):
+./build.ps1
+# stop the server first, then build + deploy the engine to the repo root:
+./build.ps1 -Deploy
+```
+Then start the server from the repo root:
+
+`startserver.bat`        (= World.exe -debug)
+On first start the server recompiles the scripts into Data/Data.bin via Roslyn, prints the runtime (.NET 10.0.x) and shard build, loads the world, and reports "You may now play".
+
+build.ps1 -Deploy publishes framework-dependent and copies the engine files into the repo root (it is not single-file — the runtime script compiler needs real assembly files on
+disk and a non-empty Assembly.Location). The previous engine is backed up to *.bak.
+
+The Server has been tested under Windows 11. If you run this under any other environments, or want to share your experience running this project on your machine, please leave a comment.
+
+### How the Conversion Works
+
+The runtime script compiler (ScriptCompiler.cs) was ported from System.CodeDom/CSharpCodeProvider (which throws on modern .NET) to Roslyn (Microsoft.CodeAnalysis.CSharp); references come from TRUSTED_PLATFORM_ASSEMBLIES (no GAC).
+Engine project: retargeted to net10.0-windows; one package (Microsoft.CodeAnalysis.CSharp).
+Save format: runtime-portable (explicit UTF-8, DateTime.Ticks, no BinaryFormatter), so **4.x worlds load as-is.**
+Only 3 files needed changes (System.Web ×2, Reflection.Emit save-to-disk). 
 
 ### Other Additions
 
