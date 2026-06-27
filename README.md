@@ -15,7 +15,7 @@ Status: runs on **.NET 10.0.x**; all 5,076 runtime scripts compile; existing 4.x
 
 ### Target Audience
 
-Implementers. Please excuse not making a proper pull request; I'm not super familiar with github, and I want this port to stand on its own.
+Implementers. 
 As this is a technical fork, I have not altered any project files, most prominently the original server name "Secrets of Sosaria", as I wanted to change only the minimum of files. If
 you download/fork this repo, please honor the condition mentioned in the manual to give your project a different name than the parent project. If you are a SoS maintainer: I'm trying to save you some work. Should you be unhappy regardless, let me know how specifically to make you less unhappy. Your civility and consideration will be appreciated and reciprocated.
 
