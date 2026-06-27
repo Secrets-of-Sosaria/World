@@ -1,5 +1,9 @@
-using HtmlAttr = System.Web.UI.HtmlTextWriterAttribute;
-using HtmlTag = System.Web.UI.HtmlTextWriterTag;
+//LLM: .NET 10 — System.Web.UI has no modern-.NET equivalent; repointed to the local Server.Web shim
+//LLM: (Data/Scripts/System/Misc/HtmlTextWriterCompat.cs). See SoS_dotnet10_howto.md §7.
+//LLM: original: using HtmlAttr = System.Web.UI.HtmlTextWriterAttribute;
+//LLM: original: using HtmlTag = System.Web.UI.HtmlTextWriterTag;
+using HtmlAttr = Server.Web.HtmlTextWriterAttribute;
+using HtmlTag = Server.Web.HtmlTextWriterTag;
 using Server.Accounting;
 using Server.Engines.Help;
 using Server.Engines;
@@ -16,7 +20,9 @@ using System.Drawing;
 using System.IO;
 using System.Net;
 using System.Threading;
-using System.Web.UI;
+//LLM: .NET 10 — repointed System.Web.UI -> local Server.Web shim (HtmlTextWriterCompat.cs). See howto §7.
+//LLM: original: using System.Web.UI;
+using Server.Web;
 using System.Web;
 using System.Xml;
 using System;
