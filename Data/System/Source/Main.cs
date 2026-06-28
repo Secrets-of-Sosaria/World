@@ -210,7 +210,15 @@ namespace Server
 			{
 				if( m_ExePath == null )
 				{
-					m_ExePath = Assembly.Location;
+					//LLM: .NET 10 fix (server "restart" console command crashed). Assembly.Location is the managed engine
+					//LLM: World.dll, which is NOT a launchable process; restart does Process.Start(ExePath, Arguments)
+					//LLM: (Console.cs, CrashGuard.cs, Main.cs ~line 360), so on net10 that threw ("World.dll is not a valid
+					//LLM: application for this OS") and crashed the server. ExePath must be the running EXECUTABLE (the apphost
+					//LLM: World.exe). Environment.ProcessPath (.NET 6+) returns it; fall back to Assembly.Location if ever null.
+					//LLM: BaseDirectory (dir of ExePath) is unchanged -- World.exe and World.dll are both at the repo root.
+					//LLM: The other ExePath consumer, GetReferenceAssemblies(), is dead after the CodeDom->Roslyn port.
+					//LLM: original: m_ExePath = Assembly.Location;
+					m_ExePath = Environment.ProcessPath ?? Assembly.Location;
 					//m_ExePath = Process.GetCurrentProcess().MainModule.FileName;
 				}
 
