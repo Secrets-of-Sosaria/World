@@ -14,7 +14,13 @@
     <DebugType>none</DebugType>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <!-- Nullable DISABLED (was `enable`). The SDK-style migration switched on the nullable reference-type
+         context, but this ~5,000-file RunUO codebase predates nullable and is not annotated, so it emitted the
+         entire CS86xx/CS87xx family = ~1,132 of the 1,138 engine-build warnings. Nullable is a COMPILE-TIME-ONLY
+         analysis (no runtime effect) and the original net4.0 csc build had no such context, so disabling it is
+         behavior-neutral and restores a quiet build. Re-enable + annotate incrementally if we ever want nullable
+         analysis on new engine code. -->
+    <Nullable>disable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>preview</LangVersion>
     <Deterministic>false</Deterministic>
