@@ -19,17 +19,23 @@
  ***************************************************************************/
 
 using System;
-using System.CodeDom;
-using System.CodeDom.Compiler;
+//LLM: .NET 10 migration (keystone) — runtime script compilation ported from System.CodeDom
+//LLM: (CSharpCodeProvider throws PlatformNotSupportedException on modern .NET) to Roslyn
+//LLM: (Microsoft.CodeAnalysis.CSharp). The net4.x CodeDom original is preserved on the `master`
+//LLM: branch + git history; see SoS_dotnet10_howto.md §4. Removed usings: System.CodeDom,
+//LLM: System.CodeDom.Compiler, Microsoft.CSharp, Microsoft.VisualBasic. Added the Roslyn usings below.
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Security.Cryptography;
-using Microsoft.CSharp;
-using Microsoft.VisualBasic;
 using System.Diagnostics;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Emit;
+using Microsoft.CodeAnalysis.Text;
 
 namespace Server
 {
@@ -78,6 +84,65 @@ namespace Server
 			return list.ToArray();
 		}
 
+		//LLM: .NET 10 keystone — build Roslyn MetadataReferences. There is NO GAC on modern .NET, so the
+		//LLM: framework + engine deps are supplied as real files via TRUSTED_PLATFORM_ASSEMBLIES (every
+		//LLM: assembly the host process trusts). We also add the engine assembly (Server.* types) and any
+		//LLM: absolute-path extras from Assemblies.cfg; legacy BARE framework names there (System.dll, ...)
+		//LLM: are skipped because they no longer resolve without a GAC. Microsoft.CodeAnalysis* is filtered
+		//LLM: out so scripts can't accidentally reference Roslyn. Replaces the csc-era GetReferenceAssemblies().
+		public static List<MetadataReference> GetMetadataReferences()
+		{
+			List<MetadataReference> refs = new List<MetadataReference>();
+			HashSet<string> seen = new HashSet<string>( StringComparer.OrdinalIgnoreCase );
+
+			string tpa = AppContext.GetData( "TRUSTED_PLATFORM_ASSEMBLIES" ) as string;
+
+			if( tpa != null )
+			{
+				foreach( string p in tpa.Split( Path.PathSeparator ) )
+				{
+					if( !p.EndsWith( ".dll", StringComparison.OrdinalIgnoreCase ) || !File.Exists( p ) )
+						continue;
+
+					if( Path.GetFileName( p ).StartsWith( "Microsoft.CodeAnalysis", StringComparison.OrdinalIgnoreCase ) )
+						continue;
+
+					AddReference( refs, seen, p );
+				}
+			}
+
+			// The engine assembly itself (Server.* types) is not always in the TPA — add it explicitly.
+			AddReference( refs, seen, typeof( ScriptCompiler ).Assembly.Location );
+
+			foreach( string extra in m_AdditionalReferences )
+				AddReference( refs, seen, extra );
+
+			string cfg = Path.Combine( Core.BaseDirectory, "Data/System/CFG/Assemblies.cfg" );
+
+			if( File.Exists( cfg ) )
+			{
+				foreach( string raw in File.ReadAllLines( cfg ) )
+				{
+					string line = raw.Trim();
+
+					if( line.Length == 0 || line.StartsWith( "#" ) )
+						continue;
+
+					if( Path.IsPathRooted( line ) && File.Exists( line ) )
+						AddReference( refs, seen, line );
+					// bare framework names (non-rooted) come from the TPA above — skip
+				}
+			}
+
+			return refs;
+		}
+
+		private static void AddReference( List<MetadataReference> refs, HashSet<string> seen, string path )
+		{
+			if( !string.IsNullOrEmpty( path ) && File.Exists( path ) && seen.Add( Path.GetFileName( path ) ) )
+				refs.Add( MetadataReference.CreateFromFile( path ) );
+		}
+
 		public static string GetDefines()
 		{
 			StringBuilder sb = null;
@@ -107,6 +172,29 @@ namespace Server
 				sb.Append( ' ' );
 
 			sb.Append( define );
+		}
+
+		//LLM: .NET 10 keystone — preprocessor symbols for the Roslyn parse, mirroring the csc-era GetDefines()
+		//LLM: (which emitted "/d:" switches). Same symbols the scripts were always compiled with: x64 (when
+		//LLM: 64-bit) and Framework_2_0 (legacy/inert markers). Replaces passing a /d: string to csc.
+		public static IEnumerable<string> GetPreprocessorSymbols()
+		{
+			List<string> symbols = new List<string>();
+
+#if MONO
+			symbols.Add( "MONO" );
+#endif
+
+			if( Core.Is64Bit )
+				symbols.Add( "x64" );
+
+			symbols.Add( "Framework_2_0" );
+
+#if Framework_4_0
+			symbols.Add( "Framework_4_0" );
+#endif
+
+			return symbols;
 		}
 
 		private static byte[] GetHashCode( string compiledFile, string[] scriptFiles, bool debug )
@@ -214,160 +302,140 @@ namespace Server
 
 			DeleteFiles( "Data*.bin" );
 
-			StreamWriter writer = new StreamWriter( "Data/Data.ref" );
+			//LLM: .NET 10 keystone — compile ALL scripts as one assembly with Roslyn and emit to Data.bin,
+			//LLM: replacing CSharpCodeProvider.CompileAssemblyFromFile (throws PlatformNotSupported on modern
+			//LLM: .NET). Scripts are interdependent, so they MUST compile as a single compilation (as before).
+			//LLM: References: TRUSTED_PLATFORM_ASSEMBLIES + engine (no GAC). The Data.hash cache logic below is
+			//LLM: unchanged. net4.x CodeDom original on master + git history. See SoS_dotnet10_howto.md §4.
+			//LLM: (Removed: the leaked, unused "Data/Data.ref" StreamWriter and the per-error MONO loop.)
+			string path = GetUnusedPath( "Data" );
 
-			using ( CSharpCodeProvider provider = new CSharpCodeProvider() )
+			CSharpParseOptions parseOptions = new CSharpParseOptions( LanguageVersion.Latest )
+				.WithPreprocessorSymbols( GetPreprocessorSymbols() );
+
+			List<SyntaxTree> trees = new List<SyntaxTree>( files.Length );
+
+			foreach( string file in files )
+				trees.Add( CSharpSyntaxTree.ParseText( SourceText.From( File.ReadAllText( file ), Encoding.UTF8 ), parseOptions, file ) );
+
+			CSharpCompilation compilation = CSharpCompilation.Create(
+				Path.GetFileNameWithoutExtension( path ),
+				trees,
+				GetMetadataReferences(),
+				new CSharpCompilationOptions(
+					OutputKind.DynamicallyLinkedLibrary,
+					optimizationLevel: debug ? OptimizationLevel.Debug : OptimizationLevel.Release,
+					allowUnsafe: true,
+					platform: Core.Is64Bit ? Platform.X64 : Platform.AnyCpu,
+					deterministic: false ) );
+
+			EmitResult emitResult;
+
+			using( FileStream fs = new FileStream( path, FileMode.Create, FileAccess.ReadWrite, FileShare.Read ) )
+				emitResult = compilation.Emit( fs );
+
+			m_AdditionalReferences.Add( path );
+
+			Display( emitResult.Diagnostics );
+
+			if( !emitResult.Success )
 			{
-				string path = GetUnusedPath( "Data" );
-
-				CompilerParameters parms = new CompilerParameters( GetReferenceAssemblies(), path, debug );
-
-				string defines = GetDefines();
-
-				if( defines != null )
-					parms.CompilerOptions = defines;
-
-				if( Core.HaltOnWarning )
-					parms.WarningLevel = 4;
-
-				CompilerResults results = provider.CompileAssemblyFromFile( parms, files );
-
-				m_AdditionalReferences.Add( path );
-
-				Display( results );
-
-#if !MONO
-				if( results.Errors.Count > 0 )
-				{
-					assembly = null;
-					return false;
-				}
-#else
-				if( results.Errors.Count > 0 ) {
-					foreach( CompilerError err in results.Errors ) {
-						if ( !err.IsWarning ) {
-							assembly = null;
-							return false;
-						}
-					}
-				}
-#endif
-
-
-				if( cache && Path.GetFileName( path ) == "Data.bin" )
-				{
-					try
-					{
-						byte[] hashCode = GetHashCode( path, files, debug );
-
-						using( FileStream fs = new FileStream( "Data/Data.hash", FileMode.Create, FileAccess.Write, FileShare.None ) )
-						{
-							using( BinaryWriter bin = new BinaryWriter( fs ) )
-							{
-								bin.Write( hashCode, 0, hashCode.Length );
-							}
-						}
-					}
-					catch
-					{
-					}
-				}
-
-				assembly = results.CompiledAssembly;
-				return true;
+				DeleteFiles( "Data*.bin" ); // never leave a failed/partial emit to be cached
+				assembly = null;
+				return false;
 			}
+
+			if( cache && Path.GetFileName( path ) == "Data.bin" )
+			{
+				try
+				{
+					byte[] hashCode = GetHashCode( path, files, debug );
+
+					using( FileStream fs = new FileStream( "Data/Data.hash", FileMode.Create, FileAccess.Write, FileShare.None ) )
+					{
+						using( BinaryWriter bin = new BinaryWriter( fs ) )
+						{
+							bin.Write( hashCode, 0, hashCode.Length );
+						}
+					}
+				}
+				catch
+				{
+				}
+			}
+
+			assembly = Assembly.LoadFrom( path );
+			return true;
 		}
 
-		public static void Display( CompilerResults results )
+		//LLM: .NET 10 keystone — report Roslyn Diagnostics (was CompilerResults/CompilerError). Errors are
+		//LLM: printed in detail, grouped by file (path made relative to Data/Scripts); warnings are COUNTED,
+		//LLM: not dumped, because modern analyzers (CA1416, CS8xxx nullable) are extremely noisy. The fresh-
+		//LLM: compile path prints "done (N warnings)"; the cached path stays silent. See howto §4.
+		public static void Display( IEnumerable<Diagnostic> diagnostics )
 		{
-			if( results.Errors.Count > 0 )
+			List<Diagnostic> errors = new List<Diagnostic>();
+			int warningCount = 0;
+
+			foreach( Diagnostic d in diagnostics )
 			{
-				Dictionary<string, List<CompilerError>> errors = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
-				Dictionary<string, List<CompilerError>> warnings = new Dictionary<string, List<CompilerError>>( results.Errors.Count, StringComparer.OrdinalIgnoreCase );
+				if( d.Severity == DiagnosticSeverity.Error )
+					errors.Add( d );
+				else if( d.Severity == DiagnosticSeverity.Warning )
+					++warningCount;
+			}
 
-				foreach( CompilerError e in results.Errors )
+			if( errors.Count == 0 )
+			{
+				if( warningCount > 0 )
+					Console.WriteLine( "done ({0} warnings)", warningCount );
+
+				return;
+			}
+
+			Console.WriteLine( "failed ({0} errors, {1} warnings)", errors.Count, warningCount );
+
+			string scriptRoot = Path.GetFullPath( Path.Combine( Core.BaseDirectory, "Data/Scripts" + Path.DirectorySeparatorChar ) );
+
+			Dictionary<string, List<Diagnostic>> byFile = new Dictionary<string, List<Diagnostic>>( StringComparer.OrdinalIgnoreCase );
+
+			foreach( Diagnostic e in errors )
+			{
+				string file = e.Location.SourceTree != null ? e.Location.SourceTree.FilePath : "";
+
+				List<Diagnostic> list;
+
+				if( !byFile.TryGetValue( file, out list ) )
+					byFile[file] = list = new List<Diagnostic>();
+
+				list.Add( e );
+			}
+
+			Utility.PushColor( ConsoleColor.Red );
+			Console.WriteLine( "Errors:" );
+
+			foreach( KeyValuePair<string, List<Diagnostic>> kvp in byFile )
+			{
+				string file = kvp.Key;
+
+				string shown = string.IsNullOrEmpty( file )
+					? "(compiler)"
+					: ( file.StartsWith( scriptRoot, StringComparison.OrdinalIgnoreCase ) ? file.Substring( scriptRoot.Length ) : file );
+
+				Console.WriteLine( " + {0}:", shown );
+
+				Utility.PushColor( ConsoleColor.DarkRed );
+
+				foreach( Diagnostic e in kvp.Value )
 				{
-					string file = e.FileName;
-
-					// Ridiculous. FileName is null if the warning/error is internally generated in csc.
-					if ( string.IsNullOrEmpty( file ) ) {
-						Console.WriteLine( "ScriptCompiler: {0}: {1}", e.ErrorNumber, e.ErrorText );
-						continue;
-					}
-
-					Dictionary<string, List<CompilerError>> table = (e.IsWarning ? warnings : errors);
-
-					List<CompilerError> list = null;
-					table.TryGetValue( file, out list );
-
-					if( list == null )
-						table[file] = list = new List<CompilerError>();
-
-					list.Add( e );
-				}
-
-				if( errors.Count > 0 )
-					Console.WriteLine( "failed ({0} errors, {1} warnings)", errors.Count, warnings.Count );
-				//else
-					// Console.WriteLine( "done ({0} errors, {1} warnings)", errors.Count, warnings.Count );
-
-				string scriptRoot = Path.GetFullPath( Path.Combine( Core.BaseDirectory, "Data/Scripts" + Path.DirectorySeparatorChar ) );
-				Uri scriptRootUri = new Uri( scriptRoot );
-
-				Utility.PushColor( ConsoleColor.Yellow );
-
-				if( warnings.Count > 0 )
-					Console.WriteLine( "Warnings:" );
-
-				foreach( KeyValuePair<string, List<CompilerError>> kvp in warnings )
-				{
-					string fileName = kvp.Key;
-					List<CompilerError> list = kvp.Value;
-
-					string fullPath = Path.GetFullPath( fileName );
-					string usedPath = Uri.UnescapeDataString( scriptRootUri.MakeRelativeUri( new Uri( fullPath ) ).OriginalString );
-
-					Console.WriteLine( " + {0}:", usedPath );
-
-					Utility.PushColor( ConsoleColor.DarkYellow );
-
-					foreach( CompilerError e in list )
-						Console.WriteLine( "    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText );
-
-					Utility.PopColor();
-				}
-
-				Utility.PopColor();
-
-				Utility.PushColor( ConsoleColor.Red );
-
-				if( errors.Count > 0 )
-					Console.WriteLine( "Errors:" );
-
-				foreach( KeyValuePair<string, List<CompilerError>> kvp in errors )
-				{
-					string fileName = kvp.Key;
-					List<CompilerError> list = kvp.Value;
-
-					string fullPath = Path.GetFullPath( fileName );
-					string usedPath = Uri.UnescapeDataString( scriptRootUri.MakeRelativeUri( new Uri( fullPath ) ).OriginalString );
-
-					Console.WriteLine( " + {0}:", usedPath );
-
-					Utility.PushColor( ConsoleColor.DarkRed );
-
-					foreach( CompilerError e in list )
-						Console.WriteLine( "    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText );
-
-					Utility.PopColor();
+					int line = e.Location.GetLineSpan().StartLinePosition.Line + 1;
+					Console.WriteLine( "    {0}: Line {1}: {2}", e.Id, line, e.GetMessage() );
 				}
 
 				Utility.PopColor();
 			}
-			else
-			{
-				// Console.WriteLine( "done (0 errors, 0 warnings)" );
-			}
+
+			Utility.PopColor();
 		}
 
 		public static void DeleteFiles( string mask )
@@ -387,7 +455,8 @@ namespace Server
 			}
 		}
 
-		private delegate CompilerResults Compiler( bool debug );
+		//LLM: .NET 10 — removed the vestigial `private delegate CompilerResults Compiler( bool debug );`
+		//LLM: (unused, and CompilerResults no longer exists after the CodeDom -> Roslyn port).
 
 		public static bool Compile()
 		{

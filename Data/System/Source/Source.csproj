@@ -1,24 +1,48 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- .NET 10 migration: retargeted net4.0 -> net10.0-windows. See SoS_dotnet10_howto.md §3.
+       Removed PublishSingleFile / PublishReadyToRun / RuntimeIdentifier / OutputPath=../: the runtime
+       Roslyn ScriptCompiler needs real assembly files on disk and a non-empty Assembly.Location, so the
+       engine must be a framework-dependent FOLDER, never single-file. Output location + deploy are handled
+       by build.ps1 (staging + guarded copy), not by the csproj. -->
   <PropertyGroup>
-    <OutputPath>../</OutputPath>
     <OutputType>Exe</OutputType>
     <AssemblyName>World</AssemblyName>
     <ApplicationIcon>icon.ico</ApplicationIcon>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
     <DebugSymbols>false</DebugSymbols>
     <DebugType>none</DebugType>
-    <PublishReadyToRun>true</PublishReadyToRun>
-    <PublishSingleFile>true</PublishSingleFile>
-    <IncludeSymbolsInSingleFile>true</IncludeSymbolsInSingleFile>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <TargetFramework>net4.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <!-- Nullable DISABLED (was `enable`). The SDK-style migration switched on the nullable reference-type
+         context, but this ~5,000-file RunUO codebase predates nullable and is not annotated, so it emitted the
+         entire CS86xx/CS87xx family = ~1,132 of the 1,138 engine-build warnings. Nullable is a COMPILE-TIME-ONLY
+         analysis (no runtime effect) and the original net4.0 csc build had no such context, so disabling it is
+         behavior-neutral and restores a quiet build. Re-enable + annotate incrementally if we ever want nullable
+         analysis on new engine code. -->
+    <Nullable>disable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>preview</LangVersion>
     <Deterministic>false</Deterministic>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GenerateSupportedRuntime>false</GenerateSupportedRuntime>
+    <!-- CA1416: Windows-only platform-compat noise (EventLog/PerfCounter/Drawing) on a Windows-hosted server. -->
+    <NoWarn>CA1416</NoWarn>
   </PropertyGroup>
+  <ItemGroup>
+    <!-- UseWindowsForms + ImplicitUsings adds a global `using System.Windows.Forms`, whose ContextMenu
+         collides with Server.ContextMenus.ContextMenu (CS0104 in Mobile.cs / Packets.cs). The net4.0 build
+         had no such global using. Drop ONLY that implicit using; WinForms stays referenced (in TPA) so the
+         one script that uses it still compiles via Roslyn. -->
+    <Using Remove="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Keystone: powers the runtime Roslyn ScriptCompiler. Not part of any shared framework -> required. -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <!-- NOTE: System.Drawing.Common, System.Diagnostics.EventLog and System.Diagnostics.PerformanceCounter are
+         intentionally NOT referenced. On net10.0-windows + UseWindowsForms they are provided by the
+         Microsoft.WindowsDesktop.App shared runtime, so explicit PackageReferences are redundant (the SDK flags
+         them with NU1510 "will not be pruned ... likely unnecessary"). They remain in the process TPA at runtime,
+         so the engine and the scripts that use them (e.g. System.Drawing) still compile. See howto §3. -->
+  </ItemGroup>
 </Project>

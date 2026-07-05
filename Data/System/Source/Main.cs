@@ -210,7 +210,15 @@ namespace Server
 			{
 				if( m_ExePath == null )
 				{
-					m_ExePath = Assembly.Location;
+					//LLM: .NET 10 fix (server "restart" console command crashed). Assembly.Location is the managed engine
+					//LLM: World.dll, which is NOT a launchable process; restart does Process.Start(ExePath, Arguments)
+					//LLM: (Console.cs, CrashGuard.cs, Main.cs ~line 360), so on net10 that threw ("World.dll is not a valid
+					//LLM: application for this OS") and crashed the server. ExePath must be the running EXECUTABLE (the apphost
+					//LLM: World.exe). Environment.ProcessPath (.NET 6+) returns it; fall back to Assembly.Location if ever null.
+					//LLM: BaseDirectory (dir of ExePath) is unchanged -- World.exe and World.dll are both at the repo root.
+					//LLM: The other ExePath consumer, GetReferenceAssemblies(), is dead after the CodeDom->Roslyn port.
+					//LLM: original: m_ExePath = Assembly.Location;
+					m_ExePath = Environment.ProcessPath ?? Assembly.Location;
 					//m_ExePath = Process.GetCurrentProcess().MainModule.FileName;
 				}
 
@@ -441,7 +449,12 @@ namespace Server
 
 			// Added to help future code support on forums, as a 'check' people can ask for to it see if they recompiled core or not
 			Console.WriteLine( "System Initializing..." );
-			Console.WriteLine( "Running on .NET Framework Version {0}.{1}.{2}", Environment.Version.Major, Environment.Version.Minor, Environment.Version.Build );
+			//LLM: .NET 10 — report the REAL runtime (we run on .NET 10 now, not .NET Framework).
+			//LLM: RuntimeInformation.FrameworkDescription => e.g. ".NET 10.0.9". System.Runtime.InteropServices is
+			//LLM: already imported (line 28). See SoS_dotnet10_howto.md §8. (NOTE: the ServerInfo network packet's
+			//LLM: Environment.Version is wire format and is intentionally left untouched.)
+			//LLM: original: Console.WriteLine( "Running on .NET Framework Version {0}.{1}.{2}", Environment.Version.Major, Environment.Version.Minor, Environment.Version.Build );
+			Console.WriteLine( "Running on {0}", RuntimeInformation.FrameworkDescription );
 
 			string s = Arguments;
 

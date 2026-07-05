@@ -247,7 +247,12 @@ namespace Server.Gumps
                         AddLabel(150, 310, LabelHue, FormatByteAmount(GC.GetTotalMemory(false)));
 
                         AddLabel(20, 330, LabelHue, "Framework:");
-                        AddLabel(150, 330, LabelHue, Environment.Version.ToString());
+                        //LLM: .NET 10 — show the REAL runtime, not a bare Environment.Version. On modern .NET
+                        //LLM: Environment.Version is truthful (e.g. 10.0.9) but ambiguous next to "Framework:";
+                        //LLM: RuntimeInformation.FrameworkDescription => ".NET 10.0.x", matching the console banner
+                        //LLM: (Main.cs) and crash log (CrashGuard.cs). See SoS_dotnet10_howto.md §8.
+                        //LLM: original: AddLabel(150, 330, LabelHue, Environment.Version.ToString());
+                        AddLabel(150, 330, LabelHue, System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription);
 
                         AddLabel(20, 350, LabelHue, "Operating System: ");
                         string os = Environment.OSVersion.ToString();

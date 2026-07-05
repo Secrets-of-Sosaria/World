@@ -21,26 +21,41 @@ namespace Server
 
 			m_AppDomain = AppDomain.CurrentDomain;
 
-			m_AssemblyBuilder = m_AppDomain.DefineDynamicAssembly(
+			//LLM: .NET 10 — modern .NET removed AppDomain.DefineDynamicAssembly, AssemblyBuilderAccess.RunAndSave,
+			//LLM: the multi-arg DefineDynamicModule overloads, and AssemblyBuilder.Save. Runtime IL emission (the
+			//LLM: "Run" path) is fully supported; this emitter only RUNS the emitted IL (all callers pass
+			//LLM: canSave:false), never persists it. So always use AssemblyBuilder.DefineDynamicAssembly(...Run) +
+			//LLM: single-arg DefineDynamicModule; Save() is a no-op (see below). The canSave flag is now inert.
+			//LLM: To persist a dynamic assembly on .NET 9+, use System.Reflection.Emit.PersistedAssemblyBuilder.
+			//LLM: See SoS_dotnet10_howto.md §7.
+			m_AssemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(
 				new AssemblyName( assemblyName ),
-				canSave ? AssemblyBuilderAccess.RunAndSave : AssemblyBuilderAccess.Run
+				AssemblyBuilderAccess.Run
 			);
 
-			if ( canSave )
-			{
-				m_ModuleBuilder = m_AssemblyBuilder.DefineDynamicModule(
-					assemblyName,
-					String.Format( "{0}.dll", assemblyName.ToLower() ),
-					false
-				);
-			}
-			else
-			{
-				m_ModuleBuilder = m_AssemblyBuilder.DefineDynamicModule(
-					assemblyName,
-					false
-				);
-			}
+			m_ModuleBuilder = m_AssemblyBuilder.DefineDynamicModule( assemblyName );
+
+			//LLM: original (CodeDom/Framework-era dynamic-assembly creation):
+			//m_AssemblyBuilder = m_AppDomain.DefineDynamicAssembly(
+			//	new AssemblyName( assemblyName ),
+			//	canSave ? AssemblyBuilderAccess.RunAndSave : AssemblyBuilderAccess.Run
+			//);
+			//
+			//if ( canSave )
+			//{
+			//	m_ModuleBuilder = m_AssemblyBuilder.DefineDynamicModule(
+			//		assemblyName,
+			//		String.Format( "{0}.dll", assemblyName.ToLower() ),
+			//		false
+			//	);
+			//}
+			//else
+			//{
+			//	m_ModuleBuilder = m_AssemblyBuilder.DefineDynamicModule(
+			//		assemblyName,
+			//		false
+			//	);
+			//}
 		}
 
 		public TypeBuilder DefineType( string typeName, TypeAttributes attrs, Type parentType )
@@ -50,9 +65,12 @@ namespace Server
 
 		public void Save()
 		{
-			m_AssemblyBuilder.Save(
-				String.Format( "{0}.dll", m_AssemblyName.ToLower() )
-			);
+			//LLM: .NET 10 — AssemblyBuilder.Save was removed (Run-only emission). All callers pass canSave:false
+			//LLM: and never persist, so this is now a no-op. See SoS_dotnet10_howto.md §7.
+			//LLM: original:
+			//m_AssemblyBuilder.Save(
+			//	String.Format( "{0}.dll", m_AssemblyName.ToLower() )
+			//);
 		}
 	}
 

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
-using System.Web.Mail;
+//LLM: .NET 10 — System.Web.Mail removed on modern .NET; SendEmail() is an empty stub so this import is dead.
+//LLM: See SoS_dotnet10_howto.md §7.
+//LLM: original: using System.Web.Mail;
 using System.Diagnostics;
 using System.Threading;
 using Server;

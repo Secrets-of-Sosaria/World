@@ -483,6 +483,11 @@ namespace Server {
 			Exception failed = null;
 			int failedTypeID = 0;
 
+			//LLM: mobile load-hardening — count of mobiles skipped because they failed to deserialize
+			//LLM: (each is logged to world-load-errors.log). Surfaced to the console after the mobile pass.
+			//LLM: See memory notes: load-hardening, serialization-conventions, modification-conventions.
+			int brokenMobileCount = 0;
+
 			if ( File.Exists( MobileDataPath ) ) {
 				using ( FileStream bin = new FileStream( MobileDataPath, FileMode.Open, FileAccess.Read, FileShare.Read ) ) {
 					BinaryFileReader reader = new BinaryFileReader( new BinaryReader( bin ) );
@@ -501,15 +506,55 @@ namespace Server {
 								if ( reader.Position != ( entry.Position + entry.Length ) )
 									throw new Exception( String.Format( "***** Bad serialize on {0} *****", m.GetType() ) );
 							} catch ( Exception e ) {
-								mobiles.RemoveAt( i );
+								//LLM: mobile load-hardening. Stock RunUO ABORTS the entire world load on the first
+								//LLM: mobile that fails to deserialize (sets failed*/break, then prompts at World.cs ~line 600
+								//LLM: to delete one / all of that type). With a save whose mobiles use an out-of-date data
+								//LLM: structure there are far too many offenders to triage by hand. Mobiles are dispensable
+								//LLM: (spawners repopulate conformant ones), so instead: LOG the offending class + serial and
+								//LLM: SKIP the mobile, letting the world finish loading.
+								//LLM: Safe because each mobile is read after reader.Seek( entry.Position ) above (position from
+								//LLM: Mobiles.idx), so a misaligned/partial read never corrupts the NEXT entry's read.
+								//LLM: m.Delete() here is DEFERRED during load (World.OnDelete enqueues to _deleteQueue) and runs
+								//LLM: in ProcessSafetyQueues() after items load and before the post-load UpdateTotals/UpdateRegion
+								//LLM: loop, so the broken mobile's items cascade correctly and no broken mobile reaches fixups.
+								//LLM: The Item and Guild failure paths below are intentionally left UNCHANGED (user wants to
+								//LLM: gauge the extent of mobile damage first before touching items).
+								//LLM: EXCEPTION — player characters (user decision 2026-06-27): players are NOT spawner-
+								//LLM: repopulated, so we must NOT silently skip/delete a broken character. If a PlayerMobile
+								//LLM: fails, fall back to STOCK RunUO behavior (record the failure + break) so the operator
+								//LLM: gets the delete/halt prompt further below and can intervene / restore from Backups.
+								//LLM: NPCs (everything else) are dispensable -> skip + log + continue.
+								if ( IsPlayerMobileType( m ) ) {
+									mobiles.RemoveAt( i );
 
-								failed = e;
-								failedMobiles = true;
-								failedType = m.GetType();
-								failedTypeID = entry.TypeID;
-								failedSerial = m.Serial;
+									failed = e;
+									failedMobiles = true;
+									failedType = m.GetType();
+									failedTypeID = entry.TypeID;
+									failedSerial = m.Serial;
 
-								break;
+									break;
+								}
+
+								LogMobileLoadFailure( entry.TypeName, m, e );
+								++brokenMobileCount;
+
+								try {
+									m.Delete(); // deferred during load via World.OnDelete -> _deleteQueue
+								} catch {
+								}
+
+								//LLM: original code (aborted the whole load on the first failed mobile):
+								//mobiles.RemoveAt( i );
+								//
+								//failed = e;
+								//failedMobiles = true;
+								//failedType = m.GetType();
+								//failedTypeID = entry.TypeID;
+								//failedSerial = m.Serial;
+								//
+								//break;
+								continue;
 							}
 						}
 					}
@@ -517,6 +562,11 @@ namespace Server {
 					reader.Close();
 				}
 			}
+
+			//LLM: mobile load-hardening — report how many mobiles were skipped this load (details in
+			//LLM: world-load-errors.log). brokenMobileCount stays 0 on a clean load, so this is silent normally.
+			if ( brokenMobileCount > 0 )
+				Console.WriteLine( "World: skipped {0} mobile(s) that failed to load (see world-load-errors.log).", brokenMobileCount );
 
 			if ( !failedMobiles && File.Exists( ItemDataPath ) ) {
 				using ( FileStream bin = new FileStream( ItemDataPath, FileMode.Open, FileAccess.Read, FileShare.Read ) ) {
@@ -681,16 +731,23 @@ namespace Server {
 			while ( _deleteQueue.Count > 0 ) {
 				IEntity entity = _deleteQueue.Dequeue();
 
-				Item item = entity as Item;
+				//LLM: load-hardening — guard each deferred delete so a pathological Delete() (e.g. on a
+				//LLM: half-deserialized mobile dropped by the World.Load mobile-skip path) cannot abort the
+				//LLM: world load. Log and continue. See memory: load-hardening. (Original body unchanged inside.)
+				try {
+					Item item = entity as Item;
 
-				if ( item != null ) {
-					item.Delete();
-				} else {
-					Mobile mob = entity as Mobile;
+					if ( item != null ) {
+						item.Delete();
+					} else {
+						Mobile mob = entity as Mobile;
 
-					if ( mob != null ) {
-						mob.Delete();
+						if ( mob != null ) {
+							mob.Delete();
+						}
 					}
+				} catch ( Exception e ) {
+					Console.WriteLine( "Warning: exception while processing a deferred delete ({0}): {1}", entity, e );
 				}
 			}
 		}
@@ -709,6 +766,46 @@ namespace Server {
 				using ( StreamWriter op = new StreamWriter( "world-save-errors.log", true ) ) {
 					op.WriteLine( "{0}\t{1}", DateTime.Now, message );
 					op.WriteLine( new StackTrace( 2 ).ToString() );
+					op.WriteLine();
+				}
+			} catch {
+			}
+		}
+
+		//LLM: load-hardening — detect player characters WITHOUT an engine-side reference to the script class
+		//LLM: PlayerMobile (it lives in Data/Scripts and is not visible to the engine at compile time). Note that
+		//LLM: Mobile.Player (m_Player) is UNRELIABLE here: it's read late in Mobile.Deserialize (~line 5752), so a
+		//LLM: mobile that throws earlier never set it. The runtime TYPE is fixed at construction (the (Serial) ctor
+		//LLM: succeeded; only Deserialize failed), so walk the base-type chain for a class named "PlayerMobile"
+		//LLM: (covers PlayerMobile and any subclass). See memory: load-hardening.
+		private static bool IsPlayerMobileType( Mobile m )
+		{
+			for ( Type t = ( m == null ? null : m.GetType() ); t != null; t = t.BaseType )
+			{
+				if ( t.Name == "PlayerMobile" )
+					return true;
+			}
+
+			return false;
+		}
+
+		//LLM: mobile load-hardening — append a record of a mobile that failed to deserialize during world
+		//LLM: load (offending class + serial + exception) to world-load-errors.log for later perusal, then the
+		//LLM: caller skips it. Mirrors AppendSafetyLog's defensive file write. Called from World.Load()'s mobile
+		//LLM: loop. typeName is the stored type from Mobiles.tdb (e.g. "Server.Mobiles.EvilHealer"); runtimeType
+		//LLM: is the live constructed class. See memory: load-hardening.
+		private static void LogMobileLoadFailure( string typeName, Mobile m, Exception e )
+		{
+			string serial = ( m == null ? "(null)" : m.Serial.ToString() );
+			Type runtimeType = ( m == null ? null : m.GetType() );
+
+			Console.WriteLine( "Warning: skipping mobile that failed to load (type '{0}', serial {1}).", typeName, serial );
+
+			try {
+				using ( StreamWriter op = new StreamWriter( "world-load-errors.log", true ) ) {
+					op.WriteLine( "{0}\tFailed to load mobile - TypeName: {1}, RuntimeType: {2}, Serial: {3}",
+						DateTime.Now, typeName, runtimeType, serial );
+					op.WriteLine( e );
 					op.WriteLine();
 				}
 			} catch {

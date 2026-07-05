@@ -203,7 +203,9 @@ namespace Server.Misc
 					op.WriteLine( "=======================" );
 					op.WriteLine();
 					op.WriteLine( "Operating System: {0}", Environment.OSVersion );
-					op.WriteLine( ".NET Framework: {0}", Environment.Version );
+					//LLM: .NET 10 — report the real runtime (fully-qualified to avoid adding a using). See howto §8.
+					//LLM: original: op.WriteLine( ".NET Framework: {0}", Environment.Version );
+					op.WriteLine( "Runtime: {0}", System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription );
 					op.WriteLine( "Time: {0}", DateTime.Now );
 
 					try { op.WriteLine( "Mobiles: {0}", World.Mobiles.Count ); }
